@@ -1,0 +1,264 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+
+
+SGI Rackable C2005-TY6 (Intel Xeon X5670, 2.93 GHz)                            
+SPECpower_ssj2008 = 3,077 overall ssj_ops/watt                                 
+            Test Sponsor:  SGI                                                 
+          SPEC License #:  4                                                   
+               Tested By:  SGI                                                 
+           Test Location:  Fremont, CA, USA                                    
+               Test Date:  Dec 6, 2010                                         
+             Publication:  Jan 5, 2011                                         
+   Hardware Availability:  Mar-2011                                            
+   Software Availability:  Mar-2011                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |       902,577 |           226 |         3,990
+          90% |         89.8% |       813,392 |           209 |         3,888
+          80% |         80.4% |       728,216 |           194 |         3,745
+          70% |         70.0% |       634,438 |           176 |         3,607
+          60% |         60.2% |       545,282 |           159 |         3,430
+          50% |         49.9% |       452,431 |           143 |         3,162
+          40% |         39.8% |       360,915 |           130 |         2,778
+          30% |         30.1% |       272,423 |           119 |         2,295
+          20% |         20.1% |       181,852 |           108 |         1,681
+          10% |         10.1% |        91,531 |          95.7 |           957
+                  Active Idle |             0 |          59.1 |             0
+                              sum of ssj_ops / sum of power = |         3,077
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  SGI                                         
+                           Model:  Rackable C2005-TY6 (Intel Xeon X5670, 2.93  
+                                   GHz)                                        
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon X5670                            
+             CPU Characteristics:  Six-Core, 2.93GHz, 12MB L3 Cache            
+             CPU Frequency (MHz):  2933                                        
+                  CPU(s) Enabled:  12 cores, 2 chips, 6 cores/chip             
+                Hardware Threads:  24 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  12                                          
+              # and size of DIMM:  6 x 2048 MB                                 
+                  Memory Details:  2GB 2Rx8 PC3L-10600E; slots A1,B1,C1        
+                                   populated for CPU0 and D1,E1,F1 for CPU1    
+ Power Supply Quantity and Rating  1 x 250                                     
+                             (W):                                              
+            Power Supply Details:  SGI PN KT-2005-PS-AC-250W                   
+                      Disk Drive:  1 x 32GB SSD SATA (SGI PN 35-07-00005-R)    
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Integrated Intel Gigabit Ethernet       
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver in OS (see SUT Notes)           
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition                                     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4  
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr7-20091214_49398 (JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xms1475m -Xmx1475m -Xmn1125m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                    JVM Affinity:  start /AFFINITY [F,F0,F00,F000,F0000,F00000]
+                   JVM Instances:  6                                           
+           JVM Initial Heap (MB):  1475                                        
+           JVM Maximum Heap (MB):  1475                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  S5500.86B.01.00.0054 09/28/2010             
+     Management Firmware Version:  None                                        
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  Websphere Application Server Community      
+                                   Edition V2.1.1.4 for Windows on x86-64 bit  
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Settings:                                                               
+* DCU Data Preftecher and DCU Instruction Prefetcher Disabled                  
+* MLC Streamer and MLC spatial Prefetcher Disabled                             
+* Intel Turbo Boost Technology Disabled                                        
+* Execute Disable Bit Disabled                                                 
+* Intel Virtualization Tech Disabled                                           
+* L1 Write back optimization Disabled                                          
+* Direct Cache Access Disabled                                                 
+* QPI Speed set 4.8GT/s                                                        
+* Memory freq set to 1066MHz max                                               
+* USB 2.0 controller Disabled                                                  
+* Altitude set to 300m or less                                                 
+* Serial Port A and B Disabled                                                 
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four logical porcessors.                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Turn off Hard Disks after 1 minute                                           
+* Run was started via Remote Desktop                                           
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc                                    
+                           Model:  Dell Precision 490                          
+                 CPU Description:  Intel Xeon 5140                             
+              Memory amount (GB):  8                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2003 Enterprise    
+                                   Edition                                     
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.5.0-110-94909-1.6.0_03-20080204-1558-win
+                                   dows-ia32, compiled mode)                   
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd    
+                           Model:  WT210                                       
+                   Serial Number:  91K308523                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa Corporation of America             
+               Calibration Label:  10-1564                                     
+             Date of Calibration:  20-Aug-2010                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  Unknown                                     
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International, Inc                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.14.0                                   
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  None                                        
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        226 |          21.5
+        90% |        209 |          21.5
+        80% |        194 |          21.6
+        70% |        176 |          21.6
+        60% |        159 |          21.6
+        50% |        143 |          21.6
+        40% |        130 |          21.6
+        30% |        119 |          21.6
+        20% |        108 |          21.6
+        10% |       95.7 |          21.5
+Active Idle |       59.1 |          21.5
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+120V / 60 Hz / 1 phase /  |            21.5 |               8
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20101210-00322-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           901,975
+    Calibration 2 |                   |                   |           906,166
+    Calibration 3 |                   |                   |           905,637
+                                                   ssj_ops@calibrated=905,901
+             100% |             99.6% |           905,901 |           902,577
+              90% |             89.8% |           815,311 |           813,392
+              80% |             80.4% |           724,721 |           728,216
+              70% |             70.0% |           634,131 |           634,438
+              60% |             60.2% |           543,541 |           545,282
+              50% |             49.9% |           452,951 |           452,431
+              40% |             39.8% |           362,361 |           360,915
+              30% |             30.1% |           271,770 |           272,423
+              20% |             20.1% |           181,180 |           181,852
+              10% |             10.1% |            90,590 |            91,531
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20101210-00322.WIN-A6QSAU9JFSV.txt) for additional details.     
+
+
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

@@ -1,0 +1,322 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+
+
+Fujitsu FUJITSU Server PRIMERGY CX2560 M6                                      
+SPECpower_ssj2008 = 8,903 overall ssj_ops/watt                                 
+            Test Sponsor:  Fujitsu                                             
+          SPEC License #:  19                                                  
+               Tested By:  Fujitsu                                             
+           Test Location:  Kawasaki, Kanagawa, Japan                           
+               Test Date:  Aug 6, 2021                                         
+             Publication:  Sep 1, 2021                                         
+   Hardware Availability:  Sep-2021                                            
+   Software Availability:  Dec-2020                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |    19,762,291 |         1,906 |        10,367
+          90% |         89.9% |    17,822,302 |         1,715 |        10,394
+          80% |         80.0% |    15,860,766 |         1,474 |        10,757
+          70% |         70.2% |    13,904,810 |         1,292 |        10,759
+          60% |         60.0% |    11,895,706 |         1,109 |        10,725
+          50% |         50.0% |     9,899,337 |         1,009 |         9,812
+          40% |         40.0% |     7,920,473 |           929 |         8,529
+          30% |         30.0% |     5,940,102 |           856 |         6,942
+          20% |         20.0% |     3,961,149 |           778 |         5,089
+          10% |         10.0% |     1,980,785 |           696 |         2,845
+                  Active Idle |             0 |           472 |             0
+                              sum of ssj_ops / sum of power = |         8,903
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |        192 |        384 |      1,024 |              4 |        16
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  PRIMERGY CX400 M6                           
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  1 x 2600                                    
+                             (W):                                              
+            Power Supply Details:  1x COMPUWARE 2600W  S26113-E649-V90-1       
+                  Network Switch:  Fujitsu SR-X324T2                           
+          Network Switch Details:  24-Port Gigabit Switch                      
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  Gigabit switch was not measured for power   
+
+
+
+                                Set: 'CX2560M6'                                
+
+                  Set Identifier:  CX2560M6                                    
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  4                                           
+                         Comment:  Multi Node                                  
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Fujitsu                                     
+                           Model:  FUJITSU Server PRIMERGY CX2560 M6           
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Xeon Gold 5318Y                       
+             CPU Characteristics:  24-Core, 2.10GHz, 36MB L3 Cache             
+             CPU Frequency (MHz):  2100                                        
+                  CPU(s) Enabled:  48 cores, 2 chips, 24 cores/chip            
+                Hardware Threads:  96 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 48 KB D on chip per core          
+                 Secondary Cache:  1280 KB I+D on chip per core                
+                  Tertiary Cache:  36 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  256                                         
+              # and size of DIMM:  16 x 16384 MB                               
+                  Memory Details:  16 x 16 GB 2Rx8 PC4-3200Y-R; slots 1A, 1B,  
+                                   1C, 1D, 1E, 1F, 1G, 1H, 1J, 1K, 1L, 1M, 1N, 
+                                   1P, 1Q, 1R populated                        
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  1 x SSD M.2 240GB, S26361-F5787-E240        
+                 Disk Controller:  Integrated sSATA Controller                 
+  # and type of Network Interface  1 x Intel(R) 10Gb X550T Gigabit Network     
+          Cards (NICs) Installed:  Connection (onboard)                        
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  10000                                       
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  SUSE Linux Enterprise Server 15 SP2         
+                      OS Version:  5.3.18-24.43-default                        
+                      Filesystem:  btrfs                                       
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   18.9 (build 11.0.9+7-LTS, mixed mode)       
+        JVM Command-line Options:  -server -Xmn20000m -Xms22000m -Xmx22000m    
+                                   -XX:+UseHugeTLBFS -XX:+UseLargePages        
+                                   -XX:+UseTransparentHugePages                
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchInstr=0                 
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:ParallelGCThreads=8 -XX:SurvivorRatio=1 
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:+UseParallelOldGC                       
+                                   -XX:FreqInlineSize=2500                     
+                                   -XX:MinJumpTableSize=18 -XX:UseAVX=0        
+                                   -XX:+UseBiasedLocking                       
+                    JVM Affinity:  chrt -r 1 taskset -c                        
+                                   [(0,1,2,3,4,5,6,7,8,9,10,11,48,49,50,51,52,5
+                                   3,54,55,56,57,58),                          
+                                   (12,13,14,15,16,17,18,19,20,21,22,23,60,61,6
+                                   2,63,64,65,66,67,68,69,70),                 
+                                   (24,25,26,27,28,29,30,31,32,33,34,35,72,73,7
+                                   4,75,76,77,78,79,80,81,82),                 
+                                   (36,37,38,39,40,41,42,43,44,45,46,47,84,85,8
+                                   6,87,88,89,90,91,92,93,94)] numactl         
+                                   --membind=[0-3]                             
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  22000                                       
+           JVM Maximum Heap (MB):  22000                                       
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  R1.23.0                                     
+     Management Firmware Version:  3.26P                                       
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+Set the following options in BIOS.                                             
+* "Hardware Prefetcher = Disabled"                                             
+* "Adjacent Cache Line Prefetch = Disabled"                                    
+* "DCU Streamer Prefetcher = Disabled"                                         
+* "Intel Virtualization Technology = Disabled"                                 
+* "Energy Performance = Energy Efficient"                                      
+* "Package C State limit = C6"                                                 
+* "UPI Link Frequency Select = 9.6GT/s"                                        
+* "Uncore Frequency Scaling = Power Balanced"                                  
+* "DDR Performance = Energy optimized"                                         
+* "SNC(Sub NUMA) = Enable SNC2"                                                
+* "ASPM Support = L1 only"                                                     
+* "SATA Controller = Disabled"                                                 
+* "USB Port Control = Disable all ports"                                       
+* "Network Stack = Disabled"                                                   
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* kernel parameter: pcie_aspm=force pcie_aspm.policy=powersave                 
+intel_pstate=passive                                                           
+* Benchmark started via ssh.                                                   
+* modprobe cpufreq_conservative                                                
+* cpupower frequency-set -g conservative                                       
+* echo 3000000 > /sys/devices/system/cpu/cpufreq/conservative/sampling_rate    
+* echo      93 > /sys/devices/system/cpu/cpufreq/conservative/up_threshold     
+* echo       1 > /sys/devices/system/cpu/cpufreq/conservative/freq_step        
+* echo      92 > /sys/devices/system/cpu/cpufreq/conservative/down_threshold   
+* echo always  > /sys/kernel/mm/transparent_hugepage/enabled                   
+* cpupower frequency-set -u 2600MHz                                            
+* sysctl -w kernel.nmi_watchdog=0                                              
+* <Yes> The test sponsor attests, as of date of publication, that CVE-2017-5754
+(Meltdown) is mitigated in the system as tested and documented.                
+* <Yes> The test sponsor attests, as of date of publication, that CVE-2017-5753
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* <Yes> The test sponsor attests, as of date of publication, that CVE-2017-5715
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Fujitsu                                     
+                           Model:  PRIMERGY RX2530 M2                          
+                 CPU Description:  Intel Xeon E5-2643 v4                       
+              Memory amount (GB):  64                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2012 R2 Standard   
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 25.211-b12, mixed mode), version     
+                                   1.8.0_211                                   
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Hioki                                       
+                           Model:  PW3336                                      
+                   Serial Number:  170134584                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NICT (National Institute of Information and 
+                                   Communications Technology)                  
+                   Accredited by:  HIOKI E.E. CORPORATION                      
+               Calibration Label:  H06400087-2103                              
+             Date of Calibration:  08-Mar-2021                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc                      
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.70.105.0           
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main air intake        
+
+
+
+                                     Notes                                     
+
+* SPECpower_ssj.props input.load_level.number_warehouses set to 96 due to a    
+known inconsistency in processor reporting with this Java version.             
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,906 |          27.9
+        90% |      1,715 |          28.0
+        80% |      1,474 |          28.1
+        70% |      1,292 |          28.0
+        60% |      1,109 |          28.0
+        50% |      1,009 |          28.0
+        40% |        929 |          28.0
+        30% |        856 |          27.9
+        20% |        778 |          28.0
+        10% |        696 |          27.9
+Active Idle |        472 |          27.9
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+200V / 50 Hz / 1 phase /  |            27.9 |              11
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20210817-01122-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        14,490,974
+    Calibration 2 |                   |                   |        19,828,902
+    Calibration 3 |                   |                   |        19,802,051
+                                                ssj_ops@calibrated=19,815,476
+             100% |             99.7% |        19,815,476 |        19,762,291
+              90% |             89.9% |        17,833,929 |        17,822,302
+              80% |             80.0% |        15,852,381 |        15,860,766
+              70% |             70.2% |        13,870,833 |        13,904,810
+              60% |             60.0% |        11,889,286 |        11,895,706
+              50% |             50.0% |         9,907,738 |         9,899,337
+              40% |             40.0% |         7,926,191 |         7,920,473
+              30% |             30.0% |         5,944,643 |         5,940,102
+              20% |             20.0% |         3,963,095 |         3,961,149
+              10% |             10.0% |         1,981,548 |         1,980,785
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report                                           
+(power_ssj2008-20210817-01122.CX2560M6.txt) for additional details.            
+
+
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

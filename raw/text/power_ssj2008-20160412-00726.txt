@@ -1,0 +1,301 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2016 Standard Performance Evaluation Corporation      
+
+
+Huawei Technologies Co., Ltd Fusion Server XH620 V3                            
+SPECpower_ssj2008 = 10,653 overall ssj_ops/watt                                
+            Test Sponsor:  Huawei Technologies Co., Ltd                        
+          SPEC License #:  3175                                                
+               Tested By:  Huawei Technologies Co., Ltd                        
+           Test Location:  Shenzhen, Guangdong, China                          
+               Test Date:  Apr 11, 2016                                        
+             Publication:  Apr 27, 2016                                        
+   Hardware Availability:  Mar-2016                                            
+   Software Availability:  Jan-2015                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |        100.0% |    15,938,684 |         1,419 |        11,229
+          90% |         89.5% |    14,262,247 |         1,213 |        11,758
+          80% |         80.9% |    12,892,901 |         1,042 |        12,367
+          70% |         70.0% |    11,149,796 |           863 |        12,919
+          60% |         60.0% |     9,564,286 |           787 |        12,158
+          50% |         50.0% |     7,964,190 |           668 |        11,924
+          40% |         40.0% |     6,378,951 |           598 |        10,676
+          30% |         29.9% |     4,770,999 |           553 |         8,625
+          20% |         20.0% |     3,192,686 |           476 |         6,700
+          10% |         10.0% |     1,590,602 |           396 |         4,012
+                  Active Idle |             0 |           217 |             0
+                              sum of ssj_ops / sum of power = |        10,653
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |        160 |        320 |        256 |              4 |        80
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Huawei FusionServer X6800                   
+                     Form Factor:  4U                                          
+ Power Supply Quantity and Rating  4 x 750                                     
+                             (W):                                              
+            Power Supply Details:  Huawei P/N 02131167                         
+                  Network Switch:  Huawei Quidway S5348TP-SI                   
+          Network Switch Details:  48-PORT Quidway S5348TP-SI                  
+                      KVM Switch:  None                                        
+              KVM Switch Details:  None                                        
+                  Other Hardware:  None                                        
+                         Comment:  Network switch not measured for Power       
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  4                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Huawei Technologies Co., Ltd                
+                           Model:  Fusion Server XH620 V3                      
+                     Form Factor:  4U                                          
+                        CPU Name:  Intel Xeon E5-2698 V4                       
+             CPU Characteristics:  20-Core, 2.2GHz, 50MB L3 Cache (Intel Turbo 
+                                   Boost Technology up to 3.6GHz)              
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  40 cores, 2 chips, 20 cores/chip            
+                Hardware Threads:  80 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  50 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  64                                          
+              # and size of DIMM:  8 x 8 GB                                    
+                  Memory Details:  8GB 2Rx8 PC4-2400T ECC RDIMM;slots DIMM000, 
+                                   DIMM010, DIMM020, DIMM030,DIMM100, DIMM110, 
+                                   DIMM120, and DIMM130 populated              
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 32GB SATADOM  Huawei P/N 06010249       
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Dual-port Intel i350 Gigabit Ethernet   
+          Cards (NICs) Installed:  controller Huawei P/N 02311HDL              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power Saver Mode  enabled in OS             
+           Operating System (OS):  Microsoft Windows Server 2012 R2 Datacenter 
+                      OS Version:  Version 6.3 (Build 9600)                    
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 24.80-b11, mixed mode), version      
+                                   1.7.0_80                                    
+        JVM Command-line Options:  -server -Xmx1575m -Xms1575m -Xmn1420m       
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=4                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=9000                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=6000 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC  -XX:+AggressiveOpts  
+                    JVM Affinity:  start /NODE [0,1,2,3] /AFFINITY             
+                                   [F,F0,F00,F000,F0000]                       
+                   JVM Instances:  20                                          
+           JVM Initial Heap (MB):  1575                                        
+           JVM Maximum Heap (MB):  1575                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  3.16                                        
+     Management Firmware Version:  2.02                                        
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  none                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Hardware prefetcher -disabled.                                               
+* Adjacent Cache Line Prefetch -disabled.                                      
+* DCU Streamer Prefetcher -disabled.                                           
+* Intel HT Technology -enabled.                                                
+* Turbo mode -enabled.                                                         
+* C-state -enabled.                                                            
+* Power Mode -Efficiency.                                                      
+* QPI Link  Auto.                                                              
+* COD Enable -enabled.                                                         
+* Demand Scrubbing -disabled.                                                  
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* The test was started via Remote Desktop.                                     
+* The 8 hard disk model was used for this submission.                          
+* Minimum Processor State: 0%.                                                 
+* Maximum Processor State: 100%.                                               
+* Turn off hard disk after 1 minute .                                          
+* Each JVM instance was affinitized to four logical processors.                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Huawei Technologies Co., Ltd                
+                           Model:  FusionServer RH2288 V3                      
+                 CPU Description:  2 x E5-2698 V4                              
+              Memory amount (GB):  128                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   SP1                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 25.25-b02, mixed mode)               
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91L704197                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS (China National Accreditation Service  
+                                   for Conformity Assessment)                  
+                   Accredited by:  Calibration and Testing Center of CEPREI    
+               Calibration Label:  A15012323-0014                              
+             Date of Calibration:  9-Dec-2015                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.0-efc0c004-20160120                     
+               Setup Description:  Connected to PSU 1,PSU2,PSU3,PSU4           
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi                                        
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  Unknown                                     
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  placed in front the main airflow inlet of   
+                                   the SUT less than 50mm.                     
+
+
+
+                                     Notes                                     
+
+* SPECpower_ssj.props input.load_level.number_warehouses set to 80 due to a    
+known inconsistency in processor reporting with this Java version..            
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,419 |          22.1
+        90% |      1,213 |          22.3
+        80% |      1,042 |          22.3
+        70% |        863 |          22.4
+        60% |        787 |          22.6
+        50% |        668 |          22.5
+        40% |        598 |          22.4
+        30% |        553 |          22.4
+        20% |        476 |          22.4
+        10% |        396 |          22.6
+Active Idle |        217 |          22.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 50 Hz / 1 phase /  |            22.1 |             101
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20160412-00726-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        16,111,885
+    Calibration 2 |                   |                   |        15,917,904
+    Calibration 3 |                   |                   |        15,950,280
+                                                ssj_ops@calibrated=15,934,092
+             100% |            100.0% |        15,934,092 |        15,938,684
+              90% |             89.5% |        14,340,683 |        14,262,247
+              80% |             80.9% |        12,747,274 |        12,892,901
+              70% |             70.0% |        11,153,865 |        11,149,796
+              60% |             60.0% |         9,560,455 |         9,564,286
+              50% |             50.0% |         7,967,046 |         7,964,190
+              40% |             40.0% |         6,373,637 |         6,378,951
+              30% |             29.9% |         4,780,228 |         4,770,999
+              20% |             20.0% |         3,186,818 |         3,192,686
+              10% |             10.0% |         1,593,409 |         1,590,602
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20160412-00726.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2016 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

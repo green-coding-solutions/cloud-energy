@@ -1,0 +1,290 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+SGI Rackable C2112-4G10                                                        
+SPECpower_ssj2008 = 2,611 overall ssj_ops/watt                                 
+            Test Sponsor:  SGI                                                 
+          SPEC License #:  4                                                   
+               Tested By:  SGI                                                 
+           Test Location:  Fremont, CA, USA                                    
+               Test Date:  Feb 25, 2012                                        
+             Publication:  Mar 21, 2012                                        
+   Hardware Availability:  Apr-2012                                            
+   Software Availability:  Apr-2012                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.4% |     4,755,702 |         1,387 |         3,430
+          90% |         89.9% |     4,303,805 |         1,316 |         3,272
+          80% |         80.0% |     3,829,046 |         1,239 |         3,090
+          70% |         70.1% |     3,352,693 |         1,158 |         2,896
+          60% |         59.9% |     2,865,780 |         1,060 |         2,704
+          50% |         49.9% |     2,386,957 |           943 |         2,531
+          40% |         40.0% |     1,913,139 |           825 |         2,318
+          30% |         30.0% |     1,436,315 |           718 |         2,000
+          20% |         20.0% |       956,055 |           624 |         1,533
+          10% |         10.0% |       477,550 |           531 |           900
+                  Active Idle |             0 |           265 |             0
+                              sum of ssj_ops / sum of power = |         2,611
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |        128 |        128 |        128 |              4 |        64
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Rackable C2112                              
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  2 x 1620                                    
+                             (W):                                              
+            Power Supply Details:  SGI PN 060-0335-001                         
+                  Network Switch:  24 port Gigabit Ethernet switch             
+          Network Switch Details:  SMC8824M SMC Tigerstack II                  
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  Network switch is a standalone device and is
+                                   not included in the measured power.         
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  Rackable C2112-4G10                         
+            # of Identical Nodes:  4                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  SGI                                         
+                           Model:  Rackable C2112-4G10                         
+                     Form Factor:  Blade                                       
+                        CPU Name:  AMD Opteron 6276                            
+             CPU Characteristics:  16 cores, 2.30 GHz (AMD Turbo CORE          
+                                   technology upto 3.20 GHz)                   
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  32 cores, 2 chips, 16 cores/chip            
+                Hardware Threads:  32 (1 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  512 KB I + 256 KB D on chip per chip        
+                 Secondary Cache:  16 MB I+D on chip per chip, 2 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  16 MB I+D on chip per chip, 8 MB shared / 8 
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  32                                          
+              # and size of DIMM:  8 x 4096 MB                                 
+                  Memory Details:  4 GB 2Rx8 PC3L-10600R; slots 1A, 2A, 3A, and
+                                   4A populated for each processor             
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 120 GB 2.5" SSD SATA (SGI PN            
+                                   LSX-SSD25-120G-I)                           
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Integrated Intel 82576 Gigabit Ethernet 
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power Saver Enabled in OS                   
+           Operating System (OS):  Microsoft Windows Server 2008 Datacenter    
+                                   Edition                                     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4  
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr7-20091214_49398 (JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xmn1400m -Xms1600m -Xmx1600m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -Xlp              
+                    JVM Affinity:  start /affinity                             
+                                   [0x3,0xC,0x30,0xc0,0x300,0xC00,0x3000,0xC000
+                                   ,0x30000,0xC0000,0x300000,0xC00000,0x3000000
+                                   ,0xC000000,0x30000000,0xC0000000]           
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1600                                        
+           JVM Maximum Heap (MB):  1600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  2.0 dt 10/03/11                             
+     Management Firmware Version:  none                                        
+                Workload Version:  SSJ 1.2.9                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM Websphere Application Server Community  
+                                   Edition V2.1.1.4 for windows on X86-64bit   
+
+
+
+                            Boot Firmware Settings                             
+
+* Onboard Infiniband Controller set to Disabled                                
+* HT Speed Support set to  'HT1'                                               
+* Fan speed Control Mode set to 'Engery Savings/ES'                            
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to 2 CPU  cores.                           
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started via Remote Desktop                                           
+* OS Power Saver Settings                                                      
+* Turn off hard disk after 2 minutes                                           
+* Minimum Processor State Set to 0%                                            
+* Maximum process state set to 100%                                            
+* Turn off display after 1 minute                                              
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc                                    
+                           Model:  Dell Precision 33                           
+                 CPU Description:  Intel Pentium(R) 4 CPU 1400 MHz             
+              Memory amount (GB):  0.5                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows XP Professional SP2       
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.5-32_o-121899-1.6.0_14-20091001-2107-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.5                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd    
+                           Model:  WT210                                       
+                   Serial Number:  91H132263                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SE Laboratories Inc                         
+               Calibration Label:  760395                                      
+             Date of Calibration:  25-Jan-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.1-1271fb18-20110728                     
+               Setup Description:  Connected to SUT Power Supply 1,2           
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International, Inc                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.14.0                                   
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  25 mm in front of SUT main intake           
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,387 |          21.5
+        90% |      1,316 |          21.5
+        80% |      1,239 |          21.6
+        70% |      1,158 |          21.5
+        60% |      1,060 |          21.4
+        50% |        943 |          21.4
+        40% |        825 |          21.4
+        30% |        718 |          21.4
+        20% |        624 |          21.2
+        10% |        531 |          21.2
+Active Idle |        265 |          21.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            21.1 |               8
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20120306-00437-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         4,667,798
+    Calibration 2 |                   |                   |         4,779,189
+    Calibration 3 |                   |                   |         4,791,133
+                                                 ssj_ops@calibrated=4,785,161
+             100% |             99.4% |         4,785,161 |         4,755,702
+              90% |             89.9% |         4,306,645 |         4,303,805
+              80% |             80.0% |         3,828,129 |         3,829,046
+              70% |             70.1% |         3,349,613 |         3,352,693
+              60% |             59.9% |         2,871,097 |         2,865,780
+              50% |             49.9% |         2,392,580 |         2,386,957
+              40% |             40.0% |         1,914,064 |         1,913,139
+              30% |             30.0% |         1,435,548 |         1,436,315
+              20% |             20.0% |           957,032 |           956,055
+              10% |             10.0% |           478,516 |           477,550
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20120306-00437.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

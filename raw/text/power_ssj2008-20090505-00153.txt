@@ -1,0 +1,254 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+Verari Systems, Inc. RB1305                                                    
+SPECpower_ssj2008 = 1,927 overall ssj_ops/watt                                 
+            Test Sponsor:  Verari Systems, Inc.                                
+          SPEC License #:  2686                                                
+               Tested By:  Verari Systems, Inc.                                
+           Test Location:  San Diego, CA, USA                                  
+               Test Date:  May 4, 2009                                         
+             Publication:  May 20, 2009                                        
+   Hardware Availability:  Jun-2009                                            
+   Software Availability:  Jun-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.2% |       551,440 |           224 |         2,466
+          90% |         89.3% |       496,192 |           209 |         2,376
+          80% |         79.6% |       442,605 |           190 |         2,333
+          70% |         69.9% |       388,492 |           172 |         2,261
+          60% |         60.1% |       334,196 |           155 |         2,157
+          50% |         49.6% |       275,804 |           140 |         1,976
+          40% |         40.0% |       222,539 |           128 |         1,743
+          30% |         30.2% |       167,928 |           116 |         1,448
+          20% |         19.9% |       110,534 |           105 |         1,057
+          10% |         10.0% |        55,815 |          90.1 |           619
+                  Active Idle |             0 |          53.7 |             0
+                              sum of ssj_ops / sum of power = |         1,927
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  none                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Verari Systems, Inc.                        
+                           Model:  RB1305                                      
+                     Form Factor:  1U                                          
+                        CPU Name:  Intel Xeon X5570, 2.933 GHz                 
+             CPU Characteristics:  2.933 GHz                                   
+             CPU Frequency (MHz):  2930                                        
+                  CPU(s) Enabled:  8 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  16 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  4 x 2048 MB                                 
+                  Memory Details:  2GB 2Rx8 PC3-10600E ; slots A1,B1,D1,E1     
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 360                                     
+                             (W):                                              
+            Power Supply Details:  Supermicro PWS-361-1H                       
+                      Disk Drive:  1 x 80GB Fujitsu (2.5" SATA)5400 rpm        
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Gb Intel 82576 (onboard)                
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  balanced (see SUT Notes)                    
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise    
+                      OS Version:  6.0.6002 Service Pack 2, v.286 Build 6002   
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle 6 P28.0.0 (build                     
+                                   P28.0.0-29-114096-1.6.0_11-20090427-1759-win
+                                   dows-x86_64, (compiled mode)                
+        JVM Command-line Options:  -Xms2700m -Xns2200m -Xmx2700m -XXlargepages 
+                                   -XXaggressive -Xgc:genpar                   
+                                   -XXthroughputcompaction -XXgcthreads=8      
+                                   -XXlazyunlocking -XXcallprofiling           
+                                   -XXtlasize:min=12k,preferred=1024k          
+                    JVM Affinity:  start /affinity [0x00ff,0xff00]             
+                   JVM Instances:  2                                           
+           JVM Initial Heap (MB):  2700                                        
+           JVM Maximum Heap (MB):  2700                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  01.00.0033                                  
+     Management Firmware Version:  version 34                                  
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+(see SUT Notes)                                                                
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a socket.                               
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* HT Technology enabled in BIOS.                                               
+* Hardware Prefetch disabled in BIOS.                                          
+* Adjacent Line Prefetch disabled in BIOS.                                     
+* TURBO mode disabled in BIOS.                                                 
+* USB selective suspend enable in O/S.                                         
+* Link State Power Manage for PCI Express set to maximum savings in O/S.       
+* Remote Login used to access system.                                          
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Fujitsu                                     
+                           Model:  Lifebook S1040                              
+                 CPU Description:  AMD Athlon(tm) XP-M (LV) 1900               
+              Memory amount (GB):  1.0                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows XP Pro Version 2002 SP2   
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  Java SE Runtime Environment (build          
+                                   1.6.0_05-b05) BEA Systems, Inc., compiled   
+                                   mode                                        
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  GW Instek                                   
+                           Model:  GPM-8212                                    
+                   Serial Number:  RI1150229                                   
+                    Connectivity:  RS-232 via Prolific USB-to-Serial Converter 
+                Input Connection:  Default                                     
+           Calibration Institute:  NML                                         
+                   Accredited by:  GW Instek                                   
+               Calibration Label:  RI1150229-05192009                          
+             Date of Calibration:  19-May-2008                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.8-76a9e72a                              
+               Setup Description:  SUT P/S 1                                   
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International, Inc.                    
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50                                        
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Unknown                                     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        224 |          22.9
+        90% |        209 |          22.9
+        80% |        190 |          22.9
+        70% |        172 |          22.9
+        60% |        155 |          22.9
+        50% |        140 |          22.9
+        40% |        128 |          22.9
+        30% |        116 |          22.9
+        20% |        105 |          22.8
+        10% |       90.1 |          22.8
+Active Idle |       53.7 |          22.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.8 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20090505-00153-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           553,941
+    Calibration 2 |                   |                   |           555,551
+    Calibration 3 |                   |                   |           556,205
+                                                   ssj_ops@calibrated=555,878
+             100% |             99.2% |           555,878 |           551,440
+              90% |             89.3% |           500,290 |           496,192
+              80% |             79.6% |           444,702 |           442,605
+              70% |             69.9% |           389,115 |           388,492
+              60% |             60.1% |           333,527 |           334,196
+              50% |             49.6% |           277,939 |           275,804
+              40% |             40.0% |           222,351 |           222,539
+              30% |             30.2% |           166,763 |           167,928
+              20% |             19.9% |           111,176 |           110,534
+              10% |             10.0% |            55,588 |            55,815
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20090505-00153.Verari1.txt) for 
+additional details.                                                            
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

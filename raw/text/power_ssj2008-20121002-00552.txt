@@ -1,0 +1,274 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Cisco Systems, Inc. UCS C220 M3                                                
+SPECpower_ssj2008 = 4,904 overall ssj_ops/watt                                 
+            Test Sponsor:  Cisco Systems, Inc.                                 
+          SPEC License #:  3184                                                
+               Tested By:  Principled Technologies, Inc.                       
+           Test Location:  Durham, NC, USA                                     
+               Test Date:  Oct 3, 2012                                         
+             Publication:  Oct 17, 2012                                        
+   Hardware Availability:  Mar-2012                                            
+   Software Availability:  Aug-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         98.3% |     1,443,280 |           261 |         5,537
+          90% |         89.3% |     1,310,409 |           233 |         5,619
+          80% |         79.7% |     1,170,404 |           204 |         5,724
+          70% |         69.9% |     1,025,951 |           177 |         5,801
+          60% |         60.0% |       880,394 |           153 |         5,768
+          50% |         50.1% |       734,623 |           136 |         5,416
+          40% |         40.1% |       588,584 |           120 |         4,897
+          30% |         29.9% |       438,980 |           109 |         4,030
+          20% |         20.0% |       294,230 |          98.5 |         2,987
+          10% |         10.0% |       146,499 |          87.6 |         1,673
+                  Active Idle |             0 |          59.5 |             0
+                              sum of ssj_ops / sum of power = |         4,904
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  UCS C220 M3 Rack Server                     
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Cisco Systems, Inc.                         
+                           Model:  UCS C220 M3                                 
+                     Form Factor:  1U                                          
+                        CPU Name:  Intel Xeon E5-2660                          
+             CPU Characteristics:  8 Core, 2.20 GHz (Intel Turbo Boost         
+                                   Technology up to 3.00 GHz)                  
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  32 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  24                                          
+              # and size of DIMM:  6 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-10600E-9 ECC; Slots           
+                                   A1-C1,E1-G1 populated.                      
+ Power Supply Quantity and Rating  1 x 450                                     
+                             (W):                                              
+            Power Supply Details:  Cisco P/N UCSC-PSU-450W                     
+                      Disk Drive:  1 x 100GB Std Height 15mm SATA SSD, Cisco   
+                                   P/N UCS-SD100G0KA2-E                        
+                 Disk Controller:  Integrated Storage Controller Unit (SCU)    
+  # and type of Network Interface  2 x 1 GbE Intel i350 PCIe-based Gigabit     
+          Cards (NICs) Installed:  Ethernet controller                         
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition                                     
+                      OS Version:  SP1                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 JIT 
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmx1600m     
+                                   -Xms1600m -Xmn1300m -XlockReservation       
+                                   -Xnoloa -XtlhPrefetch -Xlp                  
+                                   -Xconcurrentlevel0                          
+                    JVM Affinity:  start /high /affinity                       
+                                   [F,F0,F00,F000,F0000,F00000,F000000,F0000000
+                                   ]                                           
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  1600                                        
+           JVM Maximum Heap (MB):  1600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.4.6a.0                                    
+     Management Firmware Version:  1.4(5b)                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* Intel VT set to Disabled                                                     
+* Intel VT-d set to Disabled                                                   
+* Hardware Prefetcher set to Disabled                                          
+* Adjacent Cache Line Prefetcher set to Disabled                               
+* DCU Streamer Prefetcher set to Disabled                                      
+* Power Technology set to Custom                                               
+* P-State Coordination set to SW_ANY                                           
+* Low Voltage DDR Mode set to Power Saving Mode                                
+* Patrol Scrub set to Disabled                                                 
+* Demand Scrub set to Disabled                                                 
+* QPI Link Frequency Select set to 6.4 GT/s                                    
+* Onboard SCU Storage Support set to Enabled                                   
+* All USB Devices set to Disabled                                              
+* ASPM Support set to Auto                                                     
+
+
+                         Management Firmware Settings                          
+
+* vKVM Properties set to Disabled                                              
+* Virtual Media Properties set to Disabled                                     
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was bound to 4 logical processors                          
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark                                             
+* Run initiated via Windows Remote Desktop Connection                          
+* Power Option set to Balanced                                                 
+* Link State Power Management set to Maximum power savings                     
+* Hard Disk set to turn off after one minute                                   
+* Display set to turn off after one minute                                     
+* Minimum processor state set to 0%                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Intel Corporation                           
+                           Model:  Intel Server Board S5000PSL                 
+                 CPU Description:  Intel Xeon E5345                            
+              Memory amount (GB):  8                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2008 R2 Enterprise Edition   
+                                   SP1                                         
+                      JVM Vendor:  IBM                                         
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 JIT 
+                                   enabled, AOT enabled)                       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91GB51135                                   
+                    Connectivity:  RS232                                       
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Tektronix                                   
+               Calibration Label:  07-1684                                     
+             Date of Calibration:  06-Dec-2011                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Connected to SUT Power Supply Unit (PSU) 1  
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International                          
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.30.2.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+Used USB-to-Serial converter, Model Sabrent SBT-USC1M (driver version 2.0.2.1),
+to connect power analyzer to the controller                                    
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        261 |          20.9
+        90% |        233 |          20.6
+        80% |        204 |          21.2
+        70% |        177 |          20.5
+        60% |        153 |          20.6
+        50% |        136 |          20.4
+        40% |        120 |          20.4
+        30% |        109 |          20.6
+        20% |       98.5 |          20.3
+        10% |       87.6 |          20.9
+Active Idle |       59.5 |          20.3
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.3 |              26
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121002-00552-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,437,830
+    Calibration 2 |                   |                   |         1,465,946
+    Calibration 3 |                   |                   |         1,469,589
+                                                 ssj_ops@calibrated=1,467,768
+             100% |             98.3% |         1,467,768 |         1,443,280
+              90% |             89.3% |         1,320,991 |         1,310,409
+              80% |             79.7% |         1,174,214 |         1,170,404
+              70% |             69.9% |         1,027,437 |         1,025,951
+              60% |             60.0% |           880,661 |           880,394
+              50% |             50.1% |           733,884 |           734,623
+              40% |             40.1% |           587,107 |           588,584
+              30% |             29.9% |           440,330 |           438,980
+              20% |             20.0% |           293,554 |           294,230
+              10% |             10.0% |           146,777 |           146,499
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20121002-00552.Computer.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

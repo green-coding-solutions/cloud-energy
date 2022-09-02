@@ -1,0 +1,283 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+
+
+UNIWIDE RC2212                                                                 
+SPECpower_ssj2008 = 2,901 overall ssj_ops/watt                                 
+            Test Sponsor:  Telecommunications Technology Association           
+          SPEC License #:  83                                                  
+               Tested By:  Telecommunications Technology Association           
+           Test Location:  TTA, Seongnam-city, Korea                           
+               Test Date:  Feb 1, 2021                                         
+             Publication:  Feb 26, 2021                                        
+   Hardware Availability:  Jul-2020                                            
+   Software Availability:  Sep-2018                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |     1,321,867 |           291 |         4,537
+          90% |         89.8% |     1,191,244 |           278 |         4,291
+          80% |         79.9% |     1,060,283 |           267 |         3,978
+          70% |         70.1% |       929,114 |           258 |         3,600
+          60% |         60.0% |       795,462 |           247 |         3,224
+          50% |         49.9% |       661,532 |           237 |         2,786
+          40% |         40.1% |       531,721 |           224 |         2,376
+          30% |         29.9% |       396,873 |           210 |         1,893
+          20% |         20.0% |       265,244 |           202 |         1,313
+          10% |         10.0% |       132,170 |           171 |           771
+                  Active Idle |             0 |           127 |             0
+                              sum of ssj_ops / sum of power = |         2,901
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  SUT                                         
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  UNIWIDE                                     
+                           Model:  RC2212                                      
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel(R) Xeon(R) Silver 4210 CPU @ 2.20GHz  
+             CPU Characteristics:  10 Core, 2.20GHz, 13.75MB L3 Cache          
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  20 cores, 2 chips, 10 cores/chip            
+                Hardware Threads:  40 (2 / core)                               
+                CPU(s) Orderable:  2 chips                                     
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per core                   
+                  Tertiary Cache:  14080 KB I+D on chip per chip               
+                     Other Cache:  None                                        
+              Memory Amount (GB):  768                                         
+              # and size of DIMM:  24 x 32 GB                                  
+                  Memory Details:  24 x 32GB M393A4K40CB2-CTD DIMM DDR4        
+                                   Synchronous 2666 MHz; bank slots 0 to 23 are
+                                   populated                                   
+ Power Supply Quantity and Rating  2 x 920                                     
+                             (W):                                              
+            Power Supply Details:  PWS-920P-1R                                 
+                      Disk Drive:  2 x 1TB 10K RPM SAS                         
+                 Disk Controller:  Broadcom / LSI MegaRAID SAS-3 3108 [Invader]
+                                   (rev 02)                                    
+  # and type of Network Interface  2 x Intel Corporation Ethernet Controller   
+          Cards (NICs) Installed:  10G X550T                                   
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  10000                                       
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled                                     
+           Operating System (OS):  Red Hat Enterprise Linux Server release 7.8 
+                                   (Maipo)                                     
+                      OS Version:  Kernel 3.10.0-1127.el7.x86_64               
+                      Filesystem:  xfs                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  openjdk version "11.0.9.1" 2020-11-04       
+                                   LTS;OpenJDK Runtime Environment 18.9 (build 
+                                   11.0.9.1+1-LTS);OpenJDK 64-Bit Server VM    
+                                   18.9 (build 11.0.9.1+1-LTS, mixed mode,     
+                                   sharing);                                   
+        JVM Command-line Options:  -server -Xmn3500m -Xms3500m -Xmx3500m       
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=40                    
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=2                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelGC                          
+                                   -XX:LargePageSizeInBytes=2m                 
+                                   -XX:+UseBiasedLocking -XX:+UseHugeTLBFS     
+                                   -XX:+UseTransparentHugePages                
+                                   -Djava.awt.headless=false                   
+                                   -Djava.net.preferIPv4Stack=true             
+                    JVM Affinity:  for each physicalCore { numactl -C          
+                                   physicalCoreId, physicalCoreId + 10 }       
+                   JVM Instances:  40                                          
+           JVM Initial Heap (MB):  3500                                        
+           JVM Maximum Heap (MB):  3500                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  6102                                        
+     Management Firmware Version:  1.15.1                                      
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Hardware Prefetcher: Disabled in BIOS.                                       
+* Adjacent Cache Prefetcher: Disabled in BIOS.                                 
+* Enhanced Halt State(C1E): Enabled in BIOS.                                   
+* Interleave NVDIMMs: Disabled in BIOS.                                        
+* Boot performance mode: Max Efficient in BIOS.                                
+* CPU flex ratio: 30                                                           
+* EIST: Disabled in BIOS.                                                      
+* Energy Efficient Turbo: Enabled in BIOS.                                     
+* Trubo mode: Disabled in BIOS.                                                
+* C state: C6 non retention state in BIOS.                                     
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Benchmark started via ssh.                                                   
+* Each JVM instance was bound to 2 logical processors                          
+* CPU governor: powersave                                                      
+* irqbalance: disabled                                                         
+* x86_energy_perf_policy -v powersave                                          
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Nettars tech                                
+                           Model:  NM-R221-K800                                
+                 CPU Description:  Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz    
+              Memory amount (GB):  256                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Red Hat Enterprise Linux Server release 7.8 
+                                   (Maipo)                                     
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  25.252-b09                                  
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Tektronix                                   
+                           Model:  PA1000                                      
+                   Serial Number:  C040933                                     
+                    Connectivity:  USBtmc                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  SS TECHNOLOGY INC.                          
+                   Accredited by:  KOLAS (Korea Laboratory Accreditation       
+                                   Scheme)                                     
+               Calibration Label:  SS-200417-0005                              
+             Date of Calibration:  20-Apr-2020                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.1-3caa3cc4-20190717                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  iButtonLink                                 
+                           Model:  LinkUSBi + T-Probe                          
+                  Driver Version:  FTDI USB Serial Device 1.0                  
+                    Connectivity:  USB(UART)                                   
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        291 |          21.9
+        90% |        278 |          22.2
+        80% |        267 |          21.9
+        70% |        258 |          22.2
+        60% |        247 |          21.9
+        50% |        237 |          22.0
+        40% |        224 |          21.7
+        30% |        210 |          21.4
+        20% |        202 |          21.6
+        10% |        171 |          21.4
+Active Idle |        127 |          21.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 3 phase /  |            21.1 |              57
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20210203-01062-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,279,654
+    Calibration 2 |                   |                   |         1,328,466
+    Calibration 3 |                   |                   |         1,324,132
+                                                 ssj_ops@calibrated=1,326,299
+             100% |             99.7% |         1,326,299 |         1,321,867
+              90% |             89.8% |         1,193,669 |         1,191,244
+              80% |             79.9% |         1,061,039 |         1,060,283
+              70% |             70.1% |           928,409 |           929,114
+              60% |             60.0% |           795,779 |           795,462
+              50% |             49.9% |           663,149 |           661,532
+              40% |             40.1% |           530,520 |           531,721
+              30% |             29.9% |           397,890 |           396,873
+              20% |             20.0% |           265,260 |           265,244
+              10% |             10.0% |           132,630 |           132,170
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20210203-01062.uniwide.txt) for 
+additional details.                                                            
+
+
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

@@ -1,0 +1,294 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+
+
+Dell Inc. PowerEdge C6145 (AMD Opteron 6380, 2.50 GHz)                         
+SPECpower_ssj2008 = 4,499 overall ssj_ops/watt                                 
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, TX, USA                                 
+               Test Date:  Oct 11, 2012                                        
+             Publication:  Jan 9, 2013                                         
+   Hardware Availability:  Feb-2013                                            
+   Software Availability:  Jun-2012                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |     6,175,935 |         1,105 |         5,589
+          90% |         90.1% |     5,581,622 |         1,038 |         5,378
+          80% |         80.0% |     4,956,293 |           962 |         5,151
+          70% |         69.9% |     4,329,738 |           883 |         4,904
+          60% |         60.0% |     3,715,392 |           790 |         4,701
+          50% |         50.0% |     3,100,961 |           690 |         4,496
+          40% |         39.9% |     2,475,257 |           595 |         4,163
+          30% |         29.9% |     1,855,965 |           510 |         3,640
+          20% |         20.0% |     1,241,035 |           437 |         2,837
+          10% |         10.0% |       616,627 |           362 |         1,702
+                  Active Idle |             0 |           196 |             0
+                              sum of ssj_ops / sum of power = |         4,499
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         2 |          8 |        128 |        128 |        128 |              2 |        32
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  PowerEdge C6145                             
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  2 x 1400                                    
+                             (W):                                              
+            Power Supply Details:  Dell PN RN0HH                               
+                  Network Switch:  PowerConnect 6224                           
+          Network Switch Details:  The network switch was not measured for     
+                                   power                                       
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  None                                        
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  2                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge C6145 (AMD Opteron 6380, 2.50 GHz)
+                     Form Factor:  Blade                                       
+                        CPU Name:  AMD Opteron 6380 (2.50GHz)                  
+             CPU Characteristics:  16-Core, 2.50GHz, 16MB L3 Cache             
+             CPU Frequency (MHz):  2500                                        
+                  CPU(s) Enabled:  64 cores, 4 chips, 16 cores/chip            
+                Hardware Threads:  64 (1 / core)                               
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  512 KB I + 256 KB D on chip per chip        
+                 Secondary Cache:  16 MB I+D on chip per chip, 2 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  16 MB I+D on chip per chip, 8MB shared / 8  
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  64                                          
+              # and size of DIMM:  16 x 4096 MB                                
+                  Memory Details:  4GB 2Rx8 PC3L-10600R ECC ; Slots A1-A4,     
+                                   B1-B4, C1-C4, D1-D4 populated               
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  1 x 500GB 2.5" SATA 7200 RPM (Dell PN:      
+                                   TH2NR)                                      
+                 Disk Controller:  Onboard SATA                                
+  # and type of Network Interface  1 x Intel(R) 82576 Gigabit Dual Port Network
+          Cards (NICs) Installed:  Connection                                  
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power Saver plan in OS                      
+           Operating System (OS):  Microsoft Windows 2008 Enterprise x64       
+                                   Edition                                     
+                      OS Version:  R2 SP1 (64-bit)                             
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmn1400m     
+                                   -Xms1875m -Xmx1875m -XlockReservation       
+                                   -Xnoloa -Xlp -Xconcurrentlevel0             
+                                   -Xthr:minimizeusercpu                       
+                    JVM Affinity:  start /affinity [F, F0, F00, F000,          
+                                   F0000,F00000, F000000, F0000000,            
+                                   F00000000,F000000000, F0000000000,          
+                                   F00000000000,F000000000000,                 
+                                   F0000000000000,F00000000000000,             
+                                   F000000000000000]                           
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  3.0.0                                       
+     Management Firmware Version:  1.11                                        
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows                                 
+
+
+
+                            Boot Firmware Settings                             
+
+* Turbo Core was disabled in BIOS                                              
+* Coherent HT Link Speed set to HT1 in BIOS                                    
+* Non-Coherent HT Link Speed set to HT3 1200MHz in BIOS                        
+* Non-Coherent HT Link Width set to 8 bits in BIOS                             
+* Memory Frequency was set to 1066MHz in BIOS                                  
+* All ASPM (PCIE, Onboard LAN, Mezzanine Slot) set to L0s Downstream +L1 in    
+BIOS                                                                           
+* NB-SB link was set to L1 in BIOS                                             
+* NIC 2 was disabled in BIOS                                                   
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four cores.                             
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run initiated via Windows Remote Desktop Connection                          
+* Turn Off Hard Disk - 1 Minute                                                
+* Turn Off Display - 1 Minute                                                  
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge 860                               
+                 CPU Description:  Intel Xeon 3050                             
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2003 Server Enterprise Edition      
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) 1.5.0_06-b05 (build          
+                                   R26.4.0-63-63688-1.5.0_06-20060626-2259-win-
+                                   ia32,)                                      
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H531768                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Simco Electronics                           
+               Calibration Label:  5432815                                     
+             Date of Calibration:  12-Nov-2011                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  SUT Power Supply 1 and 2                    
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International, Inc.                    
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.3.0.0                                     
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5mm in front of SUT main airflow intake     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,105 |          20.1
+        90% |      1,038 |          20.1
+        80% |        962 |          20.1
+        70% |        883 |          20.1
+        60% |        790 |          20.1
+        50% |        690 |          20.1
+        40% |        595 |          20.0
+        30% |        510 |          20.0
+        20% |        437 |          20.0
+        10% |        362 |          20.0
+Active Idle |        196 |          20.0
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.0 |             255
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121218-00592-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         6,044,416
+    Calibration 2 |                   |                   |         6,197,211
+    Calibration 3 |                   |                   |         6,196,686
+                                                 ssj_ops@calibrated=6,196,948
+             100% |             99.7% |         6,196,948 |         6,175,935
+              90% |             90.1% |         5,577,253 |         5,581,622
+              80% |             80.0% |         4,957,559 |         4,956,293
+              70% |             69.9% |         4,337,864 |         4,329,738
+              60% |             60.0% |         3,718,169 |         3,715,392
+              50% |             50.0% |         3,098,474 |         3,100,961
+              40% |             39.9% |         2,478,779 |         2,475,257
+              30% |             29.9% |         1,859,084 |         1,855,965
+              20% |             20.0% |         1,239,390 |         1,241,035
+              10% |             10.0% |           619,695 |           616,627
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20121218-00592.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

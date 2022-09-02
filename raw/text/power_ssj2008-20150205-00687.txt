@@ -1,0 +1,272 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2015 Standard Performance Evaluation Corporation      
+
+
+Sugon Sugon I620-G20                                                           
+SPECpower_ssj2008 = 9,939 overall ssj_ops/watt                                 
+            Test Sponsor:  Sugon                                               
+          SPEC License #:  9046                                                
+               Tested By:  Sugon                                               
+           Test Location:  Beijing, China                                      
+               Test Date:  Jan 30, 2015                                        
+             Publication:  Mar 11, 2015                                        
+   Hardware Availability:  Jan-2015                                            
+   Software Availability:  Jun-2013                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.1% |     3,161,325 |           264 |        11,964
+          90% |         90.0% |     2,870,546 |           240 |        11,976
+          80% |         80.1% |     2,552,481 |           217 |        11,745
+          70% |         69.9% |     2,229,034 |           196 |        11,383
+          60% |         60.0% |     1,913,249 |           175 |        10,908
+          50% |         49.9% |     1,590,719 |           156 |        10,186
+          40% |         40.0% |     1,274,762 |           139 |         9,166
+          30% |         29.9% |       954,090 |           122 |         7,806
+          20% |         19.9% |       634,351 |           107 |         5,933
+          10% |         10.0% |       318,891 |          91.3 |         3,491
+                  Active Idle |             0 |          52.5 |             0
+                              sum of ssj_ops / sum of power = |         9,939
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  I620-G20.                                   
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Sugon                                       
+                           Model:  Sugon I620-G20                              
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon E5-2699 v3 2.30 GHz              
+             CPU Characteristics:  18 Cores, 2.3GHz, 45MB L3 Cache             
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  36 cores, 2 chips, 18 cores/chip            
+                Hardware Threads:  72 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  45 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  8 x 16 GB                                   
+                  Memory Details:  16GB 2Rx4 PC4-2133P ECC RDIMM; slots A0, B0,
+                                   C0, D0, E0, F0, G0, H0 populated            
+ Power Supply Quantity and Rating  1 x 550                                     
+                             (W):                                              
+            Power Supply Details:  GW-CRPS550 PN:1197317                       
+                      Disk Drive:  Intel 530 series M.2 2242 type 120G SSD * 1 
+                                   PN:SSDSCIHW120A4                            
+                 Disk Controller:  Onboard SATA controller                     
+  # and type of Network Interface  1 x Dual port Intel I210 Gigabit Ethernet   
+          Cards (NICs) Installed:  Controller                                  
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver Mode enabled ( details see SUT  
+                                   Notes)                                      
+           Operating System (OS):  Microsoft Windows Server 2008 R2 SP1 DC     
+                      OS Version:  Version 6.1.7601 Service Pack 1 Build 7601  
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled,AOT enabled)                        
+        JVM Command-line Options:  -Xmn1400m -Xms1875m -Xmx1875m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                                   -Xconcurrentlevel0 -Xthr:minimizeusercpu    
+                                   -Xgcthreads6                                
+                                   -Xgc:preferredHeapBase=0x80000000           
+                    JVM Affinity:  start /NODE [0, 1, 2, 3]/affinity           
+                                   [3F,FC0,3F000]                              
+                   JVM Instances:  12                                          
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  083                                         
+     Management Firmware Version:  085                                         
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM WebSphere Application Server V8.5.0.0,  
+                                   Microsoft Hotfix for Windows (KB2510206)    
+
+
+
+                            Boot Firmware Settings                             
+
+* Set "Hardware Prefetcher = Disabled"                                         
+* Set "Adjacent Cache Line Prefetcher = Disabled"                              
+* Set "DCU Streamer Prefetcher = Disabled"                                     
+* Set "VMX = Disabled"                                                         
+* Set "Power Technology = Custom"                                              
+* Set "Turbo Mode = Disabled"                                                  
+* set "C-state = Enable"                                                       
+* set "C state limit = C6(non-retention)                                       
+* Set "COD = Enabled"                                                          
+* Set "Early Snoop = Disabled"                                                 
+* Set "sSATA Controller = Disabled"                                            
+* Set "QPI Link Speed = 6.4 GT/s"                                              
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Start the benchmark via Windows RDP.                                         
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Set "Turn off hard disk after = 1 minute".                                   
+* Microsoft Hotfix KB2510206 has been installed due to known problems of the   
+group assignment algorithm which does not create a balanced group assignment.  
+* Minimum processor state set to 0%                                            
+* Maxmum processor state set to 100%                                           
+* Each JVM instance was bound to 6 logical processors                          
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Sugon                                       
+                           Model:  I620-G15                                    
+                 CPU Description:  E5-2660 v2                                  
+              Memory amount (GB):  24                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition SP 1                                
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM, version  
+                                   1.7.0_25                                    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  YOKOGAWA Meters and Instruments Corporation 
+                           Model:  WT310                                       
+                   Serial Number:  C2PB07002V                                  
+                    Connectivity:  USB2                                        
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS                                        
+                   Accredited by:  CTI (Centre Testing International           
+                                   Corporation)                                
+               Calibration Label:  QEB14002935-07                              
+             Date of Calibration:  30-Jan-2015                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.0-538b1562-20140802                     
+               Setup Description:  Connect to PSU1                             
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  iButtonLink                                 
+                           Model:  Tsense                                      
+                  Driver Version:  2.8.30.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  less than 50mm in front of SUT main air     
+                                   intake                                      
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 72 for a known   
+issue with this java version.                                                  
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        264 |          24.8
+        90% |        240 |          25.1
+        80% |        217 |          25.1
+        70% |        196 |          25.0
+        60% |        175 |          24.9
+        50% |        156 |          24.8
+        40% |        139 |          24.9
+        30% |        122 |          24.8
+        20% |        107 |          24.8
+        10% |       91.3 |          24.9
+Active Idle |       52.5 |          24.9
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 50 Hz / 1 phase /  |            24.8 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20150205-00687-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         3,276,905
+    Calibration 2 |                   |                   |         3,192,469
+    Calibration 3 |                   |                   |         3,184,466
+                                                 ssj_ops@calibrated=3,188,468
+             100% |             99.1% |         3,188,468 |         3,161,325
+              90% |             90.0% |         2,869,621 |         2,870,546
+              80% |             80.1% |         2,550,774 |         2,552,481
+              70% |             69.9% |         2,231,927 |         2,229,034
+              60% |             60.0% |         1,913,081 |         1,913,249
+              50% |             49.9% |         1,594,234 |         1,590,719
+              40% |             40.0% |         1,275,387 |         1,274,762
+              30% |             29.9% |           956,540 |           954,090
+              20% |             19.9% |           637,694 |           634,351
+              10% |             10.0% |           318,847 |           318,891
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20150205-00687.WIN-9QSVDK57236.txt) for additional details.     
+
+
+      Copyright (C) 2007-2015 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

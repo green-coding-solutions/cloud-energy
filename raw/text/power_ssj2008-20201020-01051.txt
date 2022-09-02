@@ -1,0 +1,314 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2020 Standard Performance Evaluation Corporation      
+
+
+Hewlett Packard Enterprise Superdome Flex 280 - 8 Socket                       
+SPECpower_ssj2008 = 7,628 overall ssj_ops/watt                                 
+            Test Sponsor:  Hewlett Packard Enterprise                          
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett Packard Enterprise                          
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Oct 16, 2020                                        
+             Publication:  Nov 4, 2020                                         
+   Hardware Availability:  Dec-2020                                            
+   Software Availability:  Feb-2020                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |    20,132,703 |         2,148 |         9,375
+          90% |         90.0% |    18,206,340 |         1,955 |         9,313
+          80% |         80.0% |    16,180,488 |         1,748 |         9,255
+          70% |         70.0% |    14,159,704 |         1,553 |         9,115
+          60% |         60.0% |    12,140,581 |         1,402 |         8,660
+          50% |         50.1% |    10,124,723 |         1,276 |         7,933
+          40% |         40.0% |     8,095,751 |         1,163 |         6,962
+          30% |         30.0% |     6,059,651 |         1,054 |         5,748
+          20% |         20.0% |     4,048,011 |           945 |         4,285
+          10% |         10.0% |     2,024,091 |           831 |         2,436
+                  Active Idle |             0 |           500 |             0
+                              sum of ssj_ops / sum of power = |         7,628
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'SUT'                                   
+
+                  Set Identifier:  SUT                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  SUT                                         
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  Superdome Flex 280 - 8 Socket               
+                     Form Factor:  10U                                         
+                        CPU Name:  Intel Xeon Platinum 8380HL 2.90 GHz         
+             CPU Characteristics:  28-Core, 2.90 GHz, 38.5MB L3 Cache          
+             CPU Frequency (MHz):  2900                                        
+                  CPU(s) Enabled:  224 cores, 8 chips, 28 cores/chip           
+                Hardware Threads:  448 (2 / core)                              
+                CPU(s) Orderable:  2,4,8 chips                                 
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per core                   
+                  Tertiary Cache:  39424 KB I+D on chip per chip               
+                     Other Cache:  None                                        
+              Memory Amount (GB):  1536                                        
+              # and size of DIMM:  48 x 32768 MB                               
+                  Memory Details:  32GB 2Rx4 PC4-3200AA-RE2; 1 DIMM per channel
+                                   slots populated                             
+ Power Supply Quantity and Rating  4 x 1600                                    
+                             (W):                                              
+            Power Supply Details:  HPE 1600W Platinum Power Supply             
+                                   (060-0415-002)                              
+                      Disk Drive:  1 x HPE Superdome Flex 280 480GB SATA 6G    
+                                   Mixed Use SFF (2.5in) BC 3yr Wty Digitally  
+                                   Signed Firmware SSD (R6A34A)                
+                 Disk Controller:  Embedded SATA Controller                    
+  # and type of Network Interface  1 x HPE Embedded Ethernet 1Gb 2-port adapter
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Windows Server 2019 Datacenter              
+                      OS Version:  Version 1809 (OS Build 17763)               
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   18.9 (build 11.0.8+10-LTS, mixed mode)      
+        JVM Command-line Options:  -server -Xmn1677m -Xms2000m -Xmx2000m       
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC -XX:UseAVX=1          
+                                   -XX:BiasedLockingStartupDelay=30000         
+                                   -XX:-UseAdaptiveSizePolicy                  
+                                   -XX:-ThreadLocalHandshakes                  
+                    JVM Affinity:  start /node [0-4] /affinity [0x3, 0xC, 0x30,
+                                   0xC0, 0x300, 0xC00, 0x3000, 0xC000, 0x30000,
+                                   0xC0000, 0x300000, 0xC00000, 0x3000000,     
+                                   0xC000000, 0x30000000, 0xC0000000,          
+                                   0x300000000, 0xC00000000, 0x3000000000,     
+                                   0xC000000000, 0x30000000000, 0xC0000000000, 
+                                   0x300000000000, 0xC00000000000,             
+                                   0x3000000000000, 0xC000000000000,           
+                                   0x30000000000000, 0xC0000000000000          
+                   JVM Instances:  224                                         
+           JVM Initial Heap (MB):  2000                                        
+           JVM Maximum Heap (MB):  2000                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.0.140                                     
+     Management Firmware Version:  1.0.140                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  Microsoft Windows KB4532691                 
+
+
+
+                            Boot Firmware Settings                             
+
+* Workload Profile: Custom                                                     
+* Minimum Processor Idle Power Package C-State: Package C6(retention) State    
+* Intel(R) Turbo Boost Technology: Disabled                                    
+* Energy Efficient Turbo: Disabled                                             
+* NUMA Group Size Optimization: Flat                                           
+* Advanced Memory Protection: Adaptive Double Device Data Correction (ADDDC)   
+* Intel(R) NIC DMA Channels (IOAT): Disabled                                   
+* SR-IOV: Disabled                                                             
+* Intel(R) Virtualization Technology (Intel VT): Disabled                      
+* HW Prefetcher: Disabled                                                      
+* Adjacent Sector Prefetch: Disabled                                           
+* DCU Stream Prefetcher: Disabled                                              
+* LLC Prefetch: Enabled                                                        
+* Snoop Throttle Configuration: High                                           
+* Intel(R) DMI Link Frequency: Gen 1 Speed                                     
+* Maximum Memory Bus Frequency: 2400 MHz                                       
+* Memory Patrol Scrubbing: Disabled                                            
+* Power Redundancy mode: Disabled                                              
+
+
+                         Management Firmware Settings                          
+
+See SUT Notes                                                                  
+
+
+                            System Under Test Notes                            
+
+* Benchmark started via Remote Desktop                                         
+* Enable "Lock Pages in Memory" per section 4.1 of SERT User Guide.            
+* SPECpower_ssj.props input.load_level.number_warehouses set to 448 to detect  
+the full number of available processors on the SUT                             
+* Windows Power Scheme: Power Saver                                            
+* Processor power management: Maximum Processor State = 89%                    
+* System cooling policy = Passive                                              
+* PCI Express Power Management = Maximum Power Savings                         
+* Turn off Display = 1 Minute                                                  
+* Turn off hard disk = 1 Minute                                                
+* Powercfg /setacvalueindex scheme_current sub_processor PERFEPP 0             
+* Powercfg /setacvalueindex scheme_current sub_processor perfautonomous 1      
+* Powercfg /setactive scheme_current                                           
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  ProLiant DL360 Gen9                         
+                 CPU Description:  2 x Intel Xeon E5-2660 v3                   
+              Memory amount (GB):  128                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2012 R2            
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  1.8.0_191-b12 (build 25.191-b12, mixed mode)
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91GB45372                                   
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-FQ7PK-60-1                                
+             Date of Calibration:  12-Jun-2020                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.1-a2d19f26-20190717                     
+               Setup Description:  SUT Power Supplies 1, 2, and 3              
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  C2SF14002V                                  
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-FQ7PK-40-1                                
+             Date of Calibration:  16-Jun-2020                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.1-a2d19f26-20190717                     
+               Setup Description:  SUT Power Supplies 4, 5, and 6              
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      2,148 |          22.1
+        90% |      1,955 |          22.1
+        80% |      1,748 |          21.9
+        70% |      1,553 |          21.9
+        60% |      1,402 |          22.1
+        50% |      1,276 |          22.1
+        40% |      1,163 |          22.1
+        30% |      1,054 |          22.1
+        20% |        945 |          22.1
+        10% |        831 |          22.1
+Active Idle |        500 |          22.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            21.9 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20201020-01051-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        20,120,783
+    Calibration 2 |                   |                   |        20,199,166
+    Calibration 3 |                   |                   |        20,247,624
+                                                ssj_ops@calibrated=20,223,395
+             100% |             99.6% |        20,223,395 |        20,132,703
+              90% |             90.0% |        18,201,056 |        18,206,340
+              80% |             80.0% |        16,178,716 |        16,180,488
+              70% |             70.0% |        14,156,377 |        14,159,704
+              60% |             60.0% |        12,134,037 |        12,140,581
+              50% |             50.1% |        10,111,698 |        10,124,723
+              40% |             40.0% |         8,089,358 |         8,095,751
+              30% |             30.0% |         6,067,019 |         6,059,651
+              20% |             20.0% |         4,044,679 |         4,048,011
+              10% |             10.0% |         2,022,340 |         2,024,091
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20201020-01051.WIN-CD93LC2J022.txt) for additional details.     
+
+
+      Copyright (C) 2007-2020 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

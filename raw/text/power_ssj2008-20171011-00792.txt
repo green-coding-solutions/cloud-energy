@@ -1,0 +1,280 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2017 Standard Performance Evaluation Corporation      
+
+
+Lenovo Global Technology ThinkSystem SR850                                     
+SPECpower_ssj2008 = 13,010 overall ssj_ops/watt                                
+            Test Sponsor:  Lenovo Global Technology                            
+          SPEC License #:  9017                                                
+               Tested By:  Lenovo Global Technology                            
+           Test Location:  Taipei, Taiwan                                      
+               Test Date:  Sep 26, 2017                                        
+             Publication:  Oct 25, 2017                                        
+   Hardware Availability:  Aug-2017                                            
+   Software Availability:  Sep-2017                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         98.2% |    10,052,756 |           688 |        14,617
+          90% |         90.5% |     9,263,423 |           614 |        15,079
+          80% |         80.0% |     8,194,534 |           532 |        15,399
+          70% |         70.0% |     7,163,627 |           467 |        15,354
+          60% |         60.0% |     6,146,537 |           416 |        14,780
+          50% |         50.0% |     5,119,675 |           374 |        13,693
+          40% |         40.0% |     4,096,209 |           337 |        12,151
+          30% |         29.9% |     3,065,282 |           301 |        10,177
+          20% |         20.0% |     2,051,162 |           266 |         7,718
+          10% |         10.0% |     1,022,957 |           228 |         4,495
+                  Active Idle |             0 |          95.8 |             0
+                              sum of ssj_ops / sum of power = |        13,010
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  The machine type of the SUT is 7X19.        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Lenovo Global Technology                    
+                           Model:  ThinkSystem SR850                           
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon Platinum 8176 CPU 2.10 GHz (Intel
+                                   Turbo Boost Technology up to 2.80 GHz)      
+             CPU Characteristics:  28 core, 2.10GHz, 38.5MB L3 Cache           
+             CPU Frequency (MHz):  2100                                        
+                  CPU(s) Enabled:  112 cores, 4 chips, 28 cores/chip           
+                Hardware Threads:  224 (2 / core)                              
+                CPU(s) Orderable:  1,2,3,4 chips                               
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per core                   
+                  Tertiary Cache:  39424 MB I+D on chip per chip               
+                     Other Cache:  None                                        
+              Memory Amount (GB):  384                                         
+              # and size of DIMM:  24 x 16384 MB                               
+                  Memory Details:  24 x 16GB 2Rx8 PC4-2666V-R; Slots 1, 3, 5,  
+                                   8, 10, 12, 13, 15, 17, 20, 22, 24, 25, 27,  
+                                   29, 32, 34, 36, 37, 39, 41, 44, 46, and 48  
+                                   populated.                                  
+ Power Supply Quantity and Rating  1 x 1100                                    
+                             (W):                                              
+            Power Supply Details:  Lenovo P/N:7N67A00885                       
+                      Disk Drive:  1 x 32 GB M.2 SSD (Lenovo P/N: 7N47A00129)  
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x ThinkSystem 1Gb 2-Port RJ45 LOM (Lenovo 
+          Cards (NICs) Installed:  P/N: 7ZT7A00544)                            
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Lenovo Power Plan V1.0 for Windows Server   
+                                   2012 R2 in OS                               
+           Operating System (OS):  Microsoft Windows Server 2012 R2 Standard   
+                      OS Version:  Version 6.3.9600 Build 9600                 
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 24.80-b11, mixed mode), version      
+                                   1.7.0_80                                    
+        JVM Command-line Options:  -server -Xmn1300m -Xms1550m -Xmx1550m       
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+AggressiveOpts 
+                                   -XX:+UseLargePages -XX:+UseParallelOldGC    
+                    JVM Affinity:  start /NODE [0,2,4,6] /AFFINITY [3, C, 30,  
+                                   C0, C000, 30000, C0000, 30000000, C0000000, 
+                                   300000000, C00000000, C0000000000,          
+                                   300000000000, C00000000000]; start /NODE    
+                                   [1,3,5,7] /AFFINITY [3, C, 30, 3000, C000,  
+                                   30000, C0000, 30000000, C0000000, 300000000,
+                                   30000000000, C0000000000, 300000000000,     
+                                   C00000000000]                               
+                   JVM Instances:  112                                         
+           JVM Initial Heap (MB):  1550                                        
+           JVM Maximum Heap (MB):  1550                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  TEE113Z                                     
+     Management Firmware Version:  TEI307L                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Settings                                                                
+* Operating Mode: Custom                                                       
+* Memory Speed: Balanced                                                       
+* Memory Power Management: Automatic                                           
+* Page Policy: Adaptive                                                        
+* Intel VT for Directed I/O(VT-d): Disable                                     
+* Patrol Scrub: Disable                                                        
+* Memory Data Scrambling: Disable                                              
+* Execute Disable Bit: Disable                                                 
+* Intel Virtualization Technology: Disable                                     
+* Hardware Prefetcher: Disable                                                 
+* Adjacent Cache Prefetch: Disable                                             
+* DCU Streamer Prefetcher: Disable                                             
+* Disabled Commands on USB interface                                           
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started on controller using Remote Desktop.                          
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  IBM System x iDataPlex dx320 Server         
+                 CPU Description:  Intel Xeon CPU L5420                        
+              Memory amount (GB):  24                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition                                     
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build                            
+                                   pwa6460sr5-20090529_04(SR5))                
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa, Inc.                              
+                           Model:  WT210                                       
+                   Serial Number:  91H245649                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NML/ROC                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  17-07-BAC-121-03                            
+             Date of Calibration:  9-Jul-2017                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.1-260d064e-20161220                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International                          
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.20.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  1 cm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 224 due to a     
+known inconsistency in processor reporting with this Java version.             
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        688 |          22.9
+        90% |        614 |          22.9
+        80% |        532 |          22.9
+        70% |        467 |          23.0
+        60% |        416 |          23.0
+        50% |        374 |          23.0
+        40% |        337 |          23.0
+        30% |        301 |          22.9
+        20% |        266 |          22.9
+        10% |        228 |          22.9
+Active Idle |       95.8 |          22.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.8 |              63
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20171011-00792-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        10,404,685
+    Calibration 2 |                   |                   |        10,217,026
+    Calibration 3 |                   |                   |        10,259,059
+                                                ssj_ops@calibrated=10,238,042
+             100% |             98.2% |        10,238,042 |        10,052,756
+              90% |             90.5% |         9,214,238 |         9,263,423
+              80% |             80.0% |         8,190,434 |         8,194,534
+              70% |             70.0% |         7,166,629 |         7,163,627
+              60% |             60.0% |         6,142,825 |         6,146,537
+              50% |             50.0% |         5,119,021 |         5,119,675
+              40% |             40.0% |         4,095,217 |         4,096,209
+              30% |             29.9% |         3,071,413 |         3,065,282
+              20% |             20.0% |         2,047,608 |         2,051,162
+              10% |             10.0% |         1,023,804 |         1,022,957
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20171011-00792.WIN-UB1VE4UE859.txt) for additional details.     
+
+
+      Copyright (C) 2007-2017 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

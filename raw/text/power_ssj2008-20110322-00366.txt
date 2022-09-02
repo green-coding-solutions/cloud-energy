@@ -1,0 +1,285 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+
+
+Hitachi, Ltd. HA8000-bd/BD10X1                                                 
+SPECpower_ssj2008 = 1,855 overall ssj_ops/watt                                 
+            Test Sponsor:  Hitachi, Ltd.                                       
+          SPEC License #:  35                                                  
+               Tested By:  Hitachi, Ltd.                                       
+           Test Location:  Hadano, Kanagawa, Japan                             
+               Test Date:  Mar 22, 2011                                        
+             Publication:  Apr 12, 2011                                        
+   Hardware Availability:  Jul-2010                                            
+   Software Availability:  Jun-2010                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |     5,080,107 |         1,897 |         2,679
+          90% |         90.0% |     4,586,116 |         1,768 |         2,595
+          80% |         80.0% |     4,080,270 |         1,676 |         2,435
+          70% |         69.9% |     3,564,055 |         1,538 |         2,317
+          60% |         60.2% |     3,067,051 |         1,450 |         2,116
+          50% |         50.0% |     2,548,141 |         1,363 |         1,870
+          40% |         40.1% |     2,043,695 |         1,254 |         1,630
+          30% |         30.0% |     1,527,625 |         1,199 |         1,274
+          20% |         20.0% |     1,019,564 |         1,114 |           915
+          10% |         10.0% |       509,952 |         1,015 |           502
+                  Active Idle |             0 |           833 |             0
+                              sum of ssj_ops / sum of power = |         1,855
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+        40 |         40 |         80 |        160 |        320 |             40 |        80
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  HA8000-bd 5U Base Unit                      
+                     Form Factor:  5U                                          
+ Power Supply Quantity and Rating  5 x 770                                     
+                             (W):                                              
+            Power Supply Details:  DELTA DPS-770CB                             
+                  Network Switch:  2                                           
+          Network Switch Details:  Hitachi GR-BEX101GL                         
+                      KVM Switch:  N/A                                         
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  None                                        
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  40                                          
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Hitachi, Ltd.                               
+                           Model:  HA8000-bd/BD10X1                            
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Core i7 610E                          
+             CPU Characteristics:  Dual-Core,2.53GHz, 4MB L3 Cache             
+             CPU Frequency (MHz):  2533                                        
+                  CPU(s) Enabled:  2 cores, 1 chip, 2 cores/chip               
+                Hardware Threads:  4 (2 / core)                                
+                CPU(s) Orderable:  1 chips                                     
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  4 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  2 x 4 GB                                    
+                  Memory Details:  4GB 2Rx8 PC3-8500S ECC CL7; slots 1 and 2   
+                                   populated                                   
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 500GB 7200rpm SATA2                     
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Intel 82576 Gigabit Network Connection  
+          Cards (NICs) Installed:  (onboard)                                   
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Enabled (Power saver)                       
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Standard   
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4  
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr7-20100219_54049)(JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs               
+                                   -Xgcpolicy:gencon -Xms1050m -Xmx1200m       
+                                   -Xmn1200m -XlockReservation -Xnoloa         
+                                   -XtlhPrefetch -Xlp                          
+                    JVM Affinity:  start /affinity [03,0c]                     
+                   JVM Instances:  2                                           
+           JVM Initial Heap (MB):  1050                                        
+           JVM Maximum Heap (MB):  1200                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1000.023W                                   
+     Management Firmware Version:  20-17-01                                    
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM WebSphere Application Server V7.0 for   
+                                   Windows on x86-64bit                        
+
+
+
+                            Boot Firmware Settings                             
+
+None                                                                           
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to two logical processors.                 
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Windows power profile set to "Power saver".                                  
+* Turn off Hard Disks after 1 minute.                                          
+* Processor power management Minimum processor state set to 0%.                
+* Processor power management Maximum processor state set to 100%.              
+* Benchmark was started via Windows Remote Desktop Connection                  
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hitachi, Ltd.                               
+                           Model:  FLORA 270W                                  
+                 CPU Description:  Intel Celeron M 440                         
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows XP professional Version   
+                                   2002 SP2                                    
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.6.0_17-b04)                               
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91K947164                                   
+                    Connectivity:  RS-232C                                     
+                Input Connection:  Default                                     
+           Calibration Institute:  AIST (National Institute of Advanced        
+                                   Industrial Science and Technology)          
+                   Accredited by:  Yokogawa Meters & Instruments Corporation   
+               Calibration Label:  B103687                                     
+             Date of Calibration:  24-Sep-2010                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  Power Distribution Units were placed to     
+                                   connect five power supplies and one power   
+                                   analyzer.                                   
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.10.26.0            
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  None                                        
+
+
+
+                                     Notes                                     
+
+* Electricity Business Act (Law No. 170, 1964), Article 26 and Ordinance for   
+Electricity Business Act (Ordinance of the Ministry of International Trade and 
+Industry No. 77, 1995), Article 44; 100V and 200V are the standard voltage in  
+Japan.                                                                         
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,897 |          25.4
+        90% |      1,768 |          25.4
+        80% |      1,676 |          25.4
+        70% |      1,538 |          25.4
+        60% |      1,450 |          25.4
+        50% |      1,363 |          25.2
+        40% |      1,254 |          25.2
+        30% |      1,199 |          25.2
+        20% |      1,114 |          25.3
+        10% |      1,015 |          25.3
+Active Idle |        833 |          25.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+200V / 50 Hz / 1 phase /  |            25.2 |             105
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20110322-00366-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         5,019,617
+    Calibration 2 |                   |                   |         5,095,281
+    Calibration 3 |                   |                   |         5,100,024
+                                                 ssj_ops@calibrated=5,097,653
+             100% |             99.7% |         5,097,653 |         5,080,107
+              90% |             90.0% |         4,587,887 |         4,586,116
+              80% |             80.0% |         4,078,122 |         4,080,270
+              70% |             69.9% |         3,568,357 |         3,564,055
+              60% |             60.2% |         3,058,592 |         3,067,051
+              50% |             50.0% |         2,548,826 |         2,548,141
+              40% |             40.1% |         2,039,061 |         2,043,695
+              30% |             30.0% |         1,529,296 |         1,527,625
+              20% |             20.0% |         1,019,531 |         1,019,564
+              10% |             10.0% |           509,765 |           509,952
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20110322-00366.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

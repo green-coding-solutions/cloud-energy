@@ -1,0 +1,275 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Supermicro SYS-7047R-72RF                                                      
+SPECpower_ssj2008 = 3,145 overall ssj_ops/watt                                 
+            Test Sponsor:  Supermicro                                          
+          SPEC License #:  1176                                                
+               Tested By:  Supermicro                                          
+           Test Location:  San Jose, CA, USA                                   
+               Test Date:  May 26, 2012                                        
+             Publication:  Jun 28, 2012                                        
+   Hardware Availability:  Apr-2012                                            
+   Software Availability:  Jan-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.3% |     1,337,474 |           331 |         4,042
+          90% |         89.8% |     1,209,226 |           316 |         3,824
+          80% |         80.1% |     1,079,156 |           300 |         3,594
+          70% |         70.1% |       944,231 |           277 |         3,413
+          60% |         59.8% |       805,554 |           234 |         3,440
+          50% |         50.2% |       675,768 |           201 |         3,364
+          40% |         39.9% |       537,477 |           174 |         3,096
+          30% |         29.9% |       403,133 |           153 |         2,630
+          20% |         20.0% |       268,765 |           138 |         1,949
+          10% |         10.0% |       134,365 |           125 |         1,073
+                  Active Idle |             0 |           102 |             0
+                              sum of ssj_ops / sum of power = |         3,145
+
+
+
+                               System Under Test                               
+
+
+
+                                 Set: '7047R'                                  
+
+                  Set Identifier:  7047R                                       
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro                                  
+                           Model:  SYS-7047R-72RF                              
+                     Form Factor:  Tower                                       
+                        CPU Name:  Intel Xeon E5-2665                          
+             CPU Characteristics:  8-Core, 2.40GHz, 20MB L3 Cache              
+             CPU Frequency (MHz):  2400                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  32 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  8 x 16384 MB                                
+                  Memory Details:  16GB 2Rx4 PC3-12800R ECC; A1, B1, C1, D1,   
+                                   E1, F1, G1, H1 Populated.                   
+ Power Supply Quantity and Rating  1 x 920                                     
+                             (W):                                              
+            Power Supply Details:  PWS-920P-1R                                 
+                      Disk Drive:  RAID0: 2 x FUJITSU 146 GB SASII 15KRPM      
+                                   (MBE2147RC)                                 
+                 Disk Controller:  Onboard LSI 2208 SAS Controller             
+  # and type of Network Interface  1 x Intel I350 Dual-Port 1Gbit Network      
+          Cards (NICs) Installed:  Controller.                                 
+  NICs Enabled in Firmware / OS /  1/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver                                 
+           Operating System (OS):  Microsoft Windows Server Enterprise 2008 R2 
+                                   SP1                                         
+                      OS Version:  6.1.7601 Build 7601  (64-bit)               
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.6.0_26-b03)                               
+        JVM Command-line Options:  -server -showversion -Xmx2048m -Xms2048m    
+                                   -Xmn1706m -XX:ParallelGCThreads=4           
+                                   -XX:BiasedLockingStartupDelay=200           
+                                   -XX:SurvivorRatio=60                        
+                                   -XX:TargetSurvivorRatio=90                  
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:+UseCompressedStrings                   
+                                   -XX:+AggressiveOpts -XX:+UseLargePages      
+                                   -XX:+UseParallelOldGC                       
+                                   -XX:-UseAdaptiveSizePolicy                  
+                    JVM Affinity:  start /affinity                             
+                                   [0xF,0x0F,0xF00,0xF000,0xF0000,0xF00000,0xF0
+                                   00000,0xF0000000]                           
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  2048                                        
+           JVM Maximum Heap (MB):  2048                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  4/20/2012 Ver1.00                           
+     Management Firmware Version:  1.48                                        
+                Workload Version:  SSJ 1.2.9                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Optimized Defaults BIOS setting with following changes:                      
+* MLC Spatial Prefetcher Disabled                                              
+* MLC Streamer Prefetcher Disabled                                             
+* DCU IP Prefetcher Disabled                                                   
+* DCU Streamer Prefetcher Disabled                                             
+* Intel Virtualization Technology Disabled                                     
+*  CPU Power Management Configuration                                          
+* Power Technology: Energy Efficient                                           
+* Energy Performance:Energy Efficient                                          
+* QPI set to 6.4GT/s                                                           
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Turn off display after 1 minute                                              
+* Turn off hard disk after 1 minute                                            
+* USB Selective Suspend Enabled                                                
+* Each JVM instance was affinitized to two physical core.                      
+* Minimum Processor State: 0% and Maximum Processor State: 100%                
+* PCI Express Link State Power Management Settings: Maximum power saving       
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro                                  
+                           Model:  SYS-1026T-6RFT+                             
+                 CPU Description:  Intel Xeon L5630                            
+              Memory amount (GB):  16.0                                        
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2008 R2 Enterprise Edition   
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.7.0_02-b13)                               
+                     CCS Version:  1.2.5                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  YOKOGAWA                                    
+                           Model:  WT210                                       
+                   Serial Number:  91J523226                                   
+                    Connectivity:  COM1                                        
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SE Laboratories                             
+               Calibration Label:  C56-0089                                    
+             Date of Calibration:  07-Jan-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.1-1271fb18-20110728                     
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        331 |          22.1
+        90% |        316 |          22.9
+        80% |        300 |          22.4
+        70% |        277 |          21.7
+        60% |        234 |          21.0
+        50% |        201 |          20.3
+        40% |        174 |          20.6
+        30% |        153 |          20.9
+        20% |        138 |          21.7
+        10% |        125 |          22.6
+Active Idle |        102 |          22.2
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.3 |              26
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20120604-00493-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,338,387
+    Calibration 2 |                   |                   |         1,348,076
+    Calibration 3 |                   |                   |         1,345,955
+                                                 ssj_ops@calibrated=1,347,016
+             100% |             99.3% |         1,347,016 |         1,337,474
+              90% |             89.8% |         1,212,314 |         1,209,226
+              80% |             80.1% |         1,077,613 |         1,079,156
+              70% |             70.1% |           942,911 |           944,231
+              60% |             59.8% |           808,209 |           805,554
+              50% |             50.2% |           673,508 |           675,768
+              40% |             39.9% |           538,806 |           537,477
+              30% |             29.9% |           404,105 |           403,133
+              20% |             20.0% |           269,403 |           268,765
+              10% |             10.0% |           134,702 |           134,365
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20120604-00493.WIN-SV4I3SC3TQD.txt) for additional details.     
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

@@ -1,0 +1,255 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2008 Standard Performance Evaluation Corporation      
+
+
+Fujitsu Siemens Computers PRIMERGY RX300 S4 (INTEL Xeon E5440)                 
+SPECpower_ssj2008 = 690 overall ssj_ops/watt                                   
+            Test Sponsor:  Fujitsu Siemens Computers                           
+          SPEC License #:  22                                                  
+               Tested By:  Fujitsu Siemens Computers                           
+           Test Location:  Paderborn, Germany                                  
+               Test Date:  Jan 15, 2008                                        
+             Publication:  Jan 30, 2008                                        
+   Hardware Availability:  Dec-2007                                            
+   Software Availability:  Oct-2007                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |       303,846 |           265 |         1,146
+          90% |         89.5% |       272,811 |           259 |         1,053
+          80% |         79.7% |       242,870 |           252 |           963
+          70% |         70.0% |       213,115 |           245 |           871
+          60% |         59.8% |       182,251 |           235 |           777
+          50% |         50.2% |       152,917 |           224 |           683
+          40% |         40.3% |       122,829 |           212 |           580
+          30% |         30.0% |        91,425 |           200 |           457
+          20% |         20.1% |        61,124 |           191 |           321
+          10% |         10.1% |        30,902 |           179 |           172
+                  Active Idle |             0 |           166 |             0
+                              sum of ssj_ops / sum of power = |           690
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  PRIMERGY RX300 S4 (INTEL Xeon E5440)        
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Fujitsu Siemens Computers                   
+                           Model:  PRIMERGY RX300 S4 (INTEL Xeon E5440)        
+                     Form Factor:  --                                          
+                        CPU Name:  Intel Xeon E5440                            
+             CPU Characteristics:  2.83 GHz, 2x6MB L2C, 1333 MHz system bus    
+             CPU Frequency (MHz):  2830                                        
+                  CPU(s) Enabled:  8 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  8 (1 / core)                                
+                CPU(s) Orderable:  1,2                                         
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  12 MB I+D on chip per chip, 6 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4x4096MB                                    
+                  Memory Details:  PC2-5300F 2Rx4 (CAS 5-5-5)                  
+ Power Supply Quantity and Rating  1 x 700                                     
+                             (W):                                              
+            Power Supply Details:  Fujitsu Siemens Computers DPS-700KB A       
+                      Disk Drive:  1 x Western Digital WD5000AAKS 500GB 7.2    
+                                   krpm 3.5" SATA                              
+                 Disk Controller:  LSI Logic integrated SAS 3000 series, 8-port
+                                   with 1068E                                  
+  # and type of Network Interface  2 x Broadcom BCM5708C NetXtreme II GigE     
+          Cards (NICs) Installed:  (onboard)                                   
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  None                                        
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (Server Balanced Power and          
+                                   Performance)                                
+           Operating System (OS):  Microsoft(R) Windows(R) Server 2003 R2      
+                                   Enterprise x64 Edition                      
+                      OS Version:  Version	5.2.3790 Service Pack 1 Build 3790  
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   P27.4.0-10-90053-1.6.0_02-20071009-1827-wind
+                                   ows-x86_64)                                 
+        JVM Command-line Options:  -Xms3600m -Xns3200m -Xmx3600m -Xlargepages  
+                                   -XXaggressive -XXthroughputcompaction       
+                                   -XXlazyunlocking -XXcallprofiling           
+                                   -Xgc:genpar -XXgcthreads=2                  
+                                   -XXtlasize:min=4k,preferred=512k            
+                    JVM Affinity:  start /affinity [03,0c,30,c0]               
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  3600                                        
+           JVM Maximum Heap (MB):  3600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 1.1                                     
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to two CPU cores.                          
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Turned off "Adjacent Sector Prefetcher" in BIOS.                             
+* Turned off "Hardware Prefetch" in BIOS.                                      
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Fujitsu Siemens Computers                   
+                           Model:  PRIMERGY RX100 S3                           
+                 CPU Description:  Pentium D 925                               
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 Enterprise Edition SP1  
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.3.1-1-85830-1.6.0_01-20070716-1248-windo
+                                   ws-ia32)                                    
+                     CCS Version:  1.1                                         
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Christ-Elektronik GmbH                      
+                           Model:  CLM3000                                     
+                   Serial Number:  200707-0044                                 
+                    Connectivity:  RS-232                                      
+                Input Connection:  --                                          
+           Calibration Institute:  PTB (Physikalisch Technische Bundesanstalt) 
+                   Accredited by:  DKD (Deutscher Kalibrierdienst)             
+               Calibration Label:  00715-07 DKD-K-23801 07-02                  
+             Date of Calibration:  Feb-13-07                                   
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.1-45c8e665                                
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.20.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+* Power analyzer voltage range: Auto                                           
+* Power analyzer current range: Auto                                           
+* Power analyzer input: Default                                                
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        265 |          20.5
+        90% |        259 |          20.5
+        80% |        252 |          20.5
+        70% |        245 |          20.5
+        60% |        235 |          20.5
+        50% |        224 |          20.5
+        40% |        212 |          20.5
+        30% |        200 |          20.5
+        20% |        191 |          20.5
+        10% |        179 |          20.5
+Active Idle |        166 |          20.5
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+230V / 50 Hz / 1 phase /  |            20.5 |             117
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20080116-00034-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           301,450
+    Calibration 2 |                   |                   |           304,995
+    Calibration 3 |                   |                   |           304,313
+                                                   ssj_ops@calibrated=304,654
+             100% |             99.7% |           304,654 |           303,846
+              90% |             89.5% |           274,188 |           272,811
+              80% |             79.7% |           243,723 |           242,870
+              70% |             70.0% |           213,258 |           213,115
+              60% |             59.8% |           182,792 |           182,251
+              50% |             50.2% |           152,327 |           152,917
+              40% |             40.3% |           121,861 |           122,829
+              30% |             30.0% |            91,396 |            91,425
+              20% |             20.1% |            60,931 |            61,124
+              10% |             10.1% |            30,465 |            30,902
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20080116-00034.0001.txt) for    
+additional details.                                                            
+
+
+      Copyright (C) 2007-2008 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

@@ -1,0 +1,300 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2020 Standard Performance Evaluation Corporation      
+
+
+New H3C Technologies Co., Ltd. H3C UniServer R6900 G5                          
+SPECpower_ssj2008 = 11,159 overall ssj_ops/watt                                
+            Test Sponsor:  New H3C Technologies Co., Ltd.                      
+          SPEC License #:  9066                                                
+               Tested By:  New H3C Technologies Co., Ltd.                      
+           Test Location:  Hangzhou, Zhejiang, China                           
+               Test Date:  Nov 3, 2020                                         
+             Publication:  Dec 2, 2020                                         
+   Hardware Availability:  Aug-2020                                            
+   Software Availability:  Sep-2020                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |    10,793,473 |         1,005 |        10,736
+          90% |         90.7% |     9,829,074 |           849 |        11,576
+          80% |         80.0% |     8,661,026 |           696 |        12,452
+          70% |         70.0% |     7,586,971 |           571 |        13,295
+          60% |         60.0% |     6,494,429 |           493 |        13,186
+          50% |         50.0% |     5,415,001 |           425 |        12,743
+          40% |         40.0% |     4,337,529 |           371 |        11,703
+          30% |         30.1% |     3,256,404 |           328 |         9,914
+          20% |         20.0% |     2,167,324 |           284 |         7,634
+          10% |         10.0% |     1,085,551 |           233 |         4,658
+                  Active Idle |             0 |          89.2 |             0
+                              sum of ssj_ops / sum of power = |        11,159
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  New H3C Technologies Co., Ltd.              
+                           Model:  H3C UniServer R6900 G5                      
+                     Form Factor:  4U                                          
+                        CPU Name:  Intel Xeon Platinum 8380HL 2.9GHz           
+             CPU Characteristics:  2.9 GHz, 28 core, 38.5MB L3 cache           
+             CPU Frequency (MHz):  2900                                        
+                  CPU(s) Enabled:  112 cores, 4 chips, 28 cores/chip           
+                Hardware Threads:  224 (2 / core)                              
+                CPU(s) Orderable:  1,2,3,4 chips                               
+                   Primary Cache:  64 KB I + 64 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per chip                   
+                  Tertiary Cache:  39424 KB I+D off chip per chip              
+                     Other Cache:  None                                        
+              Memory Amount (GB):  384                                         
+              # and size of DIMM:  24 x 16 GB                                  
+                  Memory Details:  16 GB 2Rx8 SAMSUNG registered ECC 3200MHz;  
+                                   slots 1, 3, 5, 8, 10, 12 populated in each  
+                                   Socket                                      
+ Power Supply Quantity and Rating  2 x 850                                     
+                             (W):                                              
+            Power Supply Details:  DELTA PSR850-12A                            
+                      Disk Drive:  Intel SSD S4510 480GB SATA 6Gb/s            
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x H3C 4-Port 1GE OCP3.0 Adapter           
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  4/4/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Balanced Mode Enabled In OS (see SUT Notes) 
+           Operating System (OS):  Windows Server 2019 Datacenter              
+                      OS Version:  Version 1809(OS Build 17763.1)              
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-bit Server VM    
+                                   18.9(build 11.0.8+10-LTS, mixed mode)       
+        JVM Command-line Options:  set JAVAOPTIONS_SSJ=-server -Xmn23000m      
+                                   -Xms25000m -Xmx25000m -XX:SurvivorRatio=1   
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:ParallelGCThreads=28                    
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC -XX:UseAVX=1          
+                                   -XX:BiasedLockingStartupDelay=30000         
+                                   -XX:-UseAdaptiveSizePolicy                  
+                                   -XX:-TheadLocalHandshakes                   
+                    JVM Affinity:  start /node [0,1,2,3,4,5,6,7] /affinity     
+                                   [0xFFFFFFF]                                 
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  25000                                       
+           JVM Maximum Heap (MB):  25000                                       
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  5.05.00                                     
+     Management Firmware Version:  2.08.00                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  Microsoft Windows KB4072698                 
+
+
+
+                            Boot Firmware Settings                             
+
+* ConsoleRedirection: Disabled                                                 
+* SRIOVSupport:	Disabled                                                       
+* LegacyUSBSupport: Disabled                                                   
+* XhciHandOff: Disabled                                                        
+* USBMassStorageDriverSupport: Disabled                                        
+* PCIeNicPXE:	Disabled                                                         
+* IsocMode: Disabled                                                           
+* DegradePrecedence: Feature Precedence                                        
+* UPILinkFrequencySelect: 9.6GB/s                                              
+* LinkL0pEnable: Enabled                                                       
+* LinkL1Enable: Enabled                                                        
+* StaleAtoS: Enabled                                                           
+* PatrolScrub: Disabled                                                        
+* HardwarePrefetcher: Disabled                                                 
+* AdjacentCachePrefetch: Disabled                                              
+* DCUStreamerPrefetcher: Disabled                                              
+* LLCPrefetch: Enabled                                                         
+* HardwarePStates: Disabled                                                    
+* EPPprofile: Power                                                            
+* EISTPSDFunction: SW_ALL                                                      
+* TurboMode: Disabled                                                          
+* CPUC6Report: Enabled                                                         
+* PackageCState: No Limit                                                      
+* PkgCLatNeg: Enabled                                                          
+* SoftwareControlledTStates: Enabled                                           
+* PowerPerformanceTuning: BIOS Controls EPB                                    
+* AltEngPerfBIAS: Power                                                        
+* SataP1~7En: Disabled                                                         
+* sSATAController: Disabled                                                    
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was bound to 28 logical processors                         
+* Using the local security settings console, "lock pages in memory " was       
+enabled for the user running the benchmark                                     
+* Run initiated via Windows Remote Desktop Connection                          
+* Hard Disk set to turn off after 1 minute                                     
+* Display set to turn off after 1 minute                                       
+* Balanced Plan Minimum processor state set to 0%                              
+* Maximum processor state set to 100%                                          
+* SPECpower_ssj.props input.load_level.number_warehouses set to 224            
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  New H3C Technologies Co., Ltd.              
+                           Model:  H3C UniServer R6900 G5                      
+                 CPU Description:  Intel Xeon Platinum 8380HL 2.9GHz           
+              Memory amount (GB):  384                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2019 Datacenter    
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-bit Server VM    
+                                   18.9(build 11.0.8+10-LTS, mixed mode)       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  CHROMA                                      
+                           Model:  66203                                       
+                   Serial Number:  662030000248                                
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS (China National Accreditation Service  
+                                   for Conformity Assessment)                  
+                   Accredited by:  CEPREI Calibration and Testing Center       
+               Calibration Label:  1JA20002540-0002                            
+             Date of Calibration:  28-May-2020                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.1-a2d19f26-20190717                     
+               Setup Description:  Connected to PSU 1 and PSU 2                
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  DIGI.                                       
+                           Model:  Watchport/H                                 
+                  Driver Version:  6.2.1.0                                     
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Placed in front the main airflow inlet of   
+                                   the SUT less than 50mm                      
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,005 |          22.2
+        90% |        849 |          22.2
+        80% |        696 |          22.1
+        70% |        571 |          22.1
+        60% |        493 |          22.1
+        50% |        425 |          22.1
+        40% |        371 |          22.2
+        30% |        328 |          22.1
+        20% |        284 |          22.1
+        10% |        233 |          22.1
+Active Idle |       89.2 |          22.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+230V / 50 Hz / 1 phase /  |            22.1 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20201103-01057-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        10,848,470
+    Calibration 2 |                   |                   |        10,831,025
+    Calibration 3 |                   |                   |        10,831,699
+                                                ssj_ops@calibrated=10,831,362
+             100% |             99.7% |        10,831,362 |        10,793,473
+              90% |             90.7% |         9,748,226 |         9,829,074
+              80% |             80.0% |         8,665,090 |         8,661,026
+              70% |             70.0% |         7,581,953 |         7,586,971
+              60% |             60.0% |         6,498,817 |         6,494,429
+              50% |             50.0% |         5,415,681 |         5,415,001
+              40% |             40.0% |         4,332,545 |         4,337,529
+              30% |             30.1% |         3,249,409 |         3,256,404
+              20% |             20.0% |         2,166,272 |         2,167,324
+              10% |             10.0% |         1,083,136 |         1,085,551
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20201103-01057.WIN-RDFFDVP8I41.txt) for additional details.     
+
+
+      Copyright (C) 2007-2020 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

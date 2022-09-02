@@ -1,0 +1,293 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+
+
+Hewlett Packard Enterprise ProLiant DL325 Gen10 Plus                           
+SPECpower_ssj2008 = 19,510 overall ssj_ops/watt                                
+            Test Sponsor:  Hewlett Packard Enterprise                          
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett Packard Enterprise                          
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  May 8, 2021                                         
+             Publication:  Mar 24, 2022                                        
+   Hardware Availability:  Mar-2022                                            
+   Software Availability:  Jun-2021                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.8% |     6,573,563 |           269 |        24,412
+          90% |         89.9% |     5,925,433 |           249 |        23,757
+          80% |         79.8% |     5,259,867 |           223 |        23,613
+          70% |         70.1% |     4,616,061 |           204 |        22,622
+          60% |         60.1% |     3,957,114 |           184 |        21,457
+          50% |         50.0% |     3,292,881 |           167 |        19,708
+          40% |         40.0% |     2,634,325 |           147 |        17,893
+          30% |         30.1% |     1,983,076 |           134 |        14,825
+          20% |         20.0% |     1,316,706 |           120 |        10,960
+          10% |         10.0% |       657,680 |           105 |         6,266
+                  Active Idle |             0 |          53.2 |             0
+                              sum of ssj_ops / sum of power = |        19,510
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'SUT'                                   
+
+                  Set Identifier:  SUT                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  SUT                                         
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  ProLiant DL325 Gen10 Plus                   
+                     Form Factor:  1U                                          
+                        CPU Name:  AMD EPYC 7773X 2.20 GHz                     
+             CPU Characteristics:  64-Core, 2.20 GHz, 768MB L3 Cache           
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  64 cores, 1 chip, 64 cores/chip             
+                Hardware Threads:  128 (2 / core)                              
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per core                 
+                  Tertiary Cache:  768 MB I+D on chip per chip                 
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  8 x 16384 MB                                
+                  Memory Details:  16 GB 2Rx8 PC4-3200AA-R; slots 1, 3, 5, 7,  
+                                   10, 12, 14 and 16 populated                 
+ Power Supply Quantity and Rating  1 x 800                                     
+                             (W):                                              
+            Power Supply Details:  HPE 800W Flex Slot Titanium Hot Plug Low    
+                                   Halogen Power Supply Kit (865438-B21)       
+                      Disk Drive:  1 x HPE 480GB SATA 6G SSD (P05976-B21)      
+                 Disk Controller:  Embedded SATA Controller                    
+  # and type of Network Interface  1 x Intel Ethernet I350 4-Port 1Gb NIC      
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  4/4/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  SUSE Linux Enterprise Server 15 SP3         
+                      OS Version:  5.3.18-57-default                           
+                      Filesystem:  xfs                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM 18.9      
+                                   (build 11.0.11+9-LTS-194, mixed mode)       
+        JVM Command-line Options:  -server -Xmn1700m -Xms1950m -Xmx1950m       
+                                   -XX:UseSSE=4 -XX:UseAVX=1                   
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=2                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC -XX:+UseHugeTLBFS     
+                                   -XX:+UseTransparentHugePages                
+                    JVM Affinity:  for each even physicalCoreId { numactl -C   
+                                   physicalCoreId, physicalCoreId+1,           
+                                   physicalCoreId + 64, physicalCoreId + 65 }  
+                   JVM Instances:  32                                          
+           JVM Initial Heap (MB):  1950                                        
+           JVM Maximum Heap (MB):  1950                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  A43 v2.56 (02/10/2022)                      
+     Management Firmware Version:  2.55 Oct 01 2021                            
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+BIOS Platform Configuration (RBSU):                                            
+* BIOS Serial Console Port: Disabled                                           
+* USB Support: All USB Ports Disabled                                          
+* Determinism Control: Manual                                                  
+* Performance Determinism : Power Determinism                                  
+* Memory Interleaving Mode: Disabled                                           
+* Maximum Memory Bus Frequency: 2400 MHz                                       
+* DRAM Controller Power Down: Enabled                                          
+* NUMA memory domains per socket: Four memory domains per socket               
+* Last-Level Cache (LLC) As NUMA Node: Enabled                                 
+* Data Fabric C-State Enable: Force Enabled                                    
+* C-State Efficiency Mode: Enabled                                             
+* AMD Core Performance Boost: Disabled                                         
+* AMD Fmax Boost Limit Control: Manual                                         
+* AMD Fmax Boost Limit: 2300                                                   
+* L1 Stream HW Prefetcher: Disabled                                            
+* L2 Stream HW Prefetcher: Disabled                                            
+* Maximum PCI Express Speed: PCIe Generation 1.0                               
+
+
+                         Management Firmware Settings                          
+
+See SUT Notes                                                                  
+
+
+                            System Under Test Notes                            
+
+* Benchmark started via ssh                                                    
+* SPECpower_ssj.props input.load_level.number_warehouses set to 128 due to a   
+known inconsistency in processor reporting with this Java version              
+* OS tunes:                                                                    
+* modprobe cpufreq_conservative                                                
+* cpupower frequency-set -g conservative                                       
+* echo 3000000 > /sys/devices/system/cpu/cpufreq/conservative/sampling_rate    
+* echo 92 > /sys/devices/system/cpu/cpufreq/conservative/up_threshold          
+* echo 1 > /sys/devices/system/cpu/cpufreq/conservative/freq_step              
+* echo 91 > /sys/devices/system/cpu/cpufreq/conservative/down_threshold        
+* echo always > /sys/kernel/mm/transparent_hugepage/enabled                    
+* echo 0 > /proc/sys/kernel/nmi_watchdog                                       
+* echo 6000 > /proc/sys/kernel/sched_migration_cost_ns                         
+* echo 10000000 > /proc/sys/kernel/sched_min_granularity_ns                    
+* echo 0 > /proc/sys/kernel/nmi_watchdog                                       
+* Applied protection against speculative execution                             
+* N/A: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  ProLiant DL360 G9                           
+                 CPU Description:  2x Intel Xeon E5-2660 v3                    
+              Memory amount (GB):  128                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2012 R2 Standard             
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  1.8.0_251-b08 (build 25.251-b08, mixed mode)
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91K308556                                   
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-F91A5-100-1                               
+             Date of Calibration:  22-Jun-2021                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  SUT Power Supply 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        269 |          22.4
+        90% |        249 |          22.3
+        80% |        223 |          22.2
+        70% |        204 |          22.3
+        60% |        184 |          22.4
+        50% |        167 |          22.5
+        40% |        147 |          22.4
+        30% |        134 |          22.4
+        20% |        120 |          22.4
+        10% |        105 |          22.4
+Active Idle |       53.2 |          22.5
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.2 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20220301-01168-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         6,335,087
+    Calibration 2 |                   |                   |         6,587,149
+    Calibration 3 |                   |                   |         6,591,835
+                                                 ssj_ops@calibrated=6,589,492
+             100% |             99.8% |         6,589,492 |         6,573,563
+              90% |             89.9% |         5,930,543 |         5,925,433
+              80% |             79.8% |         5,271,594 |         5,259,867
+              70% |             70.1% |         4,612,644 |         4,616,061
+              60% |             60.1% |         3,953,695 |         3,957,114
+              50% |             50.0% |         3,294,746 |         3,292,881
+              40% |             40.0% |         2,635,797 |         2,634,325
+              30% |             30.1% |         1,976,848 |         1,983,076
+              20% |             20.0% |         1,317,898 |         1,316,706
+              10% |             10.0% |           658,949 |           657,680
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20220301-01168.dl325.txt) for   
+additional details.                                                            
+
+
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

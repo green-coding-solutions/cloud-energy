@@ -1,0 +1,247 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2008 Standard Performance Evaluation Corporation      
+
+
+Supermicro Inc. 2021M-UR+                                                      
+SPECpower_ssj2008 = 731 overall ssj_ops/watt                                   
+            Test Sponsor:  Advanced Micro Devices                              
+          SPEC License #:  49                                                  
+               Tested By:  Advanced Micro Devices                              
+           Test Location:  Austin, TX, USA                                     
+               Test Date:  Aug 5, 2008                                         
+             Publication:  Nov 5, 2008                                         
+   Hardware Availability:  Dec-2008                                            
+   Software Availability:  May-2008                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |       308,089 |           269 |         1,146
+          90% |         89.6% |       277,272 |           259 |         1,072
+          80% |         80.0% |       247,716 |           247 |         1,001
+          70% |         70.8% |       219,191 |           238 |           923
+          60% |         60.2% |       186,215 |           225 |           827
+          50% |         50.0% |       154,774 |           214 |           723
+          40% |         39.8% |       123,243 |           202 |           609
+          30% |         29.9% |        92,493 |           191 |           484
+          20% |         20.0% |        61,857 |           180 |           344
+          10% |         10.1% |        31,309 |           166 |           188
+                  Active Idle |             0 |           138 |             0
+                              sum of ssj_ops / sum of power = |           731
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  2021M-UR+                                   
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro Inc.                             
+                           Model:  2021M-UR+                                   
+                     Form Factor:  --                                          
+                        CPU Name:  AMD Opteron 2380                            
+             CPU Characteristics:  Quad-Core, 2.5GHz, 6MB L3 Cache             
+             CPU Frequency (MHz):  2500                                        
+                  CPU(s) Enabled:  8 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  8 (1 / core)                                
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  64 KB I + 64 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per core                 
+                  Tertiary Cache:  6 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  8 x 2048 MB                                 
+                  Memory Details:  DDR2-667 CL5; slots 1A/B, 2A/B populated for
+                                   each socket                                 
+ Power Supply Quantity and Rating  1 x 700                                     
+                             (W):                                              
+            Power Supply Details:  Ablecom PWS-702A-1R                         
+                      Disk Drive:  1 x 500GB WD5000ABPS SATA II                
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Intel Pro/1000 PT Dual Port Server      
+          Cards (NICs) Installed:  Adapter                                     
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Dynamic power profile enabled               
+           Operating System (OS):  Novell SUSE Linux Enterprise Server 10      
+                      OS Version:  SP2 (64-bit, kernel 2.6.16.60-0.21)         
+                      Filesystem:  ext3                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) (build                    
+                                   P27.5.0-5-97156-1.6.0_03-20080403-1523-linux
+                                   -x86_64, compiled mode)                     
+        JVM Command-line Options:  -Xms3700m -Xns3200m -Xmx3700m -XXaggressive 
+                                   -XXcallprofiling -XXthroughputCompaction    
+                                   -Xgc:genpar -XXgcthreads:4                  
+                                   -XXtlasize:min=4k,preferred=512k            
+                    JVM Affinity:  numactl --physcpubind [0-3, 4-7]            
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  3700                                        
+           JVM Maximum Heap (MB):  3700                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 1.1.3                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a socket.                               
+* 2M large pages were enabled in the OS using the following commands           
+* echo 7400 > /proc/sys/vm/nr_hugepages                                        
+* mount -t hugetlbfs nodev /mnt/hugepages                                      
+* chmod 755 /mnt/hugepages                                                     
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Compaq                                      
+                           Model:  NX9005                                      
+                 CPU Description:  AMD Athlon XP M                             
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows XP Professional 32-bit    
+                      JVM Vendor:  SUN Microsystems Inc.                       
+                     JVM Version:  Java (TM) SE Runtime Environment (build     
+                                   1.6.0_02-b06)                               
+                     CCS Version:  1.1.3                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GA25595                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa Electric International Pte. Ltd.   
+               Calibration Label:  07-1469                                     
+             Date of Calibration:  26-Oct-2007                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.2-e0c92e60                              
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.20.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        269 |          22.6
+        90% |        259 |          22.6
+        80% |        247 |          22.6
+        70% |        238 |          22.6
+        60% |        225 |          22.6
+        50% |        214 |          22.6
+        40% |        202 |          22.6
+        30% |        191 |          22.6
+        20% |        180 |          22.6
+        10% |        166 |          22.6
+Active Idle |        138 |          22.6
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+120V / 60 Hz / 1 phase /  |            22.6 |             168
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20081017-00090-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           309,590
+    Calibration 2 |                   |                   |           310,099
+    Calibration 3 |                   |                   |           309,025
+                                                   ssj_ops@calibrated=309,562
+             100% |             99.5% |           309,562 |           308,089
+              90% |             89.6% |           278,606 |           277,272
+              80% |             80.0% |           247,649 |           247,716
+              70% |             70.8% |           216,693 |           219,191
+              60% |             60.2% |           185,737 |           186,215
+              50% |             50.0% |           154,781 |           154,774
+              40% |             39.8% |           123,825 |           123,243
+              30% |             29.9% |            92,869 |            92,493
+              20% |             20.0% |            61,912 |            61,857
+              10% |             10.1% |            30,956 |            31,309
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20081017-00090.0001.txt) for    
+additional details.                                                            
+
+
+      Copyright (C) 2007-2008 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

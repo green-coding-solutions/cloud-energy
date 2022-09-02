@@ -1,0 +1,207 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant SL2x170z G6                                   
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Jun 5, 2009                                         
+             Publication:  Jul 2, 2009                                         
+   Hardware Availability:  Aug-2009                                            
+   Software Availability:  Jun-2009                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. The test sponsor reported that the  
+configuration does not met SPEC's General Availability clause.  Specifically,  
+the drive used did not meet the 3 months availability requirement in the       
+SPECpower_ssj2008 run rules.                                                   
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |         32 |         64 |       32.0 |              4 |        16
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  ProLiant SL6000                             
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  1 x 750                                     
+                             (W):                                              
+            Power Supply Details:  part number: 506821-001                     
+                  Network Switch:  None                                        
+          Network Switch Details:  None                                        
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  None                                        
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  ProLiant SL2x170z G6                        
+            # of Identical Nodes:  4                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant SL2x170z G6                        
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon L5520                            
+             CPU Characteristics:  Quad-Core, 2.27 GHz, 8 MB L3 cache          
+             CPU Frequency (MHz):  2267                                        
+                  CPU(s) Enabled:  8 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  16 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  4 x 2048 MB                                 
+                  Memory Details:  2GB 2Rx4 PC3-10600E; slots 1 and 4 are      
+                                   populated on each processor                 
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 64GB SSD 2.5" SATA; HP part #582429-B21 
+                 Disk Controller:  Integrated SATA                             
+  # and type of Network Interface  2 x HP NC362i                               
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Balanced power enabled in OS                
+           Operating System (OS):  Windows Server 2008 x64, Enterprise Edition 
+                      OS Version:  SP2                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) 6 P28.0.0 (build          
+                                   P28.0.0-29-114096-1.6.0_11-20090427-1759-win
+                                   dows-x86_64, compiled mode)                 
+        JVM Command-line Options:  -Xms1650m -Xmx1650m -Xns1500m -XXagreessive 
+                                   -XlargePages -XXcallprofiling               
+                                   -XXlazyUnlocking -Xgc:genpar -XXgcthreads:4 
+                                   -XXthroughputCompaction                     
+                                   -XXtlasize:min=12k,preferred-1024k          
+                    JVM Affinity:  start /affinity [0xF, 0xF0, 0xF00, 0xF000]  
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  1650                                        
+           JVM Maximum Heap (MB):  1650                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  O34 5/31/09                                 
+     Management Firmware Version:  9.19 3/18/09                                
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+See SUT Notes                                                                  
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to 1/2 of the cores in a socket.           
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* USB selective suspend setting - Enabled                                      
+* Turn off hard disk after 1 minute                                            
+* BIOS settings:                                                               
+* Power Efficiency Mode - Custom                                               
+* Hardware Prefetcher - Disabled                                               
+* Adjacent Cache Line Prefetch - Disabled                                      
+* Demand Scrubbing - Disabled                                                  
+* Turbo Mode - Disabled                                                        
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL360 G5                           
+                 CPU Description:  Intel Xeon E5440                            
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2 Enterprise Edition   
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.0-50_o-100423-1.6.0_05-20080626-2105-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GB53023                                   
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa Electric International Pte. Ltd.   
+               Calibration Label:  705437                                      
+             Date of Calibration:  10-Dec-2008                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.8-76a9e72a                              
+               Setup Description:  Unknown                                     
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Unknown                                     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

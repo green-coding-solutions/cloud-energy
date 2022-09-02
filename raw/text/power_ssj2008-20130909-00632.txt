@@ -1,0 +1,233 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+
+
+IBM Corporation IBM NeXtScale nx360 M4                                         
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  IBM Corporation                                     
+          SPEC License #:  11                                                  
+               Tested By:  IBM Corporation                                     
+           Test Location:  Taipei, Taiwan                                      
+               Test Date:  Aug 22, 2013                                        
+             Publication:  Oct 2, 2013                                         
+   Hardware Availability:  Sep-2013                                            
+   Software Availability:  Dec-2013                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. SPEC has determined that this result
+is not in compliance with the SPECpower_ssj2008 Run & Reporting Rules 2.10     
+General Availability. Specifically the submitter generated the results whilst  
+using a combination of Microsoft Windows Server 2012 or 2012 R2 together with  
+the IBM J9 7.0 SR1 virtual machine. IBM has subsequently stated that this      
+combination is unsupported.                                                    
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+        12 |         24 |        240 |        480 |        288 |             12 |       120
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  IBM NeXtScale n1200 Enclosure               
+                     Form Factor:  6U                                          
+ Power Supply Quantity and Rating  6 x 900                                     
+                             (W):                                              
+            Power Supply Details:  IBM 900W PSU(IBM P/N: 00Y8569)              
+                  Network Switch:  DLink DGS-1024D                             
+          Network Switch Details:  24-PORT GIGABIT DESKTOP SWITCH              
+                      KVM Switch:  N/A                                         
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  Network switch is a standalone device and is
+                                   not included in the measured power.         
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  12                                          
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  IBM NeXtScale nx360 M4                      
+                     Form Factor:  1U                                          
+                        CPU Name:  Intel Xeon E5-2660 v2                       
+             CPU Characteristics:  10-Core, 2.2GHz, 25MB L3 Cache              
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  20 cores, 2 chips, 10 cores/chip            
+                Hardware Threads:  40 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  25 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  24                                          
+              # and size of DIMM:  6 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-12800E; slots 1, 2, 4, 5, 6,  
+                                   and 8 populated                             
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  1 x 64 GB SATA SSD (IBM P/N: 49Y5834)       
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Integrated Intel I350 Gigabit Ethernet  
+          Cards (NICs) Installed:  Controller                                  
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  IBM Power Plan for Windows Server 2012      
+           Operating System (OS):  Microsoft Windows Server 2012 DataCenter    
+                                   Edition                                     
+                      OS Version:  Version 6.2.9200 Build 9200                 
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmn1100m     
+                                   -Xms1500m -Xmx1500m -XlockReservation       
+                                   -Xnoloa -XtlhPrefetch -Xlp                  
+                                   -Xconcurrentlevel0                          
+                    JVM Affinity:  start /affinity                             
+                                   [F,F0,F00,F000,F0000,F00000,F000000,F0000000
+                                   ,F00000000,F000000000]                      
+                   JVM Instances:  10                                          
+           JVM Initial Heap (MB):  1500                                        
+           JVM Maximum Heap (MB):  1500                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  FHE105G                                     
+     Management Firmware Version:  1AOO43C                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64, IBM Power Plan for Windows 
+                                   Server 2012                                 
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Settings                                                                
+* Operating Mode: Custom Mode                                                  
+* Hardware Prefetcher: Disable                                                 
+* Adjacent Cache Prefetch: Disable                                             
+* DCU Streamer Prefetcher: Disable                                             
+* QPI Link Frequency: Minimal Power                                            
+* Memory Power Management:Automatic                                            
+* Patrol Scrub: Disable                                                        
+* Power Performance Bias: OS Controlled                                        
+* Mezz_Card, Slot 1 and Slot 2: Disable                                        
+* Commands on USB interface: Disabled                                          
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four logical cores per socket.          
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started on controller using Remote Desktop.                          
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  x3550 M3                                    
+                 CPU Description:  Intel Xeon E5620                            
+              Memory amount (GB):  32                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2008 R2                             
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, J2RE 1.6.0 IBM J9 2.4 
+                                   Windows Server 2008 amd64-64 jvmwa64        
+                                   60sr5-20090519_35743 (JIT enabled, AOT      
+                                   enabled)                                    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91JB14536                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NML/ROC                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  13-04-BAC-294-02                            
+             Date of Calibration:  22-Apr-2013                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.6.1-ddf12a8b-20130626                     
+               Setup Description:  Attached to power supply 1, 3, 5            
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91H245648                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NML/ROC                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  Unknown                                     
+             Date of Calibration:  22-Apr-2013                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.6.1-ddf12a8b-20130626                     
+               Setup Description:  Attached to power supply 2, 4, 6            
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International, Inc.                    
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.20.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  1 cm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

@@ -1,0 +1,290 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+
+
+NEC Corporation Express5800/B120b                                              
+SPECpower_ssj2008 = 1,555 overall ssj_ops/watt                                 
+            Test Sponsor:  NEC Corporation                                     
+          SPEC License #:  9006                                                
+               Tested By:  NEC Corporation                                     
+           Test Location:  Fuchu, Tokyo, Japan                                 
+               Test Date:  Jul 8, 2010                                         
+             Publication:  Aug 11, 2010                                        
+   Hardware Availability:  Apr-2010                                            
+   Software Availability:  May-2009                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.9% |     1,923,494 |           902 |         2,134
+          90% |         90.1% |     1,734,632 |           814 |         2,131
+          80% |         80.0% |     1,541,788 |           733 |         2,104
+          70% |         70.2% |     1,352,483 |           691 |         1,958
+          60% |         60.0% |     1,156,097 |           650 |         1,779
+          50% |         50.1% |       964,261 |           608 |         1,585
+          40% |         40.1% |       771,657 |           568 |         1,358
+          30% |         30.1% |       579,068 |           533 |         1,087
+          20% |         20.0% |       385,878 |           499 |           773
+          10% |          9.9% |       191,204 |           458 |           417
+                  Active Idle |             0 |           360 |             0
+                              sum of ssj_ops / sum of power = |         1,555
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         3 |          6 |         36 |         72 |       48.0 |              3 |        18
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  SIGMABLADE-H v2                             
+                     Form Factor:  10U                                         
+ Power Supply Quantity and Rating  2 x 2250                                    
+                             (W):                                              
+            Power Supply Details:  ASTEC AA25520L, NEC P/N:N8405-044           
+                  Network Switch:  PLANEX FXG-24IRM2                           
+          Network Switch Details:  24 Port Gigabit Switching Hub               
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  1 x EM Card, NEC P/N:N8405-043; 6 x FAN     
+                                   Unit, NEC P/N:N8405-045; 1 x GbE Through    
+                                   Card, NEC P/N:N8406-029; 13 x CPU Blade     
+                                   Blank Kit, NEC P/N:N8405-046                
+                         Comment:  Network switch is a standalone device and is
+                                   not included in the measured power.         
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  Express5800/B120b (Intel Xeon L5640, 2.26   
+                                   GHz)                                        
+            # of Identical Nodes:  3                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  NEC Corporation                             
+                           Model:  Express5800/B120b                           
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Xeon L5640                            
+             CPU Characteristics:  Hexa-Core, 2.26 GHz (Intel Turbo Boost      
+                                   Technology up to 2.80 GHz), 12 MB L3 Cache  
+             CPU Frequency (MHz):  2266                                        
+                  CPU(s) Enabled:  12 cores, 2 chips, 6 cores/chip             
+                Hardware Threads:  24 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx4 PC3-10600R ECC CL9; slots          
+                                   CPU1_DIMM1, CPU1_DIMM2, CPU2_DIMM1 and      
+                                   CPU2_DIMM2 populated                        
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 160GB 7200rpm HDD 2.5inch SATA          
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Integrated Intel 82576 Gigabit Dual Port
+          Cards (NICs) Installed:  Ethernet Controller                         
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power saver                                 
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise x64
+                                   Edition                                     
+                      OS Version:  SP2                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) 6 P28.0.0 (build          
+                                   P28.0.0-29-114096-1.6.0_11-20090427-1759-win
+                                   dows-x86_64)                                
+        JVM Command-line Options:  -Xms2400m -Xmx2400m -Xns2200m -XXaggressive 
+                                   -Xlargepages -Xgc:genpar -XXcallprofiling   
+                                   -XXgcthreads=2                              
+                                   -XXtlasize:min=4k,preferred=1024k           
+                    JVM Affinity:  start /affinity [F,F0,F00,F000,F0000,F00000]
+                   JVM Instances:  6                                           
+           JVM Initial Heap (MB):  2400                                        
+           JVM Maximum Heap (MB):  2400                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.0.3040                                    
+     Management Firmware Version:  01.16                                       
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+See SUT Notes                                                                  
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a pair of cores in a socket.            
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Hardware Prefetcher was disabled in BIOS.                                    
+* Adjacent Cache Line Prefetch was disabled in BIOS.                           
+* NUMA configuration was enabled in BIOS.                                      
+* SATA RAID was disabled in BIOS.                                              
+* Processor power management Minimum processor state was set to 0% in OS.      
+* Processor power management Maximum processor state was set to 100% in OS.    
+* Run was started via Remote Desktop Connection.                               
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  NEC Corporation                             
+                           Model:  Express5800/R120a-2                         
+                 CPU Description:  Intel Xeon X5550                            
+              Memory amount (GB):  4                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 Standard      
+                                   Edition                                     
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.5-32_o-121899-1.6.0_14-20091001-2107-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H928025                                   
+                    Connectivity:  RS-232C                                     
+                Input Connection:  Default                                     
+           Calibration Institute:  AIST (National Institute of Advanced        
+                                   Industrial Science and Technology)          
+                   Accredited by:  JQA (Japan Quality Assurance Organization)  
+               Calibration Label:  150-92562                                   
+             Date of Calibration:  8-Sep-2009                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.10-511c8daa                             
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.30.2.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  None                                        
+
+
+
+                                     Notes                                     
+
+* Japanese Electricity Utilities Industry Law (Law No. 170, 1964); 200V is     
+standardized and the allowable voltage and deviation: 202V, -20V, +20V         
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        902 |          21.5
+        90% |        814 |          21.5
+        80% |        733 |          21.5
+        70% |        691 |          21.6
+        60% |        650 |          21.7
+        50% |        608 |          21.7
+        40% |        568 |          21.8
+        30% |        533 |          21.7
+        20% |        499 |          21.7
+        10% |        458 |          21.7
+Active Idle |        360 |          21.7
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+202V / 50 Hz / 1 phase /  |            21.5 |              52
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20100727-00276-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,946,856
+    Calibration 2 |                   |                   |         1,904,706
+    Calibration 3 |                   |                   |         1,947,721
+                                                 ssj_ops@calibrated=1,926,214
+             100% |             99.9% |         1,926,214 |         1,923,494
+              90% |             90.1% |         1,733,592 |         1,734,632
+              80% |             80.0% |         1,540,971 |         1,541,788
+              70% |             70.2% |         1,348,349 |         1,352,483
+              60% |             60.0% |         1,155,728 |         1,156,097
+              50% |             50.1% |           963,107 |           964,261
+              40% |             40.1% |           770,485 |           771,657
+              30% |             30.1% |           577,864 |           579,068
+              20% |             20.0% |           385,243 |           385,878
+              10% |              9.9% |           192,621 |           191,204
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20100727-00276.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

@@ -1,0 +1,282 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+
+
+Acer Incorporated Gateway GW2000h-GW175h F1                                    
+SPECpower_ssj2008 = 2,481 overall ssj_ops/watt                                 
+            Test Sponsor:  Acer Incorporated                                   
+          SPEC License #:  97                                                  
+               Tested By:  Acer Incorporated                                   
+           Test Location:  Taipei, R.O.C.                                      
+               Test Date:  Oct 5, 2010                                         
+             Publication:  Nov 10, 2010                                        
+   Hardware Availability:  Aug-2010                                            
+   Software Availability:  Dec-2009                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.2% |     3,720,023 |         1,111 |         3,347
+          90% |         89.8% |     3,369,870 |         1,044 |         3,228
+          80% |         80.0% |     3,002,215 |           984 |         3,051
+          70% |         70.0% |     2,626,505 |           925 |         2,840
+          60% |         60.0% |     2,248,790 |           857 |         2,623
+          50% |         50.0% |     1,873,856 |           779 |         2,404
+          40% |         40.1% |     1,502,635 |           693 |         2,168
+          30% |         29.9% |     1,120,775 |           611 |         1,835
+          20% |         20.1% |       753,582 |           538 |         1,401
+          10% |         10.0% |       373,642 |           473 |           790
+                  Active Idle |             0 |           284 |             0
+                              sum of ssj_ops / sum of power = |         2,481
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |         96 |         96 |       64.0 |              4 |        16
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Gateway GW2000h                             
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  1 x 1400                                    
+                             (W):                                              
+            Power Supply Details:  PWS-1K41P-1R                                
+                  Network Switch:  16-Port Gigabit switch                      
+          Network Switch Details:  D-Link DGS-1016T                            
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  Network switch and monitors are standalone  
+                                   devices and not included in the measured    
+                                   power.                                      
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  4                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Gateway GW2000h-GW175h F1                   
+                     Form Factor:  1U                                          
+                        CPU Name:  AMD Opteron 6174                            
+             CPU Characteristics:  12-Core, 2.20 GHz, 12 MB L3 cache           
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  24 cores, 2 chips, 12 cores/chip            
+                Hardware Threads:  24 (1 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  64 KB I + 64 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip, 6 MB shared / 6 
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  8 x 2048 MB                                 
+                  Memory Details:  2GB 1Rx8 PC3-10600E; slots 1A, 2A, 3A and 4A
+                                   populated on each processor                 
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 64GB SSD 2.5" SATA, Acer                
+                                   P/N:KF.0640N.001                            
+                 Disk Controller:  onboard SATA controller                     
+  # and type of Network Interface  1 x dual-port Intel 82576EB Gigabit Ethernet
+          Cards (NICs) Installed:  controller                                  
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  USB                                         
+                           Mouse:  USB                                         
+                         Monitor:  Direct                                      
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power save enabled in OS                    
+           Operating System (OS):  Windows Server 2008, Enterprise Edition     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4  
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr7-20091214_49398 (JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xmn1500m -Xms1875m -Xmx1875m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                    JVM Affinity:  start /affinity [00003F, 000FC0, 03F000,    
+                                   FC0000]                                     
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  T01                                         
+     Management Firmware Version:  1.00                                        
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM Websphere Application Server V7.0 for   
+                                   Windows on x86-64bit                        
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Setting:                                                                
+* Load Optimal Defaults                                                        
+* Fan Speed Control Modes: Energy Saving /ES                                   
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to 6 cores in a socket.                    
+* Using the local security settings console, "lock pages in memory" was        
+enabled.                                                                       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Gateway GR160 F1                            
+                 CPU Description:  Intel L5520                                 
+              Memory amount (GB):  3                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2, Enterprise Edition  
+                                   SP2                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) (build                    
+                                   R27.5.0-110_o-99226-1.6.0_03-20080528-1505-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H534921                                   
+                    Connectivity:  RS232                                       
+                Input Connection:  Default                                     
+           Calibration Institute:  NML (National Measurement Laboratory,       
+                                   R.O.C.)                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  10-06-BAC-041-01                            
+             Date of Calibration:  1-Jun-2010                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.10-511c8daa                             
+               Setup Description:  SUT Power Supply                            
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.0.0.0              
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  1 cm in front of SUT main air intake        
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,111 |          23.7
+        90% |      1,044 |          23.0
+        80% |        984 |          23.1
+        70% |        925 |          23.7
+        60% |        857 |          23.8
+        50% |        779 |          23.0
+        40% |        693 |          23.1
+        30% |        611 |          23.8
+        20% |        538 |          23.2
+        10% |        473 |          22.9
+Active Idle |        284 |          23.3
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            22.9 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20101007-00298-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         3,750,007
+    Calibration 2 |                   |                   |         3,752,839
+    Calibration 3 |                   |                   |         3,748,862
+                                                 ssj_ops@calibrated=3,750,851
+             100% |             99.2% |         3,750,851 |         3,720,023
+              90% |             89.8% |         3,375,766 |         3,369,870
+              80% |             80.0% |         3,000,681 |         3,002,215
+              70% |             70.0% |         2,625,596 |         2,626,505
+              60% |             60.0% |         2,250,510 |         2,248,790
+              50% |             50.0% |         1,875,425 |         1,873,856
+              40% |             40.1% |         1,500,340 |         1,502,635
+              30% |             29.9% |         1,125,255 |         1,120,775
+              20% |             20.1% |           750,170 |           753,582
+              10% |             10.0% |           375,085 |           373,642
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20101007-00298.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

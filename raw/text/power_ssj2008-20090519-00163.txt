@@ -1,0 +1,251 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+Plat'Home TRQX-1/50SA                                                          
+SPECpower_ssj2008 = 628 overall ssj_ops/watt                                   
+            Test Sponsor:  Plat'Home                                           
+          SPEC License #:  3835                                                
+               Tested By:  Plat'Home                                           
+           Test Location:  Chiyoda-ku, Tokyo, Japan                            
+               Test Date:  2009/05/19                                          
+             Publication:  Jun 10, 2009                                        
+   Hardware Availability:  Mar-2009                                            
+   Software Availability:  Mar-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         98.9% |       276,488 |           268 |         1,032
+          90% |         90.4% |       252,606 |           260 |           971
+          80% |         79.9% |       223,257 |           250 |           893
+          70% |         70.4% |       196,803 |           241 |           815
+          60% |         60.1% |       168,098 |           232 |           725
+          50% |         50.5% |       141,019 |           222 |           634
+          40% |         40.0% |       111,865 |           213 |           526
+          30% |         30.2% |        84,408 |           204 |           414
+          20% |         20.0% |        55,861 |           195 |           287
+          10% |          9.9% |        27,759 |           186 |           149
+                  Active Idle |             0 |           178 |             0
+                              sum of ssj_ops / sum of power = |           628
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  TRQX-1/50SA                                 
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Plat'Home                                   
+                           Model:  TRQX-1/50SA                                 
+                     Form Factor:  --                                          
+                        CPU Name:  Xeon L5420                                  
+             CPU Characteristics:  Quad-Core, 2.50GHz, 12MB L2 Cache           
+             CPU Frequency (MHz):  2500                                        
+                  CPU(s) Enabled:  4 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  4 (1 / core)                                
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I+D on chip per core                  
+                 Secondary Cache:  12 MB I+D on chip per chip                  
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4 GB                                    
+                  Memory Details:  DDR2-667 CL5 FBDIMM; slots 1, 3, 5, and 7   
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 600                                     
+                             (W):                                              
+            Power Supply Details:  DELTA TDPS-600AB                            
+                      Disk Drive:  1 x 250GB 10K RPM SATA                      
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Intel PRO/1000EB Network Adapter        
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  No                                          
+                  Other Hardware:  No                                          
+
+                                   SOFTWARE                                    
+                Power Management:  Balance(See SUT Notes)                      
+           Operating System (OS):  Windows Server 2003 Standard Edition        
+                      OS Version:  SP1(64-bit)                                 
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle                                      
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.0-50_o-100423-1.6.0_05-20080626-2105-w
+                                   indows-x86_64,compiled mode)                
+        JVM Command-line Options:  -Xms3700m -Xmx3700m -Xns3200m -XXaggressive 
+                                   -Xlargepages -Xgc:genpar -XXcallprofiling   
+                                   -XXgcthreads=2                              
+                                   -XXtlasize:min=4k,preferred=1024k           
+                                   -XXthroughputcompaction -XXlazyUnlocking    
+                    JVM Affinity:  start /affinity [0x03,0x30,0x0C,0xC0]       
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  3700                                        
+           JVM Maximum Heap (MB):  3700                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 1.1.3                                   
+               Director Location:  Controller System                           
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* OS power management settings,"balanced ,Turn off disk 3min, & Turn off       
+display 1min"                                                                  
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Turned off "Adjacent Sector Prefetcher" in BIOS.                             
+* Turned off "HW Prefetcher" in BIOS.                                          
+* Turned off "Execute Disabled bit" in BIOS.                                   
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Plat'Home                                   
+                           Model:  FRQX-1/50SA                                 
+                 CPU Description:  Xeon 5160                                   
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2 Standard Edition SP2 
+                      JVM Vendor:  Oracle                                      
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.3-40_o-112056-1.6.0_11-20090318-2104-w
+                                   indows-ia32,compiled mode)                  
+                     CCS Version:  1.1.3                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric Corporation               
+                           Model:  WT210                                       
+                   Serial Number:  91J340816                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  AIST, JEMIC, and JQA                        
+                   Accredited by:  Yokogwa Electric Corporation                
+               Calibration Label:  B091354                                     
+             Date of Calibration:  25-Mar-2009                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.2-e0c92e60                              
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.40.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+none                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        268 |          20.4
+        90% |        260 |          20.4
+        80% |        250 |          20.4
+        70% |        241 |          20.4
+        60% |        232 |          20.4
+        50% |        222 |          20.4
+        40% |        213 |          20.4
+        30% |        204 |          20.4
+        20% |        195 |          20.4
+        10% |        186 |          20.4
+Active Idle |        178 |          20.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+100V / 50 Hz / 1 phase /  |            20.4 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20090519-00163-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           277,477
+    Calibration 2 |                   |                   |           279,194
+    Calibration 3 |                   |                   |           279,752
+                                                   ssj_ops@calibrated=279,473
+             100% |             98.9% |           279,473 |           276,488
+              90% |             90.4% |           251,526 |           252,606
+              80% |             79.9% |           223,579 |           223,257
+              70% |             70.4% |           195,631 |           196,803
+              60% |             60.1% |           167,684 |           168,098
+              50% |             50.5% |           139,737 |           141,019
+              40% |             40.0% |           111,789 |           111,865
+              30% |             30.2% |            83,842 |            84,408
+              20% |             20.0% |            55,895 |            55,861
+              10% |              9.9% |            27,947 |            27,759
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20090519-00163.0001.txt) for    
+additional details.                                                            
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

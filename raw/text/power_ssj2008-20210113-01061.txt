@@ -1,0 +1,293 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+
+
+Inspur Corporation Inspur NF8480M6                                             
+SPECpower_ssj2008 = 11,344 overall ssj_ops/watt                                
+            Test Sponsor:  Inspur Corporation                                  
+          SPEC License #:  3358                                                
+               Tested By:  Inspur Corporation                                  
+           Test Location:  JINAN, CHINA                                        
+               Test Date:  Jan 11, 2021                                        
+             Publication:  Jan 28, 2021                                        
+   Hardware Availability:  Nov-2020                                            
+   Software Availability:  Oct-2020                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |    11,556,864 |         1,008 |        11,465
+          90% |         90.0% |    10,444,641 |           896 |        11,656
+          80% |         80.0% |     9,274,428 |           774 |        11,980
+          70% |         70.1% |     8,127,807 |           626 |        12,988
+          60% |         60.1% |     6,973,093 |           528 |        13,211
+          50% |         50.0% |     5,799,377 |           451 |        12,858
+          40% |         40.0% |     4,643,659 |           383 |        12,140
+          30% |         30.0% |     3,480,205 |           330 |        10,554
+          20% |         20.0% |     2,317,053 |           284 |         8,162
+          10% |         10.0% |     1,159,866 |           239 |         4,859
+                  Active Idle |             0 |           104 |             0
+                              sum of ssj_ops / sum of power = |        11,344
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  Single Node                                 
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  Inspur NF8480M6                             
+                     Form Factor:  4U                                          
+                        CPU Name:  Intel Xeon Platinum 8380HL                  
+             CPU Characteristics:  28-Core, 2.90GHz, 38.5MB L3 Cache           
+             CPU Frequency (MHz):  2900                                        
+                  CPU(s) Enabled:  112 cores, 4 chips, 28 cores/chip           
+                Hardware Threads:  224 (2 / core)                              
+                CPU(s) Orderable:  1,2,3,4 chips                               
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per chip                   
+                  Tertiary Cache:  39424 KB I+D on chip per chip               
+                     Other Cache:  None                                        
+              Memory Amount (GB):  384                                         
+              # and size of DIMM:  24 x 16 GB                                  
+                  Memory Details:  24 x 16 GB 2Rx8 3200;slots                  
+                                   CPU0_C0D0,CPU0_C1D0, CPU0_C2D0, CPU0_C3D0,  
+                                   CPU0_C4D0, CPU0_C5D0, CPU1_C0D0,CPU1_C1D0,  
+                                   CPU1_C2D0, CPU1_C3D0, CPU1_C4D0,            
+                                   CPU1_C5D0,CPU2_C0D0,CPU2_C1D0, CPU2_C2D0,   
+                                   CPU2_C3D0, CPU2_C4D0, CPU2_C5D0,            
+                                   CPU3_C0D0,CPU3_C1D0, CPU3_C2D0, CPU3_C3D0,  
+                                   CPU3_C4D0, CPU3_C5D0 populated              
+ Power Supply Quantity and Rating  1 x 1300                                    
+                             (W):                                              
+            Power Supply Details:  DELTA_DPS-1300AB-27 A PN:ZMPS1000228        
+                      Disk Drive:  Intel_SSDSCKKB240G_240G_M.2 PN:ZMHD1000582  
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Intel I350 Gigabit Ethernet controller  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver Mode enabled in OS              
+           Operating System (OS):  Windows Server 2019 Datacenter              
+                      OS Version:  Version 1809 (OS Build 17763)               
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   18.9 (build 11.0.9+7-LTS, mixed mode)       
+        JVM Command-line Options:  -server -Xmn1700m -Xms1950m -Xmx1950m       
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC -XX:UseAVX=1          
+                                   -XX:-UseAdaptiveSizePolicy                  
+                                   -XX:-ThreadLocalHandshakes                  
+                    JVM Affinity:  start /NODE [0,2,4,6] /AFFINITY             
+                                   [3,C,30,C0,C000,30000,C0000,30000000,C000000
+                                   0,300000000,C00000000,C0000000000,3000000000
+                                   00,C00000000000];start /NODE [1,3,5,7]      
+                                   /AFFINITY                                   
+                                   [3,C,30,3000,C000,30000,C0000,30000000,C0000
+                                   000,300000000,30000000000,C0000000000,300000
+                                   000000,C00000000000]                        
+                   JVM Instances:  112                                         
+           JVM Initial Heap (MB):  1950                                        
+           JVM Maximum Heap (MB):  1950                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  4.10.0                                      
+     Management Firmware Version:  4.10.02                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  Microsoft Windows KB4056898                 
+
+
+
+                            Boot Firmware Settings                             
+
+* Set "Hardware Prefetcher = Disabled" in BIOS.                                
+* Set "Adjacent Cache  Prefetcher = Disabled" in BIOS.                         
+* Set "DCU Streamer Prefetcher = Disabled" in BIOS.                            
+* Set "Turbo mode = Disabled" in BIOS                                          
+* Set "Sub NUMA Cluster (SNC) = Enable" in BIOS                                
+* Set "C-state = Enabled" in BIOS                                              
+* Set "CPU C6 Report = Enabled" in BIOS                                        
+* Set "Monitor/Mwait = Enabled" in BIOS                                        
+* Set "Memory Patrol Scrub = Disabled"                                         
+* Set Memory Frequency 2933 MHz in BIOS                                        
+* Set "Energy Performance BIAS = Balanced Power" in BIOS                       
+* Set "VT-D = Disabled" in BIOS                                                
+* Set all USB Ports Disabled in BIOS                                           
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Set "Turn off hard disk after = 1 Minute" in OS.                             
+* Minimum Processor State:0%.                                                  
+* Maximum Processor State:100%.                                                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Benchmark was started via Windows Remote Desktop Connection.                 
+* Each JVM instance was affinitized to 2 logical processors                    
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented                 
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented        
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented        
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  Inspur VIT P3400                            
+                 CPU Description:  Intel Core i5-4210m                         
+              Memory amount (GB):  8                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 10                                  
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   18.9 (build 11.0.9+7-LTS, mixed mode)       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT310E                                      
+                   Serial Number:  C2QK23023V                                  
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  China National Accreditation Service for    
+                                   Conformity Assessment (CNAS)                
+                   Accredited by:  Calibration and Testing Center of CEPREI    
+               Calibration Label:  J202010202011G-0013                         
+             Date of Calibration:  22-Oct-2020                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  Connected to PSU 0                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi                                        
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  placed in front the main airflow inlet of   
+                                   the SUT less than 50mm.                     
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 224 due to a     
+known inconsistency in processor reporting with this Java version              
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      1,008 |          22.4
+        90% |        896 |          22.6
+        80% |        774 |          22.4
+        70% |        626 |          22.4
+        60% |        528 |          22.2
+        50% |        451 |          22.1
+        40% |        383 |          22.0
+        30% |        330 |          22.0
+        20% |        284 |          22.2
+        10% |        239 |          22.1
+Active Idle |        104 |          22.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+230V / 50 Hz / 1 phase /  |            22.0 |              57
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20210113-01061-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        11,589,883
+    Calibration 2 |                   |                   |        11,595,980
+    Calibration 3 |                   |                   |        11,603,383
+                                                ssj_ops@calibrated=11,599,681
+             100% |             99.6% |        11,599,681 |        11,556,864
+              90% |             90.0% |        10,439,713 |        10,444,641
+              80% |             80.0% |         9,279,745 |         9,274,428
+              70% |             70.1% |         8,119,777 |         8,127,807
+              60% |             60.1% |         6,959,809 |         6,973,093
+              50% |             50.0% |         5,799,841 |         5,799,377
+              40% |             40.0% |         4,639,873 |         4,643,659
+              30% |             30.0% |         3,479,904 |         3,480,205
+              20% |             20.0% |         2,319,936 |         2,317,053
+              10% |             10.0% |         1,159,968 |         1,159,866
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20210113-01061.WIN-KJ9F99931U6.txt) for additional details.     
+
+
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

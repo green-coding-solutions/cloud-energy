@@ -1,0 +1,253 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Tyan Computer Corporation B8228Y190X2-045V4H                                   
+SPECpower_ssj2008 = 3,293 overall ssj_ops/watt                                 
+            Test Sponsor:  Advanced Micro Devices                              
+          SPEC License #:  49                                                  
+               Tested By:  AMD Performance Lab                                 
+           Test Location:  Austin, TX, USA                                     
+               Test Date:  Nov 6, 2012                                         
+             Publication:  Dec 4, 2012                                         
+   Hardware Availability:  Dec-2012                                            
+   Software Availability:  Jun-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Parts Built                                         
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |       843,336 |           186 |         4,537
+          90% |         90.0% |       762,728 |           177 |         4,308
+          80% |         80.0% |       678,268 |           167 |         4,062
+          70% |         69.9% |       592,598 |           156 |         3,805
+          60% |         59.7% |       506,069 |           143 |         3,534
+          50% |         49.8% |       422,222 |           129 |         3,262
+          40% |         39.8% |       337,368 |           116 |         2,917
+          30% |         30.2% |       256,268 |           104 |         2,464
+          20% |         20.1% |       170,120 |          93.4 |         1,821
+          10% |         10.1% |        85,183 |          82.3 |         1,035
+                  Active Idle |             0 |          59.5 |             0
+                              sum of ssj_ops / sum of power = |         3,293
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Tyan Computer Corporation                   
+                           Model:  B8228Y190X2-045V4H                          
+                     Form Factor:  1 of 2 Blades in 1U Rackmount Frame         
+                        CPU Name:  AMD Opteron 4376 HE                         
+             CPU Characteristics:  8 Core, 2.6GHz, 6MB L3 Cache                
+             CPU Frequency (MHz):  2600                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  16 (1 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  256 KB I + 128 KB D on chip per chip        
+                 Secondary Cache:  8 MB I+D on chip per chip                   
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  32                                          
+              # and size of DIMM:  4 x 8 GB                                    
+                  Memory Details:  8GB 2Rx4 PC3L-12800R                        
+ Power Supply Quantity and Rating  1 x 450                                     
+                             (W):                                              
+            Power Supply Details:  3Y Power Technology YM-2451C                
+                      Disk Drive:  1 x 128GB, SSD, 2.5" SATA, WD               
+                                   SSC-D0128SC-2100                            
+                 Disk Controller:  Integrated AMD SP5100 SATA Controller       
+  # and type of Network Interface  1 x Intel 82576 GigaBit Dual Port           
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Balanced Power profile                      
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                      OS Version:  SP1                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209(JIT 
+                                   enabled, AOT enabled))                      
+        JVM Command-line Options:  -Xms1875m -Xmn1400m -Xmx1875m -Xlp          
+                                   -Xaggressive -XlockReservation              
+                                   -Xcompressedrefs -Xnoloa -Xgcpolicy:gencon  
+                                   -Xthr:minimizeUserCPU -Xgcthreads2          
+                    JVM Affinity:  start /affinity [03,0C,30,C0] /node [0|1]   
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  0.25                                        
+     Management Firmware Version:  1.00                                        
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* CPB Mode: Disable                                                            
+* Onboard 82574 NIC: Disabled                                                  
+* Onboard 82576 NIC2: Disabled                                                 
+* Serial Port1 Address: Disabled                                               
+* Serial Port2 Address: Disabled                                               
+* Coherent HT Link Speed: 1 GHz                                                
+* Noncoherent HT Link Speed: 1.2 GHz                                           
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to one Core Unit pair.                     
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run started via Remote Desktop                                               
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  Inspiron 1721                               
+                 CPU Description:  AMD Turion 64 X2 TL-60                      
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows 7 Enterprise              
+                      JVM Vendor:  Sun Microsystems                            
+                     JVM Version:  Java HotSpot(TM) Client VM (build 14.2-b01, 
+                                   mixed mode, sharing)                        
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91M215719                                   
+                    Connectivity:  USB-to-Serial                               
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Yokogawa Corporation of America             
+               Calibration Label:  022412-91M215719                            
+             Date of Calibration:  24-Feb-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Unknown                                     
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.10.26.0            
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        186 |          22.3
+        90% |        177 |          22.3
+        80% |        167 |          22.2
+        70% |        156 |          22.2
+        60% |        143 |          22.2
+        50% |        129 |          22.2
+        40% |        116 |          22.1
+        30% |        104 |          22.1
+        20% |       93.4 |          22.1
+        10% |       82.3 |          22.1
+Active Idle |       59.5 |          22.0
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.0 |             168
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121113-00583-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           799,151
+    Calibration 2 |                   |                   |           847,558
+    Calibration 3 |                   |                   |           847,364
+                                                   ssj_ops@calibrated=847,461
+             100% |             99.5% |           847,461 |           843,336
+              90% |             90.0% |           762,715 |           762,728
+              80% |             80.0% |           677,969 |           678,268
+              70% |             69.9% |           593,223 |           592,598
+              60% |             59.7% |           508,476 |           506,069
+              50% |             49.8% |           423,730 |           422,222
+              40% |             39.8% |           338,984 |           337,368
+              30% |             30.2% |           254,238 |           256,268
+              20% |             20.1% |           169,492 |           170,120
+              10% |             10.1% |            84,746 |            85,183
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20121113-00583.svrpwr-tyan.txt) 
+for additional details.                                                        
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

@@ -1,0 +1,185 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+
+
+Supermicro Inc. 1022G-NTF                                                      
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Advanced Micro Devices                              
+          SPEC License #:  49                                                  
+               Tested By:  Advanced Micro Devices                              
+           Test Location:  Austin, TX, USA                                     
+               Test Date:  Nov 13, 2013                                        
+             Publication:  Jan 22, 2014                                        
+   Hardware Availability:  Jan-2014                                            
+   Software Availability:  Oct-2013                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. SPEC has determined that this result
+is not in compliance with the SPECpower_ssj2008 Run & Reporting Rules 2.10     
+General Availability. Specifically the submitter generated the results whilst  
+using a combination of Microsoft Windows Server 2012 or 2012 R2 together with  
+the IBM J9 7.0 SR1 virtual machine. IBM has subsequently stated that this      
+combination is unsupported.                                                    
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro Inc.                             
+                           Model:  1022G-NTF                                   
+                     Form Factor:  1U                                          
+                        CPU Name:  AMD Opteron 6370P (AMD Turbo CORE Technology
+                                   up to 2.50GHz)                              
+             CPU Characteristics:  16 Core, 2.0GHz, 16MB L3 Cache              
+             CPU Frequency (MHz):  2000                                        
+                  CPU(s) Enabled:  32 cores, 2 chips, 16 cores/chip            
+                Hardware Threads:  32 (1 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  512 KB I + 256 KB D on chip per chip        
+                 Secondary Cache:  16 MB I+D on chip per chip, 2 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  16 MB I+D on chip per chip, 8 MB shared / 8 
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  64                                          
+              # and size of DIMM:  8 x 8 GB                                    
+                  Memory Details:  8GB 2Rx4 PC3L-10600R-09-10; slots 1a, 2a,   
+                                   3a, 4a populated per socket                 
+ Power Supply Quantity and Rating  1 x 560                                     
+                             (W):                                              
+            Power Supply Details:  Supermicro PWS-563-1H20                     
+                      Disk Drive:  1 x 240 GB Corsair F240 SATA SSD            
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Intel 82576 Gigabit Dual Port Ethernet  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Balanced Power profile                      
+           Operating System (OS):  Windows Server 2012 R2 Standard             
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209(JIT 
+                                   enabled, AOT enabled))                      
+        JVM Command-line Options:  -Xms1875m -Xmn1400m -Xmx1875m -Xlp          
+                                   -Xaggressive -XlockReservation              
+                                   -Xcompressedrefs -Xnoloa -Xgcpolicy:gencon  
+                                   -Xthr:minimizeUserCPU -Xgcthreads2          
+                    JVM Affinity:  start /affinity [03,0C,30,C0] /node         
+                                   [0|1|2|3]                                   
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  3.0a 10/3/2012                              
+     Management Firmware Version:  v2.36                                       
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+=                                                                              
+* CPB Mode: Disable                                                            
+* Load Onboard LAN1 Option ROM: Disable                                        
+* Serial Port1 and Port 2: Disabled                                            
+* Fan Speed Control Modes: Energy Saving/ES                                    
+* HT Speed Support: HT1                                                        
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Using the local security settings console,"lock pages in memory" was enabled 
+for the user running the benchmark.                                            
+* Each JVM instance was affinitized to two core unit pairs.                    
+* Benchmark was started via Windows Remote Desktop Connection.                 
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell                                        
+                           Model:  Inspiron 1721                               
+                 CPU Description:  AMD Turion TL-60 2.00 GHz                   
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2008 R2 Enterprise           
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.7.0_40-b43) Java HotSpot(TM) Client VM    
+                                   (build 24.0-b56, mixed mode, sharing)       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91K30858                                    
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Tektronix                                   
+               Calibration Label:  7818973                                     
+             Date of Calibration:  26-Sep-2013                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.6.1-ddf12a8b-20130626                     
+               Setup Description:  Unknown                                     
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.30.2.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Unknown                                     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

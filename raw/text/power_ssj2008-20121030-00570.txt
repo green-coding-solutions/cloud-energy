@@ -1,0 +1,270 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Dell Inc. PowerEdge R420 (Intel Xeon E5-2470, 2.30 GHz)                        
+SPECpower_ssj2008 = 5,420 overall ssj_ops/watt                                 
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, TX, USA                                 
+               Test Date:  Oct 22, 2012                                        
+             Publication:  Nov 14, 2012                                        
+   Hardware Availability:  Oct-2012                                            
+   Software Availability:  Jun-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         98.9% |     1,511,097 |           263 |         5,750
+          90% |         89.9% |     1,374,059 |           222 |         6,188
+          80% |         80.1% |     1,223,446 |           192 |         6,376
+          70% |         69.9% |     1,068,676 |           171 |         6,256
+          60% |         59.9% |       915,119 |           146 |         6,270
+          50% |         50.0% |       764,363 |           128 |         5,993
+          40% |         39.9% |       609,107 |           114 |         5,322
+          30% |         29.9% |       457,364 |          98.0 |         4,667
+          20% |         20.1% |       307,187 |          84.7 |         3,628
+          10% |         10.0% |       152,719 |          75.3 |         2,028
+                  Active Idle |             0 |          53.3 |             0
+                              sum of ssj_ops / sum of power = |         5,420
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  PowerEdge R420                              
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge R420 (Intel Xeon E5-2470, 2.30    
+                                   GHz)                                        
+                     Form Factor:  1U                                          
+                        CPU Name:  Intel Xeon E5-2470 (Intel Turbo Boost       
+                                   Technology up to 3.10 GHz )                 
+             CPU Characteristics:  8 core, 2.30GHz, 20MB L3 Cache              
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  32 (2 / core)                               
+                CPU(s) Orderable:  1, 2 chips                                  
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  24                                          
+              # and size of DIMM:  6 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-10600E-9 ECC; Slots A1-3,B1-3 
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 550                                     
+                             (W):                                              
+            Power Supply Details:  Dell P/N RYMG6                              
+                      Disk Drive:  1 x 100GB SATA SSD, Dell P/N DYW42          
+                 Disk Controller:  Integrated PERC S110                        
+  # and type of Network Interface  Integrated 1 x dual-port Broadcom 5720      
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver plan in OS                      
+           Operating System (OS):  Microsoft Windows Server 2008 x64 Enterprise
+                                   Edition                                     
+                      OS Version:  R2 SP1                                      
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmx1024m     
+                                   -Xms1024m -Xmn800m -XlockReservation -Xnoloa
+                                   -XtlhPrefetch -Xlp -Xconcurrentlevel0       
+                                   -Xthr:minimizeusercpu -Xgcthreads4          
+                    JVM Affinity:  start /affinity                             
+                                   [3,C,30,C0,300,C00,3000,C000,30000,C0000,300
+                                   000,C00000,3000000,C000000,30000000,C0000000
+                                   ,]                                          
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1024                                        
+           JVM Maximum Heap (MB):  1024                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.3.5                                       
+     Management Firmware Version:  1.22.23 (Build 1)                           
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* QPI Speed = 6.4GT/s                                                          
+* Virtualization = disabled                                                    
+* Adjacent Cache Line Prefetch = disabled                                      
+* Hardware Prefetcher = disabled                                               
+* DCU Streamer Prefetcher = disabled                                           
+* Execute disable = disabled                                                   
+* USB Ports = only back ports on                                               
+* Internal USB = off                                                           
+* System Profile = Custom                                                      
+* CPU Power Management = DAPC                                                  
+* Intel Turbo Boost = enabled                                                  
+* Memory Frequency = 1333MHz                                                   
+* Memory Patrol Scrub = disabled                                               
+* Memory Refresh Rate = 1x                                                     
+* Memory Operating Voltage = Auto                                              
+* Collaborative CPU Performance Control = disabled                             
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was bound to 2 logical processors                          
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run initiated via Windows Remote Desktop Connection                          
+* Hard Disk set to turn off after 1 minute                                     
+* Display set to turn off after 1 minute                                       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc                                    
+                           Model:  Poweredge 1950                              
+                 CPU Description:  Intel Xeon E5470, 3.33 GHz                  
+              Memory amount (GB):  8.0                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2003 Enterprise    
+                                   Edition Service Pack 2                      
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Hotspot(TM) Client VM, version 1.6.0_32     
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91KA25149                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SIMCO                                       
+               Calibration Label:  5477872                                     
+             Date of Calibration:  16-Dec-2011                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Connected to power supply                   
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.30.2.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  25 mm in front of SUT main airflow intake   
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        263 |          21.1
+        90% |        222 |          21.1
+        80% |        192 |          21.1
+        70% |        171 |          21.1
+        60% |        146 |          21.2
+        50% |        128 |          21.2
+        40% |        114 |          21.2
+        30% |       98.0 |          21.2
+        20% |       84.7 |          21.1
+        10% |       75.3 |          21.1
+Active Idle |       53.3 |          21.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            21.1 |             255
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121030-00570-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,444,259
+    Calibration 2 |                   |                   |         1,526,611
+    Calibration 3 |                   |                   |         1,529,494
+                                                 ssj_ops@calibrated=1,528,052
+             100% |             98.9% |         1,528,052 |         1,511,097
+              90% |             89.9% |         1,375,247 |         1,374,059
+              80% |             80.1% |         1,222,442 |         1,223,446
+              70% |             69.9% |         1,069,637 |         1,068,676
+              60% |             59.9% |           916,831 |           915,119
+              50% |             50.0% |           764,026 |           764,363
+              40% |             39.9% |           611,221 |           609,107
+              30% |             29.9% |           458,416 |           457,364
+              20% |             20.1% |           305,610 |           307,187
+              10% |             10.0% |           152,805 |           152,719
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20121030-00570.WIN-FF9U195UFVP.txt) for additional details.     
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

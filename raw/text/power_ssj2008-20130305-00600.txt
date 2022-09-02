@@ -1,0 +1,264 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+
+
+Hitachi, Ltd. HA8000/SS10 (DL2)                                                
+SPECpower_ssj2008 = 3,963 overall ssj_ops/watt                                 
+            Test Sponsor:  Hitachi, Ltd.                                       
+          SPEC License #:  35                                                  
+               Tested By:  Hitachi, Ltd.                                       
+           Test Location:  Hadano, Kanagawa, Japan                             
+               Test Date:  Mar 5, 2013                                         
+             Publication:  Mar 20, 2013                                        
+   Hardware Availability:  Nov-2012                                            
+   Software Availability:  Jun-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |       407,490 |          69.7 |         5,848
+          90% |         89.6% |       366,656 |          67.0 |         5,470
+          80% |         80.3% |       328,687 |          64.2 |         5,123
+          70% |         70.2% |       287,602 |          58.8 |         4,888
+          60% |         60.0% |       245,648 |          53.1 |         4,630
+          50% |         50.4% |       206,433 |          49.4 |         4,179
+          40% |         40.1% |       164,312 |          46.3 |         3,549
+          30% |         30.3% |       124,130 |          43.7 |         2,843
+          20% |         20.2% |        82,640 |          41.2 |         2,008
+          10% |          9.8% |        39,991 |          38.8 |         1,031
+                  Active Idle |             0 |          36.6 |             0
+                              sum of ssj_ops / sum of power = |         3,963
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hitachi, Ltd.                               
+                           Model:  HA8000/SS10 (DL2)                           
+                     Form Factor:  Tower                                       
+                        CPU Name:  Intel Xeon E3-1220v2 (Intel Turbo Boost     
+                                   Technology up to 3.50 GHz)                  
+             CPU Characteristics:  Quad Core, 3.10GHz, 8MB L3 Cache            
+             CPU Frequency (MHz):  3100                                        
+                  CPU(s) Enabled:  4 cores, 1 chip, 4 cores/chip               
+                Hardware Threads:  4 (1 / core)                                
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  2 x 4096 GB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-12800E ECC CL11; slots DIMM_#2
+                                   and DIMM_#4 populated                       
+ Power Supply Quantity and Rating  1 x 250                                     
+                             (W):                                              
+            Power Supply Details:  Lead Year TG10-0250-01                      
+                      Disk Drive:  1 x 500GB SATA (Hitachi P/N:GQ-UH75006S)    
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Dual-Port Broadcom BCM5718 Gigabit      
+          Cards (NICs) Installed:  Network Connection (onboard)                
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (Power saver)                       
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   SP1                                         
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 JIT 
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs               
+                                   -Xgcpolicy:gencon -Xms1950m -Xmx1950m       
+                                   -Xmn1400m -XlockReservation -Xnoloa         
+                                   -XtlhPrefetch -Xlp                          
+                    JVM Affinity:  start /affinity [3,C]                       
+                   JVM Instances:  2                                           
+           JVM Initial Heap (MB):  1950                                        
+           JVM Maximum Heap (MB):  1950                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  LU.1.00.01                                  
+     Management Firmware Version:  06.33                                       
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* CPU C3 Report Disabled.                                                      
+* CPU C6 Report Enabled.                                                       
+* Package C State limit set to No Limit.                                       
+* Hardware Prefetcher Disabled.                                                
+* Adjacent Cache Line Prefetcher Disabled.                                     
+* L1 Data  Prefetcher Disabled.                                                
+* Turbo mode Enabled.                                                          
+* Memory Frequency 1333MHz.                                                    
+* USB Front Port Disabled.                                                     
+* USB BMC Port Disabled.                                                       
+* USB Internal Port  Disabled.                                                 
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Windows power profile set to "Power saver".                                  
+* Turn off Hard Disks after 1 minute.                                          
+* Processor power management Minimum processor state set to 0%.                
+* Processor power management Maximum processor state set to 100%.              
+* Run was started via Remote Desktop.                                          
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hitachi, Ltd.                               
+                           Model:  HA8000/RS110 (AH)                           
+                 CPU Description:  Intel core i3 540                           
+              Memory amount (GB):  4                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise    
+                                   32-bit SP2                                  
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.6.0_30-b12)                               
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91K717967                                   
+                    Connectivity:  RS-232C                                     
+                Input Connection:  Default                                     
+             Metrology Institute:  AIST (National Institute of Advanced        
+                                   Industrial Science and Technology)          
+                   Accredited by:  Yokogawa Meters & Instruments Corporation   
+               Calibration Label:  S2012-06-50931                              
+             Date of Calibration:  12-Jun-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.10.26.0            
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  40 mm in front of SUT main airflow intake   
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |       69.7 |          23.2
+        90% |       67.0 |          23.2
+        80% |       64.2 |          23.3
+        70% |       58.8 |          23.3
+        60% |       53.1 |          23.4
+        50% |       49.4 |          23.3
+        40% |       46.3 |          23.4
+        30% |       43.7 |          23.4
+        20% |       41.2 |          23.4
+        10% |       38.8 |          23.4
+Active Idle |       36.6 |          23.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+100V / 50 Hz / 1 phase /  |            23.2 |             105
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20130305-00600-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           403,511
+    Calibration 2 |                   |                   |           409,357
+    Calibration 3 |                   |                   |           409,500
+                                                   ssj_ops@calibrated=409,429
+             100% |             99.5% |           409,429 |           407,490
+              90% |             89.6% |           368,486 |           366,656
+              80% |             80.3% |           327,543 |           328,687
+              70% |             70.2% |           286,600 |           287,602
+              60% |             60.0% |           245,657 |           245,648
+              50% |             50.4% |           204,714 |           206,433
+              40% |             40.1% |           163,772 |           164,312
+              30% |             30.3% |           122,829 |           124,130
+              20% |             20.2% |            81,886 |            82,640
+              10% |              9.8% |            40,943 |            39,991
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20130305-00600.WIN-O7O6EHP5IVF.txt) for additional details.     
+
+
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

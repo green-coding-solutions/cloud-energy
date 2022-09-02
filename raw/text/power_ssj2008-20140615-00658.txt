@@ -1,0 +1,191 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+
+
+Sugon I840-G25 (Intel Xeon E7-4850 v2 2.30GHz)                                 
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Sugon                                               
+          SPEC License #:  9046                                                
+               Tested By:  Sugon                                               
+           Test Location:  Peking, China                                       
+               Test Date:  Jun 5, 2014                                         
+             Publication:  Jul 15, 2014                                        
+   Hardware Availability:  Mar-2014                                            
+   Software Availability:  Sep-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supper                                       
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. SPEC has determined that this result
+is not in compliance with the SPECpower_ssj2008 Run & Reporting Rules 2.10     
+General Availability. Specifically the submitter generated the results whilst  
+using a combination of Microsoft Windows Server 2012 or 2012 R2 together with  
+the IBM J9 7.0 SR1 virtual machine. IBM has subsequently stated that this      
+combination is unsupported.                                                    
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  I840-G25                                    
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Sugon                                       
+                           Model:  I840-G25 (Intel Xeon E7-4850 v2 2.30GHz)    
+                     Form Factor:  4U                                          
+                        CPU Name:  Intel Xeon E7-4850 v2 2.30GHz (Intel Turbo  
+                                   Boost Technology up to 2.80GHz)             
+             CPU Characteristics:  12 Cores, 2.3GHz, 24MB L3 Cache             
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  48 cores, 4 chips, 12 cores/chip            
+                Hardware Threads:  96 (2 / core)                               
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  24 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  16 x 8192 MB                                
+                  Memory Details:  8GB 2Rx4 PC3L-10600R-09 ECC; Memory slots   
+                                   P1M1, P2M1, P3M1, P4M1 (on Mother Board)    
+                                   populated for Riser 1-4 and Memory slots A1,
+                                   B1, C1, D1 (on each Memory Riser) populated 
+ Power Supply Quantity and Rating  1 x 1620                                    
+                             (W):                                              
+            Power Supply Details:  Compuware Technology Inc.PWS-1K62P-1R       
+                      Disk Drive:  1 x 160 GB SATA SSD(Intel SSD 320 Series    
+                                   P/N:E75402-601)                             
+                 Disk Controller:  Integrated RSTe SATA controller             
+  # and type of Network Interface  1 x Intel Dual-port X540 AT2                
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Balanced power plan in OS,see SUT Notes     
+           Operating System (OS):  Microsoft Windows Server 2012 Datacenter    
+                      OS Version:  Version 6.2 (Build 9200)                    
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6,JRE 1.7.0 Windows      
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled,AOT enabled)                        
+        JVM Command-line Options:  -Xmn1200m -Xms1400m -Xmx1400m -Xaggressive  
+                                   -Xcompressedrefs -XlockReservation -Xnoloa  
+                                   -XtlhPrefetch -Xthr:minimizeusercpu         
+                                   -Xgcthreads4                                
+                                   -Xgc:preferredHeapBase=0x80000000           
+                    JVM Affinity:  start /NODE 0,1,2,3 /affinity               
+                                   [00000F,0000F0,000F00,00F000,0F0000,F00000] 
+                   JVM Instances:  24                                          
+           JVM Initial Heap (MB):  1400                                        
+           JVM Maximum Heap (MB):  1400                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.0                                         
+     Management Firmware Version:  01.41                                       
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* Performance/Watt: Power Optimized                                            
+* VMX: Disable                                                                 
+* Hardware Prefetcher: Disable                                                 
+* Adjacent Cache Prefetcher: Disable                                           
+* Dcu Streamer Prefetcher: Disable                                             
+* Power Technology: Custom                                                     
+* Turbo Mode: Enable                                                           
+* P-State coordination: SW_ALL                                                 
+* Package C State limit: C6(non-retention)                                     
+* ACPI T-States: Enable                                                        
+* (QPI)Link Frequency Select: 6.4GB/s                                          
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was bound to 4 logical processors.                         
+* Run initiated via Windows Remote Desktop Connection.                         
+* Hard Disk set to turn off after 1 minute                                     
+* Display set to turn off after 1minute                                        
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Sugon                                       
+                           Model:  I620-G15                                    
+                 CPU Description:  E5-2660 V2                                  
+              Memory amount (GB):  24                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition Service Pack 1                      
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM(build 2.6,JRE 1.7.0)              
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation.
+                           Model:  WT310                                       
+                   Serial Number:  C2PB07002V                                  
+                    Connectivity:  Ethernet                                    
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS                                        
+                   Accredited by:  Calibration and Testing Center of CEPREI    
+               Calibration Label:  2GB14002935-0002                            
+             Date of Calibration:  4-May-2014                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.6.2-1746a8d2-20131204                     
+               Setup Description:  Attached to power supply 1                  
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  iButtonLink T-sense/T-Probe                 
+                           Model:  Tsense                                      
+                  Driver Version:  2.8.30.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  3 cm in front of SUT main air inlet         
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

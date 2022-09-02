@@ -1,0 +1,267 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2015 Standard Performance Evaluation Corporation      
+
+
+Dell Inc. PowerEdge M830 (Intel Xeon E5-4669 v3, 2.10 GHz)                     
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, TX, USA                                 
+               Test Date:  Jul 1, 2015                                         
+             Publication:  Jul 28, 2015                                        
+   Hardware Availability:  Jun-2015                                            
+   Software Availability:  Jun-2013                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. Specifically, this result has been  
+marked as Non-Compliant because more than three years elapsed between the Java 
+Runtime Environment General Availability date and the processor General        
+Availability, and more than four years between the Operating System General    
+Availability and the processor General Availability.                           
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         8 |         32 |        576 |      1,152 |      1,024 |              8 |       576
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Dell PowerEdge M1000e                       
+                     Form Factor:  10U                                         
+ Power Supply Quantity and Rating  3 x 3000                                    
+                             (W):                                              
+            Power Supply Details:  Dell PN 8V4DK                               
+                  Network Switch:  Dell PowerConnect 6248                      
+          Network Switch Details:  48 Port 1Gb Ethernet Switch                 
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  Dell M1000e Chassis Management Controller,  
+                                   Dell P/N: JV95D; Dell 16-Port Gigabit       
+                                   Ethernet Pass-Through Module, Dell P/N:     
+                                   WW060                                       
+                         Comment:  Network switch not measured for power       
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  M830                                        
+            # of Identical Nodes:  8                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge M830 (Intel Xeon E5-4669 v3, 2.10 
+                                   GHz)                                        
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Xeon E5-4669 v3 2.10 GHz (Intel Turbo 
+                                   Boost technology up to 2.90 GHz)            
+             CPU Characteristics:  18 Core, 2.10 GHz, 45MB L3 Cache            
+             CPU Frequency (MHz):  2100                                        
+                  CPU(s) Enabled:  72 cores, 4 chips, 18 cores/chip            
+                Hardware Threads:  144 (2 / core)                              
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  45 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  16 x 8 GB                                   
+                  Memory Details:  8GB 2Rx8 PC4-2133P ECC, Dell P/N H8PGN,     
+                                   Slots A1-4,B1-4,C1-4,D1-4 populated         
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 120 GB 2.5" SATA SSD, Dell P/N: XRD5Y   
+                 Disk Controller:  Embedded SATA                               
+  # and type of Network Interface  1 x Broadcom BCM57810-K Dual Port 10 Gb,    
+          Cards (NICs) Installed:  Dell P/N C0P7J                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power Saver Mode in OS (See Notes)          
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise R2 
+                                   SP1                                         
+                      OS Version:  Version 6.1.7601 Service Pack 1 Build 7601  
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmn825m      
+                                   -Xms975m -Xmx975m -XlockReservation -Xnoloa 
+                                   -XtlhPrefetch -Xlp -Xconcurrentlevel0       
+                                   -Xthr:minimizeusercpu -Xgcthreads2          
+                                   -Xgcpolicy:gencon                           
+                    JVM Affinity:  start /NODE [0,1,2,3] /affinity             
+                                   [0x3,0xC,0x30,0xC0,0x300,0xC00,0x3000,0xC000
+                                   ,0x30000,0xC0000,0x300000,0xC00000,0x3000000
+                                   ,0xC000000,0x30000000,0xC0000000,0x300000000
+                                   ,0xC00000000]                               
+                   JVM Instances:  72                                          
+           JVM Initial Heap (MB):  975                                         
+           JVM Maximum Heap (MB):  975                                         
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.1.5                                       
+     Management Firmware Version:  iDRAC7 2.15.10.10                           
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM Websphere Application Server V8.5.0.0,  
+                                   Microsoft Hotfix for Windows (KB2510206)    
+
+
+
+                            Boot Firmware Settings                             
+
+* QPI Speed set to 6.4 GT/s                                                    
+* Adjacent Cache Line Prefetch disabled.                                       
+* Hardware Prefetcher disabled.                                                
+* DCU Streamer Prefetcher disabled.                                            
+* System Profile set to Custom                                                 
+* CPU Power management set to System DBPM (DAPC).                              
+* Turbo Boost Enabled                                                          
+* Energy Efficient Turbo Enabled                                               
+* Memory DDR Freq Limit set to Max Performance                                 
+* C1E enabled                                                                  
+* C States enabled                                                             
+* Memory Patrol Scrub disabled                                                 
+* Memory Refresh Rate set to 1x                                                
+* Memory Operating Voltage set to Auto                                         
+* Collaborative CPU Performance Control disabled                               
+* energy Efficient Policy set to Energy Efficient                              
+* Uncore Frequency set to Dynamic                                              
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to two logical processors                  
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started remotely via psexec script                                   
+* Windows Balanced power settings:                                             
+* Turn off Hard Disk after 1 Minute                                            
+* Turn off Display after 1 Minute                                              
+* SPECpower_ssj.props input.load_level.number_warehouses set to 144            
+* Microsoft Hotfix KB2510206 has been installed due to known problems with the 
+group assignment algorithm which does not create a balanced group assignment.  
+For more information see http://support.microsoft.com/kb/2510206               
+* BIOS.SysProfileSettings.PowerSaver enabled via racadm                        
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  R720                                        
+                 CPU Description:  Xeon 2650 v2                                
+              Memory amount (GB):  256                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2012 Enterprise R2 
+                                   SP1                                         
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91KA21978                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Simco Electronics                           
+               Calibration Label:  6930823                                     
+             Date of Calibration:  06-May-2015                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.1-4db18c59-20150211                     
+               Setup Description:  Connected to SUT power supply 1             
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91K948943                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Simco Electronics                           
+               Calibration Label:  6703179                                     
+             Date of Calibration:  13-Oct-2014                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.1-4db18c59-20150211                     
+               Setup Description:  Connected to SUT power supply 2             
+
+                              POWER ANALYZER PWR3                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91N819622                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Simco Electronics                           
+               Calibration Label:  6703181                                     
+             Date of Calibration:  13-Oct-2014                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.1-4db18c59-20150211                     
+               Setup Description:  Connected to SUT power supply 3             
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.30.2.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  50 mm in front of SUT main airflow intake   
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2015 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

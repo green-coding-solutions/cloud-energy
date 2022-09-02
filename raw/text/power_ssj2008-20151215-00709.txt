@@ -1,0 +1,190 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2016 Standard Performance Evaluation Corporation      
+
+
+Supermicro Inc. SYS-5019S-M(X11SSH-F)                                          
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Supermicro Inc                                      
+          SPEC License #:  1176                                                
+               Tested By:  Supermicro Inc.                                     
+           Test Location:  Zhonghe Dist, New Taipei City, Taiwan (R.O.C.)      
+               Test Date:  Dec 8, 2015                                         
+             Publication:  Jan 7, 2016                                         
+   Hardware Availability:  Feb-2016                                            
+   Software Availability:  Sep-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. Specifically, this result has been  
+marked as Non-Compliant because more than three years elapsed between the Java 
+Runtime Environment General Availability date and the processor General        
+Availability, and more than four years between the Operating System General    
+Availability and the processor General Availability.                           
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'SUT'                                   
+
+                  Set Identifier:  SUT                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro Inc.                             
+                           Model:  SYS-5019S-M(X11SSH-F)                       
+                     Form Factor:  1U                                          
+                        CPU Name:  Intel E3-1260L v5                           
+             CPU Characteristics:  4 Core, 2.9GHz, 8MB L3 cache                
+             CPU Frequency (MHz):  2900                                        
+                  CPU(s) Enabled:  4 cores, 1 chip, 4 cores/chip               
+                Hardware Threads:  8 (2 / core)                                
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  2 x 8192 MB                                 
+                  Memory Details:  8GB 2Rx8 PC4-2133P; A1,B1 populated.        
+ Power Supply Quantity and Rating  1 x 350                                     
+                             (W):                                              
+            Power Supply Details:  PWS-350-1H                                  
+                      Disk Drive:  1 x Intel SATA 3Gb/s 32 GB SSD E41512-907   
+                 Disk Controller:  onboard SCU controller                      
+  # and type of Network Interface  1 x Dual-port Onboard Intel I210 Gigabit    
+          Cards (NICs) Installed:  Ethernet controller                         
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver                                 
+           Operating System (OS):  Microsoft Windows Server Enterprise 2008 R2 
+                                   SP1                                         
+                      OS Version:  6.1.7601 Build 7601  (64-bit)               
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  J9 VM (build 2.6,JRE 1.7.0 Windows Server   
+                                   2008 R2 amd64-64 20120322_106209 (JIT       
+                                   enabled,AOT enabled)                        
+        JVM Command-line Options:  -Xmx1875m -Xms1875m -Xmn1400m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                                   -Xconcurrentlevel0 -Xthr:minimizeusercpu    
+                                   -Xgcthreads2                                
+                    JVM Affinity:  start /AFFINITY [0x3,0xC,0x30,0xC0]         
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.0a                                        
+     Management Firmware Version:  0.50                                        
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM WebSphere Application Server V8.5.0.0   
+
+
+
+                            Boot Firmware Settings                             
+
+* Set "Intel Hyper-Threading: Enabled" in BIOS.                                
+* Set "Intel Virtualization Technology: Disable" in BIOS.                      
+* Set "Hardware Prefetch : Disable" in BIOS.                                   
+* Set "Adjacent Cache Line Prefetch: Disable" in BIOS.                         
+* Set "CPU AES: Enable" in BIOS.                                               
+* Set "Boot Performance Mode: Max Non-Turbo Performance" in BIOS.              
+* Set "Hardware P-States(HWP): Disable" in BIOS.                               
+* Set "Turbo Mode: Disabled" in BIOS.                                          
+* Set "Package Limit: C6" in BIOS.                                             
+* Set "CPU DTS: Disable" in BIOS.                                              
+* Set "ACPI 3.0 T-States: Disable" in BIOS.                                    
+* Set "Memory Speed : 2133MHz" in BIOS.                                        
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Benchmark was started via Windows Remote Desktop Connection.                 
+* JVM Settings:                                                                
+* Each JVM instance was affinitized to two logical processors.                 
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Windows Power Saver Settings:                                                
+* Turn off Hard Disk after 1 minute                                            
+* Turn off Display after 1 minute                                              
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Supermicro                                  
+                           Model:  X8SIA                                       
+                 CPU Description:  I7 880 3.07G                                
+              Memory amount (GB):  8                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2008 R2 Enterprise Edition   
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java(TM) SE Runtime Environment (build      
+                                   1.7.0_04-b22) Java HotSpot(TM) 64-Bit Server
+                                   VM(build 23.0-b21)                          
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation.
+                           Model:  WT210                                       
+                   Serial Number:  91M620744                                   
+                    Connectivity:  Serial                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NML (National Measurement Laboratory)       
+                   Accredited by:  Omnio Calibration Lab. Co., Ltd.            
+               Calibration Label:  OCL-2351503H12C7                            
+             Date of Calibration:  13-Mar-2015                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.1-4db18c59-20150211                     
+               Setup Description:  SUT Power Supply                            
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.10.26.0                                   
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  10 mm in front of SUT main air intake       
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+      Copyright (C) 2007-2016 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

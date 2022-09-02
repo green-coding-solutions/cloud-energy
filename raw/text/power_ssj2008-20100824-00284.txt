@@ -1,0 +1,295 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+
+
+Dell Inc. PowerEdge M610                                                       
+SPECpower_ssj2008 = 3,093 overall ssj_ops/watt                                 
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, TX, USA                                 
+               Test Date:  Aug 12, 2010                                        
+             Publication:  Sep 9, 2010                                         
+   Hardware Availability:  Sep-2010                                            
+   Software Availability:  Jul-2009                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |    14,437,407 |         3,716 |         3,885
+          90% |         90.0% |    13,059,903 |         3,339 |         3,911
+          80% |         80.0% |    11,611,558 |         2,998 |         3,873
+          70% |         70.0% |    10,155,306 |         2,721 |         3,733
+          60% |         60.0% |     8,699,021 |         2,484 |         3,502
+          50% |         50.0% |     7,250,931 |         2,296 |         3,158
+          40% |         40.0% |     5,803,201 |         2,107 |         2,754
+          30% |         30.0% |     4,357,138 |         1,932 |         2,255
+          20% |         20.0% |     2,900,976 |         1,755 |         1,653
+          10% |         10.0% |     1,457,648 |         1,550 |           940
+                  Active Idle |             0 |           877 |             0
+                              sum of ssj_ops / sum of power = |         3,093
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+        16 |         32 |        192 |        384 |        192 |             16 |        96
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Dell PowerEdge M1000E                       
+                     Form Factor:  10U                                         
+ Power Supply Quantity and Rating  3 x 2700                                    
+                             (W):                                              
+            Power Supply Details:  Dell PN G803N                               
+                  Network Switch:  1                                           
+          Network Switch Details:  24 port Dell Gigabit Switch                 
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  1 x Dell 16-port Gigabit Ethernet           
+                                   Pass-Through Module                         
+                         Comment:  Network Switch not measured for Power       
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  PowerEdge M610                              
+            # of Identical Nodes:  16                                          
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge M610                              
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Xeon X5670                            
+             CPU Characteristics:  Six Core, 2.93 GHz, 12 MB L3 Cache          
+             CPU Frequency (MHz):  2933                                        
+                  CPU(s) Enabled:  12 cores, 2 chips, 6 cores/chip             
+                Hardware Threads:  24 (2 / core)                               
+                CPU(s) Orderable:  1,2 chip                                    
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  12                                          
+              # and size of DIMM:  6 x 2048 MB                                 
+                  Memory Details:  2GB 2Rx8 PC3L-10600E ECC, Slots A1-A3, B1-B3
+                                   populated                                   
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 50GB 2.5" SSD SATA (Dell PN Y949P)      
+                 Disk Controller:  Modular SATA Pass-Through                   
+  # and type of Network Interface  1 x onboard dual-port Gigabit Ethernet      
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power Saver Mode in OS (See Notes)          
+           Operating System (OS):  Windows 2008 Server Enterprise x64 Edition  
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, J2RE 1.6.0 IBM J9 2.4 
+                                   Windows Server 2008 amd64-64 jvmwa64        
+                                   60sr5-20090519_35743 (JIT enabled, AOT      
+                                   enabled)                                    
+        JVM Command-line Options:  -Xmn1100m -Xms1500m -Xmx1500m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                    JVM Affinity:  start /affinity [F,F0,F00,F000,F0000,F00000]
+                   JVM Instances:  6                                           
+           JVM Initial Heap (MB):  1500                                        
+           JVM Maximum Heap (MB):  1500                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  2.1.9                                       
+     Management Firmware Version:  iDRAC 3.0.0 A02 / CMC 3.0.1 A00             
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Settings                                                                
+* Turbo Disabled in BIOS                                                       
+* Hardware and Adjacent Cache Line Prefetchers disabled in BIOS                
+* DCU Prefetch Disabled in BIOS                                                
+* Data Reuse Disabled in BIOS                                                  
+* Memory Speed set to 1066MHz in BIOS                                          
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* No PSU Redundancy Mode on Chassis                                            
+* Each JVM instance was affinitized to four logical processors.                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Turn Off Hard Disk After 1 minute                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge 1950                              
+                 CPU Description:  Intel Xeon 5160                             
+              Memory amount (GB):  4                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows 2003 Server Enterprise    
+                                   Edition                                     
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Jrockit(R) 1.6.0_02 build R26.4.0-63        
+                                   (32-bit)                                    
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H648897                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Davis Calibration                           
+               Calibration Label:  91H648897                                   
+             Date of Calibration:  22-Sep-2009                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  SUT Power Supply 1                          
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91G643889                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Davis Calibration                           
+               Calibration Label:  91G643889                                   
+             Date of Calibration:  23-Apr-2010                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  SUT Power Supplies 2,3                      
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.20.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5mm in front of chassis                     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      3,716 |          24.5
+        90% |      3,339 |          24.6
+        80% |      2,998 |          24.4
+        70% |      2,721 |          24.5
+        60% |      2,484 |          24.6
+        50% |      2,296 |          24.6
+        40% |      2,107 |          24.4
+        30% |      1,932 |          24.4
+        20% |      1,755 |          24.4
+        10% |      1,550 |          24.4
+Active Idle |        877 |          24.2
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            24.2 |             255
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20100824-00284-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        14,477,014
+    Calibration 2 |                   |                   |        14,520,749
+    Calibration 3 |                   |                   |        14,495,824
+                                                ssj_ops@calibrated=14,508,286
+             100% |             99.5% |        14,508,286 |        14,437,407
+              90% |             90.0% |        13,057,458 |        13,059,903
+              80% |             80.0% |        11,606,629 |        11,611,558
+              70% |             70.0% |        10,155,800 |        10,155,306
+              60% |             60.0% |         8,704,972 |         8,699,021
+              50% |             50.0% |         7,254,143 |         7,250,931
+              40% |             40.0% |         5,803,315 |         5,803,201
+              30% |             30.0% |         4,352,486 |         4,357,138
+              20% |             20.0% |         2,901,657 |         2,900,976
+              10% |             10.0% |         1,450,829 |         1,457,648
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20100824-00284.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

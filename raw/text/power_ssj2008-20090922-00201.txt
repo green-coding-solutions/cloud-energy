@@ -1,0 +1,263 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+IBM Corporation System x3200 M3                                                
+SPECpower_ssj2008 = 2,035 overall ssj_ops/watt                                 
+            Test Sponsor:  IBM Corporation                                     
+          SPEC License #:  11                                                  
+               Tested By:  IBM Corporation                                     
+           Test Location:  NanKang, Taipei, Taiwan                             
+               Test Date:  Sep 18, 2009                                        
+             Publication:  Oct 8, 2009                                         
+   Hardware Availability:  Sep-2009                                            
+   Software Availability:  Jun-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.2% |       311,452 |           118 |         2,649
+          90% |         90.4% |       283,802 |           110 |         2,591
+          80% |         80.0% |       251,210 |          98.8 |         2,542
+          70% |         70.5% |       221,286 |          90.4 |         2,447
+          60% |         60.1% |       188,601 |          81.2 |         2,322
+          50% |         49.8% |       156,186 |          73.4 |         2,127
+          40% |         40.5% |       126,969 |          67.2 |         1,889
+          30% |         30.6% |        95,910 |          60.4 |         1,588
+          20% |         19.9% |        62,503 |          55.0 |         1,137
+          10% |          9.9% |        31,170 |          50.4 |           618
+                  Active Idle |             0 |          45.8 |             0
+                              sum of ssj_ops / sum of power = |         2,035
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  System x3200 M3                             
+                     Form Factor:  Tower                                       
+                        CPU Name:  Intel Xeon X3470                            
+             CPU Characteristics:  Quad-Core, 2.93GHz, 8MB L3 Cache            
+             CPU Frequency (MHz):  2933                                        
+                  CPU(s) Enabled:  4 cores, 1 chip, 4 cores/chip               
+                Hardware Threads:  8 (2 / core)                                
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  8 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  2 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3-10600R ECC CL9; slots 1 and 4  
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 430                                     
+                             (W):                                              
+            Power Supply Details:  DELTA 430W Switching Power Supply           
+                                   (Model:DPS-430EB)                           
+                      Disk Drive:  1 x 250GB 7200RPM 3.5" SATA (IBM            
+                                   P/N:42C0463)                                
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Integrated Intel 82574L Gigabit Ethernet
+          Cards (NICs) Installed:  Controller                                  
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Microsoft Windows Server 2008 x64 Enterprise
+                                   Edition                                     
+                      OS Version:  SP2                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build                            
+                                   pwa6460sr5-20090529_04(SR5))                
+        JVM Command-line Options:  -Xcompressedrefs -Xlp -Xgcpolicy:gencon     
+                                   -Xmn1400m -Xms1875m -Xmx1875m               
+                                   -XlockReservation -Xnoloa -XtlhPrefetch     
+                    JVM Affinity:  start /affinity [0F,F0]                     
+                   JVM Instances:  2                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  GYE119TUS                                   
+     Management Firmware Version:  YU0039B                                     
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+See SUT Notes                                                                  
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Affinity Masks set to 0x0F, 0xF0.                                            
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Screen Saver set to None.                                                    
+* Allow the computer to turn off USB Root Hub to save power.                   
+* Windows power profile set to "Power saver".                                  
+* Turn off hard disk after 1 minute.                                           
+* Processor power management - Minimum processor state = 0%                    
+* Processor power management - Maximum processor state = 100%                  
+* BIOS Settings:                                                               
+* "Operating Mode" set to "Custom Mode"                                        
+* Disable "Turbo Mode"                                                         
+* Enable "CPU C-States"                                                        
+* "Package ACPI C-State limit" set to "ACPI C3"                                
+* Disable "Hardware Prefetcher"                                                
+* Disable "Adjacent Cache Prefetch"                                            
+* Disable "DCU Streamer Prefetcher"                                            
+* Disable "Ethernet 2"                                                         
+* Disable "Commands on USB Interface"                                          
+* "Memory Speed" set to "Power Efficiency"                                     
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  ThinkCentre                                 
+                 CPU Description:  Intel Pentum 4                              
+              Memory amount (GB):  0.5                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows XP Professional Edition             
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  J9 VM build 2.4, J2RE 1.6.0 IBM J9 2.4      
+                                   Windows XP x86-32                           
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. LTD    
+                           Model:  WT210                                       
+                   Serial Number:  91H245649                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NML/ROC                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  09-04-BAC-150-03                            
+             Date of Calibration:  13-Apr-2009                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.8-76a9e72a                              
+               Setup Description:  Unknown                                     
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.20.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Unknown                                     
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        118 |          24.4
+        90% |        110 |          25.1
+        80% |       98.8 |          25.3
+        70% |       90.4 |          25.3
+        60% |       81.2 |          25.2
+        50% |       73.4 |          25.2
+        40% |       67.2 |          25.1
+        30% |       60.4 |          24.6
+        20% |       55.0 |          24.4
+        10% |       50.4 |          24.3
+Active Idle |       45.8 |          24.2
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            24.2 |              63
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20090922-00201-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           310,143
+    Calibration 2 |                   |                   |           313,558
+    Calibration 3 |                   |                   |           314,210
+                                                   ssj_ops@calibrated=313,884
+             100% |             99.2% |           313,884 |           311,452
+              90% |             90.4% |           282,496 |           283,802
+              80% |             80.0% |           251,107 |           251,210
+              70% |             70.5% |           219,719 |           221,286
+              60% |             60.1% |           188,331 |           188,601
+              50% |             49.8% |           156,942 |           156,186
+              40% |             40.5% |           125,554 |           126,969
+              30% |             30.6% |            94,165 |            95,910
+              20% |             19.9% |            62,777 |            62,503
+              10% |              9.9% |            31,388 |            31,170
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20090922-00201.WIN-GFCUEQLZTHI.txt) for additional details.     
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

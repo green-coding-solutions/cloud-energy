@@ -1,0 +1,334 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+IBM Corporation IBM Flex System x440 Compute Node                              
+SPECpower_ssj2008 = 4,847 overall ssj_ops/watt                                 
+            Test Sponsor:  IBM Corporation                                     
+          SPEC License #:  11                                                  
+               Tested By:  IBM Corporation                                     
+           Test Location:  RTP, NC, USA                                        
+               Test Date:  Sep 23, 2012                                        
+             Publication:  Oct 17, 2012                                        
+   Hardware Availability:  Dec-2012                                            
+   Software Availability:  Dec-2012                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.9% |    18,948,103 |         3,331 |         5,688
+          90% |         90.0% |    17,074,188 |         2,970 |         5,749
+          80% |         80.0% |    15,171,623 |         2,635 |         5,757
+          70% |         70.0% |    13,273,666 |         2,305 |         5,759
+          60% |         60.0% |    11,382,809 |         2,038 |         5,586
+          50% |         50.0% |     9,484,096 |         1,806 |         5,253
+          40% |         40.0% |     7,586,520 |         1,622 |         4,677
+          30% |         30.0% |     5,698,588 |         1,471 |         3,874
+          20% |         19.9% |     3,784,122 |         1,333 |         2,839
+          10% |         10.0% |     1,895,516 |         1,197 |         1,583
+                  Active Idle |             0 |           812 |             0
+                              sum of ssj_ops / sum of power = |         4,847
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         7 |         28 |        224 |        448 |        336 |              7 |       112
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  IBM Flex System Enterprise Chassis          
+                     Form Factor:  10U                                         
+ Power Supply Quantity and Rating  3 x 2500                                    
+                             (W):                                              
+            Power Supply Details:  IBM P/N 43W9049                             
+                  Network Switch:  1 x 1GbE Scalabale Switch Module            
+          Network Switch Details:  IBM Flex System EN2092 1 Gb Ethernet        
+                                   Scalable Switch P/N 49Y4294                 
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  None                                        
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  x440                                        
+            # of Identical Nodes:  7                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  IBM Flex System x440 Compute Node           
+                     Form Factor:  Blade                                       
+                        CPU Name:  Intel Xeon E5-4640 (Intel Turbo Boost       
+                                   Technology up to 2.80 GHz)                  
+             CPU Characteristics:  8-core, 2.4GHz, 20MB L3 Cache (Turbo Boost  
+                                   Technology up to 2.8GHz)                    
+             CPU Frequency (MHz):  2400                                        
+                  CPU(s) Enabled:  32 cores, 4 chips, 8 cores/chip             
+                Hardware Threads:  64 (2 / core)                               
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 MB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  48                                          
+              # and size of DIMM:  12 x 4096 MB                                
+                  Memory Details:  4GB 2Rx8 PC3L-10600E ECC CL9; slots 1, 4, 9,
+                                   13, 16, 21, 25, 28, 33, 37, 40, and 45      
+                                   populated                                   
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  1 x 200GB SATA SSD (Feature Code: A2FN)     
+                 Disk Controller:  Integrated SAS controller                   
+  # and type of Network Interface  2 x Dual-Port Emulex BE3 10Gb (onboard)     
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  IBM Power Profile                           
+           Operating System (OS):  Windows Server 2008 R2 Enterprise           
+                      OS Version:  SP1                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 JVM (build 2.6, JRE 1.7.0 Windows    
+                                   Server 2008 R2 amd64-64 20120322_106209 (JIT
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmn1100m     
+                                   -Xms1500m -Xmx1500m -XlockReservation       
+                                   -Xnoloa -XtlhPrefetch -Xlp                  
+                                   -Xconcurrentlevel0                          
+                    JVM Affinity:  start /affinity                             
+                                   [0F,F0,F00,F000,F0000,F00000,F000000,F000000
+                                   0,F00000000,F000000000,F0000000000,F00000000
+                                   000,F000000000000,F0000000000000,F0000000000
+                                   0000,F000000000000000]                      
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1500                                        
+           JVM Maximum Heap (MB):  1500                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  CNE115M                                     
+     Management Firmware Version:  1AOO31l                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* Hardware Prefetcher - Disable                                                
+* Adjacent Cache Prefetch - Disable                                            
+* DCU Streamer Prefetcher - Disable                                            
+* QPI Link Frequency - Minimal  Power                                          
+* Memory Power Management - Automatic                                          
+* Mezzanine1 Card - Disable                                                    
+* Mezzanine1 Device2 - Disable                                                 
+* Mezzanine1  Device3 - Disable                                                
+* Mezzanine2 Card - Disable                                                    
+* Mezzanine2 Device2 - Disable                                                 
+* Mezzanine2 Device3 - Disable                                                 
+* Mezzanine3  Card - Disable                                                   
+* Mezzanine3 Device2 - Disable                                                 
+* Mezzanine3 Device3 - Disable                                                 
+* Mezzanine4 Card - Disable                                                    
+* Mezzanine4  Device2 - Disable                                                
+* Mezzanine4 Device3 - Disable                                                 
+* ETE Expansion Card - Disable                                                 
+* Power Performance Bias - OS Controlled                                       
+* Choose Operating Mode - Custom Mode                                          
+* Commands over USB interface - Disabled                                       
+
+
+                         Management Firmware Settings                          
+
+Acoustic Attenuation set to 1                                                  
+
+
+                            System Under Test Notes                            
+
+* Fabric Connector 2 removed                                                   
+* Each JVM instance was affinitized to a socket.                               
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started via psexec script                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  IBM System x3650 M4                         
+                 CPU Description:  Intel Xeon E5-2690                          
+              Memory amount (GB):  32                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2008 Server R2                      
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE IBM J9 2.4 Windows
+                                   Server 2008 R2 x86-32                       
+                                   jvmwi3260sr10-20111207_96808 (JIT enabled,  
+                                   AOT enabled)                                
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91GB51133                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SIMCO Electronics                           
+               Calibration Label:  34436                                       
+             Date of Calibration:  24-Jan-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Meter 1 Attached to power supply 1          
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91GB37404                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SIMCO Electronics                           
+               Calibration Label:  34435                                       
+             Date of Calibration:  24-Jan-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Meter 2 Attached to power supply 2          
+
+                              POWER ANALYZER PWR3                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91GB51131                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  SIMCO Electronics                           
+               Calibration Label:  34441                                       
+             Date of Calibration:  13-Feb-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.2-bc965ca0-20120417                     
+               Setup Description:  Meter 3 Attached to power supply 3          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.30.2.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  50 mm in front of SUT main airflow intake   
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      3,331 |          20.2
+        90% |      2,970 |          20.2
+        80% |      2,635 |          20.1
+        70% |      2,305 |          20.1
+        60% |      2,038 |          20.1
+        50% |      1,806 |          20.1
+        40% |      1,622 |          20.2
+        30% |      1,471 |          20.1
+        20% |      1,333 |          20.2
+        10% |      1,197 |          20.2
+Active Idle |        812 |          20.2
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.1 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121001-00550-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        18,415,005
+    Calibration 2 |                   |                   |        18,979,574
+    Calibration 3 |                   |                   |        18,961,797
+                                                ssj_ops@calibrated=18,970,685
+             100% |             99.9% |        18,970,685 |        18,948,103
+              90% |             90.0% |        17,073,617 |        17,074,188
+              80% |             80.0% |        15,176,548 |        15,171,623
+              70% |             70.0% |        13,279,480 |        13,273,666
+              60% |             60.0% |        11,382,411 |        11,382,809
+              50% |             50.0% |         9,485,343 |         9,484,096
+              40% |             40.0% |         7,588,274 |         7,586,520
+              30% |             30.0% |         5,691,206 |         5,698,588
+              20% |             19.9% |         3,794,137 |         3,784,122
+              10% |             10.0% |         1,897,069 |         1,895,516
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20121001-00550.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

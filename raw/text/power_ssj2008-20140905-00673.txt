@@ -1,0 +1,190 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+
+
+Inspur Corporation NF5280M4                                                    
+SPECpower_ssj2008 = NC overall ssj_ops/watt                                    
+            Test Sponsor:  Inspur Corporation                                  
+          SPEC License #:  3358                                                
+               Tested By:  Inspur Corporation                                  
+           Test Location:  Jinan, Shandong, P.R.China                          
+               Test Date:  Aug 29, 2014                                        
+             Publication:  Nov 12, 2014                                        
+   Hardware Availability:  Oct-2014                                            
+   Software Availability:  Oct-2013                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+SPEC has determined that this result is not in compliance with the             
+SPECpower_ssj2008 run and reporting rules. SPEC has determined that this result
+is not in compliance with the SPECpower_ssj2008 Run & Reporting Rules 2.10     
+General Availability. Specifically the submitter generated the results whilst  
+using a combination of Microsoft Windows Server 2012 or 2012 R2 together with  
+the IBM J9 7.0 SR1 virtual machine. IBM has subsequently stated that this      
+combination is unsupported.                                                    
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  NF5280M4                                    
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon E5-2699 v3 2.30 GHz (Intel Turbo 
+                                   Boost Technology up to 3.60 GHz)            
+             CPU Characteristics:  18-Core, 2.3GHz, 45MB L3 Cache              
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  36 cores, 2 chips, 18 cores/chip            
+                Hardware Threads:  72 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  45 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  64                                          
+              # and size of DIMM:  8 x 8192 MB                                 
+                  Memory Details:  8GB 1Rx4 PC4-2133P ECC CL15; slots 1, 4, 7, 
+                                   10, 13, 16, 19, and 22 populated            
+ Power Supply Quantity and Rating  1 x 800                                     
+                             (W):                                              
+            Power Supply Details:  Delta DPS-800AB-9X P/N:V07LP0400000000F     
+                      Disk Drive:  Intel S3500 800GB SSD P/N:V03VQ13270S0502F  
+                 Disk Controller:  Onboard SATA controller                     
+  # and type of Network Interface  2 x Intel I350 OnBoard LAN                  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Windows Server 2012 R2                      
+                      OS Version:  Version 6.3.9600 Build 9600                 
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 amd64-64 20120322_106209 (JIT   
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xmn700m -Xms937m -Xmx937m -Xaggressive     
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -XtlhPrefetch -Xlp
+                                   -Xconcurrentlevel0 -Xthr:minimizeusercpu    
+                                   -Xgc:preferredHeapBase=0x80000000           
+                                   -Xgcthreads8                                
+                    JVM Affinity:  start /NODE [0,1,2,3] /AFFINITY             
+                                   [0x3,0xC,0x30,0xC0,0x300,0xC00,0x3000,0xC000
+                                   ,0x30000]                                   
+                   JVM Instances:  36                                          
+           JVM Initial Heap (MB):  937                                         
+           JVM Maximum Heap (MB):  937                                         
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  4.0.1                                       
+     Management Firmware Version:  4.1                                         
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM WebSphere Application Server V8.5.0.0   
+
+
+
+                            Boot Firmware Settings                             
+
+HT	EnabledVMX (Intel VT)	DisabledHardware Prefetcher	DisabledMLC Spatial       
+Prefetcher (Adjacent Cache)	DisabledDCU Streamer Prefetcher	DisabledDCU IP     
+Prefetcher	EnabledAES-NI	EnabledEIST	EnabledTurbo Mode	EnabledPackage C State  
+C6(Retention)C3 report	DisabledC6 report	EnabledC1E	EnabledEnergy Performance  
+BIAS	Balanced PerformanceQPI Link Speed	6.4GB/SCOD	EnabledEarly Snoop          
+EnabledData Scrambling	DisabledEnforce POR	EnabledMemory Throttling Mode	CLTTA7
+Mode	EnabledPatrol Scrub	DisabledDemand scrub	DisabledDevice Tag	DisabledVT-d  
+DisabledNUMA	EnabledISOC	DisabledSATA Controller	Only Port0 EnabledsSATA       
+Controller	Disabled                                                            
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+The benchmark was started with Remote DesktopWindows power plan:               
+balancedMinimum Processor State: 0%Maximum Processor State: 100%Turn off hard  
+disk after 1 minute                                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  VIT P2412                                   
+                 CPU Description:  Intel Core i5-4200M                         
+              Memory amount (GB):  8                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 7 Ultimate Edition SP1              
+                      JVM Vendor:  Oracle                                      
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM (build    
+                                   25.5-b02, mixed mode)                       
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91H622791                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS (China National Accreditation Service  
+                                   for Conformity Assessment)                  
+                   Accredited by:  CTI (Centre Testing International           
+                                   Corporation)                                
+               Calibration Label:  QDCTI140320624-10                           
+             Date of Calibration:  22-Jul-2014                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.7.0-538b1562-20140802                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Edgeport Driver Release v5.10               
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  Sensor was been set in front of the main air
+                                   intake vent of SUT less than 50mm           
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 36 due to a known
+inconsistency in processor reporting with this Java version.                   
+
+
+      Copyright (C) 2007-2014 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

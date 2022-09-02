@@ -1,0 +1,274 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2017 Standard Performance Evaluation Corporation      
+
+
+Inspur Corporation NF5280 M4                                                   
+SPECpower_ssj2008 = 12,296 overall ssj_ops/watt                                
+            Test Sponsor:  Inspur Corporation                                  
+          SPEC License #:  3358                                                
+               Tested By:  Inspur Corporation                                  
+           Test Location:  JINAN, CHINA                                        
+               Test Date:  Aug 6, 2017                                         
+             Publication:  Aug 30, 2017                                        
+   Hardware Availability:  Jun-2016                                            
+   Software Availability:  Jan-2015                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |     3,561,599 |           245 |        14,567
+          90% |         89.9% |     3,210,954 |           221 |        14,551
+          80% |         80.1% |     2,859,402 |           191 |        14,951
+          70% |         70.1% |     2,504,652 |           171 |        14,637
+          60% |         59.9% |     2,138,538 |           156 |        13,676
+          50% |         49.9% |     1,783,222 |           144 |        12,362
+          40% |         40.0% |     1,427,593 |           130 |        10,988
+          30% |         29.9% |     1,068,982 |           113 |         9,483
+          20% |         20.0% |       713,846 |          97.5 |         7,325
+          10% |         10.0% |       357,111 |          82.1 |         4,349
+                  Active Idle |             0 |          45.7 |             0
+                              sum of ssj_ops / sum of power = |        12,296
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  Single Node.                                
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  NF5280 M4                                   
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon E5-2699 v4                       
+             CPU Characteristics:  22-Core, 2.20GHz, 55MB L3 Cache             
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  44 cores, 2 chips, 22 cores/chip            
+                Hardware Threads:  88 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  55 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  8 x 16 GB                                   
+                  Memory Details:  16 GB 2Rx8 PC4-2400N ECC; slots CHA0, CHB0, 
+                                   CHC0, CHD0, CHE0, CHF0, CHG0, CHH0 populated
+ Power Supply Quantity and Rating  1 x 800                                     
+                             (W):                                              
+            Power Supply Details:  Delta DPS-800AB-9X P/N:V07LP0400000000F     
+                      Disk Drive:  Intel SSD DC S3500  Series 6Gb/s 80G        
+                                   PN:ZMHD1000018                              
+                 Disk Controller:  Integrated SATA Controller                  
+  # and type of Network Interface  1 x Intel I350 OnBoard LAN                  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled ("Balanced Performance" power plan) 
+           Operating System (OS):  Microsoft Windows Servers 2012 R2 Standard  
+                      OS Version:  Version 6.3.9600 Build 9600                 
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM)64-Bit Server        
+                                   VM(build 24.80-b11,mixed mode),version      
+                                   1.7.0_80                                    
+        JVM Command-line Options:  -server -Xmn11g -Xms13g -Xmx13g             
+                                   -XX:SurvivorRatio=60                        
+                                   -XX:TargetSurvivorRatio=90                  
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:ParallelGCThreads=22                    
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+AggressiveOpts 
+                                   -XX:+UseLargePages -XX:+UseParallelOldGC    
+                                   -XX:-UseAdaptiveSizePolicy                  
+                    JVM Affinity:  start /NODE [0,1,2,3] /affinity 0x3FFFFF    
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  13000                                       
+           JVM Maximum Heap (MB):  13000                                       
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  4.1.8                                       
+     Management Firmware Version:  4.15                                        
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Set "Hardware Prefetcher = Disabled" in BIOS.                                
+* Set "Adjacent Cache  Prefetcher = Disabled" in BIOS.                         
+* Set "DCU Streamer Prefetcher = Disabled" in BIOS.                            
+* Set "Onboard USB Controllers = Disabled" in BIOS                             
+* Set "System Profile = Custom" in BIOS                                        
+* Set "Energy Performance BIAS = Balanced Power" in BIOS                       
+* Set "Turbo Mode = Disabled" in BIOS                                          
+* Set "EIST (P-states) = Enabled" in BIOS                                      
+* Set "Enhanced Halt State (C1E) = Enabled" in BIOS                            
+* Set "Intel Virtualization Technology = Disabled" in BIOS                     
+* Set "COD Enable = Enabled" in BIOS                                           
+* Set "Monitor/Mwait Support = Enabled" in BIOS                                
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Set "Turn off hard disk after = 1 Minute" in OS.                             
+* Minimum Processor State:0%.                                                  
+* Maximum Processor State:100%.                                                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Benchmark was started via Windows Remote Desktop Connection.                 
+* Each JVM instance was affinitized to 22 logical processors                   
+* Set input.load_level.number_warehouses=88 in SPECpower ssj.props             
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Inspur Corporation                          
+                           Model:  Inspur VIT P3400                            
+                 CPU Description:  Intel Core i5-4210m                         
+              Memory amount (GB):  4                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 7                                   
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 24.80-b11,mixed mode), version       
+                                   1.7.0_80                                    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91H414490                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  China National Accreditation Service for    
+                                   Conformity Assessment (CNAS)                
+                   Accredited by:  Calibration and Testing Center of CEPREI    
+               Calibration Label:  QDCTI170324337-29                           
+             Date of Calibration:  27-Jul-2017                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.0-efc0c004-20160120                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi                                        
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  less than 50mm in front of SUT main airflow.
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        245 |          20.7
+        90% |        221 |          20.8
+        80% |        191 |          21.0
+        70% |        171 |          21.1
+        60% |        156 |          21.1
+        50% |        144 |          21.1
+        40% |        130 |          21.1
+        30% |        113 |          21.0
+        20% |       97.5 |          20.9
+        10% |       82.1 |          20.7
+Active Idle |       45.7 |          20.7
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+230V / 50 Hz / 1 phase /  |            20.7 |              57
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20170807-00775-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         3,536,341
+    Calibration 2 |                   |                   |         3,575,214
+    Calibration 3 |                   |                   |         3,566,083
+                                                 ssj_ops@calibrated=3,570,649
+             100% |             99.7% |         3,570,649 |         3,561,599
+              90% |             89.9% |         3,213,584 |         3,210,954
+              80% |             80.1% |         2,856,519 |         2,859,402
+              70% |             70.1% |         2,499,454 |         2,504,652
+              60% |             59.9% |         2,142,389 |         2,138,538
+              50% |             49.9% |         1,785,324 |         1,783,222
+              40% |             40.0% |         1,428,259 |         1,427,593
+              30% |             29.9% |         1,071,195 |         1,068,982
+              20% |             20.0% |           714,130 |           713,846
+              10% |             10.0% |           357,065 |           357,111
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20170807-00775.WIN-DOJPJ16PNIT.txt) for additional details.     
+
+
+      Copyright (C) 2007-2017 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

@@ -1,0 +1,273 @@
+
+                               SPECpower_ssj2008                               
+        Copyright (C) 2007 Standard Performance Evaluation Corporation         
+
+
+Hewlett-Packard Company Proliant DL580 G5 (1.86 GHz, Intel Xeon processor      
+L7345)                                                                         
+SPECpower_ssj2008 = 546 overall ssj_ops/watt                                   
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Dec 6, 2007                                         
+             Publication:  Dec 11, 2007                                        
+   Hardware Availability:  Jan-2008                                            
+   Software Availability:  Dec-2007                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.2% |       359,523 |           387 |           929
+          90% |         89.9% |       325,931 |           376 |           866
+          80% |         80.6% |       291,991 |           368 |           793
+          70% |         70.5% |       255,512 |           359 |           712
+          60% |         59.9% |       217,222 |           347 |           627
+          50% |         49.7% |       180,262 |           335 |           539
+          40% |         40.0% |       145,079 |           322 |           450
+          30% |         30.4% |       110,173 |           309 |           356
+          20% |         19.7% |        71,409 |           294 |           243
+          10% |         10.0% |        36,070 |           280 |           129
+                  Active Idle |             0 |           271 |             0
+                              sum of ssj_ops / sum of power = |           546
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  Proliant DL580 G5 (1.86 GHz, Intel Xeon     
+                                   processor L7345)                            
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  Proliant DL580 G5 (1.86 GHz, Intel Xeon     
+                                   processor L7345)                            
+                     Form Factor:  --                                          
+                        CPU Name:  Intel Xeon L7345                            
+             CPU Characteristics:  1.86 GHz, 2x4 MB L2 shared, 1066 MHz system 
+                                   bus                                         
+             CPU Frequency (MHz):  1860                                        
+                  CPU(s) Enabled:  16 cores, 4 chips, 4 cores/chip             
+                Hardware Threads:  16 (1 / core)                               
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  8 MB I+D on chip per chip, 4 MB shared / 2  
+                                   cores                                       
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4096 MB                                 
+                  Memory Details:  PC2-5300F CL5 LP; slots 1,5,9,13 populated  
+ Power Supply Quantity and Rating  2 x 1200                                    
+                             (W):                                              
+            Power Supply Details:  HP part # 437572-B21                        
+                      Disk Drive:  1 x 60GB HP, 1.5G, 5.4K, 2.5" SFF SATA HDD  
+                 Disk Controller:  HP Smart Array P400 with 512 MB battery     
+                                   backed write cache                          
+  # and type of Network Interface  2 x NC373i                                  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  HP Dynamic Power Regulator enabled          
+           Operating System (OS):  Microsoft Windows Server 2003 x64 Enterprise
+                                   Edition                                     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   P27.4.0-10-90053-1.6.0_02-20071009-1827-wind
+                                   ows-x86_64, compiled mode)                  
+        JVM Command-line Options:  -Xms3600m -Xmx3600m -Xns3100m -XXaggressive 
+                                   -XXlargePages -XXthroughputCompaction       
+                                   -XXcallprofiling -XXlazyUnlocking           
+                                   -Xgc:genpar -XXgcthreads:2                  
+                                   -XXtlasize:min=12k,preferred=1024k          
+                    JVM Affinity:  Used "start /affinity" with "0xf", "0xf0",  
+                                   "0xf00" and "0xf000" CPU masks              
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  3600                                        
+           JVM Maximum Heap (MB):  3600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 0.23                                    
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a set of 4 cores in a socket.           
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* BIOS Settings                                                                
+* Adjacent Sector Prefetch Disabled                                            
+* Hardware Prefetch Disabled                                                   
+* Operating System Settings                                                    
+* System Properties                                                            
+* The Advanced Performance setting "Processor Scheduling" was set to Programs. 
+* The Advanced Performance setting "Memory Usage" was set to Programs.         
+* Network Settings                                                             
+* The second NIC was disabled.                                                 
+* The "Notify me when this connection has limited or no connectivity" option   
+was unchecked.                                                                 
+* The Optimization setting for "File and Printer Sharing for Microsoft         
+Networks" was set to "Minimize memory used".                                   
+* Time Settings                                                                
+* The "Automatically synchronize with an Internet time server" option was      
+unchecked.                                                                     
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  HP                                          
+                           Model:  ProLiant DL360 G3                           
+                 CPU Description:  Intel Xeon                                  
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows XP Professional           
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.4.0-90-89592-1.6.0-20070928-1715-windows
+                                   -ia32, compiled mode)                       
+                     CCS Version:  0.21                                        
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91F519016                                   
+                    Connectivity:  GPIB                                        
+                Input Connection:  --                                          
+           Calibration Institute:  NIST                                        
+                   Accredited by:  HP Metrology                                
+               Calibration Label:  816347                                      
+             Date of Calibration:  14-Nov-07                                   
+            PTDaemon Host System:  Controller System                           
+                PTDaemon Host OS:  Microsoft Windows XP Professional           
+                PTDaemon Version:  0.21-2f7044de                               
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.20.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  Controller System                           
+                PTDaemon Host OS:  Microsoft Windows XP Professional           
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+* Used GPIB-to-USB adapter, Model GPIB-USB-A from National Instruments (driver 
+version 2.2.0.3500), to connect power analyzer to the controller.              
+* Power analyzer Voltage range: Auto                                           
+* Power Analyzer Current range: Auto                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        387 |          20.8
+        90% |        376 |          20.8
+        80% |        368 |          20.6
+        70% |        359 |          20.6
+        60% |        347 |          20.6
+        50% |        335 |          20.6
+        40% |        322 |          20.6
+        30% |        309 |          20.6
+        20% |        294 |          20.5
+        10% |        280 |          20.5
+Active Idle |        271 |          20.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.4 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20071207-00024-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           366,470
+    Calibration 2 |                   |                   |           363,082
+    Calibration 3 |                   |                   |           361,741
+                                                   ssj_ops@calibrated=362,412
+             100% |             99.2% |           362,412 |           359,523
+              90% |             89.9% |           326,170 |           325,931
+              80% |             80.6% |           289,929 |           291,991
+              70% |             70.5% |           253,688 |           255,512
+              60% |             59.9% |           217,447 |           217,222
+              50% |             49.7% |           181,206 |           180,262
+              40% |             40.0% |           144,965 |           145,079
+              30% |             30.4% |           108,723 |           110,173
+              20% |             19.7% |            72,482 |            71,409
+              10% |             10.0% |            36,241 |            36,070
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20071207-00024.0001.txt) for    
+additional details.                                                            
+
+
+        Copyright (C) 2007 Standard Performance Evaluation Corporation         
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

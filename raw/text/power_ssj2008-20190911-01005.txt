@@ -1,0 +1,292 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2019 Standard Performance Evaluation Corporation      
+
+
+Dell Inc. PowerEdge R7515 (AMD EPYC 7742, 2.25 GHz)                            
+SPECpower_ssj2008 = 16,501 overall ssj_ops/watt                                
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, TX, USA                                 
+               Test Date:  Sep 2, 2019                                         
+             Publication:  Unpublished                                         
+   Hardware Availability:  Sep-2019                                            
+   Software Availability:  Apr-2019                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.8% |     5,676,534 |           246 |        23,090
+          90% |         90.0% |     5,119,824 |           236 |        21,739
+          80% |         80.1% |     4,554,430 |           220 |        20,684
+          70% |         70.1% |     3,985,711 |           205 |        19,473
+          60% |         60.0% |     3,411,318 |           186 |        18,308
+          50% |         50.0% |     2,846,520 |           164 |        17,357
+          40% |         40.0% |     2,276,939 |           151 |        15,055
+          30% |         30.0% |     1,708,951 |           141 |        12,102
+          20% |         20.0% |     1,135,409 |           130 |         8,732
+          10% |         10.0% |       566,487 |           117 |         4,830
+                  Active Idle |             0 |          99.5 |             0
+                              sum of ssj_ops / sum of power = |        16,501
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  PowerEdge R7515                             
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge R7515 (AMD EPYC 7742, 2.25 GHz)   
+                     Form Factor:  2U                                          
+                        CPU Name:  AMD EPYC 7742 2.25 GHz                      
+             CPU Characteristics:  64 core, 2.25 GHz, 256 MB L3 Cache          
+             CPU Frequency (MHz):  2250                                        
+                  CPU(s) Enabled:  64 cores, 1 chip, 64 cores/chip             
+                Hardware Threads:  128 (2 / core)                              
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per core                 
+                  Tertiary Cache:  256 MB I+D on chip per chip, 16 MB shared / 
+                                   4 cores                                     
+                     Other Cache:  None                                        
+              Memory Amount (GB):  128                                         
+              # and size of DIMM:  8 x 16 GB                                   
+                  Memory Details:  16GB 2Rx8 PC4-3200AA-R. Slots A1-8          
+                                   populated.                                  
+ Power Supply Quantity and Rating  1 x 750                                     
+                             (W):                                              
+            Power Supply Details:  750W Titanium Efficiency                    
+                      Disk Drive:  1 x 240 GB SATA SSD                         
+                 Disk Controller:  Native Chipset SATA                         
+  # and type of Network Interface  1 x Dual-port Broadcom 5720                 
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT notes)                     
+           Operating System (OS):  Ubuntu 18.04.3 LTS                          
+                      OS Version:  Kernel 5.0.0-23-generic                     
+                      Filesystem:  xfs                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java HotSpot 64-Bit Server VM (build        
+                                   12,9,1+12, mixed mode, sharing), version    
+                                   12.0.1                                      
+        JVM Command-line Options:  -server -Xmx1024m -Xms1024m -Xmn900m        
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurviorRatio=99                   
+                                   XX:ParallelGCThreads=2                      
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC                       
+                                   -XX:LargePagesizeInBytes=2m                 
+                                   -XX:+UseBiasedLocking -XX:+UseHugeTLBFS     
+                                   -XX:+UseTransparentHugePages                
+                    JVM Affinity:  numactl -C [coreId, coreID+64] --localalloc 
+                   JVM Instances:  64                                          
+           JVM Initial Heap (MB):  1024                                        
+           JVM Maximum Heap (MB):  1024                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.0.4 released Aug-2019                     
+     Management Firmware Version:  3.40.40.40 A00                              
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  none                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Logical Processor Enabled                                                    
+* Virtualization Technology Disabled                                           
+* IOMMU Support Disabled                                                       
+* L1 Stream HW Prefetcher Disabled                                             
+* L2 Stream HW Prefetcher Disabled                                             
+* MADT Core Enumeration set to Linear                                          
+* NUMA Nodes Per Socket set to 4                                               
+* CCX as NUMA Domain set to Enabled                                            
+* System Profile set to Custom                                                 
+* CPU Power Management set to OS DBPM                                          
+* Memory Frequency set to 2400                                                 
+* Turbo Boost Enabled                                                          
+* Cstates set to Enabled                                                       
+* Write Data CRC Disabled                                                      
+* Memory Patrol Scrub Disabled                                                 
+* Memory Refresh Rate set to 1x                                                
+* PCI ASPM L1 Link Power Management Enabled                                    
+* Determinism Slider to to Power Determinism                                   
+* Efficiency Optimized Mode Enabled                                            
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* benchmark started via ssh                                                    
+* Each JVM instance was bound to 2 logical processors                          
+* SPECpower_ssj.props input.load_level.number_warehouses set to 128 to detect  
+the full number of available processors                                        
+* cpupower frequency-set -g ondemand                                           
+* echo -n 98 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold           
+* echo -n 1300000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate     
+* echo 35 > /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias            
+* echo 960000 > /proc/sys/kernel/sched_rt_runtime_us                           
+* echo 16000000 > /proc/sys/kernel/sched_latency_ns                            
+* echo 9000000 > /proc/sys/kernel/sched_min_granularity_ns                     
+* echo 50 > /proc/sys/vm/swappiness                                            
+* echo 6000 > /proc/sys/kernel/sched_migration_cost_ns                         
+* N/A: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc                                    
+                           Model:  PowerEdge R410                              
+                 CPU Description:  Intel Xeon E5620, 2.40 GHz                  
+              Memory amount (GB):  32.0                                        
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 Enterprise 
+                                   Edition Service Pack 1                      
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Hotspot(TM) Client VM, version 1.8.0_121    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Meters and Instruments Corporation 
+                           Model:  WT210                                       
+                   Serial Number:  91N819622                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TesCom                                      
+               Calibration Label:  98378                                       
+             Date of Calibration:  21-Mar-2019                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.1-a2d19f26-20190717                     
+               Setup Description:  Connected to power supply                   
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.10.26.0                                   
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  25 mm in front of SUT main airflow intake   
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        246 |          21.0
+        90% |        236 |          21.0
+        80% |        220 |          21.0
+        70% |        205 |          21.0
+        60% |        186 |          21.0
+        50% |        164 |          21.0
+        40% |        151 |          20.9
+        30% |        141 |          20.9
+        20% |        130 |          20.9
+        10% |        117 |          20.9
+Active Idle |       99.5 |          20.9
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.9 |             255
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20190911-01005-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         5,681,337
+    Calibration 2 |                   |                   |         5,685,011
+    Calibration 3 |                   |                   |         5,690,904
+                                                 ssj_ops@calibrated=5,687,958
+             100% |             99.8% |         5,687,958 |         5,676,534
+              90% |             90.0% |         5,119,162 |         5,119,824
+              80% |             80.1% |         4,550,366 |         4,554,430
+              70% |             70.1% |         3,981,570 |         3,985,711
+              60% |             60.0% |         3,412,775 |         3,411,318
+              50% |             50.0% |         2,843,979 |         2,846,520
+              40% |             40.0% |         2,275,183 |         2,276,939
+              30% |             30.0% |         1,706,387 |         1,708,951
+              20% |             20.0% |         1,137,592 |         1,135,409
+              10% |             10.0% |           568,796 |           566,487
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20190911-01005.user-PowerEdge-R7515.txt) for additional details.
+
+
+      Copyright (C) 2007-2019 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

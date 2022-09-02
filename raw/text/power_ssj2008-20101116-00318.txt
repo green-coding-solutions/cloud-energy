@@ -1,0 +1,292 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant DL170e G6                                     
+SPECpower_ssj2008 = 3,212 overall ssj_ops/watt                                 
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Nov 13, 2010                                        
+             Publication:  Dec 1, 2010                                         
+   Hardware Availability:  Nov-2010                                            
+   Software Availability:  Sep-2009                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |     2,886,872 |           660 |         4,373
+          90% |         90.2% |     2,613,978 |           617 |         4,236
+          80% |         79.8% |     2,313,793 |           576 |         4,018
+          70% |         69.9% |     2,024,472 |           532 |         3,807
+          60% |         60.0% |     1,739,126 |           490 |         3,549
+          50% |         49.9% |     1,446,103 |           451 |         3,207
+          40% |         40.0% |     1,159,824 |           415 |         2,797
+          30% |         30.0% |       868,136 |           382 |         2,273
+          20% |         20.0% |       578,942 |           349 |         1,657
+          10% |         10.0% |       288,389 |           306 |           942
+                  Active Idle |             0 |           178 |             0
+                              sum of ssj_ops / sum of power = |         3,212
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         4 |          8 |         48 |         96 |       64.0 |              4 |        24
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  HP ProLiant DL2000                          
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  1 x 1200                                    
+                             (W):                                              
+            Power Supply Details:  HP part #: 570451-101                       
+                  Network Switch:  8-port Gigabit switch                       
+          Network Switch Details:  Netgear GS508T Switch                       
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  Network switch is a standalone device and is
+                                   not included in the measured power.         
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  ProLiant DL170e G6                          
+            # of Identical Nodes:  4                                           
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL170e G6                          
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon L5640                            
+             CPU Characteristics:  Six-Core, 2.27 GHz, 12 MB L3 Cache          
+             CPU Frequency (MHz):  2267                                        
+                  CPU(s) Enabled:  12 cores, 2 chips, 6 cores/chip             
+                Hardware Threads:  24 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-10600E ECC CL5; slots 1, 5,   
+                                   populated per proc                          
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 120 GB  SATA SSD, HP Part #539557-010   
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x HP NC362i Integrated Dual Port Gigabit  
+          Cards (NICs) Installed:  Server Adapter                              
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Power saver enabled in OS                   
+           Operating System (OS):  Windows Server 2008, Enterprise Edition     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, J2RE 1.6.0 IBM J9 2.4 
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa660sr5-20090519_35743 (JIT enabled, AOT
+                                   enabled)                                    
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs               
+                                   -Xgcpolicy:gencon -Xmn1600m -Xms2000m       
+                                   -Xmx2000m -XlockReservation -Xnoloa         
+                                   -XtlhPrefetch -Xlp                          
+                    JVM Affinity:  start /affinity [F,F0,F00,F000,F0000,F00000]
+                   JVM Instances:  6                                           
+           JVM Initial Heap (MB):  2000                                        
+           JVM Maximum Heap (MB):  2000                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  034 10/25/10                                
+     Management Firmware Version:  4.21 7/16/10                                
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM Websphere Application Server            
+
+
+
+                            Boot Firmware Settings                             
+
+* Bios Settings:                                                               
+* 1 GB PCI Memory Gap - Disabled                                               
+* USB Ports - Disable Virtual Ports                                            
+* QPI Speed - 4.8 GT                                                           
+* ASPM - Enabled                                                               
+* NIC Port 1 Control - Disabled                                                
+* Memory Speed - 1066 GHz                                                      
+* USB Bios Support - Disabled                                                  
+* DCU Prefetcher - Disabled                                                    
+* Hardware Prefetcher - Disabled                                               
+* Adjacent Cache Line Prefetcher - Disabled                                    
+*  Intel Virtualization - Disabled                                             
+* Demand Scrubbing - Disabled                                                  
+* Embedded Sata Link Rate - 1.5 GB/s                                           
+* PCI-E Gen 2 - Gen 1                                                          
+* Intel Vt-D - Disabled                                                        
+* Data reuse - Disabled                                                        
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four logical cores in a socket.         
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Turn off display after 1 minute                                              
+* Benchmark run was started via Remote Desktop                                 
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL360 G5                           
+                 CPU Description:  Intel Xeon E5440                            
+              Memory amount (GB):  3                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2008                                
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.6.0-50_o-100423-1.6.0_05-20080626-2105-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GB45371                                   
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa Electric International Pte. Ltd.   
+               Calibration Label:  705420                                      
+             Date of Calibration:  10-Dec-2009                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  Connected to SUT Power Supplies             
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  25 mm in front of SUT main air intake       
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        660 |          24.8
+        90% |        617 |          24.8
+        80% |        576 |          24.9
+        70% |        532 |          24.8
+        60% |        490 |          24.8
+        50% |        451 |          24.8
+        40% |        415 |          24.6
+        30% |        382 |          24.7
+        20% |        349 |          24.9
+        10% |        306 |          24.7
+Active Idle |        178 |          24.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            24.6 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20101116-00318-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         2,879,266
+    Calibration 2 |                   |                   |         2,896,460
+    Calibration 3 |                   |                   |         2,900,118
+                                                 ssj_ops@calibrated=2,898,289
+             100% |             99.6% |         2,898,289 |         2,886,872
+              90% |             90.2% |         2,608,460 |         2,613,978
+              80% |             79.8% |         2,318,631 |         2,313,793
+              70% |             69.9% |         2,028,802 |         2,024,472
+              60% |             60.0% |         1,738,973 |         1,739,126
+              50% |             49.9% |         1,449,144 |         1,446,103
+              40% |             40.0% |         1,159,316 |         1,159,824
+              30% |             30.0% |           869,487 |           868,136
+              20% |             20.0% |           579,658 |           578,942
+              10% |             10.0% |           289,829 |           288,389
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20101116-00318.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

@@ -1,0 +1,250 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant DL785 G6 (2.1 GHz, AMD Opteron 8425 HE)       
+SPECpower_ssj2008 = 1,297 overall ssj_ops/watt                                 
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Cupertino, CA, USA                                  
+               Test Date:  Aug 17, 2009                                        
+             Publication:  Sep 14, 2009                                        
+   Hardware Availability:  Oct-2009                                            
+   Software Availability:  Oct-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |     1,696,373 |           852 |         1,990
+          90% |         89.9% |     1,531,195 |           811 |         1,888
+          80% |         80.0% |     1,363,901 |           770 |         1,770
+          70% |         69.7% |     1,188,373 |           728 |         1,631
+          60% |         60.0% |     1,023,072 |           692 |         1,479
+          50% |         50.0% |       851,788 |           655 |         1,300
+          40% |         40.0% |       681,901 |           619 |         1,101
+          30% |         30.0% |       511,279 |           582 |           879
+          20% |         20.0% |       340,607 |           537 |           634
+          10% |         10.1% |       171,462 |           501 |           342
+                  Active Idle |             0 |           468 |             0
+                              sum of ssj_ops / sum of power = |         1,297
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL785 G6 (2.1 GHz, AMD Opteron 8425
+                                   HE)                                         
+                     Form Factor:  7U                                          
+                        CPU Name:  Six-Core AMD Opteron(r) Processor 8425 HE   
+             CPU Characteristics:  Six-Core, 2.1 GHz, 6MB L3 Cache             
+             CPU Frequency (MHz):  2100                                        
+                  CPU(s) Enabled:  48 cores, 8 chips, 6 cores/chip             
+                Hardware Threads:  48 (1 / core)                               
+                CPU(s) Orderable:  4,8 chips                                   
+                   Primary Cache:  64 KB I + 64 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per chip                 
+                  Tertiary Cache:  6 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  32                                          
+              # and size of DIMM:  16 x 4096 MB                                
+                  Memory Details:  4GB Reg PC2-5300 2x2GB LP Kit 483401-B21;   
+                                   slots 1 and 2 populated on each board       
+ Power Supply Quantity and Rating  3 x 1200                                    
+                             (W):                                              
+            Power Supply Details:  HP P/N 500172-B21                           
+                      Disk Drive:  1 x 73GB 10K RPM SFF SAS                    
+                 Disk Controller:  Integrated P400i SmartArray controller      
+  # and type of Network Interface  2 x NC371i NIC                              
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  none                                        
+
+                                   SOFTWARE                                    
+                Power Management:  HP Dynamic Power Savings Mode (default)     
+           Operating System (OS):  Microsoft Windows Server 2008 x64 Enterprise
+                                   Edition                                     
+                      OS Version:  Build 6002: Service Pack 2                  
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, J2RE 1.6.0 IBM J9 2.4 
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr5-20090519_35743 (JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs               
+                                   -Xgcpolicy:gencon -Xmx1875m -Xms1875m       
+                                   -Xmn1400m -XlockReservation -Xnoloa         
+                                   -XtlhPrefetch -Xlp                          
+                    JVM Affinity:  start /B /AFFINITY <mask> (mask taking      
+                                   values 0x3F, 0xFC0, 0x3F000, 0xFC0000,      
+                                   0x3F000000, 0xFC0000000, 0x3F000000000,     
+                                   0xFC0000000000)                             
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  A15 08/14/2009                              
+     Management Firmware Version:  1.78                                        
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  SUT                                         
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+Hardware Prefetch disabled                                                     
+
+
+                         Management Firmware Settings                          
+
+Default                                                                        
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a socket.                               
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  Compaq nc6220                               
+                 CPU Description:  Pentium M                                   
+              Memory amount (GB):  0.5                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Ubuntu 9.04 Jaunty Jackelope                
+                      JVM Vendor:  Sun Microsystems                            
+                     JVM Version:  1.6.0_13                                    
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91FB02050                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Instrument Calibration Service              
+               Calibration Label:  67961                                       
+             Date of Calibration:  02-Dec-2008                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.8-b98694b5                              
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  OS Supplied                                 
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of center of SUT main intake  
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        852 |          22.9
+        90% |        811 |          22.8
+        80% |        770 |          22.9
+        70% |        728 |          22.9
+        60% |        692 |          22.8
+        50% |        655 |          23.0
+        40% |        619 |          22.8
+        30% |        582 |          22.6
+        20% |        537 |          22.7
+        10% |        501 |          22.9
+Active Idle |        468 |          22.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.6 |              72
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20090819-00188-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,706,722
+    Calibration 2 |                   |                   |         1,704,672
+    Calibration 3 |                   |                   |         1,703,437
+                                                 ssj_ops@calibrated=1,704,054
+             100% |             99.5% |         1,704,054 |         1,696,373
+              90% |             89.9% |         1,533,649 |         1,531,195
+              80% |             80.0% |         1,363,243 |         1,363,901
+              70% |             69.7% |         1,192,838 |         1,188,373
+              60% |             60.0% |         1,022,433 |         1,023,072
+              50% |             50.0% |           852,027 |           851,788
+              40% |             40.0% |           681,622 |           681,901
+              30% |             30.0% |           511,216 |           511,279
+              20% |             20.0% |           340,811 |           340,607
+              10% |             10.1% |           170,405 |           171,462
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20090819-00188.WIN-DEJL0IOHCB7.txt) for additional details.     
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

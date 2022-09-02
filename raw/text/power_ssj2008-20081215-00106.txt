@@ -1,0 +1,258 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+ASUSTeK Computer Inc. ASUS RS100-E5 (Intel Xeon X3360 Processor, 2.83 GHz)     
+SPECpower_ssj2008 = 905 overall ssj_ops/watt                                   
+            Test Sponsor:  ASUSTeK Company Inc.                                
+          SPEC License #:  9016                                                
+               Tested By:  ASUSTeK Company Inc.                                
+           Test Location:  Taipei, Taiwan R.O.C.                               
+               Test Date:  Dec 8, 2008                                         
+             Publication:  Jan 2, 2009                                         
+   Hardware Availability:  Apr-2008                                            
+   Software Availability:  Mar-2008                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |       165,064 |           118 |         1,398
+          90% |         90.1% |       149,393 |           115 |         1,299
+          80% |         80.7% |       133,797 |           111 |         1,202
+          70% |         69.5% |       115,123 |           106 |         1,084
+          60% |         59.9% |        99,215 |           101 |           982
+          50% |         50.0% |        82,814 |          95.3 |           869
+          40% |         40.6% |        67,254 |          88.6 |           759
+          30% |         30.2% |        50,013 |          79.1 |           632
+          20% |         19.9% |        33,046 |          72.2 |           458
+          10% |          9.9% |        16,358 |          64.0 |           256
+                  Active Idle |             0 |          56.7 |             0
+                              sum of ssj_ops / sum of power = |           905
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  ASUS RS100-E5 (Intel Xeon X3360 Processor,  
+                                   2.83 GHz)                                   
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  ASUSTeK Computer Inc.                       
+                           Model:  ASUS RS100-E5 (Intel Xeon X3360 Processor,  
+                                   2.83 GHz)                                   
+                     Form Factor:  --                                          
+                        CPU Name:  Intel Xeon X3360 Processor                  
+             CPU Characteristics:  2.83 GHz, 2 x 6 MB L2 Cache, 1333 MHz System
+                                   Bus                                         
+             CPU Frequency (MHz):  2833                                        
+                  CPU(s) Enabled:  4 cores, 1 chip, 4 cores/chip               
+                Hardware Threads:  4 (1 / core)                                
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  12 MB I+D on chip per chip, 6 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  4                                           
+              # and size of DIMM:  2 x 2048 MB                                 
+                  Memory Details:  DDR2-667 CL5 DIMM; Slots A2 and B2 are      
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 220                                     
+                             (W):                                              
+            Power Supply Details:  FSP FSP220-60LE                             
+                      Disk Drive:  1 x Seagate (3.5", SATA, 160 GB, 7.2K RPM)  
+                 Disk Controller:  Integrated ICH-7R SATA controller           
+  # and type of Network Interface  2 x Broadcom BCM5721 Gigabit Ethernet       
+          Cards (NICs) Installed:  controllers (onboard)                       
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (Server Balanced Power and          
+                                   Performance)                                
+           Operating System (OS):  Windows Server 2003 R2, Enterprise x64      
+                                   Edition                                     
+                      OS Version:  Service Pack 2 Build 3790                   
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.5.0-110-94909-1.6.0_03-20080204-1558-win
+                                   dows-x86_64, compiled mode)                 
+        JVM Command-line Options:  -Xms1650m -Xmx1650m -Xns1500m -XXaggressive 
+                                   -XXlargePages -XXthroughputCompaction       
+                                   -XXcallprofiling -XXlazyUnlocking           
+                                   -Xgc:genpar -XXgcthreads:2                  
+                                   -XXtlasize:min=4k,preferred=512k            
+                                   -XXthroughputcompaction                     
+                    JVM Affinity:  start /affinity [0x3,0xc]                   
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  1650                                        
+           JVM Maximum Heap (MB):  1650                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 1.1.3                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a pair of cores in a socket.            
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* BIOS Settings                                                                
+* Adjacent Sector Prefetch Disabled.                                           
+* Hardware Prefetch Disabled.                                                  
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  ASUSTeK Computer Inc.                       
+                           Model:  RS120-E3                                    
+                 CPU Description:  Intel Pentium D 920 Processor               
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2, Enterprise Edition  
+                                   with SP2                                    
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.5.0-110-94909-1.6.0_03-20080204-1558-win
+                                   dows-ia32, compiled mode)                   
+                     CCS Version:  1.1.3                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91G541516                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  ETC,TAIWAN                                  
+                   Accredited by:  ETC,TAIWAN                                  
+               Calibration Label:  08-05-BAC-358-03                            
+             Date of Calibration:  22-May-2008                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.3.2-e0c92e60                              
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 4.50.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        118 |          22.8
+        90% |        115 |          22.8
+        80% |        111 |          22.8
+        70% |        106 |          22.8
+        60% |        101 |          22.8
+        50% |       95.3 |          22.8
+        40% |       88.6 |          22.8
+        30% |       79.1 |          22.8
+        20% |       72.2 |          22.8
+        10% |       64.0 |          22.8
+Active Idle |       56.7 |          22.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            22.8 |              18
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20081215-00106-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           156,905
+    Calibration 2 |                   |                   |           165,323
+    Calibration 3 |                   |                   |           166,178
+                                                   ssj_ops@calibrated=165,750
+             100% |             99.6% |           165,750 |           165,064
+              90% |             90.1% |           149,175 |           149,393
+              80% |             80.7% |           132,600 |           133,797
+              70% |             69.5% |           116,025 |           115,123
+              60% |             59.9% |            99,450 |            99,215
+              50% |             50.0% |            82,875 |            82,814
+              40% |             40.6% |            66,300 |            67,254
+              30% |             30.2% |            49,725 |            50,013
+              20% |             19.9% |            33,150 |            33,046
+              10% |              9.9% |            16,575 |            16,358
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20081215-00106.0001.txt) for    
+additional details.                                                            
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

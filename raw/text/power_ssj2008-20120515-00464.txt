@@ -1,0 +1,273 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Huawei Technologies Co., Ltd RH2285 V2                                         
+SPECpower_ssj2008 = 4,734 overall ssj_ops/watt                                 
+            Test Sponsor:  Huawei Technologies Co., Ltd                        
+          SPEC License #:  3175                                                
+               Tested By:  Huawei Technologies Co., Ltd                        
+           Test Location:  Shenzhen, Guangdong, China                          
+               Test Date:  May 14, 2012                                        
+             Publication:  May 30, 2012                                        
+   Hardware Availability:  May-2012                                            
+   Software Availability:  Dec-2011                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |     1,006,482 |           167 |         6,025
+          90% |         89.7% |       907,374 |           150 |         6,065
+          80% |         79.7% |       805,971 |           134 |         6,023
+          70% |         70.1% |       708,806 |           120 |         5,911
+          60% |         59.8% |       604,496 |           108 |         5,578
+          50% |         50.0% |       506,263 |           102 |         4,949
+          40% |         40.0% |       404,456 |          95.2 |         4,249
+          30% |         29.9% |       302,275 |          87.8 |         3,443
+          20% |         19.8% |       200,399 |          80.7 |         2,482
+          10% |          9.8% |        99,437 |          72.8 |         1,365
+                  Active Idle |             0 |          54.0 |             0
+                              sum of ssj_ops / sum of power = |         4,734
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Huawei Technologies Co., Ltd                
+                           Model:  RH2285 V2                                   
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon E5-2450L                         
+             CPU Characteristics:  8-Core, 1.80 GHz, 20 MB L3 Cache (Turbo     
+                                   Boost Technology up to 2.3 GHz)             
+             CPU Frequency (MHz):  1800                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  32 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4 GB                                    
+                  Memory Details:  4GB 2Rx8 PC3L-10600R ECC                    
+ Power Supply Quantity and Rating  1 x 460                                     
+                             (W):                                              
+            Power Supply Details:  Huawei P/N PW98080438                       
+                      Disk Drive:  1 x 160GB SSD 2.5" SATA, Huawei P/N 02310KSX
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Dual-port Intel 82580 Gigabit Ethernet  
+          Cards (NICs) Installed:  controller                                  
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver enabled in OS                   
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise x64
+                                   Edition                                     
+                      OS Version:  R2 SP1                                      
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM on 
+                                   Windows, version 1.6.0_30                   
+        JVM Command-line Options:  -server -Xmx1600m -Xms1600m -Xmn1200m       
+                                   -XX:ParallelGCThreads=2 -XX:SurvivorRatio=60
+                                   -XX:TargetSurvivorRatio=90                  
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:+UseCompressedStrings                   
+                                   -XX:+AggressiveOpts -XX:+UseLargePages      
+                                   -XX:+UseParallelOldGC                       
+                    JVM Affinity:  start /affinity                             
+                                   [0x0F,0xF0,0xF00,0xF000,0xF0000,0xF00000,0xF
+                                   000000,0xF0000000]                          
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  1600                                        
+           JVM Maximum Heap (MB):  1600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  V018                                        
+     Management Firmware Version:  3.02                                        
+                Workload Version:  SSJ 1.2.9                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Hardware prefetcher -disabled.                                               
+* Adjacent Cache Line Prefetch -disabled.                                      
+* DCU Streamer Prefetcher -disabled.                                           
+* Intel HT Technology -enabled.                                                
+* Turbo mode -enabled.                                                         
+* C-state -enabled.                                                            
+* Power Mode -Efficiency.                                                      
+* QPI Link  Speed -6.4GT/s.                                                    
+* Memory Frequency Limit -1333MHz.                                             
+* Demand Scrubbing -disabled.                                                  
+* USB configuration EHCI 2 -disabled.                                          
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* The test was started via Remote Desktop.                                     
+* Minimum Processor State: 0%.                                                 
+* Maximum Processor State: 100%.                                               
+* Turn off hard disk after 1 minute .                                          
+* Each JVM instance was affinitized to four logical processors.                
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Huawei Technologies Co., Ltd                
+                           Model:  Tecal RH2280 Rack Server                    
+                 CPU Description:  Intel Xeon 5205                             
+              Memory amount (GB):  6                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2003 SP2           
+                      JVM Vendor:  Oracle                                      
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM on 
+                                   Windows, version 1.6.0_30                   
+                     CCS Version:  1.2.5                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91K630156                                   
+                    Connectivity:  COM                                         
+                Input Connection:  Default                                     
+             Metrology Institute:  CNAS (China National Accreditation Service  
+                                   for Conformity Assessment)                  
+                   Accredited by:  Calibration and Testing Center of CEPREI    
+               Calibration Label:  B11004997-0007                              
+             Date of Calibration:  20-Jun-2011                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.1-1271fb18-20110728                     
+               Setup Description:  none                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Temperature@lert                            
+                           Model:  TM-STD30                                    
+                  Driver Version:  3.1.0.0                                     
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  none                                        
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 32 due to a known
+inconsistency in processor reporting with this Java version.                   
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        167 |          21.9
+        90% |        150 |          21.9
+        80% |        134 |          21.9
+        70% |        120 |          21.9
+        60% |        108 |          21.9
+        50% |        102 |          22.0
+        40% |       95.2 |          22.0
+        30% |       87.8 |          21.9
+        20% |       80.7 |          21.9
+        10% |       72.8 |          21.8
+Active Idle |       54.0 |          21.8
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 50 Hz / 1 phase /  |            21.8 |             101
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20120515-00464-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,015,699
+    Calibration 2 |                   |                   |         1,014,279
+    Calibration 3 |                   |                   |         1,008,818
+                                                 ssj_ops@calibrated=1,011,549
+             100% |             99.5% |         1,011,549 |         1,006,482
+              90% |             89.7% |           910,394 |           907,374
+              80% |             79.7% |           809,239 |           805,971
+              70% |             70.1% |           708,084 |           708,806
+              60% |             59.8% |           606,929 |           604,496
+              50% |             50.0% |           505,774 |           506,263
+              40% |             40.0% |           404,619 |           404,456
+              30% |             29.9% |           303,465 |           302,275
+              20% |             19.8% |           202,310 |           200,399
+              10% |              9.8% |           101,155 |            99,437
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20120515-00464.WIN-DR82N3O3GPD.txt) for additional details.     
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

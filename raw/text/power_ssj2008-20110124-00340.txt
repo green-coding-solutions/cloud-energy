@@ -1,0 +1,262 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+
+
+IBM Corporation IBM System x3200 M2                                            
+SPECpower_ssj2008 = 605 overall ssj_ops/watt                                   
+            Test Sponsor:  Intel Corp.                                         
+          SPEC License #:  3184                                                
+               Tested By:  Principled Technologies, Inc.                       
+           Test Location:  Durham, NC, USA                                     
+               Test Date:  Jan 19, 2011                                        
+             Publication:  Feb 17, 2011                                        
+   Hardware Availability:  Jan-2008                                            
+   Software Availability:  May-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |        100.1% |       118,486 |           117 |         1,009
+          90% |         90.4% |       107,029 |           115 |           931
+          80% |         81.0% |        95,930 |           112 |           855
+          70% |         70.1% |        82,922 |           109 |           764
+          60% |         60.1% |        71,121 |           105 |           680
+          50% |         50.2% |        59,447 |           100 |           593
+          40% |         40.5% |        47,920 |          94.9 |           505
+          30% |         29.6% |        35,056 |          89.6 |           391
+          20% |         19.9% |        23,574 |          84.1 |           280
+          10% |         10.4% |        12,321 |          78.2 |           158
+                  Active Idle |             0 |          75.2 |             0
+                              sum of ssj_ops / sum of power = |           605
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  IBM System x3200 M2                         
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  IBM Corporation                             
+                           Model:  IBM System x3200 M2                         
+                     Form Factor:  Tower                                       
+                        CPU Name:  Intel Xeon Processor E3110                  
+             CPU Characteristics:  Dual-Core, 3.00 GHz, 6 MB L2 Cache, 1333 MHz
+                                   system bus                                  
+             CPU Frequency (MHz):  3000                                        
+                  CPU(s) Enabled:  2 cores, 1 chip, 2 cores/chip               
+                Hardware Threads:  2 (1 / core)                                
+                CPU(s) Orderable:  1 chip                                      
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  6 MB I+D on chip per chip                   
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  4                                           
+              # and size of DIMM:  4 x 1024 MB                                 
+                  Memory Details:  1 GB 2Rx8 PC2-6400E; all slots populated    
+ Power Supply Quantity and Rating  1 x 400                                     
+                             (W):                                              
+            Power Supply Details:  Delta Electronics DPS400MB-1A               
+                      Disk Drive:  2 x 160 GB 7.2K RPM SATA RAID 1             
+                 Disk Controller:  Four-port LSI 1064e SAS/SATA                
+  # and type of Network Interface  1 x Broadcom NetXtreme Gigabit Ethernet     
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Microsoft Windows Server 2003, Enterprise   
+                                   x64 Edition                                 
+                      OS Version:  Build 3790                                  
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) (build                    
+                                   P28.0.0-29-114096-1.6.0_11-20090427-1759-win
+                                   dows-x86_64, compiled mode)                 
+        JVM Command-line Options:  -Xms2800m -Xmx2800m -Xns2660m -XXaggressive 
+                                   -XXlargePages -XXthroughputCompaction       
+                                   -XXcallprofiling -XXlazyUnlocking           
+                                   -Xgc:genpar -XXgcthreads:2                  
+                                   -XXtlasize:min=12k,preferred=1024k          
+                    JVM Affinity:  None                                        
+                   JVM Instances:  1                                           
+           JVM Initial Heap (MB):  2800                                        
+           JVM Maximum Heap (MB):  2800                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  1.47 2010.12.20                             
+     Management Firmware Version:  1.06 2008.08.07                             
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+Hardware Prefetcher disabled in BIOS, Adjacent Cache Line Prefetch disabled in 
+BIOS                                                                           
+
+
+                         Management Firmware Settings                          
+
+Default                                                                        
+
+
+                            System Under Test Notes                            
+
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* OS Power Scheme                                                              
+* Power Option: Server Balanced Processor Power and Performance                
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Super Micro Computer, Inc.                  
+                           Model:  Supermicro 6025W-NTR+V                      
+                 CPU Description:  Intel Xeon Processor E5472                  
+              Memory amount (GB):  16                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2003, Enterprise   
+                                   Edition, Service Pack 2                     
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.5.0-110_o-99226-1.5.0_14-20080528-1505-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GB45373                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Davis Calibration                           
+               Calibration Label:  07-1673                                     
+             Date of Calibration:  28-Jul-2010                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  SUT Power Supply                            
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.10.26.0                                   
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  50 mm in front of SUT main air intake       
+
+
+
+                                     Notes                                     
+
+Used USB-to-Serial converter, Model Sabrent SBT-USC1M (driver version 2.0.2.1),
+to connect power analyzer to the controller.                                   
+This benchmark result is intended to provide perspective on past power and/or  
+performance using the historical hardware and/or software described on this    
+result page.                                                                   
+The system as described on this result page was formerly generally available.  
+At the time of this publication, it may not be shipping, and/or may not be     
+supported, and/or may fail to meet other tests of General Availability         
+described in the SPEC OSG Policy document, http://www.spec.org/osg/policy.html 
+This measured result may not be representative of the result that would be     
+measured were this benchmark run with hardware and software available as of the
+publication date.                                                              
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        117 |          26.6
+        90% |        115 |          26.7
+        80% |        112 |          26.8
+        70% |        109 |          26.9
+        60% |        105 |          26.9
+        50% |        100 |          26.9
+        40% |       94.9 |          26.9
+        30% |       89.6 |          26.6
+        20% |       84.1 |          26.3
+        10% |       78.2 |          26.2
+Active Idle |       75.2 |          26.0
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+120V / 60 Hz / 1 phase /  |            26.0 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20110124-00340-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           118,521
+    Calibration 2 |                   |                   |           118,271
+    Calibration 3 |                   |                   |           118,474
+                                                   ssj_ops@calibrated=118,372
+             100% |            100.1% |           118,372 |           118,486
+              90% |             90.4% |           106,535 |           107,029
+              80% |             81.0% |            94,698 |            95,930
+              70% |             70.1% |            82,861 |            82,922
+              60% |             60.1% |            71,023 |            71,121
+              50% |             50.2% |            59,186 |            59,447
+              40% |             40.5% |            47,349 |            47,920
+              30% |             29.6% |            35,512 |            35,056
+              20% |             19.9% |            23,674 |            23,574
+              10% |             10.4% |            11,837 |            12,321
+      Active Idle |                   |                 0 |                 0
+
+See the JVM Instance Performance Report                                        
+(power_ssj2008-20110124-00340-ibmx3200m2.001.txt) for additional details.      
+
+
+      Copyright (C) 2007-2011 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

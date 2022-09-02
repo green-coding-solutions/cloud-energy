@@ -1,0 +1,327 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+
+
+Lenovo Global Technology ThinkSystem SN550 V2                                  
+SPECpower_ssj2008 = 9,878 overall ssj_ops/watt                                 
+            Test Sponsor:  Lenovo Global Technology                            
+          SPEC License #:  9017                                                
+               Tested By:  Lenovo Global Technology                            
+           Test Location:  Beijing, China                                      
+               Test Date:  Apr 20, 2022                                        
+             Publication:  May 24, 2022                                        
+   Hardware Availability:  Jul-2021                                            
+   Software Availability:  Dec-2019                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |    75,968,958 |         5,637 |        13,478
+          90% |         89.9% |    68,562,233 |         5,087 |        13,479
+          80% |         79.8% |    60,816,744 |         4,682 |        12,991
+          70% |         70.0% |    53,363,697 |         4,377 |        12,192
+          60% |         60.0% |    45,734,220 |         4,087 |        11,190
+          50% |         50.0% |    38,100,171 |         3,822 |         9,968
+          40% |         40.0% |    30,501,173 |         3,568 |         8,549
+          30% |         30.0% |    22,895,561 |         3,294 |         6,951
+          20% |         20.0% |    15,242,271 |         3,021 |         5,045
+          10% |         10.0% |     7,628,144 |         2,709 |         2,815
+                  Active Idle |             0 |         2,115 |             0
+                              sum of ssj_ops / sum of power = |         9,878
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+        14 |         28 |        896 |      1,792 |      3,584 |             14 |       896
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  Lenovo Flex System Enterprise Chassis with  
+                                   CMM2 (00FJ669) standard (Model 8721)        
+                     Form Factor:  10U                                         
+ Power Supply Quantity and Rating  6 x 2500                                    
+                             (W):                                              
+            Power Supply Details:  Flex System Enterprise Chassis 2500W Power  
+                                   Module (Lenovo P/N:43W9049)                 
+                  Network Switch:  Extreme Summit X670V                        
+          Network Switch Details:  48-PORT Extreme Summit X670V                
+                      KVM Switch:  None                                        
+              KVM Switch Details:  None                                        
+                  Other Hardware:  None                                        
+                         Comment:  Network switch did not measure for Power    
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  14                                          
+                         Comment:  'SUT'                                       
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Lenovo Global Technology                    
+                           Model:  ThinkSystem SN550 V2                        
+                     Form Factor:  10U                                         
+                        CPU Name:  Intel Xeon Platinum 8352M                   
+             CPU Characteristics:  32 Core, 2.30GHz, 48MB L3 Cache             
+             CPU Frequency (MHz):  2300                                        
+                  CPU(s) Enabled:  64 cores, 2 chips, 32 cores/chip            
+                Hardware Threads:  128 (2 / core)                              
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 48 KB D on chip per core          
+                 Secondary Cache:  1280 KB I+D on chip per core                
+                  Tertiary Cache:  48 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  256                                         
+              # and size of DIMM:  16 x 16 GB                                  
+                  Memory Details:  16GB 2Rx8 PC4-3200AA-RE2-12-MH1; slots      
+                                   1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 and 16  
+                                   for each processor                          
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  Shared                                      
+                      Disk Drive:  1 x 128GB M.2 SSD P/N:7N47A00130 M.2 Module 
+                                   P/N:4Y37A09738                              
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  1 x Flex System CN4052S 2-port 10Gb Virtual 
+          Cards (NICs) Installed:  Fabric Adapter P/N:00AG540                  
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  10000                                       
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Suse Linux Enterprise Server 12 SP5         
+                      OS Version:  4.12.14-120-default                         
+                      Filesystem:  btrfs                                       
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM 18.9      
+                                   (build 11.0.5+10-LTS, mixed mode)           
+        JVM Command-line Options:  -server -Xss256k -Xmn1700m -Xms1950m        
+                                   -Xmx1950m -XX:UseSSE=4 -XX:UseAVX=1         
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=4000                    
+                                   -XX:MaxInlineSize=300                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC                       
+                                   -XX:LargePageSizeInBytes=2m                 
+                                   -XX:+UseBiasedLocking -XX:+UseHugeTLBFS     
+                                   -XX:+UseTransparentHugePages                
+                    JVM Affinity:  for each physicalCore { numactl -C          
+                                   physicalCoreId, physicalCoreId + 1,         
+                                   physicalCoreId + 64, physicalCoreId + 65 }  
+                   JVM Instances:  64                                          
+           JVM Initial Heap (MB):  1950                                        
+           JVM Maximum Heap (MB):  1950                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  U8E115M                                     
+     Management Firmware Version:  TGBT29S                                     
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Operating Mode: Custom Mode                                                  
+* Memory Power Management: Automatic                                           
+* Memory Speed: Max Performance                                                
+* Page Policy: Adaptive                                                        
+* Intel VT for Directed I/O(VT-d): Disable                                     
+* Memory Data Scrambling: Disable                                              
+* Turbo Mode: Disable                                                          
+* Hardware Prefetcher: Disable                                                 
+* Adjacent Cache Prefetch: Disable                                             
+* DCU Streamer Prefetcher: Disable                                             
+* Patrol Scrub: Disable                                                        
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Benchmark started via ssh                                                    
+* Each JVM instance was affinitized to two threads on a single socket          
+* echo 960000 > /proc/sys/kernel/sched_rt_runtime_us                           
+* echo 16000000 > /proc/sys/kernel/sched_latency_ns                            
+* echo 9000000 > /proc/sys/kernel/sched_min_granularity_ns                     
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented                 
+*  Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753
+(Spectre variant 1) is mitigated in the system as tested and documented        
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented        
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Lenovo Global Technology                    
+                           Model:  ThinkSystem SR650                           
+                 CPU Description:  2 x Intel Xeon Gold 5218                    
+              Memory amount (GB):  768                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2019 DataCenter -  
+                                   Version 1809 (OS Build 17763.2268)          
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 24.80-b11, mixed mode), version      
+                                   1.7.0_80                                    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  YOKOGAWA, Inc.                              
+                           Model:  WT310E                                      
+                   Serial Number:  C3UG05014E                                  
+                    Connectivity:  USB                                         
+                Input Connection:  Default                                     
+             Metrology Institute:  China National Accreditation Service for    
+                                   Conformity Assessment (CNAS)                
+                   Accredited by:  GUANG ZHOU GRG METROLOGY & TEST CO.,LTD.    
+               Calibration Label:  J202110137471A-0004                         
+             Date of Calibration:  21-Oct-2021                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  Connected to PSU 1,PSU 2,PSU 3              
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  YOKOGAWA, Inc.                              
+                           Model:  WT310E                                      
+                   Serial Number:  C3UG05013E                                  
+                    Connectivity:  USB                                         
+                Input Connection:  Default                                     
+             Metrology Institute:  China National Accreditation Service for    
+                                   Conformity Assessment (CNAS)                
+                   Accredited by:  GUANG ZHOU GRG METROLOGY & TEST CO.,LTD.    
+               Calibration Label:  J202110137471A-0001                         
+             Date of Calibration:  21-Oct-2021                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  Connected to PSU 4,PSU 5,PSU 6              
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi Intermational, Inc.                    
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  50 mm in front of SUT main intake           
+
+
+
+                                     Notes                                     
+
+SPECpower_ssj.props input.load_level.number_warehouses set to 128 due to a     
+known inconsistency in processor reporting with this Java version.             
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      5,637 |          21.6
+        90% |      5,087 |          21.6
+        80% |      4,682 |          21.7
+        70% |      4,377 |          21.6
+        60% |      4,087 |          21.7
+        50% |      3,822 |          21.9
+        40% |      3,568 |          21.9
+        30% |      3,294 |          21.7
+        20% |      3,021 |          21.8
+        10% |      2,709 |          22.0
+Active Idle |      2,115 |          22.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            21.6 |              43
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20220426-01172-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        76,059,676
+    Calibration 2 |                   |                   |        76,267,081
+    Calibration 3 |                   |                   |        76,190,404
+                                                ssj_ops@calibrated=76,228,743
+             100% |             99.7% |        76,228,743 |        75,968,958
+              90% |             89.9% |        68,605,868 |        68,562,233
+              80% |             79.8% |        60,982,994 |        60,816,744
+              70% |             70.0% |        53,360,120 |        53,363,697
+              60% |             60.0% |        45,737,246 |        45,734,220
+              50% |             50.0% |        38,114,371 |        38,100,171
+              40% |             40.0% |        30,491,497 |        30,501,173
+              30% |             30.0% |        22,868,623 |        22,895,561
+              20% |             20.0% |        15,245,749 |        15,242,271
+              10% |             10.0% |         7,622,874 |         7,628,144
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20220426-01172.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

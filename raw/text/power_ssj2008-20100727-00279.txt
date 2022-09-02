@@ -1,0 +1,264 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant DL380 G7 (2.26 GHz, Intel Xeon L5640          
+processor)                                                                     
+SPECpower_ssj2008 = 3,052 overall ssj_ops/watt                                 
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Jul 20, 2010                                        
+             Publication:  Aug 11, 2010                                        
+   Hardware Availability:  Sep-2010                                            
+   Software Availability:  Sep-2009                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |       725,620 |           172 |         4,230
+          90% |         90.6% |       659,864 |           160 |         4,136
+          80% |         80.0% |       583,048 |           147 |         3,962
+          70% |         70.2% |       511,207 |           136 |         3,760
+          60% |         60.3% |       439,188 |           128 |         3,428
+          50% |         50.2% |       366,118 |           120 |         3,045
+          40% |         39.9% |       290,866 |           112 |         2,589
+          30% |         30.1% |       219,614 |           105 |         2,097
+          20% |         20.2% |       147,012 |          96.6 |         1,522
+          10% |         10.1% |        73,322 |          85.8 |           854
+                  Active Idle |             0 |          53.6 |             0
+                              sum of ssj_ops / sum of power = |         3,052
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  Proliant DL380 G7                           
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL380 G7 (2.26 GHz, Intel Xeon     
+                                   L5640 processor)                            
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon L5640                            
+             CPU Characteristics:  6 Core, 2.26 GHz, 12 MB L3 Cache            
+             CPU Frequency (MHz):  2266                                        
+                  CPU(s) Enabled:  12 cores, 2 chips, 6 cores/chip             
+                Hardware Threads:  24 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  12 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-10600E; slots 3 and 6         
+                                   populated on each processor                 
+ Power Supply Quantity and Rating  1 x 460                                     
+                             (W):                                              
+            Power Supply Details:  HP part # 593188-B21                        
+                      Disk Drive:  1 x 120 GB SFF SSD SATA, HP part #572073-B21
+                 Disk Controller:  Integrated SATA controller                  
+  # and type of Network Interface  2 x Embedded HP NC382i dual-port gigabit    
+          Cards (NICs) Installed:  server adapter                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  HP Chipset SATA Cable Kit, HP part          
+                                   #627121-B21                                 
+
+                                   SOFTWARE                                    
+                Power Management:  Power saver enabled in OS                   
+           Operating System (OS):  Windows Server 2008, Enterprise Edition     
+                      OS Version:  R2                                          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, J2RE 1.6.0 IBM J9 2.4 
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr5-20090519_35743 (JIT enabled,   
+                                   AOT enabled))                               
+        JVM Command-line Options:  java -Xaggressive -Xcompressedrefs          
+                                   -Xgcpolicy:gencon -Xmn1500m -Xms1875m       
+                                   -Xmx1875m -XlockReservation -Xnoloa         
+                                   -XtlhPrefetch -Xlp                          
+                    JVM Affinity:  start /affinity                             
+                                   [0F,F0,F00,F000,F0000,F00000]               
+                   JVM Instances:  6                                           
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  P68 5/15/2010                               
+     Management Firmware Version:  1.0                                         
+                Workload Version:  SSJ 1.2.6                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+See SUT Notes                                                                  
+
+
+                         Management Firmware Settings                          
+
+Persistant Keyboard and Mouse Disabled                                         
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four logical cores in a socket.         
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run was started via Remote Desktop                                           
+* BIOS Settings:                                                               
+* Intel Turbo Boost Technology - Disabled                                      
+* Maximum Memory Bus Frequency - 1066MHz                                       
+* Dynamic Power Savings Mode Response - Slow                                   
+* Collaborative Power Control - Disabled                                       
+* HP Smart Array P410i Controller - Disabled                                   
+* Hardware Prefetcher - Disabled                                               
+* Adjacent Sector Prefetch - Disabled                                          
+* DCU Prefetcher - Disabled                                                    
+* Data Reuse Prefetcher- Disabled                                              
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard                             
+                           Model:  ProLiant DL360 G5                           
+                 CPU Description:  Intel Xeon E5440                            
+              Memory amount (GB):  1                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2003 R2 Enterprise Edition          
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  java version "1.6.0" Java(TM) SE Runtime    
+                                   Environment (build 1.6.0-b105) BEA          
+                                   JRockit(R) (build                           
+                                   R27.2.0-131-78843-1.6.0-20070320-1457-window
+                                   s-ia32, compiled mode)                      
+                     CCS Version:  1.2.4                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GB53024                                   
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa Electric International Pte. Ltd.   
+               Calibration Label:  705419                                      
+             Date of Calibration:  10-Dec-2009                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.0-7071d9e7                              
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.50.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  None                                        
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        172 |          21.4
+        90% |        160 |          21.3
+        80% |        147 |          21.4
+        70% |        136 |          21.6
+        60% |        128 |          21.5
+        50% |        120 |          21.4
+        40% |        112 |          21.3
+        30% |        105 |          21.2
+        20% |       96.6 |          21.2
+        10% |       85.8 |          21.3
+Active Idle |       53.6 |          21.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            21.2 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20100727-00279-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           724,157
+    Calibration 2 |                   |                   |           729,510
+    Calibration 3 |                   |                   |           727,753
+                                                   ssj_ops@calibrated=728,632
+             100% |             99.6% |           728,632 |           725,620
+              90% |             90.6% |           655,768 |           659,864
+              80% |             80.0% |           582,905 |           583,048
+              70% |             70.2% |           510,042 |           511,207
+              60% |             60.3% |           437,179 |           439,188
+              50% |             50.2% |           364,316 |           366,118
+              40% |             39.9% |           291,453 |           290,866
+              30% |             30.1% |           218,589 |           219,614
+              20% |             20.2% |           145,726 |           147,012
+              10% |             10.1% |            72,863 |            73,322
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20100727-00279.WIN-FCM2IAATL1O.txt) for additional details.     
+
+
+      Copyright (C) 2007-2010 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

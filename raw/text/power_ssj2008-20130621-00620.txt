@@ -1,0 +1,267 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+
+
+Acer Incorporated Altos T350 F2                                                
+SPECpower_ssj2008 = 5,091 overall ssj_ops/watt                                 
+            Test Sponsor:  Acer Incorporated                                   
+          SPEC License #:  97                                                  
+               Tested By:  Acer Incorporated                                   
+           Test Location:  Taipei, R.O.C.                                      
+               Test Date:  Jun 6, 2013                                         
+             Publication:  Jul 16, 2013                                        
+   Hardware Availability:  May-2013                                            
+   Software Availability:  Jun-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.9% |     1,460,890 |           255 |         5,728
+          90% |         90.1% |     1,317,554 |           226 |         5,834
+          80% |         80.0% |     1,170,299 |           197 |         5,946
+          70% |         69.9% |     1,022,619 |           168 |         6,071
+          60% |         60.1% |       879,641 |           145 |         6,062
+          50% |         50.2% |       733,828 |           126 |         5,827
+          40% |         40.0% |       585,743 |           114 |         5,150
+          30% |         30.0% |       438,261 |           104 |         4,203
+          20% |         19.9% |       290,987 |          93.8 |         3,103
+          10% |         10.0% |       146,682 |          83.1 |         1,766
+                  Active Idle |             0 |          68.5 |             0
+                              sum of ssj_ops / sum of power = |         5,091
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Altos T350 F2                               
+                     Form Factor:  2U                                          
+                        CPU Name:  Intel Xeon E5-2660 2.2 GHz (Intel Turbo     
+                                   Boost Technology up to 3.00 GHz)            
+             CPU Characteristics:  8 core, 2.20 GHz, 20MB L3 Cache             
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  16 cores, 2 chips, 8 cores/chip             
+                Hardware Threads:  32 (2 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per core                 
+                  Tertiary Cache:  20 MB I+D on chip per chip                  
+                     Other Cache:  None                                        
+              Memory Amount (GB):  24                                          
+              # and size of DIMM:  6 x 4096 MB                                 
+                  Memory Details:  4GB 2Rx8 PC3L-10600E; slots A1, B1, C1, E1, 
+                                   F1 and G1 populated                         
+ Power Supply Quantity and Rating  1 x 750                                     
+                             (W):                                              
+            Power Supply Details:  Acer P/N SC.75017.002                       
+                      Disk Drive:  1 x 240GB SSD 2.5" SATA, Acer P/N           
+                                   KN.2400N.002                                
+                 Disk Controller:  onboard SCU controller                      
+  # and type of Network Interface  1 x Quad-port Intel I350 Gigabit Ethernet   
+          Cards (NICs) Installed:  controller                                  
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power Saver Mode enabled in OS              
+           Operating System (OS):  Windows Server 2008, Enterprise Edition     
+                      OS Version:  R2 SP1                                      
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 R2 amd64-64 20120322_106209 JIT 
+                                   enabled, AOT enabled)                       
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs -Xmx1600m     
+                                   -Xms1600m -Xmn1200m -XlockReservation -     
+                                   Xnoloa -XtlhPrefetch -Xlp -Xconcurrentlevel0
+                    JVM Affinity:  start /affinity                             
+                                   [0F,F0,F00,F000,F0000,F00000,F000000,F000000
+                                   0]                                          
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  1600                                        
+           JVM Maximum Heap (MB):  1600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  01.06.0002                                  
+     Management Firmware Version:  1.17.4151                                   
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS Setting:                                                                
+* Load Optimal Defaults                                                        
+* Quiet Fan Idle Mode: Enabled                                                 
+* DCU Data Prefetcher: Disabled                                                
+* MLC Streamer: Disabled                                                       
+* MLC Spatial Prefetcher: Disabled                                             
+* NIC1 Port2: Disabled                                                         
+* NIC2 Port1: Disabled                                                         
+* NIC2 Port2: Disabled                                                         
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to four logical processors.                
+* Set "Turn off hard disk after = 1 Minute" in OS power plan                   
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Set "Turn off display after = 1 Minute" in OS power plan                     
+* Set "Maximum processor state to 100%" for Processor power management in OS   
+power plan                                                                     
+* Set "Minimum processor state to 0%" for Processor power management in OS     
+power plan                                                                     
+* Start the test through Windows Remote Desktop connection                     
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Acer AR160 F1                               
+                 CPU Description:  Xeon L5520                                  
+              Memory amount (GB):  3                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2, Enterprise Edition  
+                                   SP2                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) (build                    
+                                   R27.5.0-110_o-99226-1.6.0_03-20080528-1505-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H534921                                   
+                    Connectivity:  RS232                                       
+                Input Connection:  Default                                     
+             Metrology Institute:  NML (National Measurement Laboratory,       
+                                   R.O.C.)                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  13-04-BAC-380-01                            
+             Date of Calibration:  9-May-2013                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.6.0-7f9b1b00-20130314                     
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.0.0.0              
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT airflow intake         
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        255 |          22.9
+        90% |        226 |          22.8
+        80% |        197 |          22.8
+        70% |        168 |          22.8
+        60% |        145 |          22.7
+        50% |        126 |          22.7
+        40% |        114 |          22.7
+        30% |        104 |          22.7
+        20% |       93.8 |          22.6
+        10% |       83.1 |          22.6
+Active Idle |       68.5 |          22.6
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            22.6 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20130621-00620-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,412,336
+    Calibration 2 |                   |                   |         1,462,623
+    Calibration 3 |                   |                   |         1,463,502
+                                                 ssj_ops@calibrated=1,463,063
+             100% |             99.9% |         1,463,063 |         1,460,890
+              90% |             90.1% |         1,316,756 |         1,317,554
+              80% |             80.0% |         1,170,450 |         1,170,299
+              70% |             69.9% |         1,024,144 |         1,022,619
+              60% |             60.1% |           877,838 |           879,641
+              50% |             50.2% |           731,531 |           733,828
+              40% |             40.0% |           585,225 |           585,743
+              30% |             30.0% |           438,919 |           438,261
+              20% |             19.9% |           292,613 |           290,987
+              10% |             10.0% |           146,306 |           146,682
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20130621-00620.T350F2.txt) for  
+additional details.                                                            
+
+
+      Copyright (C) 2007-2013 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

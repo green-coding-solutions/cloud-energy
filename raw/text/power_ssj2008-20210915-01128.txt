@@ -1,0 +1,285 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+
+
+XSLAB V-Raptor SQ                                                              
+SPECpower_ssj2008 = 3,337 overall ssj_ops/watt                                 
+            Test Sponsor:  Telecommunications Technology Association           
+          SPEC License #:  83                                                  
+               Tested By:  Telecommunications Technology Association           
+           Test Location:  TTA, Seongnam-city, Korea                           
+               Test Date:  Sep 15, 2021                                        
+             Publication:  Dec 8, 2021                                         
+   Hardware Availability:  Jul-2021                                            
+   Software Availability:  Sep-2018                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         98.6% |     1,577,507 |           269 |         5,865
+          90% |         90.3% |     1,444,898 |           267 |         5,411
+          80% |         79.9% |     1,278,359 |           262 |         4,872
+          70% |         69.9% |     1,118,360 |           255 |         4,379
+          60% |         60.2% |       963,401 |           247 |         3,902
+          50% |         49.8% |       795,783 |           239 |         3,337
+          40% |         39.9% |       637,679 |           231 |         2,760
+          30% |         29.9% |       478,239 |           224 |         2,133
+          20% |         20.0% |       319,338 |           218 |         1,466
+          10% |         10.2% |       162,818 |           212 |           769
+                  Active Idle |             0 |           206 |             0
+                              sum of ssj_ops / sum of power = |         3,337
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+        16 |        384 |        384 |        384 |        256 |             16 |        16
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  19 inch Rackmount 2U Server System          
+                     Form Factor:  2U                                          
+ Power Supply Quantity and Rating  1 x 800                                     
+                             (W):                                              
+            Power Supply Details:  FSP800-50ERS 2U 800W                        
+                  Network Switch:  uSafe3010-24T                               
+          Network Switch Details:  24 Port 10/100/1000 Base-T, 4 Uplink port 1G
+                                   TX/SFP Combo                                
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  None                                        
+                         Comment:  None                                        
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  V-Raptor SQ                                 
+            # of Identical Nodes:  16                                          
+                         Comment:  None                                        
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  XSLAB                                       
+                           Model:  V-Raptor SQ                                 
+                     Form Factor:  2U                                          
+                        CPU Name:  ARM Cortex A53(1GHz) 24 Cores: SOCIONEXT    
+                                   SC2A11 ARM SoC                              
+             CPU Characteristics:  24 Core, 1GHz                               
+             CPU Frequency (MHz):  1000                                        
+                  CPU(s) Enabled:  24 cores, 24 chips, 1 core/chip             
+                Hardware Threads:  24 (1 / core)                               
+                CPU(s) Orderable:  24 chips                                    
+                   Primary Cache:  16 KB I + 16 KB D on chip per core          
+                 Secondary Cache:  256 KB I+D on chip per dual core            
+                  Tertiary Cache:  4 MB I+D on chip per chip                   
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  1 x 16 GB                                   
+                  Memory Details:  1 x 16 GB DDR4 ECC SODIMM                   
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  M.2 2280 SATA SSD 250GB                     
+                 Disk Controller:  ASM1062 Serial ATA Controller               
+  # and type of Network Interface  1 x 1Gbps with 2ch IPSec Network Offload    
+          Cards (NICs) Installed:  Engine                                      
+  NICs Enabled in Firmware / OS /  1/1/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  10000                                       
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Enabled                                     
+           Operating System (OS):  Ubuntu 18.04.5 LTS (Bionic Beaver)          
+                      OS Version:  Kernel 4.15.0-144-generic                   
+                      Filesystem:  ext4                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  java version "11.0.11" 2021-04-20           
+                                   LTS;Java(TM) SE Runtime Environment 18.9    
+                                   (build 11.0.11+9-LTS-194);Java HotSpot(TM)  
+                                   64-Bit Server VM 18.9 (build                
+                                   11.0.11+9-LTS-194, mixed mode)              
+        JVM Command-line Options:  -server -Djava.awt.headless=true -Xms5000m  
+                                   -Xmx5000m -Djava.net.preferIPv4Stack=true   
+                                   -XX:ParallelGCThreads=15                    
+                                   -XX:SurvivorRatio=60                        
+                                   -XX:TargetSurvivorRatio=90                  
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:LoopUnrollLimit=45 -XX:+UseParallelGC   
+                    JVM Affinity:  for each physicalCore { numactl -C          
+                                   physicalCoreId, physicalCoreId + 10 }       
+                   JVM Instances:  1                                           
+           JVM Initial Heap (MB):  400                                         
+           JVM Maximum Heap (MB):  400                                         
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  None                                        
+     Management Firmware Version:  V1.0.3                                      
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+* None                                                                         
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Benchmark started via ssh.                                                   
+* Each Blades SUTs are mounted in 2U enclosure system under FSP800-50ERS 2U    
+800W PSU.                                                                      
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Nettars tech                                
+                           Model:  NM-R221-K800                                
+                 CPU Description:  Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz    
+              Memory amount (GB):  256                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Red Hat Enterprise Linux Server release 7.8 
+                                   (Maipo)                                     
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  25.252-b09                                  
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Tektronix                                   
+                           Model:  PA1000                                      
+                   Serial Number:  C040933                                     
+                    Connectivity:  USB                                         
+                Input Connection:  Default                                     
+             Metrology Institute:  SS TECHNOLOGY INC.                          
+                   Accredited by:  KOLAS (Korea Laboratory Accreditation       
+                                   Scheme)                                     
+               Calibration Label:  SS-210406-0022                              
+             Date of Calibration:  7-Apr-2021                                  
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-e8c7a49a-20201208                     
+               Setup Description:  Connected to PSU 1                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  iButtonLink                                 
+                           Model:  LinkUSBi + T-Probe                          
+                  Driver Version:  FTDI USB Serial Device 1.0                  
+                    Connectivity:  USB(UART)                                   
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5mm in front of SUT main intake             
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        269 |          28.9
+        90% |        267 |          28.9
+        80% |        262 |          29.0
+        70% |        255 |          29.0
+        60% |        247 |          29.0
+        50% |        239 |          28.9
+        40% |        231 |          28.9
+        30% |        224 |          28.9
+        20% |        218 |          29.2
+        10% |        212 |          29.2
+Active Idle |        206 |          29.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 3 phase /  |            28.9 |              57
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20210915-01128-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,586,007
+    Calibration 2 |                   |                   |         1,607,020
+    Calibration 3 |                   |                   |         1,591,616
+                                                 ssj_ops@calibrated=1,599,318
+             100% |             98.6% |         1,599,318 |         1,577,507
+              90% |             90.3% |         1,439,386 |         1,444,898
+              80% |             79.9% |         1,279,454 |         1,278,359
+              70% |             69.9% |         1,119,523 |         1,118,360
+              60% |             60.2% |           959,591 |           963,401
+              50% |             49.8% |           799,659 |           795,783
+              40% |             39.9% |           639,727 |           637,679
+              30% |             29.9% |           479,795 |           478,239
+              20% |             20.0% |           319,864 |           319,338
+              10% |             10.2% |           159,932 |           162,818
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20210915-01128.sut.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2021 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

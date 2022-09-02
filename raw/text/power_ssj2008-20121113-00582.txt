@@ -1,0 +1,266 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant DL385p Gen8 (2.50 GHz, AMD Opteron 6380       
+processor)                                                                     
+SPECpower_ssj2008 = 4,116 overall ssj_ops/watt                                 
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Nov 5, 2012                                         
+             Publication:  Dec 3, 2012                                         
+   Hardware Availability:  Dec-2012                                            
+   Software Availability:  Aug-2012                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |        100.1% |     1,660,274 |           306 |         5,429
+          90% |         90.7% |     1,504,980 |           290 |         5,191
+          80% |         80.8% |     1,339,467 |           272 |         4,931
+          70% |         70.1% |     1,162,825 |           252 |         4,620
+          60% |         60.0% |       995,648 |           230 |         4,332
+          50% |         50.0% |       828,456 |           196 |         4,217
+          40% |         40.0% |       663,854 |           181 |         3,677
+          30% |         29.9% |       496,496 |           163 |         3,047
+          20% |         20.0% |       332,312 |           144 |         2,302
+          10% |         10.1% |       167,229 |           123 |         1,354
+                  Active Idle |             0 |          66.6 |             0
+                              sum of ssj_ops / sum of power = |         4,116
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  ProLiant DL385p Gen8                        
+            # of Identical Nodes:  1                                           
+                         Comment:  ProLiant DL385p Gen8                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL385p Gen8 (2.50 GHz, AMD Opteron 
+                                   6380 processor)                             
+                     Form Factor:  2U                                          
+                        CPU Name:  AMD Opteron 6380                            
+             CPU Characteristics:  16 cores, 2.50 GHz, 16 MB L3 cache          
+             CPU Frequency (MHz):  2500                                        
+                  CPU(s) Enabled:  32 cores, 2 chips, 16 cores/chip            
+                Hardware Threads:  32 (1 / core)                               
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  512 KB I + 256 KB D on chip per chip        
+                 Secondary Cache:  16 MB I+D on chip per chip, 2 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  16 MB I+D on chip per chip, 8 MB shared / 8 
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  64.0                                        
+              # and size of DIMM:  8 x 8192 MB                                 
+                  Memory Details:  8 GB 2Rx4 PC3L-10600R ECC CL9; slots 1, 4,  
+                                   7, and 10 populated                         
+ Power Supply Quantity and Rating  1 x 750                                     
+                             (W):                                              
+            Power Supply Details:  HP part#:656363-B21                         
+                      Disk Drive:  1 x 100 GB SFF SSD SATA, HP part            
+                                   #:653112-B21                                
+                 Disk Controller:  Integrated SATA                             
+  # and type of Network Interface  1 x Embedded HP 1Gb 4-port 331FLR FIO       
+          Cards (NICs) Installed:  Adapter                                     
+  NICs Enabled in Firmware / OS /  4/4/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power saver profile in OS (see SUT Notes)   
+           Operating System (OS):  Microsoft Windows Server 2008 Enterprise    
+                                   Edition x64                                 
+                      OS Version:  R2 SP1                                      
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.6, JRE 1.7.0 Windows     
+                                   Server 2008 amd64-64 20120322_106209 (JIT   
+                                   enabled, AOT enabled))                      
+        JVM Command-line Options:  -Xaggressive -Xcompressedrefs               
+                                   -Xgcpolicy:gencon -Xmn1400m -Xms1600m       
+                                   -Xmx1600m -XlockReservation -Xnoloa -Xlp    
+                                   -Xconcurrentlevel0 -Xthr:minimizeUserCPU    
+                                   -Xgcthreads2                                
+                    JVM Affinity:  start /node [0,1,2,3] /AFFINITY [0x3, 0xC,  
+                                   0x30, 0xC0]                                 
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1600                                        
+           JVM Maximum Heap (MB):  1600                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  A28 08/14/2012                              
+     Management Firmware Version:  iLO4 version 1.05                           
+                Workload Version:  SSJ 1.2.9                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM SDK Java Technology Edition Version 7.0 
+                                   for Windows x64                             
+
+
+
+                            Boot Firmware Settings                             
+
+* BIOS configuration:                                                          
+* Core Performance Boost - Disabled                                            
+* HP Power Profile - Custom                                                    
+* HP Power Regulator - HP Dynamic Power Savings Mode                           
+* Dynamic Power Savings Mode Response - Slow                                   
+* HyperTransport Frequency - HT power savings mode                             
+* HP Smart Array P420i Controller - Disabled                                   
+* Collaborative Power Control - Disabled                                       
+* DIMM Voltage Preference - Optimizied for Power                               
+
+
+                         Management Firmware Settings                          
+
+Persistent mouse and keyboard disabled                                         
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance had the affinity set to bind to 2 cores.                   
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Run started remotely through psexec batch script                             
+* Turn off hard disk after 1 minute set in OS power profile                    
+* Turn off display after 1 minute set in OS power profile                      
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL360 G5                           
+                 CPU Description:  Intel Xeon E5440                            
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows 2003 R2 x64 Enterprise Edition      
+                                   Service Pack 2                              
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  java version 1.6.0_30, Java HotSpot 64-Bit  
+                                   Server VM (build 20.5-b03, mixed mode)      
+                     CCS Version:  1.2.5                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91K218964                                   
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  Hewlett-Packard Company Metrology           
+               Calibration Label:  705874                                      
+             Date of Calibration:  03-Jan-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.1-1271fb18-20110728                     
+               Setup Description:  Connected to power supply                   
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.0.0.0                                     
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  25 mm in front of SUT main air intake       
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        306 |          20.4
+        90% |        290 |          20.3
+        80% |        272 |          20.2
+        70% |        252 |          20.4
+        60% |        230 |          20.3
+        50% |        196 |          20.2
+        40% |        181 |          20.4
+        30% |        163 |          20.2
+        20% |        144 |          20.2
+        10% |        123 |          20.4
+Active Idle |       66.6 |          20.4
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            20.2 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20121113-00582-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         1,549,747
+    Calibration 2 |                   |                   |         1,656,895
+    Calibration 3 |                   |                   |         1,660,089
+                                                 ssj_ops@calibrated=1,658,492
+             100% |            100.1% |         1,658,492 |         1,660,274
+              90% |             90.7% |         1,492,643 |         1,504,980
+              80% |             80.8% |         1,326,793 |         1,339,467
+              70% |             70.1% |         1,160,944 |         1,162,825
+              60% |             60.0% |           995,095 |           995,648
+              50% |             50.0% |           829,246 |           828,456
+              40% |             40.0% |           663,397 |           663,854
+              30% |             29.9% |           497,548 |           496,496
+              20% |             20.0% |           331,698 |           332,312
+              10% |             10.1% |           165,849 |           167,229
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20121113-00582.DL385p_Gen8.txt) 
+for additional details.                                                        
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

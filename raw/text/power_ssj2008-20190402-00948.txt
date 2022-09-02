@@ -1,0 +1,367 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2019 Standard Performance Evaluation Corporation      
+
+
+Hewlett Packard Enterprise Synergy 480 Gen10 Compute Module                    
+SPECpower_ssj2008 = 11,676 overall ssj_ops/watt                                
+            Test Sponsor:  Hewlett Packard Enterprise                          
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett Packard Enterprise                          
+           Test Location:  Houston, TX, USA                                    
+               Test Date:  Mar 26, 2019                                        
+             Publication:  May 8, 2019                                         
+   Hardware Availability:  Apr-2019                                            
+   Software Availability:  Mar-2019                                            
+             Test Method:  Multi Node                                          
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |    51,793,120 |         4,073 |        12,716
+          90% |         90.0% |    46,757,453 |         3,593 |        13,013
+          80% |         80.0% |    41,561,329 |         3,045 |        13,649
+          70% |         70.0% |    36,347,226 |         2,653 |        13,699
+          60% |         60.0% |    31,164,091 |         2,310 |        13,493
+          50% |         50.0% |    25,960,015 |         2,017 |        12,868
+          40% |         40.0% |    20,778,537 |         1,797 |        11,561
+          30% |         30.0% |    15,585,606 |         1,607 |         9,698
+          20% |         20.0% |    10,381,893 |         1,420 |         7,314
+          10% |         10.0% |     5,190,473 |         1,223 |         4,244
+                  Active Idle |             0 |           714 |             0
+                              sum of ssj_ops / sum of power = |        11,676
+
+
+
+                              Aggregate SUT Data                               
+
+# of Nodes | # of Chips | # of Cores |    # of    | Total RAM  | # of OS Images | # of JVM 
+           |            |            |  Threads   |    (GB)    |                | Instances
+---------- | ---------- | ---------- | ---------- | ---------- | -------------- | ---------
+         9 |         18 |        504 |      1,008 |      1,728 |              9 |        36
+
+
+
+                               System Under Test                               
+
+
+
+                                Shared Hardware                                
+
+                                SHARED HARDWARE                                
+                       Enclosure:  HPE Synergy 12000 Frame                     
+                     Form Factor:  12U                                         
+ Power Supply Quantity and Rating  6 x 2650                                    
+                             (W):                                              
+            Power Supply Details:  HPE 2650W Performance Hot Plug Titanium Plus
+                                   Power Supply Kit (798095-B21)               
+                  Network Switch:  1 x H3C S5820X-28S (JD373A)                 
+          Network Switch Details:  10 Gb Fibre 24 ports                        
+                      KVM Switch:  None                                        
+              KVM Switch Details:  N/A                                         
+                  Other Hardware:  1 x HPE Synergy 10/40Gb Pass Thru Module    
+                                   (799330-B21), 1 x Synergy Composer          
+                                   (804353-B21), 1 x Synergy Frame Link Module 
+                                   (804942-B21)                                
+                         Comment:  Network switch not measured for power       
+
+
+
+                                  Set: 'SUT'                                   
+
+                  Set Identifier:  SUT                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  9                                           
+                         Comment:  SUT                                         
+
+                               HARDWARE PER NODE                               
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  Synergy 480 Gen10 Compute Module            
+                     Form Factor:  7U                                          
+                        CPU Name:  Intel Xeon Platinum 8280 @ 2.70GHz (Intel   
+                                   Turbo Boost Technology up to 4.00 GHz)      
+             CPU Characteristics:  28-Core, 2.70 GHz, 38.5MB L3 Cache          
+             CPU Frequency (MHz):  2700                                        
+                  CPU(s) Enabled:  56 cores, 2 chips, 28 cores/chip            
+                Hardware Threads:  112 (2 / core)                              
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  1 MB I+D on chip per core                   
+                  Tertiary Cache:  39424 KB I+D on chip per chip               
+                     Other Cache:  None                                        
+              Memory Amount (GB):  192                                         
+              # and size of DIMM:  12 x 16384 MB                               
+                  Memory Details:  12 x 16GB 2Rx8 PC4-2933Y-R; slots 1, 3, 5,  
+                                   8, 10 and 12 populated in each socket       
+ Power Supply Quantity and Rating  None                                        
+                             (W):                                              
+            Power Supply Details:  N/A                                         
+                      Disk Drive:  1 x HPE 240GB 6G SATA M.2 SSD (875488-B21)  
+                 Disk Controller:  HPE Smart Array S100i SR Gen10              
+  # and type of Network Interface  1 x HPE Synergy 3820C 10/20Gb CNA           
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  H/S: Standard                               
+
+                               SOFTWARE PER NODE                               
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Windows Server 2012 R2 Datacenter           
+                      OS Version:  Version 6.3 (Build 9600)                    
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle Java HotSpot(TM) 64-Bit Server VM    
+                                   (build 24.80-b11, mixed mode), version      
+                                   1.7.0_80                                    
+        JVM Command-line Options:  -server -Xmn21000m -Xms24000m -Xmx24000m    
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=4                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:ParallelGCThreads=28                    
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+AggressiveOpts 
+                                   -XX:+UseLargePages -XX:+UseParallelOldGC    
+                    JVM Affinity:  start /NODE [0,1,2,3] /AFFINITY [0xFFFFFFF] 
+                   JVM Instances:  4                                           
+           JVM Initial Heap (MB):  24000                                       
+           JVM Maximum Heap (MB):  24000                                       
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  I42 v2.00 (02/02/2019)                      
+     Management Firmware Version:  1.40 Feb 05 2019                            
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  HPE Service Pack for ProLiant (SPP) Version:
+                                   2019.03.0, Microsoft Windows KB4056898,     
+                                   KB4338815                                   
+
+
+
+                            Boot Firmware Settings                             
+
+Serial Port Options:                                                           
+* Embedded Serial Port: Disabled                                               
+* Virtual Serial Port: Disabled                                                
+* BIOS Serial Console Port: DisabledUSB Options                                
+* USB Support: All USB Ports Disabled                                          
+* USB Boot Support: Disabled                                                   
+* Internal SD Card Slot: DisabledProcessor Options                             
+* x2APIC: Disabled Memory Options                                              
+* Memory Bus Frequency: 2400 MHz                                               
+* Memory Patrol Scrubbing: DisabledVirtualization Options                      
+* SR-IOV: Disabled                                                             
+* VT-D: Disabled                                                               
+* VT-x: DisabledEmbedded SATA Configuration                                    
+* Smart Array SW RAID SupportPower and Performance Options                     
+* Power Regulator: OS Control Mode                                             
+* Intel Turbo Boost Technology: Enabled (default)                              
+* Energy Efficient Turbo: Enabled (default: Enabled if Turbo Enabled)          
+* Energy Performance Bias: Balanced Power (default: Balanced Performance)      
+* Collaborative Power Control: Enabled (default)                               
+* Intel DMI Link Frequency: Gen 1 Speed                                        
+* NUMA Group Size Optimization: Clustered                                      
+* Sub-NUMA Clustering: EnabledProcessor Prefetcher Options                     
+* HW Prefetcher: Disabled                                                      
+* Adjacent Sector Prefetch: Disabled                                           
+* DCU Stream Prefetcher: Disabled                                              
+* XPT Prefetcher: EnabledI/O options                                           
+* Intel NIC DMA Channels (IOAT): DisabledIntel UPI Options                     
+* Intel UPI Link Frequency: Min UPI SpeedPCIe Device Configuration -> Advanced 
+PCIe Configuration                                                             
+* HPE Synergy 3820C 10/20Gb CNA: PCIe Generation 1Advanced Service Options     
+* AHS PCI Logging Level: Minimal Logging                                       
+
+
+                         Management Firmware Settings                          
+
+See SUT Notes                                                                  
+
+
+                            System Under Test Notes                            
+
+Benchmark started via PSExec                                                   
+SPECpower_ssj.props input.load_level.number_warehouses set to 112 to detect the
+full number of available processors on the SUT                                 
+Using the local security settings console, "lock pages in memory" was enabled  
+for the user running the benchmark.                                            
+OS tunings                                                                     
+* Windows Power Options = Power Saver                                          
+* Turn off Display = 1 Minute                                                  
+* Turn off hard disk  = 1 Minute                                               
+* System Cooling = Passive                                                     
+* Processor power management = Minimum Processor State = 0%                    
+* Maximum Processor State = 95%                                                
+* PCI Express Power Management = Maximum Power SavingsApplied protection       
+against speculative execution                                                  
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* Yes: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+* reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session         
+Manager\Memory Management" /v FeatureSettingsOverride /t REG_DWORD /d 0 /f     
+* reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session         
+Manager\Memory Management" /v FeatureSettingsOverrideMask /t REG_DWORD /d 3 /f 
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard Enterprise                  
+                           Model:  ProLiant DL360 Gen9                         
+                 CPU Description:  2 x Intel Xeon E5-2660 v3                   
+              Memory amount (GB):  128                                         
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2012 R2            
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  1.8.0_144-b01 (build 25.144-b01, mixed mode)
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91GB53024                                   
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-EM5Y4-80-1                                
+             Date of Calibration:  21-Jun-2018                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.1-260d064e-20161220                     
+               Setup Description:  SUT Power Supplies 1 and 4                  
+
+                              POWER ANALYZER PWR2                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91GB47168                                   
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-EM5Y4-60-1                                
+             Date of Calibration:  21-Jun-2018                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.1-260d064e-20161220                     
+               Setup Description:  SUT Power Supplies 2 and 5                  
+
+                              POWER ANALYZER PWR3                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91GC21887                                   
+                    Connectivity:  GPIB vi NI GPIB-USB-HS                      
+                Input Connection:  Default                                     
+             Metrology Institute:  NIST                                        
+                   Accredited by:  TRANSCAT                                    
+               Calibration Label:  5-EM5Y4-20-1                                
+             Date of Calibration:  21-Jun-2018                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.8.1-260d064e-20161220                     
+               Setup Description:  SUT Power Supplies 3 and 6                  
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  5.70.105.0                                  
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  5 mm in front of SUT main intake            
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |      4,073 |          22.2
+        90% |      3,593 |          22.2
+        80% |      3,045 |          22.2
+        70% |      2,653 |          22.3
+        60% |      2,310 |          22.3
+        50% |      2,017 |          22.3
+        40% |      1,797 |          22.3
+        30% |      1,607 |          22.2
+        20% |      1,420 |          22.2
+        10% |      1,223 |          22.2
+Active Idle |        714 |          22.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.1 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20190402-00948-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        51,963,705
+    Calibration 2 |                   |                   |        51,910,384
+    Calibration 3 |                   |                   |        51,962,435
+                                                ssj_ops@calibrated=51,936,410
+             100% |             99.7% |        51,936,410 |        51,793,120
+              90% |             90.0% |        46,742,769 |        46,757,453
+              80% |             80.0% |        41,549,128 |        41,561,329
+              70% |             70.0% |        36,355,487 |        36,347,226
+              60% |             60.0% |        31,161,846 |        31,164,091
+              50% |             50.0% |        25,968,205 |        25,960,015
+              40% |             40.0% |        20,774,564 |        20,778,537
+              30% |             30.0% |        15,580,923 |        15,585,606
+              20% |             20.0% |        10,387,282 |        10,381,893
+              10% |             10.0% |         5,193,641 |         5,190,473
+      Active Idle |                   |                 0 |                 0
+
+See the Aggregate Performance Report (power_ssj2008-20190402-00948.SUT.txt) for
+additional details.                                                            
+
+
+      Copyright (C) 2007-2019 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

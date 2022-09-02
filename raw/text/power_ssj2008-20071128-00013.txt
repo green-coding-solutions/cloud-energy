@@ -1,0 +1,253 @@
+
+                               SPECpower_ssj2008                               
+        Copyright (C) 2007 Standard Performance Evaluation Corporation         
+
+
+Dell Inc. PowerEdge 2950 III (Intel Xeon E5440)                                
+SPECpower_ssj2008 = 682 overall ssj_ops/watt                                   
+            Test Sponsor:  Dell Inc.                                           
+          SPEC License #:  55                                                  
+               Tested By:  Dell Inc.                                           
+           Test Location:  Round Rock, Texas, USA                              
+               Test Date:  Nov 21, 2007                                        
+             Publication:  Dec 11, 2007                                        
+   Hardware Availability:  Nov-2007                                            
+   Software Availability:  Oct-2007                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.7% |       305,413 |           276 |         1,105
+          90% |         90.3% |       276,648 |           270 |         1,025
+          80% |         80.1% |       245,357 |           262 |           937
+          70% |         70.3% |       215,440 |           253 |           851
+          60% |         60.1% |       184,267 |           243 |           758
+          50% |         49.7% |       152,157 |           230 |           660
+          40% |         40.1% |       122,745 |           217 |           565
+          30% |         30.2% |        92,575 |           204 |           454
+          20% |         20.0% |        61,277 |           189 |           324
+          10% |         10.2% |        31,319 |           173 |           182
+                  Active Idle |             0 |           157 |             0
+                              sum of ssj_ops / sum of power = |           682
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  PowerEdge 2950 III (Intel Xeon E5440)       
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge 2950 III (Intel Xeon E5440)       
+                     Form Factor:  --                                          
+                        CPU Name:  Intel Xeon E5440                            
+             CPU Characteristics:  1333 MHz system bus                         
+             CPU Frequency (MHz):  2833                                        
+                  CPU(s) Enabled:  8 cores, 2 chips, 4 cores/chip              
+                Hardware Threads:  8 (1 / core)                                
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32KB I + 32KB D on chip per core            
+                 Secondary Cache:  12 MB I+D on chip per chip, 6 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  16                                          
+              # and size of DIMM:  4x4096MB                                    
+                  Memory Details:  DDR2-667 CL5 FBDIMM; slots 1, 3, 5, 7       
+                                   populated                                   
+ Power Supply Quantity and Rating  1 x 750                                     
+                             (W):                                              
+            Power Supply Details:  Dell P/N Y8132                              
+                      Disk Drive:  1 x 73GB 10K RPM 2.5" SAS                   
+                 Disk Controller:  SAS 6iR                                     
+  # and type of Network Interface  2 x onboard gigabit                         
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (Server Balanced Power and          
+                                   Performance)                                
+           Operating System (OS):  Microsoft Windows Server 2003 R2 Enterprise 
+                                   x64 Edition                                 
+                      OS Version:  Service Pack 2                              
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  BEA JRockit(R) 6 P27.4.0-10 (build          
+                                   P27.4.0-10-90053-1.6.0_02-20071009-1827-wind
+                                   ows-x86_64)                                 
+        JVM Command-line Options:  -Xms3700m -Xns3200m -Xmx3700m -XXaggressive 
+                                   -XXthroughputcompaction -XXlazyunlocking    
+                                   -XXcallprofiling -Xgc:genpar -XXgcthreads=2 
+                                   -XXtlasize:min=4k,preferred=512k            
+                    JVM Affinity:  start /affinity [03,0c,30,c0]               
+                   JVM Instances:  8                                           
+           JVM Initial Heap (MB):  3700                                        
+           JVM Maximum Heap (MB):  3700                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 0.23                                    
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a socket.                               
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Hardware Prefetcher and Adjacent Cache Line Prefetch disabled in BIOS        
+(default enabled)                                                              
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Dell Inc.                                   
+                           Model:  PowerEdge 1950                              
+                 CPU Description:  Intel Xeon 5160                             
+              Memory amount (GB):  4                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows 2003 Server Enterprise    
+                                   Edition                                     
+                      JVM Vendor:  BEA Systems, Inc.                           
+                     JVM Version:  JRockit(R) 1.6.0_02 build R26.4.0-63        
+                                   (32-bit)                                    
+                     CCS Version:  0.21                                        
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91G643889                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  --                                          
+           Calibration Institute:  NIST                                        
+                   Accredited by:  Yokogawa                                    
+               Calibration Label:  07-1458                                     
+             Date of Calibration:  24-Oct-2007                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  0.21-2f7044de                               
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 3.20.0.0             
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+* AC Power Source was an APC Smart-UPS 3000                                    
+* Power analyzer voltage range set to 150V                                     
+* Power analyzer current range set to 5A                                       
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        276 |          23.0
+        90% |        270 |          23.0
+        80% |        262 |          23.0
+        70% |        253 |          23.0
+        60% |        243 |          23.0
+        50% |        230 |          23.0
+        40% |        217 |          23.0
+        30% |        204 |          23.0
+        20% |        189 |          23.0
+        10% |        173 |          22.9
+Active Idle |        157 |          22.9
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+120V / 60 Hz / 1 phase /  |            22.9 |             250
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20071128-00013-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |           302,915
+    Calibration 2 |                   |                   |           306,655
+    Calibration 3 |                   |                   |           306,248
+                                                   ssj_ops@calibrated=306,452
+             100% |             99.7% |           306,452 |           305,413
+              90% |             90.3% |           275,807 |           276,648
+              80% |             80.1% |           245,161 |           245,357
+              70% |             70.3% |           214,516 |           215,440
+              60% |             60.1% |           183,871 |           184,267
+              50% |             49.7% |           153,226 |           152,157
+              40% |             40.1% |           122,581 |           122,745
+              30% |             30.2% |            91,936 |            92,575
+              20% |             20.0% |            61,290 |            61,277
+              10% |             10.2% |            30,645 |            31,319
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report (power_ssj2008-20071128-00013.0001.txt) for    
+additional details.                                                            
+
+
+        Copyright (C) 2007 Standard Performance Evaluation Corporation         
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+

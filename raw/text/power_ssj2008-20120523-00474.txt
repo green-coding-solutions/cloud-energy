@@ -1,0 +1,260 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+
+
+Acer Incorporated Acer AR585 F1                                                
+SPECpower_ssj2008 = 2,136 overall ssj_ops/watt                                 
+            Test Sponsor:  Acer Incorporated                                   
+          SPEC License #:  97                                                  
+               Tested By:  Acer Incorporated                                   
+           Test Location:  Taipei, R.O.C.                                      
+               Test Date:  May 22, 2012                                        
+             Publication:  Jun 21, 2012                                        
+   Hardware Availability:  Jun-2012                                            
+   Software Availability:  Jun-2011                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.6% |     2,299,931 |           786 |         2,925
+          90% |         89.9% |     2,075,410 |           747 |         2,777
+          80% |         80.2% |     1,851,168 |           710 |         2,607
+          70% |         69.9% |     1,613,866 |           668 |         2,416
+          60% |         60.1% |     1,387,288 |           619 |         2,241
+          50% |         50.2% |     1,158,434 |           564 |         2,055
+          40% |         40.0% |       924,363 |           504 |         1,833
+          30% |         29.9% |       690,750 |           446 |         1,550
+          20% |         20.1% |       463,482 |           388 |         1,195
+          10% |         10.0% |       231,293 |           326 |           710
+                  Active Idle |             0 |           186 |             0
+                              sum of ssj_ops / sum of power = |         2,136
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Acer AR585 F1                               
+                     Form Factor:  2U                                          
+                        CPU Name:  AMD Opteron 6278                            
+             CPU Characteristics:  16 cores, 2.40 GHz (AMD Turbo CORE          
+                                   technology up to 3.3 GHz)                   
+             CPU Frequency (MHz):  2400                                        
+                  CPU(s) Enabled:  64 cores, 4 chips, 16 cores/chip            
+                Hardware Threads:  64 (1 / core)                               
+                CPU(s) Orderable:  2,4 chips                                   
+                   Primary Cache:  512 KB I + 256 KB D on chip per chip        
+                 Secondary Cache:  16 MB I+D on chip per chip, 2 MB shared / 2 
+                                   cores                                       
+                  Tertiary Cache:  16 MB I+D on chip per chip, 8 MB shared / 8 
+                                   cores                                       
+                     Other Cache:  None                                        
+              Memory Amount (GB):  256                                         
+              # and size of DIMM:  32 x 8192 MB                                
+                  Memory Details:  8GB 2Rx4 PC3-10600R; Slots 1A, 1B, 2A, 2B,  
+                                   3A, 3B, 4A and 4B are populated for each    
+                                   processor                                   
+ Power Supply Quantity and Rating  1 x 1400                                    
+                             (W):                                              
+            Power Supply Details:  PWS-1K41F-1R                                
+                      Disk Drive:  2 x 300GB SAS 15K RPM 3.5" HDD, Acer part   
+                                   #KH.300W1.025                               
+                 Disk Controller:  Flex IO USAS2H8iR add-on SAS RAID controller
+  # and type of Network Interface  1 x dual-port Intel 82576EB Gigabit Ethernet
+          Cards (NICs) Installed:  controller                                  
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Power save enabled in OS                    
+           Operating System (OS):  Windows Server 2008, Enterprise Edition     
+                      OS Version:  R2 SP1                                      
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  IBM Corporation                             
+                     JVM Version:  IBM J9 VM (build 2.4, JRE 1.6.0 IBM J9 2.4  
+                                   Windows Server 2008 amd64-64                
+                                   jvmwa6460sr9-20110619_85080 (JIT enabled,   
+                                   AOT enabled)                                
+        JVM Command-line Options:  -Xmn1500m -Xms1875m -Xmx1875m -Xaggressive  
+                                   -Xcompressedrefs -Xgcpolicy:gencon          
+                                   -XlockReservation -Xnoloa -Xlp              
+                    JVM Affinity:  start /affinity [F, F0, F00, F000, F0000,   
+                                   F00000, F000000, F0000000, F00000000,       
+                                   F000000000, F0000000000, F00000000000,      
+                                   F000000000000, F0000000000000,              
+                                   F00000000000000, F000000000000000]          
+                   JVM Instances:  16                                          
+           JVM Initial Heap (MB):  1875                                        
+           JVM Maximum Heap (MB):  1875                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  P6T0                                        
+     Management Firmware Version:  1.00                                        
+                Workload Version:  SSJ 1.2.9                                   
+               Director Location:  Controller                                  
+                  Other Software:  IBM Websphere Application Server V7.0 for   
+                                   Windows on x86-64bit                        
+
+
+
+                            Boot Firmware Settings                             
+
+* Fan Speed Control Modes: Engery Saving /ES                                   
+
+
+                         Management Firmware Settings                          
+
+None                                                                           
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to 4 cores in a socket.                    
+* Using the local security settings console, "lock pages in memory" was        
+enabled.                                                                       
+* AR585 F1 with Opteron 6278 is currently available in France, Germany, Italy  
+and Spain.                                                                     
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Acer Incorporated                           
+                           Model:  Gateway GR160 F1                            
+                 CPU Description:  Intel L5520                                 
+              Memory amount (GB):  3                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows Server 2003 R2, Enterprise Edition  
+                                   SP2                                         
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Oracle JRockit(R) (build                    
+                                   R27.5.0-110_o-99226-1.6.0_03-20080528-1505-w
+                                   indows-ia32, compiled mode)                 
+                     CCS Version:  1.2.5                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91H534921                                   
+                    Connectivity:  RS232                                       
+                Input Connection:  Default                                     
+             Metrology Institute:  NML (National Measurement Laboratory,       
+                                   R.O.C.)                                     
+                   Accredited by:  ETC, Taiwan                                 
+               Calibration Label:  12-05-BAC-113-01                            
+             Date of Calibration:  10-May-2012                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.4.1-1271fb18-20110728                     
+               Setup Description:  None                                        
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  Watchport Virtual Port 5.0.0.0              
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  None                                        
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        786 |          23.6
+        90% |        747 |          23.4
+        80% |        710 |          23.6
+        70% |        668 |          24.2
+        60% |        619 |          24.3
+        50% |        564 |          24.0
+        40% |        504 |          23.6
+        30% |        446 |          23.6
+        20% |        388 |          24.1
+        10% |        326 |          24.6
+Active Idle |        186 |          24.2
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            23.4 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20120523-00474-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |         2,274,304
+    Calibration 2 |                   |                   |         2,309,274
+    Calibration 3 |                   |                   |         2,309,142
+                                                 ssj_ops@calibrated=2,309,208
+             100% |             99.6% |         2,309,208 |         2,299,931
+              90% |             89.9% |         2,078,287 |         2,075,410
+              80% |             80.2% |         1,847,366 |         1,851,168
+              70% |             69.9% |         1,616,445 |         1,613,866
+              60% |             60.1% |         1,385,525 |         1,387,288
+              50% |             50.2% |         1,154,604 |         1,158,434
+              40% |             40.0% |           923,683 |           924,363
+              30% |             29.9% |           692,762 |           690,750
+              20% |             20.1% |           461,842 |           463,482
+              10% |             10.0% |           230,921 |           231,293
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20120523-00474.WIN-KK33POLHKCU.txt) for additional details.     
+
+
+      Copyright (C) 2007-2012 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.9, July 28, 2011]         
+

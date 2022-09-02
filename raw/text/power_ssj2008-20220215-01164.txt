@@ -1,0 +1,277 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+
+
+GIGA-BYTE TECHNOLOGY CO., LTD. R282-Z90                                        
+SPECpower_ssj2008 = 18,692 overall ssj_ops/watt                                
+            Test Sponsor:  GIGA-BYTE TECHNOLOGY CO., LTD.                      
+          SPEC License #:  9082                                                
+               Tested By:  GIGA-BYTE TECHNOLOGY CO., LTD.                      
+           Test Location:  XinTien ,Taipei                                     
+               Test Date:  Feb 15, 2022                                        
+             Publication:  Mar 24, 2022                                        
+   Hardware Availability:  Mar-2022                                            
+   Software Availability:  Oct-2021                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.5% |    12,617,831 |           501 |        25,161
+          90% |         89.9% |    11,401,635 |           470 |        24,282
+          80% |         80.0% |    10,148,526 |           437 |        23,205
+          70% |         70.0% |     8,871,263 |           404 |        21,983
+          60% |         59.5% |     7,538,009 |           368 |        20,466
+          50% |         50.0% |     6,335,173 |           343 |        18,459
+          40% |         39.9% |     5,064,767 |           312 |        16,216
+          30% |         30.0% |     3,798,503 |           279 |        13,609
+          20% |         20.1% |     2,543,240 |           245 |        10,381
+          10% |         10.0% |     1,269,773 |           207 |         6,141
+                  Active Idle |             0 |           156 |             0
+                              sum of ssj_ops / sum of power = |        18,692
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'SUT'                                   
+
+                  Set Identifier:  SUT                                         
+                 Set Description:  System Under Test                           
+            # of Identical Nodes:  1                                           
+                         Comment:  SUT                                         
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  GIGA-BYTE TECHNOLOGY CO., LTD.              
+                           Model:  R282-Z90                                    
+                     Form Factor:  2U                                          
+                        CPU Name:  AMD EPYC 7773X                              
+             CPU Characteristics:  64-Core, 2.20GHz, 768MB L3 Cache            
+             CPU Frequency (MHz):  2200                                        
+                  CPU(s) Enabled:  128 cores, 2 chips, 64 cores/chip           
+                Hardware Threads:  256 (2 / core)                              
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  32 KB I + 32 KB D on chip per core          
+                 Secondary Cache:  512 KB I+D on chip per core                 
+                  Tertiary Cache:  768 MB I+D on chip per chip                 
+                     Other Cache:  None                                        
+              Memory Amount (GB):  256                                         
+              # and size of DIMM:  16 x 16 GB                                  
+                  Memory Details:  16 x 16 GB 2Rx8 PC4-3200AA-R ECC RDIMM (P/N 
+                                   25SD7-3216G1-S1R); slots                    
+                                   A1,B1,C1,D1,E1,F1,G1,H1,I1,J1,K1,L1,M1,N1,O1
+                                   ,P1 populated                               
+ Power Supply Quantity and Rating  1 x 1300                                    
+                             (W):                                              
+            Power Supply Details:  DELTA DPS-1300AB-4 (P/N 25EP0-213000-D0S)   
+                      Disk Drive:  1 x 1.92TB SATA 6Gb/s SSD; (P/N             
+                                   25SHA-1192TI-S1R)                           
+                 Disk Controller:  Embedded SATA Controller                    
+  # and type of Network Interface  1 x integrated 2-port NIC                   
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  None                                        
+                           Mouse:  None                                        
+                         Monitor:  None                                        
+                  Optical Drives:  No                                          
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Enabled (see SUT Notes)                     
+           Operating System (OS):  Microsoft Windows Server 2019 Datacenter    
+                      OS Version:  Version 1809 (OS Build 17763.1518)          
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM 18.9      
+                                   (build 11.0.11+9-LTS-194, mixed mode)       
+        JVM Command-line Options:  -server -Xmn1700m -Xms1950m -Xmx1950m       
+                                   -XX:UseSSE=4 -XX:UseAVX=1                   
+                                   -XX:SurvivorRatio=1                         
+                                   -XX:TargetSurvivorRatio=99                  
+                                   -XX:ParallelGCThreads=2                     
+                                   -XX:AllocatePrefetchDistance=256            
+                                   -XX:AllocatePrefetchLines=2                 
+                                   -XX:LoopUnrollLimit=45                      
+                                   -XX:InitialTenuringThreshold=12             
+                                   -XX:MaxTenuringThreshold=15                 
+                                   -XX:InlineSmallCode=3900                    
+                                   -XX:MaxInlineSize=270                       
+                                   -XX:FreqInlineSize=2500 -XX:+UseLargePages  
+                                   -XX:+UseParallelOldGC                       
+                    JVM Affinity:  start /NODE                                 
+                                   [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]     
+                                   /AFFINITY [0xF,0xF0,0xF00,0xF000]           
+                   JVM Instances:  64                                          
+           JVM Initial Heap (MB):  1950                                        
+           JVM Maximum Heap (MB):  1950                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  M07                                         
+     Management Firmware Version:  12.58.03                                    
+                Workload Version:  SSJ 1.2.10                                  
+               Director Location:  Controller                                  
+                  Other Software:  Microsoft Windows KB4578966                 
+
+
+
+                            Boot Firmware Settings                             
+
+* Power Policy Quick Setting : Energy Efficient                                
+
+
+                         Management Firmware Settings                          
+
+none                                                                           
+
+
+                            System Under Test Notes                            
+
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* Windows Power Options=Balanced Mode                                          
+* Processor power management: Minimum Processor State = 0%                     
+* Processor power management: Maximum Processor State = 100%                   
+* System cooling policy = Active                                               
+* PCI Express Power Management = Maximum Power Savings                         
+* Turn off Display = 1 Minute                                                  
+* Turn off hard disk = 1 Minute                                                
+* Using Windows PowerShell, set the following powercfg properties:             
+* Powercfg /setacvalueindex scheme_current sub_processor PROCTHROTTLEMIN 0     
+* Powercfg /setacvalueindex scheme_current sub_processor PROCTHROTTLEMAX 100   
+* Powercfg /setacvalueindex scheme_current sub_processor PERFEPP 0             
+* Powercfg /setacvalueindex scheme_current sub_processor perfautonomous 1      
+* Powercfg /setacvalueindex scheme_current sub_processor PERFBOOSTMODE 4       
+* Powercfg /setactive scheme_current                                           
+* N/A: The test sponsor attests, as of date of publication, that CVE-2017-5754 
+(Meltdown) is mitigated in the system as tested and documented.                
+* YES: The test sponsor attests, as of date of publication, that CVE-2017-5753 
+(Spectre variant 1) is mitigated in the system as tested and documented.       
+* YES: The test sponsor attests, as of date of publication, that CVE-2017-5715 
+(Spectre variant 2) is mitigated in the system as tested and documented.       
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  GIGA-BYTE TECHNOLOGY CO., LTD.              
+                           Model:  R180-F34                                    
+                 CPU Description:  Intel E5-2699v3                             
+              Memory amount (GB):  64                                          
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Microsoft Windows Server 2008 R2 SP1        
+                      JVM Vendor:  Oracle Corporation                          
+                     JVM Version:  Hotspot(TM) Client VM, version 1.8.0_121    
+                     CCS Version:  1.2.6                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa                                    
+                           Model:  WT210                                       
+                   Serial Number:  91GC17356                                   
+                    Connectivity:  RS-232                                      
+                Input Connection:  Default                                     
+             Metrology Institute:  TAF                                         
+                   Accredited by:  Chroma ATE Inc. Calibration Lab             
+               Calibration Label:  RE1100704984                                
+             Date of Calibration:  27-Jul-2021                                 
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+                PTDaemon Version:  1.9.2-3976349f-20201208                     
+               Setup Description:  Connect to SUT PSU directly                 
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  TEMPERATURE@LERT                            
+                           Model:  TM-STD30                                    
+                  Driver Version:  3.1.0.0                                     
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  same as CCS                                 
+                PTDaemon Host OS:  same as CCS                                 
+               Setup Description:  10mm in front of SUT main airflow intake    
+
+
+
+                                     Notes                                     
+
+None                                                                           
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        501 |          22.2
+        90% |        470 |          22.2
+        80% |        437 |          22.2
+        70% |        404 |          22.1
+        60% |        368 |          22.0
+        50% |        343 |          21.9
+        40% |        312 |          21.8
+        30% |        279 |          21.8
+        20% |        245 |          21.7
+        10% |        207 |          21.6
+Active Idle |        156 |          21.6
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+220V / 60 Hz / 1 phase /  |            21.6 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20220215-01164-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |        12,714,465
+    Calibration 2 |                   |                   |        12,677,975
+    Calibration 3 |                   |                   |        12,679,600
+                                                ssj_ops@calibrated=12,678,787
+             100% |             99.5% |        12,678,787 |        12,617,831
+              90% |             89.9% |        11,410,909 |        11,401,635
+              80% |             80.0% |        10,143,030 |        10,148,526
+              70% |             70.0% |         8,875,151 |         8,871,263
+              60% |             59.5% |         7,607,272 |         7,538,009
+              50% |             50.0% |         6,339,394 |         6,335,173
+              40% |             39.9% |         5,071,515 |         5,064,767
+              30% |             30.0% |         3,803,636 |         3,798,503
+              20% |             20.1% |         2,535,757 |         2,543,240
+              10% |             10.0% |         1,267,879 |         1,269,773
+      Active Idle |                   |                 0 |                 0
+
+See the Host Performance Report                                                
+(power_ssj2008-20220215-01164.WIN-2GUPT350RQK.txt) for additional details.     
+
+
+      Copyright (C) 2007-2022 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+         SPECpower_ssj2008 Reporter Version: [SSJ 1.2.10, May 9, 2012]         
+

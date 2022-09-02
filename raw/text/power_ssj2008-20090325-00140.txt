@@ -1,0 +1,258 @@
+
+                               SPECpower_ssj2008                               
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+
+
+Hewlett-Packard Company ProLiant DL380 G4 (3.8GHz, Intel Xeon processor)       
+SPECpower_ssj2008 = 45.2 overall ssj_ops/watt                                  
+            Test Sponsor:  Hewlett-Packard Company                             
+          SPEC License #:  3                                                   
+               Tested By:  Hewlett-Packard Company                             
+           Test Location:  Houston, TX                                         
+               Test Date:  Mar 16, 2009                                        
+             Publication:  Apr 8, 2009                                         
+   Hardware Availability:  Sep-2004                                            
+   Software Availability:  Oct-2005                                            
+             Test Method:  Single Node                                         
+           System Source:  Single Supplier                                     
+      System Designation:  Server                                              
+      Power Provisioning:  Line-powered                                        
+
+
+
+
+
+                           Benchmark Results Summary                           
+
+                 Performance                  |     Power     |  Performance 
+                                              |               |   to Power   
+                                              |               |     Ratio    
+ Target Load  |  Actual Load  |    ssj_ops    |    Average    |              
+              |               |               | Active Power  |              
+              |               |               |      (W)      |              
+------------- | ------------- | ------------- | ------------- | -------------
+         100% |         99.0% |        26,880 |           394 |          68.1
+          90% |         90.4% |        24,551 |           381 |          64.5
+          80% |         79.6% |        21,613 |           355 |          60.9
+          70% |         68.9% |        18,701 |           330 |          56.6
+          60% |         60.7% |        16,470 |           312 |          52.9
+          50% |         50.2% |        13,635 |           289 |          47.2
+          40% |         40.3% |        10,947 |           271 |          40.4
+          30% |         28.7% |         7,783 |           255 |          30.5
+          20% |         20.3% |         5,514 |           245 |          22.5
+          10% |         10.1% |         2,750 |           236 |          11.7
+                  Active Idle |             0 |           226 |             0
+                              sum of ssj_ops / sum of power = |          45.2
+
+
+
+                               System Under Test                               
+
+
+
+                                  Set: 'sut'                                   
+
+                  Set Identifier:  sut                                         
+                 Set Description:  ProLiant DL380 G4 (3.8GHz, Intel Xeon       
+                                   processor)                                  
+            # of Identical Nodes:  1                                           
+                         Comment:  None                                        
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett-Packard Company                     
+                           Model:  ProLiant DL380 G4 (3.8GHz, Intel Xeon       
+                                   processor)                                  
+                     Form Factor:  --                                          
+                        CPU Name:  Intel Xeon 3.8GHz                           
+             CPU Characteristics:  3.8GHz, 2MB L2, 800MHz system bus           
+             CPU Frequency (MHz):  3800                                        
+                  CPU(s) Enabled:  2 cores, 2 chips, 1 core/chip               
+                Hardware Threads:  4 (2 / core)                                
+                CPU(s) Orderable:  1,2 chips                                   
+                   Primary Cache:  12 K micro-ops I + 16 KB D on chip per chip 
+                 Secondary Cache:  2 MB I+D on chip per chip                   
+                  Tertiary Cache:  None                                        
+                     Other Cache:  None                                        
+              Memory Amount (GB):  8                                           
+              # and size of DIMM:  4 x 2048 MB                                 
+                  Memory Details:  PC-3200R CL3; slots 1,2,3,4 populated       
+ Power Supply Quantity and Rating  1 x 575                                     
+                             (W):                                              
+            Power Supply Details:  DPS-600PB B                                 
+                      Disk Drive:  1 x 36 GB 15K RPM U320 SCSI                 
+                 Disk Controller:  HP Smart Array 6i                           
+  # and type of Network Interface  2 x NC7771                                  
+          Cards (NICs) Installed:                                              
+  NICs Enabled in Firmware / OS /  2/2/1                                       
+                       Connected:                                              
+            Network Speed (Mbit):  1000                                        
+                        Keyboard:  KVM                                         
+                           Mouse:  KVM                                         
+                         Monitor:  KVM                                         
+                  Optical Drives:  Yes                                         
+                  Other Hardware:  None                                        
+
+                                   SOFTWARE                                    
+                Power Management:  Server Balanced Processor Power and         
+                                   Performance                                 
+           Operating System (OS):  Microsoft Windows Server 2003 x64 Enterprise
+                                   Edition                                     
+                      OS Version:  SP1                                         
+                      Filesystem:  NTFS                                        
+                      JVM Vendor:  Sun Microsystems, Inc.                      
+                     JVM Version:  Java HotSpot(TM) 64-Bit Server VM (build    
+                                   1.5.0_05-b05, mixed mode)                   
+        JVM Command-line Options:  -server -XX:+AggressiveHeap -Xmn750m        
+                                   -Xms1500m -Xmx1500m -XX:+UseLargePages      
+                                   -XX:+UseParallelGC -Xss64k                  
+                    JVM Affinity:  None                                        
+                   JVM Instances:  2                                           
+           JVM Initial Heap (MB):  1500                                        
+           JVM Maximum Heap (MB):  1500                                        
+                JVM Address Bits:  64                                          
+           Boot Firmware Version:  --                                          
+     Management Firmware Version:  --                                          
+                Workload Version:  SSJ 1.1.3                                   
+               Director Location:  Controller                                  
+                  Other Software:  None                                        
+
+
+
+                            Boot Firmware Settings                             
+
+--                                                                             
+
+
+                         Management Firmware Settings                          
+
+--                                                                             
+
+
+                            System Under Test Notes                            
+
+* Each JVM instance was affinitized to a socket.                               
+* Using the local security settings console, "lock pages in memory" was enabled
+for the user running the benchmark.                                            
+* BIOS Settings                                                                
+* Adjacent Sector Prefetch Disabled.                                           
+* Hardware Prefetch Disabled.                                                  
+* Note: The general availability of this SUT is more than 3 years in the past, 
+is generally considered obsolete and may or may not be supported by the        
+original vendor or other third party. This benchmark result is intended to     
+provide past perspective on power and performance and represent results using  
+the hardware and software detailed above. This measured result may not be      
+representative of the result that would be measured were this benchmark run at 
+the availability date with current software.                                   
+
+
+                               Controller System                               
+
+                                   HARDWARE                                    
+                 Hardware Vendor:  Hewlett Packard                             
+                           Model:  ProLiant DL360 G3                           
+                 CPU Description:  Intel Xeon                                  
+              Memory amount (GB):  2                                           
+
+                                   SOFTWARE                                    
+           Operating System (OS):  Windows XP Professional                     
+                      JVM Vendor:  BEA Systems,Inc.                            
+                     JVM Version:  BEA JRockit(R) (build                       
+                                   R27.2.0-131-78843-1.6.0-20070320-1457-window
+                                   s-ia32, compiled mode)                      
+                     CCS Version:  1.1.3                                       
+
+
+
+                              Measurement Devices                              
+
+                              POWER ANALYZER PWR1                              
+                 Hardware Vendor:  Yokogawa Electric International Pte. Ltd.   
+                           Model:  WT210                                       
+                   Serial Number:  91GB4571                                    
+                    Connectivity:  GPIB                                        
+                Input Connection:  Default                                     
+           Calibration Institute:  NIST                                        
+                   Accredited by:  HP Metrology                                
+               Calibration Label:  705420                                      
+             Date of Calibration:  26-Nov-2008                                 
+            PTDaemon Host System:  Controller                                  
+                PTDaemon Host OS:  Windows XP Professional                     
+                PTDaemon Version:  1.3.2-e0c92e60                              
+               Setup Description:  --                                          
+
+                           TEMPERATURE SENSOR TEMP1                            
+                 Hardware Vendor:  Digi International Inc.                     
+                           Model:  Watchport/H                                 
+                  Driver Version:  4.20.0.0                                    
+                    Connectivity:  USB                                         
+            PTDaemon Host System:  Controller                                  
+                PTDaemon Host OS:  Windows XP Professional                     
+               Setup Description:  --                                          
+
+
+
+                                     Notes                                     
+
+* Used GPIB-USB Controller 4.2 from Prologix (driver version 2.4.6.0) to       
+connect power analyzer to the controller                                       
+
+
+                  Aggregate Electrical and Environmental Data                  
+
+Target Load |  Average   |    Minimum   
+            |   Active   |    Ambient   
+            | Power (W)  |  Temperature 
+            |            |  (Degrees C) 
+----------- | ---------- | -------------
+       100% |        394 |          22.1
+        90% |        381 |          22.1
+        80% |        355 |          22.1
+        70% |        330 |          22.1
+        60% |        312 |          22.1
+        50% |        289 |          22.1
+        40% |        271 |          22.1
+        30% |        255 |          22.1
+        20% |        245 |          22.1
+        10% |        236 |          22.1
+Active Idle |        226 |          22.1
+
+      Line Standard       |     Minimum     |  Elevation (m) 
+                          |   Temperature   |                
+                          |   (Degrees C)   |                
+------------------------- | --------------- | ---------------
+208V / 60 Hz / 1 phase /  |            22.1 |             132
+         2 wires          |                 |                
+
+See the Power/Temperature Details Report                                       
+(power_ssj2008-20090325-00140-power.txt) for additional details.               
+
+
+                          Aggregate Performance Data                           
+
+   Target Load    |    Actual Load    |                ssj_ops               
+                  |                   |      Target       |      Actual      
+----------------- | ----------------- | ----------------- | -----------------
+    Calibration 1 |                   |                   |            27,183
+    Calibration 2 |                   |                   |            27,135
+    Calibration 3 |                   |                   |            27,167
+                                                    ssj_ops@calibrated=27,151
+             100% |             99.0% |            27,151 |            26,880
+              90% |             90.4% |            24,436 |            24,551
+              80% |             79.6% |            21,721 |            21,613
+              70% |             68.9% |            19,006 |            18,701
+              60% |             60.7% |            16,291 |            16,470
+              50% |             50.2% |            13,576 |            13,635
+              40% |             40.3% |            10,861 |            10,947
+              30% |             28.7% |             8,145 |             7,783
+              20% |             20.3% |             5,430 |             5,514
+              10% |             10.1% |             2,715 |             2,750
+      Active Idle |                   |                 0 |                 0
+
+See the JVM Instance Performance Report                                        
+(power_ssj2008-20090325-00140-0001.001.txt) for additional details.            
+
+
+      Copyright (C) 2007-2009 Standard Performance Evaluation Corporation      
+                      http://www.spec.org - info@spec.org                      
+        SPECpower_ssj2008 Reporter Version: [SSJ 1.2.8, June 24, 2009]         
+
