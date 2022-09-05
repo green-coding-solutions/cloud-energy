@@ -1,26 +1,27 @@
 import csv, re, os
 
-header = ['100.ActualLoad', '100.ssj_ops', '100.AvgPower', '100.PerfPowerRatio',
-'90.ActualLoad', '90.ssj_ops', '90.AvgPower', '90.PerfPowerRatio',
-'80.ActualLoad', '80.ssj_ops', '80.AvgPower', '80.PerfPowerRatio',
-'70.ActualLoad', '70.ssj_ops', '70.AvgPower', '70.PerfPowerRatio',
-'60.ActualLoad', '60.ssj_ops', '60.AvgPower', '60.PerfPowerRatio',
-'50.ActualLoad', '50.ssj_ops', '50.AvgPower', '50.PerfPowerRatio',
-'40.ActualLoad', '40.ssj_ops', '40.AvgPower', '40.PerfPowerRatio',
-'30.ActualLoad', '30.ssj_ops', '30.AvgPower', '30.PerfPowerRatio',
-'20.ActualLoad', '20.ssj_ops', '20.AvgPower', '20.PerfPowerRatio',
-'10.ActualLoad', '10.ssj_ops', '10.AvgPower', '10.PerfPowerRatio',
-'ActiveIdle', 'HW.Vendor', 'HW.Model', 'HW.FormFactor', 'HW.CPUName', 
-'HW.CPUChars', 'HW.CPUFreq', 'HW.CPUsEnabled','HW.HardwareThreads', 
-'HW.CPUsOrderable', 'HW.PrimaryCache', 'HW.SecondaryCache','HW.TertiaryCache',
-'HW.OtherCache', 'HW.MemAmountGB','HW.DIMMNumAndSize','HW.MemDetails', 
-'HW.PSUQuantAndRating', 'HW.PSUDetails','HW.DiskDrive','HW.DiskController',
-'HW.NICSNumAndType', 'HW.NICSFirm/OS/Conn','HW.NetSpeedMbit','HW.Keyboard','HW.Mouse', 
-'HW.OpticalDrive', 'HW.Other', 'SW.PowerManagement', 'SW.OS', 'SW.OSVersion', 
-'SW.Filesystem', 'SW.JVMVendor', 'SW.JVMVersion', 'SW.JVMCLIOpts', 
-'SW.JVMAffinity', 'SW.JVMInstances', 'SW.JVMInitialHeapMB', 'SW.JVMMaxHeapMB', 
-'SW.JVMAddressBits', 'SW.BootFirmwareVersion', 'SW.MgmtFirmwareVersion', 
-'SW.WorkloadVersion', 'SW.DirectorLocation', 'SW.Others', 
+header = ['100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
+'90_ActualLoad', '90_ssj_ops', '90_AvgPower', '90_PerfPowerRatio',
+'80_ActualLoad', '80_ssj_ops', '80_AvgPower', '80_PerfPowerRatio',
+'70_ActualLoad', '70_ssj_ops', '70_AvgPower', '70_PerfPowerRatio',
+'60_ActualLoad', '60_ssj_ops', '60_AvgPower', '60_PerfPowerRatio',
+'50_ActualLoad', '50_ssj_ops', '50_AvgPower', '50_PerfPowerRatio',
+'40_ActualLoad', '40_ssj_ops', '40_AvgPower', '40_PerfPowerRatio',
+'30_ActualLoad', '30_ssj_ops', '30_AvgPower', '30_PerfPowerRatio',
+'20_ActualLoad', '20_ssj_ops', '20_AvgPower', '20_PerfPowerRatio',
+'10_ActualLoad', '10_ssj_ops', '10_AvgPower', '10_PerfPowerRatio',
+'ActiveIdle', 'HW_Vendor', 'HW_Model', 'HW_FormFactor', 'HW_CPUName', 
+'HW_CPUChars', 'HW_CPUFreq', 'HW_CPUsEnabled','HW_HardwareThreads', 
+'HW_CPUsOrderable', 'HW_PrimaryCache', 'HW_SecondaryCache','HW_TertiaryCache',
+'HW_OtherCache', 'HW_MemAmountGB','HW_DIMMNumAndSize','HW_MemDetails', 
+'HW_PSUQuantAndRating', 'HW_PSUDetails','HW_DiskDrive','HW_DiskController',
+'HW_NICSNumAndType', 'HW_NICSFirm/OS/Conn','HW_NetSpeedMbit','HW_Keyboard','HW_Mouse',
+'HW_Monitor', 
+'HW_OpticalDrive', 'HW_Other', 'SW_PowerManagement', 'SW_OS', 'SW_OSVersion', 
+'SW_Filesystem', 'SW_JVMVendor', 'SW_JVMVersion', 'SW_JVMCLIOpts', 
+'SW_JVMAffinity', 'SW_JVMInstances', 'SW_JVMInitialHeapMB', 'SW_JVMMaxHeapMB', 
+'SW_JVMAddressBits', 'SW_BootFirmwareVersion', 'SW_MgmtFirmwareVersion', 
+'SW_WorkloadVersion', 'SW_DirectorLocation', 'SW_Others', 
 ]
 
 rows = []
@@ -44,8 +45,10 @@ for f in os.scandir('../raw/html/'):
                 , text, re.M)
             if m:
                 ssj_ops_cln = re.sub(',', "", m.group(2))
+                avg_pwr_cln = re.sub(',', "", m.group(3))
                 perf_pwr_ratio_cln = re.sub(',', "", m.group(4))
-                rows[rowcount].extend([m.group(1), ssj_ops_cln, m.group(3), perf_pwr_ratio_cln])
+                rows[rowcount].extend([m.group(1), ssj_ops_cln, avg_pwr_cln
+                    , perf_pwr_ratio_cln])
                 #print(f"Actual Load: {m.group(1)} --- ssj_ops: {m.group(2)} --- avg.power: {m.group(3)} --- perf.power.ratio: {m.group(4)}\n")
         
         ## Get Idle Power
