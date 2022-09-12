@@ -27,7 +27,7 @@ header = ['100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
 rows = []
 rowcount=-1
 
-for f in os.scandir('../raw/html/'):
+for f in os.scandir('../data/raw/html/'):
     if f.is_file():
         rowcount+=1
         rows.append([])
