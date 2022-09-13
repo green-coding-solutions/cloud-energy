@@ -10,19 +10,19 @@ Its use is the estimation of the current power draw of the whole machine in
 Watts.
 
 Currently the model supports following variables:
-- CPU Utilization [float 0-100]
+- CPU Utilization `[float 0-100]`
     + The utilization of all your assigned cores cumulative and normalized to 0-100
-- CPU Cores [integer (1,]]
+- CPU Cores `[integer (1,]]`
     + The total cores of the bare metal machine. NOT the cores assigned to you as a guest
-- CPU Chips [integer (1,)]
+- CPU Chips `[integer (1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
 - CPU Make 
     + The CPU vendor. Currently only data for intel and amd is present. If you have a different make try using intel, because it has the highest variance in the data.
-- RAM [integer (0,]]
-- TDP [integer (0,]]
+- RAM `[integer (0,]]`
+- TDP `[integer (0,]]`
     + The thermal design power of the CPU in your system. This value you typically find only on the data sheet online.
-- vHost Ratio [float (0,1])
+- vHost Ratio `[float (0,1])`
     + The vHost ratio on the system you are on. If you are on a bare metal machine this is 1
     + If you are a guest and have e.g. 24 of the 96 Threads than the ratio would be 0.25
 
@@ -99,9 +99,11 @@ The EDA is currently only on Kaggle, where you can see how we selected the subse
 available variables and their interaction on Kaggle: TODO
 
 ## Installation
+```
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+```
 
 ## Use
 You must call the python file `model.py`. This file is designed to accept 
