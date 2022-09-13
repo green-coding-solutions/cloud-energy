@@ -12,13 +12,9 @@ Watts.
 Currently the model supports following variables:
 - CPU Utilization `[float 0-100]`
     + The utilization of all your assigned cores cumulative and normalized to 0-100
-- CPU Cores `[integer (1,]]`
-    + The total cores of the bare metal machine. NOT the cores assigned to you as a guest
 - CPU Chips `[integer (1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
-- CPU Make 
-    + The CPU vendor. Currently only data for intel and amd is present. If you have a different make try using intel, because it has the highest variance in the data.
 - RAM `[integer (0,]]`
 - TDP `[integer (0,]]`
     + The thermal design power of the CPU in your system. This value you typically find only on the data sheet online.
@@ -98,7 +94,7 @@ If you cannot find out specific parameters the best thing is: Write an email to 
     + Cleaned and enriched version is then in `./data/spec_data_cleaned.csv`
 
 The EDA is currently only on Kaggle, where you can see how we selected the subset of the 
-available variables and their interaction on Kaggle: TODO
+available variables and their interaction in our [Kaggle notebook](https://www.kaggle.com/arne3000/specpower-eda)
 
 ## Installation
 ```
