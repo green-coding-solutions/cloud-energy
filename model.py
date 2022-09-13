@@ -29,7 +29,7 @@ if __name__ == "__main__":
     #parser.add_argument("--cpu-make", type=str, help="Make of the CPU")
     parser.add_argument("--tdp", type=float, help="TDP of the CPU")
     parser.add_argument("--ram", type=float, help="Amount of RAM for the bare metal system")
-    parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].")
+    parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)
 
     parser.add_argument("--debug", action='store_true', help="Activate debug mode (currently unused)")
     parser.add_argument("--silent", action="store_true", help="Will suppress all debug output. Typically used in production.")
@@ -52,10 +52,13 @@ if __name__ == "__main__":
 
     my_data = my_data.dropna(axis=1) # Drop all arguments that were not supplied
 
-    if not args.silent: print("Sending following dataframe to model", my_data)
+    if not args.silent:
+        print("Sending following dataframe to model", my_data)
+        print("vHost ratio is set to ", args.vhost_ratio)
+
 
     for line in sys.stdin:
         my_data['utilization'] = float(line.strip())
-        print(model.predict(my_data)[0])
+        print(model.predict(my_data)[0] * args.vhost_ratio)
 
 
