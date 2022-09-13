@@ -82,6 +82,8 @@ Other variables to be discovered like CPU Make etc. can be found in these locati
 Informations like the vHost-Ratio you can sometimes see in `/proc/stat`, but this
 info is usually given in the machine selector of your cloud provider.
 
+If you cannot find out specific parameters the best thing is: Write an email to your cloud provider and ask :)
+
 ### Model Details
 
 - Model uses SPECPower raw data
