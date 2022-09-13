@@ -5,12 +5,12 @@ import include.helper_functions as helper
 
 """
     This file reads the generated CSV file into a data frame
-    and applies some cleaning and feature engineering to feed the data into 
+    and applies some cleaning and feature engineering to feed the data into
     a linear model.
-    
+
     If the SPECPower data ever gets updated please walk this file manually
     from top to bottom.
-    
+
     In the file some asserts are given, but also manual checks should be run
 """
 
@@ -68,20 +68,20 @@ def clean_power_and_load(df_original):
     df.utilization = df.utilization.astype(int)
     helper.same_column_diff(df, df, 'utilization')
 
-    
+
     return df
 
 
 def create_cpu_make(df_original):
     df = df_original.copy()
     df["CPUMake"] = None
-    
+
     assert df.loc[(df['HW_CPUName'].str.contains("Intel", case=False)) & (df['HW_CPUName'].str.contains("AMD", case=False)), "CPUMake"].empty # Intel and AMD never in one column
-    
+
     df.loc[df['HW_CPUName'].str.contains("Intel"), "CPUMake"] = "intel"
     df.loc[df['HW_CPUName'].str.contains("AMD"), "CPUMake"] = "amd"
 
-    
+
     ## How many do we have left?
     df[df.CPUMake.isna()].HW_CPUName
 
@@ -101,12 +101,12 @@ def create_cpu_name(df_original):
 
     df['CPUName'] = df['HW_CPUName']
 
-    
+
     ## Now remove the vendor from the column and generate a new
     df['CPUName'] = df['CPUName'].str.replace(r'Intel\s*', "", regex=True, flags=re.IGNORECASE)
     df['CPUName'] = df['CPUName'].str.replace(r'AMD\s*', "", regex=True, flags=re.IGNORECASE)
 
-        
+
     df['CPUName'] = df['CPUName'].str.replace(r"\(\s*Intel\s*Turbo\s*Boost\s*Technology\s*up\s*to\s*\d+\.\d*\s*GHz\s*\)", "", regex=True, flags=re.IGNORECASE)
     df['CPUName'] = df['CPUName'].str.replace(r"\(\s*Turbo\s*Boost\s*Technology\s*up\s*to\s*\d+\.\d*\s*GHz\s*\)", "", regex=True, flags=re.IGNORECASE)
     df['CPUName'] = df['CPUName'].str.replace(r"\(\s*Turbo\s*CORE\s*Technology\s*up\s*to\s*\d+\.\d*\s*GHz\s*\)", "", regex=True, flags=re.IGNORECASE)
@@ -190,10 +190,10 @@ def make_hardware_threads(df_original):
     df = df_original.copy()
     df.HW_HardwareThreads.unique() # DEBUG
     df['CPUThreads'] = df.HW_HardwareThreads.str.extract("^\s*(\d+)\s*\(.*").astype(int)
-    thread_per_core = df['CPUThreads']  / df['CPUCores'] 
+    thread_per_core = df['CPUThreads']  / df['CPUCores']
     thread_per_core_extract = df.HW_HardwareThreads.str.extract("\((\d+)\s*\/\s*core\)", expand=False, flags=re.IGNORECASE).dropna().astype(int)
     assert thread_per_core.eq(thread_per_core_extract).all(), "Threads per core was not equal to comparison via calculation"
-    
+
     return df
 
 # can be split into 2 easily
@@ -202,9 +202,9 @@ def make_hardware_threads(df_original):
 # NumOfPSU, PSURating
 def split_psu(df_original):
     df = df_original.copy()
-    
+
     df.HW_PSUQuantAndRating.unique()
-    
+
     df['NumOfPSU'] = df.HW_PSUQuantAndRating.str.extract("^\s*(\d+)\s*x.*")
     df['NumOfPSU'] = df['NumOfPSU'].astype('Int64')
     df['PSURating'] = df.HW_PSUQuantAndRating.str.extract(".*x\s*(\d+).*").astype('Int64')
@@ -212,27 +212,27 @@ def split_psu(df_original):
 
     ## Assert that all is good here
     # well since some of them are actually empty, not sure what to actually check for
-    
+
     # 6 (66 expanded) rows are empty is allowed with the specified hashes ...
     # but somehow the hash column is gone and I cannot reference it ... why?
     #assert df.drop(df.hash)[df.NumOfPSU.isna()].empty
     #assert df[df.PSURating.isna()].empty
-    
+
     assert df.NumOfPSU.isna().sum() == 6, "PSU was not 6"
     return df
 
 
 ## Column with cpu family
 # do by known names - Xeon, Opteron, etc.
-## Xeon , Opteron , EPYC , 
+## Xeon , Opteron , EPYC ,
 # do unique, figure it out from there
 def make_cpu_family(df_original):
     df = df_original.copy()
     df['CPUFamily'] = None
     pat = r"xeon|opteron|epyc|i3|i5|pentium"
-    
+
     assert df.loc[~df['CPUName'].str.contains(pat, regex=True)].CPUName.empty, "Unknown family found"
-    
+
 
     possible_families = [
         df.loc[df['CPUName'].str.contains("xeon"), "CPUName"],
@@ -240,15 +240,15 @@ def make_cpu_family(df_original):
         df.loc[df['CPUName'].str.contains("epyc"), "CPUName"],
         df.loc[df['CPUName'].str.contains("i3"), "CPUName"],
         df.loc[df['CPUName'].str.contains("i5"), "CPUName"],
-        df.loc[df['CPUName'].str.contains("pentium"), "CPUName"]        
+        df.loc[df['CPUName'].str.contains("pentium"), "CPUName"]
     ]
-    
+
     for i, possible_family in enumerate(possible_families):
         for j in range(i+1, len(possible_families)):
             # print(f"Checking {possible_family.iloc[0]} and {possible_families[j].iloc[0]}")
             assert possible_family.index.intersection(possible_families[j].index).empty, f"Possible families had overlap - between {possible_family.iloc[0]} and {possible_families[j].iloc[0]}"
 
-    
+
     ## CPUFamily fill
     df.loc[df['CPUName'].str.contains("xeon"), "CPUFamily"] = "xeon"
     df.loc[df['CPUName'].str.contains("opteron"), "CPUFamily"] = "opteron"
@@ -257,7 +257,7 @@ def make_cpu_family(df_original):
     df.loc[df['CPUName'].str.contains("i5"), "CPUFamily"] = "core-i5"
     df.loc[df['CPUName'].str.contains("pentium"), "CPUFamily"] = "pentium"
 
-    ## Assert CPU Family    
+    ## Assert CPU Family
 
     assert df.CPUFamily.isna().sum() == 0, "CPUFamily contained NA"
     return df
@@ -288,7 +288,7 @@ def make_l3_cache(df_original):
     kb_l3 = df.HW_TertiaryCache.str.extract(kb_pat_l3, flags=re.IGNORECASE).astype('float')
     df['L3CacheKB'] = mb_l3
     df['L3CacheKB'] = df['L3CacheKB'].fillna(kb_l3['L3Cache'])
-    
+
     # There is a typo in the L3 cache size. It is kb not MB, but only for these allowed processors
     list(df[df['L3CacheKB'] > 39423000.0].CPUName.unique()) == ['XeonPlatinum8176', 'XeonPlatinum8280', 'XeonPlatinum8276L']
 
@@ -303,7 +303,7 @@ def make_l3_cache(df_original):
 # Problem being that only 50% of the architecture was matched! Rest was still NA
 def make_architecture_old(df_original):
     df = df_original.copy()
-    
+
     ## Import David Mytton's arch data into a dataframe
     files = glob.glob("./../data/cpu_arch/*.csv")
     pat='(intel|amd)-([^/]*).csv$'
@@ -332,7 +332,7 @@ def make_architecture_old(df_original):
             df.loc[i,'Architecture'] = found_architecture.iloc[0]
 
 
-    # opteron is known    
+    # opteron is known
     df.loc[df['CPUName'].str.contains('opteron'), 'Architecture'] = 'opteron'
 
 
@@ -343,7 +343,7 @@ def make_architecture_old(df_original):
 # This function was based on the Intel HTML files. But it has still over 50% missing ...
 def make_tdp_old(df_original):
     df = df_original.copy()
-    
+
     ## Import David Mytton's arch data into a dataframe
     amd = pd.read_csv("../data/cpu_spec_sheets/amd.csv")
 
@@ -354,25 +354,25 @@ def make_tdp_old(df_original):
 
     # amd['models_clean'].value_counts() # array is NOT unique. but the non-unique are currently no problem
     # we assert for that in the loop
-    
+
     for i, clean_amd_name in clean_amd_names.iteritems(): # be vary not to use enumerate() as you will not get the real index, but a re-keyed list
         matching_processors = amd[amd.models_clean == clean_amd_name]
         assert matching_processors.shape[0] < 2, f"Found more than one processor to match with TDP for {clean_amd_name}"
         if not matching_processors.empty:
             df.loc[i, "TDP"] = matching_processors["Default TDP"].str.replace('W', "").iloc[0]
-            
 
-    df.loc[df.TDP == "155/170", "TDP"] = 170 # Correct for AMD unclear spec to lower bound
-    
-    
+
+    df.loc[df.TDP == "155/170", "TDP"] = 170 # Correct for AMD unclear spec to upper bound
+
+
     intel_files = glob.glob("./../data/cpu_spec_sheets/*.html")
     intel_tdps = pd.DataFrame(columns=['Processor Number', 'TDP'])
 
-    
-    for f in intel_files:        
+
+    for f in intel_files:
         tables = pd.read_html(f)
         assert len(tables) == 1, f"More than one table ({len(tables)}) in Intel ARK download file: {f}"
-        
+
         table = tables[0]
         tdp_columns = table[table.iloc[:,0] == 'TDP'].index.values
         processor_number_columns = table[table.iloc[:,0] == 'Processor Number'].index.values
@@ -396,8 +396,8 @@ def make_tdp_old(df_original):
 
 
         assert tp.TDP.isna().sum() == 0, f"TDP was not null for following models: {tp.loc[tp.TDP.isna(),'Processor Number']}"
-        
-        
+
+
         assert (tp.loc[:, ["Processor Number", "TDP"]].groupby("Processor Number").nunique() == 1).all().all(), "Found conflicting info for processor type and TDP"
 
         print(tp.loc[:, ['Processor Number', 'TDP']].shape)
@@ -410,7 +410,7 @@ def make_tdp_old(df_original):
     intel_tdps['Processor Number'].value_counts() # NOT unique. But we have no TDP Overlap. So we make it unique
     intel_tdps = intel_tdps.drop_duplicates(subset=["Processor Number"])
 
-    
+
     clean_intel_names = df[df.CPUMake == "intel"].CPUName.str.replace(r"xeon|opteron|core", "", regex=True) # normalize
 
     for i, clean_intel_name in clean_intel_names.iteritems(): # be vary not to use enumerate() as you will not get the real index, but a re-keyed list
@@ -419,7 +419,7 @@ def make_tdp_old(df_original):
             df.loc[i, "TDP"] = matching_processors.TDP.iloc[0]
 
     df[df.TDP.isna()]
-    
+
     return df
 
 def make_tdp_and_architecture(df_original):
@@ -453,15 +453,15 @@ def make_tdp_and_architecture(df_original):
         tables = pd.read_html(urls[architecture])
 
         for table in tables:
-            
+
             # normalize different header names
             table = table.rename({'Model number': 'ModelNumber', 'TDP(W)': 'TDP'}, axis=1)
             table = table.rename({'Modelnumber': 'ModelNumber', 'TDP (W)': 'TDP'}, axis=1)
             table = table.rename({'Model': 'ModelNumber'}, axis=1)
             table = table.rename({'Modelnumber[7]': 'ModelNumber'}, axis=1)
-            
+
             table["Architecture"] = architecture # Add static column
-            
+
             if 'ModelNumber' in table.columns:
                 table.columns = table.columns.get_level_values(0)
                 # print("Found Table", table.iloc[0], table.columns)
@@ -508,87 +508,86 @@ def make_tdp_and_architecture(df_original):
 
     assert cpus.ModelNumber.isna().sum() == 0, "ModelNumber contained more than 0 NAs!"
     assert cpus.TDP.isna().sum() == 10, f"TDPcontained more than 10 NAs: {cpus[cpus.TDP.isna()]}" # 10 NA is ok
-    
+
     # For these 10 the TDP we just don't have ...
     cpus = cpus.dropna()
 
 
     cpus.TDP = cpus.TDP.astype(float)
 
+
     # Fix the known processors where we have confilicting values by setting to the highes
     # TDP value we know
     cpus["TDP"] = cpus.groupby(["ModelNumber"]).transform(max).TDP
     # now remove the duplicates
     cpus = cpus.drop_duplicates(subset=["ModelNumber"])
-    
 
-    # TODO: Now match to processors
     clean_names = df.CPUName.str.replace(r"opteron", "", regex=True)
     for i, clean_name in clean_names.iteritems():
         if cpus[cpus.ModelNumber == clean_name].empty:
-            print("No match for", clean_name)            
+            print("No match for", clean_name)
             continue
         found = cpus[cpus.ModelNumber == clean_name]
         assert len(found) < 2, f"Found multiple architectures: {cpus[cpus.ModelNumber == clean_name]}"
 
         df.loc[i,'TDP'] = found.iloc[0].TDP # Insert TDP in any case
-        
+
         if df.loc[i,'Architecture'] is not None: # Check before overwriting architecture
             if df.loc[i,'Architecture'] in ['epyc-gen3', 'epyc-gen1', 'epyc-gen2']: continue # allow these, since they provide more info
             assert df.loc[i,'Architecture'] == found.iloc[0].Architecture, f"Previous architecture was {df.loc[i,'Architecture']}. New found is: {found.iloc[0].Architecture}"
+        else:
             df.loc[i,'Architecture'] = found.iloc[0].Architecture
-        
+
+
     return df
-    
+
 def main():
     pd.set_option("display.max_rows", 20)
     pd.set_option("display.max_columns", 20)
     pd.set_option('display.max_colwidth', None)
-    
-    df = pd.read_csv("./spec_data.csv", sep="|", index_col=False, na_values=["None"])
-    
+
+    df = pd.read_csv("./../data/spec_data.csv", sep="|", index_col=False, na_values=["None"])
+
     # Hashing cause we want to identify columns later on based on initial uniqueness
     df['hash'] = pd.util.hash_pandas_object(df)
     #assert(df.hash.nunique() == df.shape[0]) # no duplicate hashes
-    
-    ## Cleaning 
-    
+
+    ## Cleaning
+
     helper.visual_check(df.dtypes.to_dict(), "Are all data types ok?")
-    
+
     df = remove_unneeded_columns(df)
-    
-    
+
+
     df = create_cpu_make(df)
-    
+
     df = create_cpu_name(df)
-    
+
     df = create_turbo_boost(df)
-        
+
     df = make_cpu_cores(df)
     df = make_cpu_chips(df)
-    
+
     df = make_hardware_threads(df)
-    
+
     df = split_psu(df)
-    
+
     df = make_cpu_family(df)
-    
+
     df = make_l2_cache(df)
-    
+
     df = make_l3_cache(df)
-    
+
     df = make_architecture_old(df)
-    
+
     df = make_tdp_and_architecture(df)
 
-    df.loc[df.TDP.isna(), 'CPUName'].unique()
-
-    df = melt_power_and_load(df) # spread columns to rows    
+    df = melt_power_and_load(df) # spread columns to rows
     df = clean_power_and_load(df) # move 100_AvgPower => 100 as int
 
     df.to_csv("./../data/spec_data_cleaned.csv")
 
-    
+
     '''
     ## Now do the same, but with HW_CPUChars column
     x = df.loc[df['HW_CPUChars'].str.match(".*\(.*Boost.*\)"), 'HW_CPUChars']
@@ -598,31 +597,31 @@ def main():
     #A: (Max Boost Clock up to 3.5 GHz)
     #df.iloc[445]
     # I googled that CPU, its the same thing as Turbo Boost
-    
-    
+
+
     ### Merge (actually fillna()) the two TurboBoostGHz columns
     turbo_from_chars = df['HW_CPUChars'].str.extract(r'.*\(.*up to (?P<TurboBoostGHz>.*)GHz.*')
     turbo_from_chars.count()      # 91
     df['TurboBoostGHz'].count()   # 41
     df['TurboBoostGHz'] = df['TurboBoostGHz'].fillna(turbo_from_chars['TurboBoostGHz'])
     df['TurboBoostGHz'].count()  # 132, looks good considering duplicates
-    
+
     # Strip TurboBoost from CPU Chars
     df['HW_CPUChars'] = df['HW_CPUChars'].str.replace("\(.*up to (.*)GHz.*\)", "", regex=True)
-    
+
     ## Make sure type is correct
     df["TurboBoostGHz"] = df["TurboBoostGHz"].astype(float)
     df.dtypes.to_dict()
-    
+
     # HW_CPUName
     # @ X.X GHz -> this should be able to be safely removed, as the info already
     # exists in the HW_CPUFreq column
-    
+
     df.loc[df['HW_CPUName'].str.match(".*\d+\.\d*\s*GHz.*", case=False), 'HW_CPUName']
     df.loc[df['HW_CPUName'].str.match(".*\d+\.\d*\s*GHz.*", case=False), 'HW_CPUName'].count()
     df.loc[df['HW_CPUName'].str.match(".*\d+\.\d*\s*GHz.*", case=False), 'HW_CPUName'].unique()
-    
-    
+
+
     ## Compare the freq extract vs the freq in column, make sure they're ==
     freq_from_name = df.HW_CPUName.str.extract(".*(\d+\.\d*)\s*GHz.*", expand = False, flags=re.IGNORECASE).dropna()
     freq_from_column = df.loc[freq_from_name.index]
@@ -632,38 +631,38 @@ def main():
     #x = freq_from_column.loc[~freq_from_name.eq(freq_from_column.HW_CPUFreq)]
     #df.loc[x.index, x.hash] == df.hash
     #assert(freq_from_name.eq(freq_from_column.HW_CPUFreq).all()
-    
+
     #z = freq_from_name.eq(freq_from_column) ### Line 484 is false
     # 484 in freq_from_name is 2933
     # 484 in freq_from_column is 2930
     # oh its a rounding error. hmm. what do here. could just drop. not best long
     # thinking though.
-    # TODO: for now this is fine, it means we can safely remove these values, 
+    # TODO: for now this is fine, it means we can safely remove these values,
     # but I want to turn this assert back on
     # clean line 484 manually, then use the assert :-)
     # hash the row
-    
-    
-    
+
+
+
     # TODO: HW_Vendor
     # just basic cleaning, standardize how companies are written
     # etc.
     vendors = df.loc[df['HW_Vendor'].str.contains('Hewlett'), 'HW_Vendor'].unique()
     #df.HW_Vendor = df.HW_Vendor.str.replace('HEPYCEPYCewlett\s?-?\s?Packard\s?(Enterprise|Company)', '', regex=True, case=False)
     '''
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     # test code
     # a_archs_t = pd.DataFrame({'XeonPeon':['CoolProcessorWon 1234', 'CoolProcessorToo 4321', None, None],'OptimusPrime':[None, None, 'CoolProcessorTree', 'CoolProcessorFore'],})
     # a_df_t = pd.DataFrame({'CPU': ['CoolProcessorWon 1234', 'Totally Not In DataSet','CoolProcessorWon', 'CoolProcessorFore', 'CoolProcessor']})
     # a_t = a_df_t.CPU.isin(a_archs_t.XeonPeon)
-    
+
     ## Disk Drive, size + type (SSD or HDD)
-    
+
 
 
 
@@ -671,14 +670,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
