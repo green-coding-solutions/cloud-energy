@@ -582,6 +582,13 @@ def main():
 
     df = make_tdp_and_architecture(df)
 
+    df["AvgPower"] = df.loc[:,['100_AvgPower', '90_AvgPower', '80_AvgPower', '70_AvgPower',
+           '60_AvgPower', '50_AvgPower', '40_AvgPower', '30_AvgPower',
+           '20_AvgPower', '10_AvgPower', 'ActiveIdle']].mean(axis=1)
+
+    df.to_csv("./../data/spec_data_cleaned_unmelted.csv")
+    df = df.drop("AvgPower", axis=1)
+
     df = melt_power_and_load(df) # spread columns to rows
     df = clean_power_and_load(df) # move 100_AvgPower => 100 as int
 
