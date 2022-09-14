@@ -97,6 +97,9 @@ The EDA is currently only on Kaggle, where you can see how we selected the subse
 available variables and their interaction in our [Kaggle notebook](https://www.kaggle.com/arne3000/specpower-eda)
 
 ## Installation
+
+Tested on python-3.10 but should work on older versions.
+
 ```
 python3 -m venv venv
 source venv/bin/activate
