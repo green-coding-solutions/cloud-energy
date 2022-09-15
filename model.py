@@ -36,12 +36,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-
-    if args.cpu_chips is None and args.cpu_cores is None and args.tdp is None and args.ram is None:
-        parser.print_help()
-        print("Please supply at least one argument for the model to predict on")
-        exit(2)
-
     model = train_model(cpu_chips = args.cpu_chips, ram = args.ram, tdp = args.tdp)
     my_data = pd.DataFrame.from_dict({
         "utilization": 0,
