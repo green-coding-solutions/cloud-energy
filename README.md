@@ -10,9 +10,9 @@ Its use is the estimation of the current power draw of the whole machine in
 Watts.
 
 Currently the model supports following variables:
-- CPU Utilization `[float 0-100]`
+- CPU Utilization `[float [0-100]]`
     + The utilization of all your assigned cores cumulative and normalized to 0-100
-- CPU Chips `[integer (1,)]`
+- CPU Chips `[integer [1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
 - RAM `[integer (0,]]`
