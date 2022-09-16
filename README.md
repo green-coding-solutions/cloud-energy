@@ -15,7 +15,7 @@ Currently the model supports following variables:
 - CPU Chips `[integer [1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
-- RAM `[integer (0,]]`
+- RAM `[integer (0,]]`- in Gigabytes
 - TDP `[integer (0,]]`
     + The thermal design power of the CPU in your system. This value you typically find only on the data sheet online.
 - vHost Ratio `[float (0,1])`
