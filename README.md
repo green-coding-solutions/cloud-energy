@@ -138,4 +138,13 @@ on an Intel Skylake processor in the cloud.
 
 
 
+## Demo reporter
 
+If you want to use the demo reporter to read the CPU utilization there is a C reporter
+in the `demo-reporter` directory.
+
+Compile it with `gcc cpu-utilization.c`
+
+Then run it with `./a.out`
+
+Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
