@@ -11,7 +11,7 @@ def train_model(cpu_chips, ram, tdp):
         formula = f"{formula}*C(CPUChips)"
 
     if args.ram is not None:
-        formula = f"{formula} + C(HW_MemAmountGB)"
+        formula = f"{formula} + HW_MemAmountGB"
 
     if args.tdp is not None:
         formula = f"{formula} + TDP"
