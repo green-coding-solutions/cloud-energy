@@ -1,6 +1,12 @@
 import csv, re, os
 
-header = ['100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
+header = [
+
+'Test Sponsor', 'SPEC License #', 'Test Method', 'Tested By', 'Test Location',
+'Test Date', 'Hardware Availability', 'Software Availability', 'Publication',
+'System Source', 'System Designation', 'Power Provisioning',
+
+'100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
 '90_ActualLoad', '90_ssj_ops', '90_AvgPower', '90_PerfPowerRatio',
 '80_ActualLoad', '80_ssj_ops', '80_AvgPower', '80_PerfPowerRatio',
 '70_ActualLoad', '70_ssj_ops', '70_AvgPower', '70_PerfPowerRatio',
@@ -9,15 +15,17 @@ header = ['100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
 '40_ActualLoad', '40_ssj_ops', '40_AvgPower', '40_PerfPowerRatio',
 '30_ActualLoad', '30_ssj_ops', '30_AvgPower', '30_PerfPowerRatio',
 '20_ActualLoad', '20_ssj_ops', '20_AvgPower', '20_PerfPowerRatio',
-'10_ActualLoad', '10_ssj_ops', '10_AvgPower', '10_PerfPowerRatio',
-'ActiveIdle', 'HW_Vendor', 'HW_Model', 'HW_FormFactor', 'HW_CPUName', 
+'10_ActualLoad', '10_ssj_ops', '10_AvgPower', '10_PerfPowerRatio', 'ActiveIdle',
+
+'HW_Vendor', 'HW_Model', 'HW_FormFactor', 'HW_CPUName',
 'HW_CPUChars', 'HW_CPUFreq', 'HW_CPUsEnabled','HW_HardwareThreads', 
 'HW_CPUsOrderable', 'HW_PrimaryCache', 'HW_SecondaryCache','HW_TertiaryCache',
 'HW_OtherCache', 'HW_MemAmountGB','HW_DIMMNumAndSize','HW_MemDetails', 
 'HW_PSUQuantAndRating', 'HW_PSUDetails','HW_DiskDrive','HW_DiskController',
 'HW_NICSNumAndType', 'HW_NICSFirm/OS/Conn','HW_NetSpeedMbit','HW_Keyboard','HW_Mouse',
-'HW_Monitor', 
-'HW_OpticalDrive', 'HW_Other', 'SW_PowerManagement', 'SW_OS', 'SW_OSVersion', 
+'HW_Monitor', 'HW_OpticalDrive', 'HW_Other',
+
+'SW_PowerManagement', 'SW_OS', 'SW_OSVersion',
 'SW_Filesystem', 'SW_JVMVendor', 'SW_JVMVersion', 'SW_JVMCLIOpts', 
 'SW_JVMAffinity', 'SW_JVMInstances', 'SW_JVMInitialHeapMB', 'SW_JVMMaxHeapMB', 
 'SW_JVMAddressBits', 'SW_BootFirmwareVersion', 'SW_MgmtFirmwareVersion', 
@@ -34,6 +42,27 @@ for f in os.scandir('../data/raw/html/'):
         o = open(f,'r')
         text = o.read()
         o.close()
+
+        ## Get Test info
+        m = re.search(
+            'Test Sponsor:</a></td>$\s*.*>(.*)</td>$'                      # 1
+            '\s*.*SPEC License #:</a></td>$\s*.*>(.*)</td>$'               # 2
+            '\s*.*Test Method:</a></td>$\s*.*>(.*)</td>$\s*</tr>$\s*<tr>$' # 3
+            '\s*.*Tested By:</a></td>$\s*.*>(.*)</td>$'                    # 4
+            '\s*.*Test Location:</a></td>$\s*.*>(.*)</td>$'                # 5
+            '\s*.*Test Date:</a></td>$\s*.*>(.*)</td>$\s*</tr>$\s*<tr>$'   # 6
+            '\s*.*Hardware Availability:</a></td>$\s*.*>(.*)</td>$'        # 7
+            '\s*.*Software Availability:</a></td>$\s*.*>(.*)</td>$'        # 8
+            '\s*.*Publication:</a></td>$\s*.*>(.*)</td>$\s*</tr>$\s*<tr>$' # 9
+            '\s*.*System Source:</a></td>$\s*.*>(.*)</td>$'                # 10
+            '\s*.*System Designation:</a></td>$\s*.*>(.*)</td>$'           # 11
+            '\s*.*Power Provisioning:</a></td>$\s*.*>(.*)</td>$'           # 12
+            ,text , re.M)
+
+        if m:
+            for x in range(1,13):
+                rows[rowcount].append(m.group(x))
+
 
         ## Get Power Chart
         for x in range(100, 0, -10):
@@ -119,7 +148,7 @@ for f in os.scandir('../data/raw/html/'):
 
 
 #print(rows)
-with open('spec_data.csv', 'w', encoding='UTF8', newline='') as f:
+with open('../data/spec_data.csv', 'w', encoding='UTF8', newline='\n') as f:
     writer = csv.writer(f, delimiter='|')
     writer.writerow(header)
     writer.writerows(rows)

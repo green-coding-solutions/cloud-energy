@@ -32,6 +32,16 @@ def remove_unneeded_columns(df_original):
     helper.columns_diff(df, df_original)
     return df
 
+def split_hardware_availabilty(df_original):
+    df = df_original.copy()
+
+    availability = df["Hardware Availability"].str.split("-", expand=True)
+    df["Hardware_Availability_Month"] = availability[0]
+    df["Hardware_Availability_Year"]  = availability[1]
+    df["Hardware_Availability_Year"] =  df["Hardware_Availability_Year"].astype(int)
+
+    return df
+
 def melt_power_and_load(df_original):
     df = df_original.copy()
 
@@ -558,6 +568,10 @@ def main():
 
     df = remove_unneeded_columns(df)
 
+    df["Hardware Availability Month"] = df["Hardware Availability"].str.split("-", expand=True)[0]
+    df["Hardware Availability Year"] = df["Hardware Availability"].str.split("-", expand=True)[1]
+
+    df = split_hardware_availabilty(df)
 
     df = create_cpu_make(df)
 
@@ -587,13 +601,13 @@ def main():
            '20_AvgPower', '10_AvgPower', 'ActiveIdle']].mean(axis=1)
 
     df.to_csv("./../data/spec_data_cleaned_unmelted.csv")
+
     df = df.drop("AvgPower", axis=1)
 
     df = melt_power_and_load(df) # spread columns to rows
     df = clean_power_and_load(df) # move 100_AvgPower => 100 as int
 
     df.to_csv("./../data/spec_data_cleaned.csv")
-
 
     '''
     ## Now do the same, but with HW_CPUChars column
