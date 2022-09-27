@@ -2,9 +2,9 @@ import csv, re, os
 
 header = [
 
-'Test Sponsor', 'SPEC License #', 'Test Method', 'Tested By', 'Test Location',
-'Test Date', 'Hardware Availability', 'Software Availability', 'Publication',
-'System Source', 'System Designation', 'Power Provisioning',
+'Test_Sponsor', 'SPEC_License', 'Test_Method', 'Tested_By', 'Test_Location',
+'Test_Date', 'Hardware_Availability', 'Software_Availability', 'Publication',
+'System_Source', 'System_Designation', 'Power_Provisioning',
 
 '100_ActualLoad', '100_ssj_ops', '100_AvgPower', '100_PerfPowerRatio',
 '90_ActualLoad', '90_ssj_ops', '90_AvgPower', '90_PerfPowerRatio',

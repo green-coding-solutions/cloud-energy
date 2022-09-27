@@ -35,7 +35,7 @@ def remove_unneeded_columns(df_original):
 def split_hardware_availabilty(df_original):
     df = df_original.copy()
 
-    availability = df["Hardware Availability"].str.split("-", expand=True)
+    availability = df["Hardware_Availability"].str.split("-", expand=True)
     df["Hardware_Availability_Month"] = availability[0]
     df["Hardware_Availability_Year"]  = availability[1]
     df["Hardware_Availability_Year"] =  df["Hardware_Availability_Year"].astype(int)
@@ -567,9 +567,6 @@ def main():
     helper.visual_check(df.dtypes.to_dict(), "Are all data types ok?")
 
     df = remove_unneeded_columns(df)
-
-    df["Hardware Availability Month"] = df["Hardware Availability"].str.split("-", expand=True)[0]
-    df["Hardware Availability Year"] = df["Hardware Availability"].str.split("-", expand=True)[1]
 
     df = split_hardware_availabilty(df)
 
