@@ -30,6 +30,8 @@ header = [
 'SW_JVMAffinity', 'SW_JVMInstances', 'SW_JVMInitialHeapMB', 'SW_JVMMaxHeapMB', 
 'SW_JVMAddressBits', 'SW_BootFirmwareVersion', 'SW_MgmtFirmwareVersion', 
 'SW_WorkloadVersion', 'SW_DirectorLocation', 'SW_Others', 
+
+'SUT_BIOS', 'SUT_Firmware', 'SUT_Notes',
 ]
 
 rows = []
@@ -145,6 +147,23 @@ for f in os.scandir('../data/raw/html/'):
         if m: #print(m.group(17))
             for x in range(1, 18):
                 rows[rowcount].append(m.group(x))
+
+        ## Get SUT Notes and BIOS / Firmware
+        m = re.search(
+            'Boot Firmware Settings</a></div>$\s*<div class=\'freeForm\'>\s*([\w\W]*?)\s*</div>$'              # 1
+            '[\w\W]*?Management Firmware Settings</a></div>$\s*<div class=\'freeForm\'>\s*([\w\W]*?)\s*</div>$'# 2
+            '[\w\W]*?System Under Test Notes</a></div>$\s*<div class=\'freeForm\'>\s*([\w\W]*?)\s*</div>$'     # 3
+            ,text , re.M)
+
+        if m:
+            for x in range(1,4):
+                ### Elements are lists inside. We remove HTML tags and separate by ;;;
+                group = m.group(x).replace('<li>', ';;;', case=False)
+                                  .replace('</li>', '', case=False)
+                                  .replace('<ul>', '', case=False)
+                                  .replace('</ul>', '', case=False)
+                                  .strip()
+                rows[rowcount].append(group)
 
 
 #print(rows)
