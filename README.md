@@ -91,7 +91,7 @@ If you cannot find out specific parameters the best thing is: Write an email to 
     + Unprocessed version is then in `./data/spec_data.csv`
 - CPU microarchitecture and TDP data is coming from
     + David Mytton [Cloud carbon coefficients](https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients) (only AMD Epyc info)
-    + Wikipedia (very! through source)
+    + Wikipedia (very! thorough source)
 - Data is cleaned. Look into `./scripts/data_cleaning.py`
     + Cleaned and enriched version is then in `./data/spec_data_cleaned.csv`
 
