@@ -32,7 +32,7 @@ the model supports. The model will then be retrained on the new configuration on
 
 Typically the model gets more accurate the more parameters you can supply.
 
-## Background
+# Background
 
 Typically in the cloud, especially when virtualized, it is not posssible to 
 access any energy metrics either from the [ILO](https://en.wikipedia.org/wiki/HP_Integrated_Lights-Out) / [IDRAC](https://en.wikipedia.org/wiki/Dell_DRAC) 
@@ -54,7 +54,7 @@ it provides no interface out of the box to inline monitor the emissions.
 Therefore we created a model out of the SPECPower dataset that also can be used
 in real-time.
 
-### Discovery of the parameters
+# Discovery of the parameters
 
 At least utilization is needed as an input parameter.
 
@@ -66,6 +66,59 @@ from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metric
 
 This one is tailored to read from the procfs. You might need something different in your case ...
 
+## Hyperthreading
+
+HT can be easily checked if the core-id is similar to the processor id.
+
+Last Core-ID should be processor_id+1
+If Last core ID is > processor_id+2  then HT is enabled
+
+Alternatively looking at `lscpu` might reveal some infos.
+
+## SVM / VT-X / VT-D / AMD-V ...
+The presence of virtualization can be checked by looking at:
+
+`/dev/kvm`
+
+If that directory is present this is a strong indicator, that virtualization is enabled.
+
+One can also install cpu-checker and then run 
+`sudo apt install kvm-ok -y && sudo kvm-ok`
+
+This will tell with more checks if virtualization is on. even on AMD machines.
+
+However in a vHost this might not work at all, as the directory is generally hidden.
+
+Here it must be checked if a virtualization is already running through:
+`sudo apt install virt-what -y && sudo virt-what`
+
+Also `lscpu` might provide some insights by having these lines:
+
+```
+Virtualization features:
+  Hypervisor vendor:     KVM
+  Virtualization type:   full
+```  
+
+## Hardware prefetchers
+
+There are actually many to disable:
+The above mentioned processors support 4 types of h/w prefetchers for prefetching data. There are 2 prefetchers associated with L1-data cache (also known as DCU DCU prefetcher, DCU IP prefetcher) and 2 prefetchers associated with L2 cache (L2 hardware prefetcher, L2 adjacent cache line prefetcher).
+
+There is a Model Specific Register (MSR) on every core with address of 0x1A4 that can be used to control these 4 prefetchers. Bits 0-3 in this register can be used to either enable or disable these prefetchers. Other bits of this MSR are reserved.
+
+However it seems that for some processors this setting is only available in the BIOS
+as it is not necessary disclosed info by Intel how to disable it.
+For servers it seems quite standard to do be an available feature apparently ...
+
+https://stackoverflow.com/questions/54753423/correctly-disable-hardware-prefetching-with-msr-in-skylake
+https://stackoverflow.com/questions/55967873/how-can-i-verify-that-my-hardware-prefetcher-is-disabled
+https://stackoverflow.com/questions/784041/how-do-i-programmatically-disable-hardware-prefetching
+https://stackoverflow.com/questions/19435788/unable-to-disable-hardware-prefetcher-in-core-i7
+https://stackoverflow.com/questions/784041/how-do-i-programmatically-disable-hardware-prefetching
+
+
+## Other variables
 Other variables to be discovered like CPU Make etc. can be found in these locations typically:
 
 - `/proc/stat`
@@ -82,7 +135,7 @@ info is usually given in the machine selector of your cloud provider.
 
 If you cannot find out specific parameters the best thing is: Write an email to your cloud provider and ask :)
 
-### Model Details
+# Model Details / EDA
 
 - Model uses SPECPower raw data
     + Current copy is stored in `./data/raw`
@@ -96,9 +149,86 @@ If you cannot find out specific parameters the best thing is: Write an email to 
     + Cleaned and enriched version is then in `./data/spec_data_cleaned.csv`
 
 The EDA is currently only on Kaggle, where you can see how we selected the subset of the 
-available variables and their interaction in our [Kaggle notebook](https://www.kaggle.com/arne3000/specpower-eda)
+available variables and their interaction in our [Kaggle notebook](https://www.kaggle.com/code/arne3000/spec-power-eda-pass-2)
 
-## Installation
+In order to create some columns we inspected the `SUT_BIOS` and `SUT_Notes` fields
+and created some feature columns dervied from them. Here is a quick summary:
+
+- *BIOS_P_States_Enabled*
+    + P-states are a power feature. P-State = 1 is the base frequency
+    + Setting P-states to off will set P-State to max non-turbo (aka 1) (https://www.thomas-krenn.com/en/wiki/Disable_CPU_Power_Saving_Management_in_BIOS)
+    + All P-States greater than 1 are power efficient states: https://www.thomas-krenn.com/en/wiki/Processor_P-states_and_C-states
+
+- *BIOS_Memory_Setting_Changed*
+    + When we found infos like "DDR Frequency set to 1066 MHz" we considered this memory tuning
+
+- *BIOS_HT_Enabled*
+    + We found Hyperthreading mostly not mentioned, but when than turned on. Which should be the default anyway.
+    
+- *BIOS_VT_Enabled*
+    + Virtualization was sometimes disabled, which is also very often the default
+    + However we believe it is almost always on in cloud environments, as it is for instance a prerequiste for KVM (EC2 hypervisor)
+    + Includes SVM from AMD
+   
+- *BIOS_Turbo_Boost_Enabled*
+    + Turbo Boost was very often turned off, which is a clear sign of tuning
+    + Turbo Boost is almost always on by default
+   
+- *BIOS_C_States_Enabled*
+    + C-States are a power saving feature. If they are fixed to a certain state this could well be considered tuning, as this is non default and very untypical for the cloud
+   
+- *BIOS_Prefetchers_Enabled*
+    + Prefetchers like DCU Prefetcher, Adjacent Cache Line Prefetch, MLC Spatial Prefetcher etc. are almost always on by default
+    + Most systems however have these disabled.
+    + We do not know the typical state in the cloud here.
+
+## Unclear data in SUT_BIOS / SUT_Notes
+
+Some info we thought might be related to energy, but we could not make sense of them.
+If you can, please share and create and create a Pull Request:
+
+- The cores were mostly fixed to a JVM instance: *Each JVM instance was affinitized two logical processors on a single socket.*
+    + We do not know if this optimizing for the benchmark or a SPECPower requirement.
+    + Therefore not processed further
+
+- We found however settings with TurboBoost on and then the *Maximum Processor State: 100%.* was set. 
+    + We are not exactly sure what that means, but it could indicate that TurboBoost although enabled could never be executed ...
+
+- We found settings like *SATA Controller = Disabled*
+    + This setting was mostly set cause the machines were running on PCIe / M2 disks
+
+- *Set "Uncore Frequency Override = Power balanced" in BIOS.* or *Power Option: Power Saver* or *"Power Mode: Balanced"*
+    + Unsure what does translates to really since "power balanced" has no defined meaning and changes for every vendor.
+    + Balanced might for instance include TurboBoost On for one vendor and Off for another
+
+- *DEMT -enabled.*
+    + Dynamic energy management
+    + Ignored cause we do not know how this really affects energy consumption
+
+- *Memory Data Scrambling: Disable* / *Set "Memory Patrol Scrub = Disabled"*
+    + Ignored cause we do not know how this really affects energy consumption
+
+- *EIST* is sometimes enabled and sometimes not. Although it can be a power saving feature it alone says nothing about power itself.
+    + We believe this column holds no information on its own
+
+- ASPM Support - Power saving for PCIe
+    + Ignored cause we do not know how this really affects energy consumption
+
+-  'USB Front Port Disabled.',
+    + Ignored cause we do not know how this really affects energy consumption
+    + Also we believe this is cloud standard
+
+- *CPU Power Management set to DAPC*
+    + Dell only feature for energy. Did not look into further
+
+- *EfficiencyModeEn = Enabled*
+    + Too few entries with feature
+
+- *SGX enabled / disabled* 
+    + is also very curious ... unclear what the cloud setting is
+
+
+# Installation
 
 Tested on python-3.10 but should work on older versions.
 
@@ -108,7 +238,7 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## Use
+# Use
 You must call the python file `model.py`. This file is designed to accept 
 streaming inputs.
 
@@ -138,7 +268,7 @@ on an Intel Skylake processor in the cloud.
 
 
 
-## Demo reporter
+# Demo reporter
 
 If you want to use the demo reporter to read the CPU utilization there is a C reporter
 in the `demo-reporter` directory.

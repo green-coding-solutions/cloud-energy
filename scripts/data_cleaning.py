@@ -551,8 +551,280 @@ def make_tdp_and_architecture(df_original):
 
     return df
 
+
+""" This function is just a helper function which is used during analysing
+the SUT_BIOS and SUT_Notes columns.
+
+The functionality to create new columns from that knowledge has been coded
+into def make_feature_columns()
+
+This function should only be used when new data to SPECPower is added
+
+"""
+def helper_for_bios_and_notes(df):
+    import numpy as np
+    df = pd.read_csv("./../data/spec_data_cleaned_unmelted.csv")
+
+
+    mylist = df.SUT_BIOS.tolist()
+    mylist += df.SUT_Notes.tolist()
+    items = []
+    for item in mylist:
+        if item is np.NaN: continue
+        items.extend(item.split(";;;"))
+    item_series = pd.Series(items).value_counts()
+    pd.set_option('display.max_rows', None)
+
+    item_series.index.nunique() # 1243 items ... this is too much too inspect
+
+
+    # manual visual checking beforhand
+    # We limit down to the ones with more than 5 occurences and manually try to find interesting ones
+    item_series[item_series.values > 5].index.tolist()
+
+    # Back from manual checking.
+    # We found very many interesting settings that deserve the creation of
+    # a dummy variable.
+
+
+    #'Memory Frequency set to DDR3-1333MHz.',
+    #'Set "DDR Performance = Power balanced" in BIOS.',
+    #'DRAM Controller Power Down: Enabled',
+    #'DRAM Power Down Enable = Enabled',
+    #'Memory clock speed = 1333 MHz',
+    #'SMEE = Disabled', -> Secure Memory Encryptoion Enable
+    item_series[item_series.index.str.match(r".*(memory|ddr|dram|smee)", case=False)].shape
+
+
+    #'Intel HT Technology -enabled (default).',
+    #'Hyper Threading Technology: Enabled',
+    #'HT Technology: enabled',
+    a = item_series[item_series.index.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*enabled", case=False)]
+    b = item_series[item_series.index.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*disabled", case=False)]
+    c = item_series[item_series.index.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)", case=False)] #unknown status
+    c_new = set(c.index)
+    assert c_new == (set(a.index).union(set(b.index))), f"Set contained differences: {c_new.difference(set(a.index).union(set(b.index)))}"
+
+
+
+    #'Intel Virtualization (Intel VT): Disabled',
+    #'SVM disabled' -> AMD equivalent
+    #'VT-x: Disabled'
+    a = item_series[item_series.index.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*enable", case=False)]
+    b = item_series[item_series.index.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*disable", case=False)]
+    c = item_series[item_series.index.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)", case=False)]
+    c_new = set(c.index)
+    c_new.remove("Memory Patrol Scrubbing: DisabledVirtualization Options") # This one is known bogus
+
+    assert c_new == (set(a.index).union(set(b.index))), f"Set contained differences: {c_new.difference(set(a.index).union(set(b.index)))}"
+
+
+    'Intel Turbo Boost enabled<C1E enabled<C States enabled',
+    'Set &quot;Intel Turbo Boost Technology = Disabled&quot; in BIOS.',
+    'Set "Turbo = Disabled" in BIOS.',
+    'Turbo Boost was disabled in BIOS.',
+    'AMD Fmax Boost Limit Control: Manual',
+    'Core Performance Boost = Disabled',
+    'Turbo mode Disabled.',
+    'AMD Core Performance Boost: Disabled',
+
+
+    a = item_series[item_series.index.str.match(r".*(Turbo\s*Boost)[^,.<;]*enabled", case=False)]
+
+    b = item_series[item_series.index.str.match(r".*(Turbo\s*Boost)[^,.<;]*(disabled|disable$)", case=False)]
+    b2 = item_series[item_series.index.str.match(r".*(Manual Boost FMax set to 2200)", case=False)]
+    b3 = item_series[item_series.index.str.match(r".*disable.*boost", case=False)]
+    b4 = item_series[item_series.index.str.match(r".*boost.*limit", case=False)]
+    b5 = item_series[item_series.index.str.match(r".*boost fmax set to manual", case=False)]
+    b6 = item_series[item_series.index.str.match(r"Core Performance Boost: Disable</UL>", case=False)]
+    b7 = item_series[item_series.index.str.match(r"Set &quot;Intel Turbo Boost Technology = Disable&quot; in BIOS.", case=False)]
+    b8 = item_series[item_series.index.str.match(r".*(Turbo Mode)[^,.<;]*disabled", case=False)]
+    b9 = item_series[item_series.index.str.match(r".*Disable(d)? \"?Turbo", case=False)]
+    b10 = item_series[item_series.index.str.match(r"&quot;Turbo Mode&quot; was disabled in BIOS.", case=False)]
+    b11 = item_series[item_series.index.str.match(r"Turned off &quot;TURBO mode&quot; in BIOS.", case=False)]
+
+    b = b.append(b2).append(b3).append(b4).append(b5).append(b6).append(b7).append(b8).append(b9).append(b10).append(b11)
+    c = item_series[item_series.index.str.match(r".*(Turbo\s*Boost|Turbo Mode)", case=False)] #unknown status
+    c_new = set(c.index)
+    c_new.discard("Turbo Boost Technology ") # This one is known bogus
+
+    assert c_new == (set(a.index).union(set(b.index))), f"Set contained differences: {c_new.difference(set(a.index).union(set(b.index)))}"
+
+
+    'Package C State: No Limit',
+    'C-State Efficiency Mode: Enabled',
+    'Data Fabric C-State Enable: Force Enabled',
+    'C States enabled',
+    'Enhanced Halt State'
+    'C\d+'
+    'Package C State limit set to No Limit.'
+    a = item_series[item_series.index.str.match(r".*(C.State)[^,.<;]*(enabled|enable[\".\s]*|no limit|auto|c3|c6)", case=False)]
+    a2 = item_series[item_series.index.str.match(r"Enable \"*CPU C-states\"*", case=False)]
+    a = a.append(a2)
+
+    b = item_series[item_series.index.str.match(r".*(C.State)[^,.<;]*disabled", case=False)]
+
+    c = item_series[item_series.index.str.match(r".*(C6)", case=False)] #unknown status
+    c_new = set(c.index)
+
+    assert c_new == (set(a.index).union(set(b.index))), f"Set contained differences: {c_new.difference(set(a.index).union(set(b.index)))}"
+
+
+    # P-states are a power feature. P-State = 1 is the base frequency
+    # Setting P-states to off will set P-State to max non-turbo (aka 1) (https://www.thomas-krenn.com/en/wiki/Disable_CPU_Power_Saving_Management_in_BIOS)
+    # All P-States greater than 1 are power efficient states: https://www.thomas-krenn.com/en/wiki/Processor_P-states_and_C-states
+    "SOC P-states: P3"
+    item_series[item_series.index.str.match(r".*(P.State)[^,.<;]*(P2|P3)", case=False)]
+
+
+
+
+     #"Hardware Prefetcher = Disabled"
+     #Adjacent Cache Line Prefetch
+     #MLC Spatial Prefetcher
+     #Spatial prefetch
+     #MLC Streamer
+     #Data Reuse Prefetcher
+     #Adjacent Cache Line Prefetch
+     #DCU Prefetcher
+     #L1 Stream HW Prefetcher
+     #Adjacent Sector Prefetch = Disable
+
+    a = item_series[item_series.index.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*disable", case=False)]
+    b = item_series[item_series.index.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*enable", case=False)]
+
+
+    c = item_series[item_series.index.str.match(r".*prefetch", case=False)]
+    c_new = set(c.index)
+    c_new.remove('Disable L1 Cache Stream Prefetchers')
+    c_new.remove('HW Prefetcher')
+    c_new.remove('DCU Stream Prefetcher')
+    c_new.remove('Disable L2 Cache Stream Prefetchers')
+    c_new.remove('Disable Processor Data Prefetch')
+    c_new.remove('Adjacent Sector Prefetch')
+    c_new.remove('Disabled Adjacent Cache Line Prefetch in BIOS.')
+    c_new.remove('LLC Prefetcher''Disabled DCU Streamer Prefetcher in BIOS.')
+    c_new.remove('XPT Prefetcher')
+    c_new.remove('Disabled Hardware Prefetcher in BIOS.')
+    c_new.remove('DCU IP Prefetcher')
+    c_new.remove('Sub-NUMA Clustering: EnabledProcessor Prefetcher Options')
+    c_new.remove('Disable "Processor Data Prefetch"')
+    c_new.remove('LLC Prefetcher')
+    c_new.remove('Disabled DCU Streamer Prefetcher in BIOS.')
+
+    assert c_new == (set(a.index).union(set(b.index))), f"Set contained differences: {c_new.difference(set(a.index).union(set(b.index)))}"
+
+
+def make_bios_features(df_original):
+
+    df = df_original.copy()
+
+    df.loc[df.SUT_BIOS.isna(), "SUT_BIOS"] = "--" # Move none to empty string so we can make operations on them
+    df.loc[df.SUT_Notes.isna(), "SUT_Notes"] = "--" # Move none to empty string so we can make operations on them
+
+
+    df["BIOS_Memory_Setting_Changed"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(dram|memory|ddr)\s*frequency", case=False), "BIOS_Memory_Setting_Changed"] = True
+
+    df.loc[df.SUT_BIOS.str.match(r".*(memory|ddr|dram|smee)", case=False), "BIOS_Memory_Setting_Changed"] = True
+    # There is no category for "False" since no infos are give like "memory timings default". So we resort to None as fallback
+    df["BIOS_Memory_Setting_Changed"].count()
+
+
+    df["BIOS_HT_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*enabled", case=False), "BIOS_HT_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*disabled", case=False), "BIOS_HT_Enabled"] = False
+
+    df.loc[df.SUT_BIOS.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*enabled", case=False), "BIOS_HT_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*(Intel Hyper|Intel HT|Hyper.*Thread|HT Tech)[^,.<;]*disabled", case=False), "BIOS_HT_Enabled"] = False
+    df["BIOS_HT_Enabled"].count()
+
+
+    df["BIOS_VT_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*enable", case=False), "BIOS_VT_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*disable", case=False), "BIOS_VT_Enabled"] = False
+
+    df.loc[df.SUT_BIOS.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*enable", case=False), "BIOS_VT_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*(AMD-V|SVM|VT|VT-x|Virtualization)[\s:=]*(Technology)?\s*disable", case=False), "BIOS_VT_Enabled"] = False
+    df["BIOS_VT_Enabled"].count()
+
+
+    df["BIOS_Turbo_Boost_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(Turbo\s*Boost)[^,.<;]*enabled", case=False), "BIOS_Turbo_Boost_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r".*(Turbo\s*Boost)[^,.<;]*(disabled|disable$)", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*(Manual Boost FMax set to 2200)", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*disable.*boost", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*boost.*limit", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*boost fmax set to manual", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r"Core Performance Boost: Disable</UL>", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r"Set &quot;Intel Turbo Boost Technology = Disable&quot; in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*(Turbo Mode)[^,.<;]*disabled", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disable(d)? \"?Turbo", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r"&quot;Turbo Mode&quot; was disabled in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r"Turned off &quot;TURBO mode&quot; in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+
+    df.loc[df.SUT_BIOS.str.match(r".*(Turbo\s*Boost)[^,.<;]*enabled", case=False), "BIOS_Turbo_Boost_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*(Turbo\s*Boost)[^,.<;]*(disabled|disable$)", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*(Manual Boost FMax set to 2200)", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*disable.*boost", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*boost.*limit", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*boost fmax set to manual", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r"Core Performance Boost: Disable</UL>", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r"Set &quot;Intel Turbo Boost Technology = Disable&quot; in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*(Turbo Mode)[^,.<;]*disabled", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disable(d)? \"?Turbo", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r"&quot;Turbo Mode&quot; was disabled in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r"Turned off &quot;TURBO mode&quot; in BIOS.", case=False), "BIOS_Turbo_Boost_Enabled"] = False
+    df["BIOS_Turbo_Boost_Enabled"].count()
+
+
+    df["BIOS_C_States_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(C.State)[^,.<;]*(enabled|enable[\".\s]*|no limit|auto|c3|c6)", case=False), "BIOS_C_States_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r"Enable \"*CPU C-states\"*", case=False), "BIOS_C_States_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r".*(C.State)[^,.<;]*disabled", case=False), "BIOS_C_States_Enabled"] = False
+
+    df.loc[df.SUT_BIOS.str.match(r".*(C.State)[^,.<;]*(enabled|enable[\".\s]*|no limit|auto|c3|c6)", case=False), "BIOS_C_States_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r"Enable \"*CPU C-states\"*", case=False), "BIOS_C_States_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*(C.State)[^,.<;]*disabled", case=False), "BIOS_C_States_Enabled"] = False
+    df["BIOS_C_States_Enabled"].count()
+
+
+    df["BIOS_P_States_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*(P.State)[^,.<;]*(P2|P3)", case=False), "BIOS_P_States_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*(P.State)[^,.<;]*(P2|P3)", case=False), "BIOS_P_States_Enabled"] = True
+    # There is no category for "False" since no infos are give like "P-States default". So we resort to None as fallback as we do not know the status
+    # Most likey it is on, since this is the default. But also the CPU might not support it ...
+    df["BIOS_P_States_Enabled"].count()
+
+
+    df["BIOS_Prefetchers_Enabled"] = None
+    df.loc[df.SUT_Notes.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*enable", case=False), "BIOS_Prefetchers_Enabled"] = True
+    df.loc[df.SUT_Notes.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*disable", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disable L1 Cache Stream Prefetchers", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disable L2 Cache Stream Prefetchers", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disable Processor Data Prefetch", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disabled Adjacent Cache Line Prefetch in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disabled DCU Streamer Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disabled Hardware Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disable \"Processor Data Prefetch\"", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_Notes.str.match(r".*Disabled DCU Streamer Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+
+    df.loc[df.SUT_BIOS.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*enable", case=False), "BIOS_Prefetchers_Enabled"] = True
+    df.loc[df.SUT_BIOS.str.match(r".*prefetch(er)?s?( was)?( set to)?[\"'=\s:-]*disable", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disable L1 Cache Stream Prefetchers", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disable L2 Cache Stream Prefetchers", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disable Processor Data Prefetch", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disabled Adjacent Cache Line Prefetch in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disabled DCU Streamer Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disabled Hardware Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disable \"Processor Data Prefetch\"", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df.loc[df.SUT_BIOS.str.match(r".*Disabled DCU Streamer Prefetcher in BIOS.", case=False), "BIOS_Prefetchers_Enabled"] = False
+    df["BIOS_Prefetchers_Enabled"].count()
+
+    return df
+
 def main():
-    pd.set_option("display.max_rows", 20)
+    pd.set_option("display.max_rows", 100)
     pd.set_option("display.max_columns", 20)
     pd.set_option('display.max_colwidth', None)
 
@@ -593,11 +865,14 @@ def main():
 
     df = make_tdp_and_architecture(df)
 
+    df = make_bios_features(df)
+
     df["AvgPower"] = df.loc[:,['100_AvgPower', '90_AvgPower', '80_AvgPower', '70_AvgPower',
            '60_AvgPower', '50_AvgPower', '40_AvgPower', '30_AvgPower',
            '20_AvgPower', '10_AvgPower', 'ActiveIdle']].mean(axis=1)
 
     df.to_csv("./../data/spec_data_cleaned_unmelted.csv")
+
 
     df = df.drop("AvgPower", axis=1)
 
@@ -605,6 +880,7 @@ def main():
     df = clean_power_and_load(df) # move 100_AvgPower => 100 as int
 
     df.to_csv("./../data/spec_data_cleaned.csv")
+
 
     '''
     ## Now do the same, but with HW_CPUChars column
