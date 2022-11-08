@@ -265,7 +265,13 @@ This is the comparison chart where we compare the standard BIOS setup against th
 ![fujitsu_TX1330_measured.png](/img/fujitsu_TX1330_measured.png)
 
 ## Summary
-TODO
+- We can see that the SDIA model in its current form cannot account for the idle state of the machine and thus always underestimates here
+- The SDIA model underestimates 1-chip machines and greatly over-estimates 2-chip machines
+    + Taken into account that for 2-chip machines we only have SPECPower data at the moment and no real world data
+- The linear model is good for parameter exploration, but delivers badly fitted results
+- The XGBoost model is able to estimate a real world 1-chip machine and an out of sample 2-chip machine from SPECPower very nicely.
+    + However it tends to under-estimate
+- We see suprisingly no efficiency gain from applying the SPECPower BIOS settings but rather a smoothing of the curve. The reason to that is currently unknown.
 
 # Installation
 
@@ -322,7 +328,9 @@ Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
 - vhost operating point
 - validation of EC2 machines and the data from Teads. 
 - Performance optimizations for inline processing to get below 2% of utilization for 100ms intervals
-
+- Re-evaluating more machines from the SPECPower database in our lab and better understand what the BIOS settings really impact in regards to the server energy
+- Research what values in the cloud are typically set for the BIOS settings that SPECPower lists and if they can be configured in the cloud
+- Introspecting our models to understand which parameter in which setting will give the most energy gain when set on the machine so that developers can optimize these parameters
 
 ## Credits
 
