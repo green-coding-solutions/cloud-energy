@@ -227,6 +227,45 @@ If you can, please share and create and create a Pull Request:
 - *SGX enabled / disabled* 
     + is also very curious ... unclear what the cloud setting is
 
+# Results
+
+We have first compared the model against a machine from SPECPower that we 
+did not include in the model training: [Hewlett Packard Enterprise Synergy 480 Gen10 Plus Compute Module](https://www.spec.org/power_ssj2008/results/res2022q1/power_ssj2008-20211207-01142.html)
+
+This machine is comprised of 10 identical nodes, therefore the power values
+have to be divided by 10 to get the approximate value that would have resulted 
+if only one node was tested individually.
+
+An individual node has the following characteristics as model parameters:
+- --cpu-freq 2300 
+- --tdp 270 
+- --ram 256 
+- --cpu-cores 80 
+- --cpu-chips 2
+
+![hp_synergy_480_Gen10_Plus.png](/img/hp_synergy_480_Gen10_Plus.png)
+
+
+This is the comparison chart:
+
+Secondly we have bought a machine from the SPECPower dataset: [FUJITSU Server PRIMERGY RX1330 M3](https://www.spec.org/power_ssj2008/results/res2017q2/power_ssj2008-20170315-00744.html)
+
+The machine has the following characteristics as model parameters:
+- --cpu-freq 3500
+- --tdp 24 
+- --ram 16
+- --cpu-cores 4
+- --cpu-chips 1
+
+This is the comparison chart for the SPEC data vs our modelling:
+![fujitsu_TX1330_SPEC.png](/img/fujitsu_TX1330_SPEC.png)
+
+
+This is the comparison chart where we compare the standard BIOS setup against the *tuning* settings from SPECPower:
+![fujitsu_TX1330_measured.png](/img/fujitsu_TX1330_measured.png)
+
+## Summary
+TODO
 
 # Installation
 
@@ -239,13 +278,13 @@ pip3 install -r requirements.txt
 ```
 
 # Use
-You must call the python file `model.py`. This file is designed to accept 
-streaming inputs.
+You must call the python file `linear_model.py` or `xgboost_model.py`. 
+This file is designed to accept streaming inputs.
 
 A typical call with a streaming binary that reports CPU Utilization could look like
 so: 
 ```
-$ ./static-binary | python3 model.py --tdp 240 
+$ ./static-binary | python3 linear_model.py --tdp 240 
 191.939294374113
 169.99632303510703
 191.939294374113
@@ -266,8 +305,6 @@ core.
 Calling it with 100ms intervals will incur around a 7-8% utilization in our testings
 on an Intel Skylake processor in the cloud.
 
-
-
 # Demo reporter
 
 If you want to use the demo reporter to read the CPU utilization there is a C reporter
@@ -278,3 +315,22 @@ Compile it with `gcc cpu-utilization.c`
 Then run it with `./a.out`
 
 Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
+
+
+# TODO
+
+- vhost operating point
+- validation of EC2 machines and the data from Teads. 
+- Performance optimizations for inline processing to get below 2% of utilization for 100ms intervals
+
+
+## Credits
+
+A similar model has been developed in academia from [Interact DC](https://interactdc.com/) and the 
+paper can be downloaded on [their official resources site](https://interactdc.com/static/images/documents/Elsevier_Journal.pdf).
+
+Our model was initially developed idependently but we have taken some inspiration 
+from the paper to tune the model afterwards.
+
+A big thank you to [Rich Kenny](https://twitter.com/bigkatrich) from Interact DC to providing some insights to
+parameters and possible pitfalls during our model development.
