@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--cpu-chips", type=float, help="Number of CPUChips")
     parser.add_argument("--cpu-cores", type=float, help="Number of CPUCores")
-    #parser.add_argument("--cpu-make", type=str, help="Make of the CPU")
+    parser.add_argument("--cpu-freq", type=float, help="CPU frequency. (Not used. Only for compatibility with XGBoost model)")
     parser.add_argument("--tdp", type=float, help="TDP of the CPU")
     parser.add_argument("--ram", type=float, help="Amount of RAM for the bare metal system")
     parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)

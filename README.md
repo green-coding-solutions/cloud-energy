@@ -15,6 +15,9 @@ Currently the model supports following variables:
 - CPU Chips `[integer [1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
+- CPU Frequency `[integer [1,)]`
+    + The base frequency of the processor in MHz.
+    + This value is only used in the XGBoost variant of the model
 - RAM `[integer (0,]]`
     * in Gigabytes
 - TDP `[integer (0,]]`
