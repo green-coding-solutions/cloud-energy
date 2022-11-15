@@ -15,6 +15,9 @@ Currently the model supports following variables:
 - CPU Chips `[integer [1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
+- CPU Cores `[integer [1,)]`
+    + The total amount of CPU cores over all installed chips.
+    + Example: The CPU has 10 cores. Machine has two chips. You enter 20.
 - CPU Frequency `[integer [1,)]`
     + The base frequency of the processor in MHz.
     + This value is only used in the XGBoost variant of the model
