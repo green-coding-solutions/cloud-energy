@@ -158,10 +158,10 @@ for f in os.scandir('../data/raw/html/'):
         if m:
             for x in range(1,4):
                 ### Elements are lists inside. We remove HTML tags and separate by ;;;
-                group = m.group(x).replace('<li>', ';;;', case=False)
-                                  .replace('</li>', '', case=False)
-                                  .replace('<ul>', '', case=False)
-                                  .replace('</ul>', '', case=False)
+                group = m.group(x).replace('<li>', ';;;', case=False) \
+                                  .replace('</li>', '', case=False) \
+                                  .replace('<ul>', '', case=False) \
+                                  .replace('</ul>', '', case=False) \
                                   .strip()
                 rows[rowcount].append(group)
 
