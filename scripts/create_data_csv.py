@@ -37,7 +37,7 @@ header = [
 rows = []
 rowcount=-1
 
-for f in os.scandir('../data/raw/html/'):
+for f in os.scandir('../data/raw/spec-power/'):
     if f.is_file():
         rowcount+=1
         rows.append([])
