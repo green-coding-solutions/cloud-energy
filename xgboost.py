@@ -1,4 +1,4 @@
-import sys
+import sys, os
 import statsmodels.formula.api as smf
 import pandas as pd
 from xgboost import XGBRegressor
@@ -40,13 +40,13 @@ def drop_unneeded_columns(df):
     df = df.rename(columns={'HW_MemAmountGB': 'MemoryGB', 'HW_CPUFreq':'CPUFrequency'})
     return df
 
-def train_model(cpu_chips, Z):
+def train_model(cpu_chips, Z, silent=False):
 
-    df = pd.read_csv("./data/spec_data_cleaned.csv")
+    df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
     X = df.copy()
     X = X[X.Hardware_Availability_Year >= 2015]
-    if not args.silent:
+    if not silent:
         print("Model will be restricted to the following amount of chips:", cpu_chips)
 
     X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
@@ -54,7 +54,7 @@ def train_model(cpu_chips, Z):
 
     X = X[Z.columns] # only select the supplied columns from the command line
 
-    if not args.silent:
+    if not silent:
         print("Model will be trained on:", X.columns)
 
     params = {'max_depth': 5, 'learning_rate': 0.4411788445980461, 'n_estimators': 469, 'min_child_weight': 2, 'gamma': 0.609395982216471, 'subsample': 0.7563030757274138, 'colsample_bytree': 0.8176008707736587, 'reg_alpha': 0.08305234496497138, 'reg_lambda': 0.930233948796124, 'random_state': 296}
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
     Z = Z.dropna(axis=1)
 
-    model = train_model(args.cpu_chips, Z)
+    model = train_model(args.cpu_chips, Z, args.silent)
 
     if not args.silent:
         print("Sending following dataframe to model:\n", Z)

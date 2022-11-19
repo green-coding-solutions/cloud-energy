@@ -290,13 +290,13 @@ pip3 install -r requirements.txt
 ```
 
 # Use
-You must call the python file `linear_model.py` or `xgboost_model.py`. 
+You must call the python file `ols.py` or `xgboost.py`. 
 This file is designed to accept streaming inputs.
 
 A typical call with a streaming binary that reports CPU Utilization could look like
 so: 
 ```
-$ ./static-binary | python3 linear_model.py --tdp 240 
+$ ./static-binary | python3 ols.py --tdp 240 
 191.939294374113
 169.99632303510703
 191.939294374113
