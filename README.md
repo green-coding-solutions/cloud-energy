@@ -290,7 +290,7 @@ pip3 install -r requirements.txt
 ```
 
 # Use
-You must call the python file `ols.py` or `xgboost.py`. 
+You must call the python file `ols.py` or `xgb.py`. 
 This file is designed to accept streaming inputs.
 
 A typical call with a streaming binary that reports CPU Utilization could look like
