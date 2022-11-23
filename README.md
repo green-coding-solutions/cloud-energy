@@ -289,6 +289,20 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+## Re-build training data
+If you want to rebuild the training data (`spec_data*.csv`) then you have to include 
+the git submodule with the raw data.
+
+```bash
+git submodule update --init --recursive --depth=1
+git submodule update --remote --recursive --depth=1
+```
+
+If you want to update the submodule call:
+```bash
+git submodule update --remote --recursive --depth=1
+```
+
 # Use
 You must call the python file `ols.py` or `xgb.py`. 
 This file is designed to accept streaming inputs.
