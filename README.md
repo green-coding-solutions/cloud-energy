@@ -21,6 +21,12 @@ Currently the model supports following variables:
 - CPU Frequency `[integer [1,)]`
     + The base frequency of the processor in MHz.
     + This value is only used in the XGBoost variant of the model
+- Architecture `[str]`
+    * For example: "haswell"
+- CPU Make `[str]`
+    * either "intel" or "amd"
+- Release year `[int]`
+    + ex. 2011
 - RAM `[integer (0,]]`
     * in Gigabytes
 - TDP `[integer (0,]]`

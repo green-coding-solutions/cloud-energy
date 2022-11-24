@@ -4,48 +4,13 @@ import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error
 
-def drop_unneeded_columns(df):
-    ## Test/Meta Related Columns
-    df = df.drop(columns=['Test_Sponsor', 'SPEC_License', 'Test_Method', 'Tested_By', 'Test_Location',
-                     'Test_Date', 'Publication', 'SW_WorkloadVersion', 'SW_DirectorLocation', 'HW_FormFactor'])
-
-    # Columns which we believe to be irrelevant
-    df = df.drop(columns=['HW_Vendor', "HW_Model", "HW_DiskDrive", "HW_Other", "SW_Others",
-                                "SW_PowerManagement", "SW_OS", "SW_OSVersion", "SW_Filesystem",
-                                 "SUT_BIOS", "hash", "CPUName"])
-
-    ## (Assumed) Irrelevant Columns
-    df = df.drop(['HW_OpticalDrive', 'Software_Availability', 'SW_JVMVendor', 'SW_JVMVersion',
-            'SW_JVMCLIOpts', 'SW_JVMAffinity', 'SW_JVMInstances', 'SW_JVMInitialHeapMB', 'SW_JVMMaxHeapMB',
-            'SW_JVMAddressBits' ,
-            'HW_Keyboard', 'HW_Mouse', 'HW_Monitor'], axis=1)
-
-    ## Empty /  One Category / Lopsided Columns
-    df = df.drop(['Power_Provisioning', 'HW_OtherCache', 'HW_NetSpeedMbit', 'System_Source', 'System_Designation'], axis=1)
-    # TODO: check System_Source and System_Designation to make sure the lopsided nature isn't totally irrelevant / create outliers
-
-    ## Duplicated Columns
-    df = df.drop(['HW_CPUChars', 'HW_CPUName', 'HW_CPUsEnabled', 'HW_PrimaryCache', 'HW_SecondaryCache',
-             'HW_SecondaryCache', 'HW_TertiaryCache', 'HW_PSUQuantAndRating', 'HW_HardwareThreads'], axis=1)
-
-    ## Sort of duplicated
-    df = df.drop(columns=['HW_DIMMNumAndSize'])
-
-    ## Too Dirty columns (Consider extracting info from, but probably irrelevant)
-    df = df.drop(['HW_CPUsOrderable', 'HW_MemDetails', 'HW_PSUDetails', 'SW_BootFirmwareVersion',
-             'SW_MgmtFirmwareVersion', 'SUT_Firmware', 'SUT_Notes', 'HW_NICSNumAndType',
-             'HW_NICSFirm/OS/Conn', 'HW_DiskController'],axis=1)
-
-    # Rename some columns for consistency/ease
-    df = df.rename(columns={'HW_MemAmountGB': 'MemoryGB', 'HW_CPUFreq':'CPUFrequency'})
-    return df
-
 def train_model(cpu_chips, Z, silent=False):
 
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
     X = df.copy()
-    X = X[X.Hardware_Availability_Year >= 2015]
+    X = pd.get_dummies(X, columns=["CPUMake", "Architecture"])
+
     if not silent:
         print("Model will be restricted to the following amount of chips:", cpu_chips)
 
@@ -70,11 +35,14 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--cpu-chips", type=float, help="Number of CPU chips", default=1)
-    parser.add_argument("--cpu-freq", type=float, help="CPU frequency")
-    parser.add_argument("--cpu-cores", type=float, help="Number of CPU cores")
-    parser.add_argument("--tdp", type=float, help="TDP of the CPU")
-    parser.add_argument("--ram", type=float, help="Amount of DRAM for the bare metal system")
+    parser.add_argument("--cpu-chips", type=int, help="Number of CPU chips", default=1)
+    parser.add_argument("--cpu-freq", type=int, help="CPU frequency")
+    parser.add_argument("--cpu-cores", type=int, help="Number of CPU cores")
+    parser.add_argument("--release-year", type=int, help="Release year of the CPU")
+    parser.add_argument("--tdp", type=int, help="TDP of the CPU")
+    parser.add_argument("--ram", type=int, help="Amount of DRAM for the bare metal system")
+    parser.add_argument("--architecture", type=str, help="The architecture of the CPU. lowercase. ex.: haswell")
+    parser.add_argument("--cpu-make", type=str, help="The make of the CPU (intel or amd)")
     parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)
     parser.add_argument("--debug", action='store_true', help="Activate debug mode (currently unused)")
     parser.add_argument("--silent", action="store_true", help="Will suppress all debug output. Typically used in production.")
@@ -84,9 +52,14 @@ if __name__ == "__main__":
         'HW_CPUFreq' : [args.cpu_freq],
         'CPUCores': [args.cpu_cores],
         'TDP': [args.tdp],
+        'Hardware_Availability_Year': [args.release_year],
         'HW_MemAmountGB': [args.ram],
+        'Architecture': [args.architecture],
+        'CPUMake': [args.cpu_make],
         'utilization': [0]
     })
+
+    Z = pd.get_dummies(Z, columns=["CPUMake", "Architecture"])
 
     Z = Z.dropna(axis=1)
 
