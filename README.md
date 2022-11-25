@@ -349,6 +349,14 @@ Then run it with `./a.out`
 Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
 
 
+## Comparison with Interact DC variable selection
+
+Run the `interact_validation.py` to see a K-Folds comparison of our variable 
+selection against the one from Interact DC.
+
+Without Hyperparameter Tuning when comparing the available variables in the cloud
+they are about the same.
+
 # TODO
 
 - vhost operating point
