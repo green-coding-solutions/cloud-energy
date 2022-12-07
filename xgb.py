@@ -3,6 +3,7 @@ import statsmodels.formula.api as smf
 import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error
+import numpy as np
 
 def train_model(cpu_chips, Z, silent=False):
 
@@ -22,12 +23,47 @@ def train_model(cpu_chips, Z, silent=False):
     if not silent:
         print("Model will be trained on:", X.columns)
 
-    params = {'max_depth': 5, 'learning_rate': 0.4411788445980461, 'n_estimators': 469, 'min_child_weight': 2, 'gamma': 0.609395982216471, 'subsample': 0.7563030757274138, 'colsample_bytree': 0.8176008707736587, 'reg_alpha': 0.08305234496497138, 'reg_lambda': 0.930233948796124, 'random_state': 296}
+#    params = {'max_depth': 10, 'learning_rate': 0.3037182109676833, 'n_estimators': 792, 'min_child_weight': 1, 'random_state': 762}
+    params = {} # we see no strong improvements in hyperparamter tuning
 
     model = XGBRegressor(**params)
     model.fit(X,y)
 
     return model
+
+def infer_predictions(model):
+
+    predictions = {}
+
+    for i in range(0,110,5):
+        Z['utilization'] = i
+        predictions[float(i)] = model.predict(Z)[0]
+    return predictions
+
+def interpolate_helper(predictions, lower, upper, step=501):
+
+    diff = int(upper-lower)
+    diff_value = predictions[upper] - predictions[lower]
+
+    for i in np.linspace(0, diff, step):
+        predictions[round(lower+i, 2)] = predictions[lower]+((diff_value/diff)*i)
+
+    return predictions
+
+def interpolate_predictions(predictions):
+    predictions = interpolate_helper(predictions, 0.0, 5.0, 501)
+    predictions = interpolate_helper(predictions, 5.0, 15.0, 1001)
+    predictions = interpolate_helper(predictions, 15.0, 25.0, 1001)
+    predictions = interpolate_helper(predictions, 25.0, 35.0, 1001)
+    predictions = interpolate_helper(predictions, 35.0, 45.0, 1001)
+    predictions = interpolate_helper(predictions, 45.0, 55.0, 1001)
+    predictions = interpolate_helper(predictions, 55.0, 65.0, 1001)
+    predictions = interpolate_helper(predictions, 65.0, 75.0, 1001)
+    predictions = interpolate_helper(predictions, 75.0, 85.0, 1001)
+    predictions = interpolate_helper(predictions, 85.0, 95.0, 1001)
+    predictions = interpolate_helper(predictions, 95.0, 100.0, 501) # between 95 and 100 is no difference. How do we extrapolate?
+
+    return predictions
 
 if __name__ == "__main__":
 
@@ -56,7 +92,7 @@ if __name__ == "__main__":
         'HW_MemAmountGB': [args.ram],
         'Architecture': [args.architecture],
         'CPUMake': [args.cpu_make],
-        'utilization': [0]
+        'utilization': [0.0]
     })
 
     Z = pd.get_dummies(Z, columns=["CPUMake", "Architecture"])
@@ -68,8 +104,8 @@ if __name__ == "__main__":
     if not args.silent:
         print("Sending following dataframe to model:\n", Z)
         print("vHost ratio is set to ", args.vhost_ratio)
-
+        print("Infering all predictions to dictionary")
+    predictions = infer_predictions(model)
+    predicitons = interpolate_predictions(predictions)
     for line in sys.stdin:
-        Z['utilization'] = float(line.strip())
-        y_pred_default = model.predict(Z)
-        print(y_pred_default[0] * args.vhost_ratio)
+        print(predictions[float(line.strip())] * args.vhost_ratio)

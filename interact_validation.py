@@ -31,3 +31,9 @@ model = XGBRegressor()
 kfold = RepeatedKFold()
 kf_cv_scores = cross_val_score(model, X, y, cv=kfold, scoring="neg_mean_absolute_error")
 print("[Our variable selection (untuned)] K-fold CV score range: %.2f < %.2f < %.2f" % (kf_cv_scores.min(), kf_cv_scores.mean(), kf_cv_scores.max()) )
+
+
+## Expected output from 07.12.2022 with the pre-interpolated data
+## [Interact DC Original (untuned)] K-fold CV score range: -4.70 < -4.54 < -4.33
+## [Interact DC cloud available variables (untuned)] K-fold CV score range: -8.00 < -7.88 < -7.80
+## [Our variable selection (untuned)] K-fold CV score range: -8.13 < -8.02 < -7.93
