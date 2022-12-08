@@ -31,7 +31,7 @@ def train_model(cpu_chips, Z, silent=False):
 
     return model
 
-def infer_predictions(model):
+def infer_predictions(model, Z):
 
     predictions = {}
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
         print("Sending following dataframe to model:\n", Z)
         print("vHost ratio is set to ", args.vhost_ratio)
         print("Infering all predictions to dictionary")
-    predictions = infer_predictions(model)
+    predictions = infer_predictions(model, Z)
     predicitons = interpolate_predictions(predictions)
     for line in sys.stdin:
         print(predictions[float(line.strip())] * args.vhost_ratio)
