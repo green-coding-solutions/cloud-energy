@@ -239,6 +239,35 @@ If you can, please share and create and create a Pull Request:
 - *SGX enabled / disabled* 
     + is also very curious ... unclear what the cloud setting is
 
+
+# Interpolation for output
+
+Like all tree based models our XGBoost model can only predict what it has seen so 
+far.
+
+Since the original data from SPECPower only has information for every 10% of 
+utilization the model will by default for instance give the same value for 6%
+as well as for 7%.
+
+To combat this behaviour we interpolate between the points where the model actually
+reports new data, which is:
+- 0-5
+- 5-15
+- 15-25
+- 25-35
+- 35-45
+- 45-55
+- 55-65
+- 65-75
+- 75-85
+- 85-95
+- 95-100
+
+The data is just interpolated linearly. The interpolation is done directly 
+when the `xgb.py` script is starting and thus all possible infered values for 
+utilization (0.00 - 100.00) are stored in a dict.
+This makes the model extremely performant at the cost of a minimal memory cost.
+
 # Results
 
 We have first compared the model against a machine from SPECPower that we 
@@ -300,13 +329,7 @@ If you want to rebuild the training data (`spec_data*.csv`) then you have to inc
 the git submodule with the raw data.
 
 ```bash
-git submodule update --init --recursive --depth=1
-git submodule update --remote --recursive --depth=1
-```
-
-If you want to update the submodule call:
-```bash
-git submodule update --remote --recursive --depth=1
+git submodule update --init
 ```
 
 # Use
@@ -330,12 +353,8 @@ $ ./static-binary | python3 ols.py --tdp 240
 ....
 ```
 
-The model currently is not performance optimized and should not be called more 
-often than with a 500 ms interval to stay below a 2% CPU utilization on a single
-core.
-
-Calling it with 100ms intervals will incur around a 7-8% utilization in our testings
-on an Intel Skylake processor in the cloud.
+Since all possible outputs are infered directly into a dict the model is highly
+performant to use in inline reporting scenarios.
 
 # Demo reporter
 
@@ -360,8 +379,8 @@ they are about the same.
 # TODO
 
 - vhost operating point
-- validation of EC2 machines and the data from Teads. 
-- Performance optimizations for inline processing to get below 2% of utilization for 100ms intervals
+- ~~validation of EC2 machines and the data from Teads. ~~
+- ~~Performance optimizations for inline processing to get below 2% of utilization for 100ms intervals~~
 - Re-evaluating more machines from the SPECPower database in our lab and better understand what the BIOS settings really impact in regards to the server energy
 - Research what values in the cloud are typically set for the BIOS settings that SPECPower lists and if they can be configured in the cloud
 - Introspecting our models to understand which parameter in which setting will give the most energy gain when set on the machine so that developers can optimize these parameters
