@@ -11,10 +11,10 @@ def train_model(cpu_chips, Z, silent=False):
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
     X = df.copy()
-    X = pd.get_dummies(X, columns=["CPUMake", "Architecture"])
+    X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
 
     if not silent:
-        print("Model will be restricted to the following amount of chips:", cpu_chips)
+        print('Model will be restricted to the following amount of chips:', cpu_chips)
 
     X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
     y = X.power
@@ -22,7 +22,7 @@ def train_model(cpu_chips, Z, silent=False):
     X = X[Z.columns] # only select the supplied columns from the command line
 
     if not silent:
-        print("Model will be trained on:", X.columns)
+        print('Model will be trained on:', X.columns)
 
 #    params = {
 #      'max_depth': 10,
@@ -73,28 +73,28 @@ def interpolate_predictions(predictions):
 
     return predictions
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     import argparse
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--cpu-chips", type=int, help="Number of CPU chips", default=1)
-    parser.add_argument("--cpu-freq", type=int, help="CPU frequency")
-    parser.add_argument("--cpu-cores", type=int, help="Number of CPU cores")
-    parser.add_argument("--release-year", type=int, help="Release year of the CPU")
-    parser.add_argument("--tdp", type=int, help="TDP of the CPU")
-    parser.add_argument("--ram", type=int, help="Amount of DRAM for the bare metal system")
-    parser.add_argument("--architecture", type=str, help="The architecture of the CPU. lowercase. ex.: haswell")
-    parser.add_argument("--cpu-make", type=str, help="The make of the CPU (intel or amd)")
-    parser.add_argument("--vhost-ratio",
+    parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips', default=1)
+    parser.add_argument('--cpu-freq', type=int, help='CPU frequency')
+    parser.add_argument('--cpu-cores', type=int, help='Number of CPU cores')
+    parser.add_argument('--release-year', type=int, help='Release year of the CPU')
+    parser.add_argument('--tdp', type=int, help='TDP of the CPU')
+    parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
+    parser.add_argument('--architecture', type=str, help='The architecture of the CPU. lowercase. ex.: haswell')
+    parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel or amd)')
+    parser.add_argument('--vhost-ratio',
         type=float,
-        help="Virtualization ratio of the system. Input numbers between (0,1].",
+        help='Virtualization ratio of the system. Input numbers between (0,1].',
         default=1.0
     )
-    parser.add_argument("--silent",
-        action="store_true",
-        help="Will suppress all debug output. Typically used in production."
+    parser.add_argument('--silent',
+        action='store_true',
+        help='Will suppress all debug output. Typically used in production.'
     )
 
     args = parser.parse_args()
@@ -110,16 +110,16 @@ if __name__ == "__main__":
         'utilization': [0.0]
     })
 
-    Z = pd.get_dummies(Z, columns=["CPUMake", "Architecture"])
+    Z = pd.get_dummies(Z, columns=['CPUMake', 'Architecture'])
 
     Z = Z.dropna(axis=1)
 
     trained_model = train_model(args.cpu_chips, Z, args.silent)
 
     if not args.silent:
-        print("Sending following dataframe to model:\n", Z)
-        print("vHost ratio is set to ", args.vhost_ratio)
-        print("Infering all predictions to dictionary")
+        print('Sending following dataframe to model:\n', Z)
+        print('vHost ratio is set to ', args.vhost_ratio)
+        print('Infering all predictions to dictionary')
 
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
