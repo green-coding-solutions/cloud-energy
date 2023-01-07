@@ -1,6 +1,9 @@
+#pylint: disable=invalid-name
+
 import sys
 import statsmodels.formula.api as smf
 import pandas as pd
+
 def train_model(cpu_chips, ram, tdp, cpu_cores):
 
     df = pd.read_csv("./data/spec_data_cleaned.csv")
@@ -28,11 +31,21 @@ if __name__ == "__main__":
 
     parser.add_argument("--cpu-chips", type=float, help="Number of CPUChips")
     parser.add_argument("--cpu-cores", type=float, help="Number of CPUCores")
-    parser.add_argument("--cpu-freq", type=float, help="CPU frequency. (Not used. Only for compatibility with XGBoost model)")
+    parser.add_argument("--cpu-freq",
+        type=float,
+        help="CPU frequency. (Not used. Only for compatibility with XGBoost model)"
+    )
     parser.add_argument("--tdp", type=float, help="TDP of the CPU")
     parser.add_argument("--ram", type=float, help="Amount of RAM for the bare metal system")
-    parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)
-    parser.add_argument("--silent", action="store_true", help="Will suppress all debug output. Typically used in production.")
+    parser.add_argument("--vhost-ratio",
+        type=float,
+        help="Virtualization ratio of the system. Input numbers between (0,1].",
+        default=1.0
+    )
+    parser.add_argument("--silent",
+        action="store_true",
+        help="Will suppress all debug output. Typically used in production."
+    )
 
     args = parser.parse_args()
 
@@ -45,7 +58,8 @@ if __name__ == "__main__":
         "TDP" : [args.tdp]
     })
 
-    my_data = my_data.dropna(axis=1) # Drop all arguments that were not supplied
+    # Drop all arguments that were not supplied
+    my_data = my_data.dropna(axis=1)
 
     if not args.silent:
         print("Sending following dataframe to model", my_data)
@@ -55,5 +69,3 @@ if __name__ == "__main__":
     for line in sys.stdin:
         my_data['utilization'] = float(line.strip())
         print(model.predict(my_data)[0] * args.vhost_ratio)
-
-

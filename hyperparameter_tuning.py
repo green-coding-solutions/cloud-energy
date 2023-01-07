@@ -1,5 +1,4 @@
-import sys, os
-import statsmodels.formula.api as smf
+import os
 import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error

@@ -1,9 +1,10 @@
-import sys, os
-import statsmodels.formula.api as smf
+# pylint: disable=redefined-outer-name,invalid-name
+
+import sys
+import os
 import pandas as pd
-from xgboost import XGBRegressor
-from sklearn.metrics import mean_absolute_error
 import numpy as np
+from xgboost import XGBRegressor
 
 def train_model(cpu_chips, Z, silent=False):
 
@@ -23,8 +24,14 @@ def train_model(cpu_chips, Z, silent=False):
     if not silent:
         print("Model will be trained on:", X.columns)
 
-#    params = {'max_depth': 10, 'learning_rate': 0.3037182109676833, 'n_estimators': 792, 'min_child_weight': 1, 'random_state': 762}
-    params = {} # we see no strong improvements in hyperparamter tuning
+#    params = {
+#      'max_depth': 10,
+#      'learning_rate': 0.3037182109676833,
+#      'n_estimators': 792,
+#      'min_child_weight': 1,
+#      'random_state': 762
+#    }
+    params = {} # we see no strong improvements with hyperparamters tuned by optune
 
     model = XGBRegressor(**params)
     model.fit(X,y)
@@ -61,7 +68,8 @@ def interpolate_predictions(predictions):
     predictions = interpolate_helper(predictions, 65.0, 75.0, 1001)
     predictions = interpolate_helper(predictions, 75.0, 85.0, 1001)
     predictions = interpolate_helper(predictions, 85.0, 95.0, 1001)
-    predictions = interpolate_helper(predictions, 95.0, 100.0, 501) # between 95 and 100 is no difference. How do we extrapolate?
+    # Question: between 95 and 100 is no difference. How do we extrapolate?
+    predictions = interpolate_helper(predictions, 95.0, 100.0, 501)
 
     return predictions
 
@@ -79,8 +87,15 @@ if __name__ == "__main__":
     parser.add_argument("--ram", type=int, help="Amount of DRAM for the bare metal system")
     parser.add_argument("--architecture", type=str, help="The architecture of the CPU. lowercase. ex.: haswell")
     parser.add_argument("--cpu-make", type=str, help="The make of the CPU (intel or amd)")
-    parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)
-    parser.add_argument("--silent", action="store_true", help="Will suppress all debug output. Typically used in production.")
+    parser.add_argument("--vhost-ratio",
+        type=float,
+        help="Virtualization ratio of the system. Input numbers between (0,1].",
+        default=1.0
+    )
+    parser.add_argument("--silent",
+        action="store_true",
+        help="Will suppress all debug output. Typically used in production."
+    )
 
     args = parser.parse_args()
 
@@ -99,13 +114,15 @@ if __name__ == "__main__":
 
     Z = Z.dropna(axis=1)
 
-    model = train_model(args.cpu_chips, Z, args.silent)
+    trained_model = train_model(args.cpu_chips, Z, args.silent)
 
     if not args.silent:
         print("Sending following dataframe to model:\n", Z)
         print("vHost ratio is set to ", args.vhost_ratio)
         print("Infering all predictions to dictionary")
-    predictions = infer_predictions(model, Z)
-    predicitons = interpolate_predictions(predictions)
+
+    inferred_predictions = infer_predictions(trained_model, Z)
+    interpolated_predictions = interpolate_predictions(inferred_predictions)
+
     for line in sys.stdin:
-        print(predictions[float(line.strip())] * args.vhost_ratio)
+        print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
