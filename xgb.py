@@ -80,8 +80,8 @@ if __name__ == "__main__":
     parser.add_argument("--architecture", type=str, help="The architecture of the CPU. lowercase. ex.: haswell")
     parser.add_argument("--cpu-make", type=str, help="The make of the CPU (intel or amd)")
     parser.add_argument("--vhost-ratio", type=float, help="Virtualization ratio of the system. Input numbers between (0,1].", default=1.0)
-    parser.add_argument("--debug", action='store_true', help="Activate debug mode (currently unused)")
     parser.add_argument("--silent", action="store_true", help="Will suppress all debug output. Typically used in production.")
+
     args = parser.parse_args()
 
     Z = pd.DataFrame.from_dict({
