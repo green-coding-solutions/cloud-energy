@@ -2,6 +2,7 @@
 
 import sys
 import os
+import time
 import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
@@ -96,6 +97,11 @@ if __name__ == '__main__':
         action='store_true',
         help='Will suppress all debug output. Typically used in production.'
     )
+    parser.add_argument('--energy',
+        action='store_true',
+        help='Switches to energy mode. The output will be in Joules instead of Watts. \
+        This is achieved by multiplying the interval between inputs with the estimated wattage'
+    )
 
     args = parser.parse_args()
 
@@ -124,5 +130,14 @@ if __name__ == '__main__':
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
 
-    for line in sys.stdin:
-        print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
+    if args.energy:
+        current_time = time.time_ns()
+        for line in sys.stdin:
+            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio * \
+                (time.time_ns() - current_time) / 1_000_000_000
+            )
+            current_time = time.time_ns()
+
+    else:
+        for line in sys.stdin:
+            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
