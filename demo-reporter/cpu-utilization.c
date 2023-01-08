@@ -82,7 +82,13 @@ static int output_stats() {
     // printf("%ld%06ld %f\n", now.tv_sec, now.tv_usec, (double)compute_time_reading / (double)(compute_time_reading+idle_reading));
 
     // main output to Stdout
-    printf("%f\n", 100*((double)compute_time_reading) / ((double)(compute_time_reading+idle_reading)) ); // Deliberate integer conversion. Precision with 0.01% is good enough
+    double output = 100*((double)compute_time_reading) / ((double)(compute_time_reading+idle_reading));
+    if(output < 0.0) {
+        output = 0.0;
+    } else if(output > 100.0) {
+        output = 100.0;
+    }
+    printf("%.2f\n", output); // Deliberate integer conversion. Precision with 0.01% is good enough
 
     return 1;
 }
