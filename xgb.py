@@ -83,6 +83,7 @@ if __name__ == '__main__':
     parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips', default=1)
     parser.add_argument('--cpu-freq', type=int, help='CPU frequency')
     parser.add_argument('--cpu-threads', type=int, help='Number of CPU threads')
+    parser.add_argument('--cpu-cores', type=int, help='Number of CPU cores')
     parser.add_argument('--release-year', type=int, help='Release year of the CPU')
     parser.add_argument('--tdp', type=int, help='TDP of the CPU')
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
@@ -108,6 +109,7 @@ if __name__ == '__main__':
     Z = pd.DataFrame.from_dict({
         'HW_CPUFreq' : [args.cpu_freq],
         'CPUThreads': [args.cpu_threads],
+        'CPUCores': [args.cpu_cores],
         'TDP': [args.tdp],
         'Hardware_Availability_Year': [args.release_year],
         'HW_MemAmountGB': [args.ram],

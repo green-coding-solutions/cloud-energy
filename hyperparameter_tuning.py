@@ -44,6 +44,7 @@ X = X.drop(columns=["power"])
 
 Z = pd.DataFrame.from_dict({
     'HW_CPUFreq' : [],
+    'CPUCores': [],
     'CPUThreads': [],
     'TDP': [],
     'Hardware_Availability_Year': [],

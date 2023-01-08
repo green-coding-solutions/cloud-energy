@@ -53,6 +53,7 @@ X = df_new[[
     'HW_MemAmountGB',
     'TDP',
     'utilization',
+    'CPUCores',
     'CPUThreads',
     'HW_CPUFreq',
     'Hardware_Availability_Year',

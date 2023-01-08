@@ -21,6 +21,10 @@ Currently the model supports following variables:
     + Please note that if you are restricted to use only a subset of the threads, like it is typical \
       in virtualized or containerized environments you still enter the full capacity of the CPU. The ratio assigned \
       to you is handled by the parameter `vHost Ratio`
+- CPU Cores `[integer [1,)]`
+    + Threads and cores do not have to be equal. When Hyperthreading is active the amount of threads
+    + is typically greater than the amount of cores.
+    + If you do not know how many phyiscal cores you really have rather do not supply this argument
 - CPU Frequency `[integer [1,)]`
     + The base frequency of the processor in MHz.
     + This value is only used in the XGBoost variant of the model
