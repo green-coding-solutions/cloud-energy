@@ -4,14 +4,14 @@ import sys
 import statsmodels.formula.api as smf
 import pandas as pd
 
-def train_model(cpu_chips, ram, tdp, cpu_cores):
+def train_model(cpu_chips, ram, tdp, cpu_threads):
 
     df = pd.read_csv('./data/spec_data_cleaned.csv')
 
     formula = 'power ~ utilization'
 
-    if cpu_cores is not None:
-        formula = f"{formula} + CPUCores"
+    if cpu_threads is not None:
+        formula = f"{formula} + CPUThreads"
 
     if cpu_chips is not None:
         formula = f"{formula}*C(CPUChips)"
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--cpu-chips', type=float, help='Number of CPUChips')
-    parser.add_argument('--cpu-cores', type=float, help='Number of CPUCores')
+    parser.add_argument('--cpu-threads', type=float, help='Number of CPU Threads')
     parser.add_argument('--cpu-freq',
         type=float,
         help='CPU frequency. (Not used. Only for compatibility with XGBoost model)'
@@ -49,11 +49,11 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    model = train_model(args.cpu_chips, args.ram, args.tdp, args.cpu_cores)
+    model = train_model(args.cpu_chips, args.ram, args.tdp, args.cpu_threads)
     my_data = pd.DataFrame.from_dict({
         'utilization': 0,
         'CPUChips': [args.cpu_chips],
-        'CPUCores': [args.cpu_cores],
+        'CPUThreads': [args.cpu_threads],
         'HW_MemAmountGB': [args.ram],
         'TDP' : [args.tdp]
     })

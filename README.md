@@ -11,13 +11,16 @@ Watts.
 
 Currently the model supports following variables:
 - CPU Utilization `[float [0-100]]`
-    + The utilization of all your assigned cores cumulative and normalized to 0-100
+    + The utilization of all your assigned threads cumulative and normalized to 0-100
 - CPU Chips `[integer [1,)]`
     + The CPU chips installed on the mainboard. Most machines have either 1 or 2.
     + If you do not know this value rather leave it off.
-- CPU Cores `[integer [1,)]`
-    + The total amount of CPU cores over all installed chips.
-    + Example: The CPU has 10 cores. Machine has two chips. You enter 20.
+- CPU Threads `[integer [1,)]`
+    + The total amount of CPU threads over all installed chips.
+    + Example: The CPU has 10 physical cores with two threads each and two chips installed you enter 10 * 2 * 2 = 40.
+    + Please note that if you are restricted to use only a subset of the threads, like it is typical \
+      in virtualized or containerized environments you still enter the full capacity of the CPU. The ratio assigned \
+      to you is handled by the parameter `vHost Ratio`
 - CPU Frequency `[integer [1,)]`
     + The base frequency of the processor in MHz.
     + This value is only used in the XGBoost variant of the model
@@ -35,8 +38,9 @@ Currently the model supports following variables:
 - vHost Ratio `[float (0,1])`
     + The vHost ratio on the system you are on. If you are on a bare metal machine this is 1
     + If you are a guest and have e.g. 24 of the 96 Threads than the ratio would be 0.25
+    + Currently the model cannot account for non-balanced CPU and memory ratios.
 
-Only the CPU Utilization parameter is mandatory. All other paramters are optional
+Only the CPU Utilization parameter is mandatory. All other paramters are optional. \
 vHost ratio is assumed to be 1 if not given.
 
 You are free to supply only the utilization or as many additional parameters that
@@ -278,10 +282,10 @@ have to be divided by 10 to get the approximate value that would have resulted
 if only one node was tested individually.
 
 An individual node has the following characteristics as model parameters:
-- --cpu-freq 2300 
-- --tdp 270 
-- --ram 256 
-- --cpu-cores 80 
+- --cpu-freq 2300
+- --tdp 270
+- --ram 256
+- --cpu-threads 160
 - --cpu-chips 2
 
 ![hp_synergy_480_Gen10_Plus.png](/img/hp_synergy_480_Gen10_Plus.png)
@@ -293,9 +297,9 @@ Secondly we have bought a machine from the SPECPower dataset: [FUJITSU Server PR
 
 The machine has the following characteristics as model parameters:
 - --cpu-freq 3500
-- --tdp 24 
+- --tdp 24
 - --ram 16
-- --cpu-cores 4
+- --cpu-threads 8
 - --cpu-chips 1
 
 This is the comparison chart for the SPEC data vs our modelling:
