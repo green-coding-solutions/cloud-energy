@@ -1,9 +1,10 @@
+import os
 import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.model_selection import RepeatedKFold
 from sklearn.model_selection import cross_val_score
 
-df = pd.read_csv('./data/spec_data_cleaned.csv')
+df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
 df_new = df.copy()
 df_new = df_new[df_new.CPUChips == 2] # Fit a model for every amount of CPUChips
