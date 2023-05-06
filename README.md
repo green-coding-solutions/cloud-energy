@@ -1,9 +1,9 @@
 # Overview
 
-This repository containes the needed data to train a Linear Model for the [SPECPower
+This repository containes the needed data to train a Linear Model (OLS) / XGBoost for the [SPECPower
 data set](https://www.spec.org/power_ssj2008/).
 
-The model is built as an OLS model with dynamic variables designed to work 
+The models are built with dynamic variables designed to work 
 in different cloud environments where some information may not be available.
 
 Its use is the estimation of the current power draw of the whole machine in 
