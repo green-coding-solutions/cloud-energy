@@ -82,7 +82,7 @@ You need some small script that streams the CPU utilization as pure float number
 line by line.
 
 The solution we are using is a modified version of our [CPU Utilization reporter
-from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metrics-tool/tree/dev/tools/metric_providers/cpu/utilization/procfs/system).
+from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metrics-tool/tree/dev/metric_providers/cpu/utilization/procfs/system).
 
 This one is tailored to read from the procfs. You might need something different in your case ...
 
@@ -387,7 +387,7 @@ they are about the same.
 # TODO
 
 - vhost operating point
-- ~~validation of EC2 machines and the data from Teads. ~~
+- ~~validation of EC2 machines and the data from Teads.~~
 - ~~Performance optimizations for inline processing to get below 2% of utilization for 100ms intervals~~
 - Re-evaluating more machines from the SPECPower database in our lab and better understand what the BIOS settings really impact in regards to the server energy
 - Research what values in the cloud are typically set for the BIOS settings that SPECPower lists and if they can be configured in the cloud
