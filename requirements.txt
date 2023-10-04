@@ -11,7 +11,7 @@ numpy==1.24.3
 packaging==23.1
 pandas==2.0.1
 patsy==0.5.3
-Pillow==9.5.0
+Pillow==10.0.1
 pyparsing==3.0.9
 python-dateutil==2.8.2
 pytz==2023.3
