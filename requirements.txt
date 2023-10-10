@@ -7,7 +7,7 @@ joblib==1.2.0
 kiwisolver==1.4.4
 MarkupSafe==2.1.2
 matplotlib==3.7.1
-numpy==1.24.3
+numpy==1.26.0
 packaging==23.1
 pandas==2.0.1
 patsy==0.5.3
