@@ -98,6 +98,7 @@ if __name__ == '__main__':
         action='store_true',
         help='Will suppress all debug output. Typically used in production.'
     )
+
     parser.add_argument('--energy',
         action='store_true',
         help='Switches to energy mode. The output will be in Joules instead of Watts. \
@@ -122,12 +123,18 @@ if __name__ == '__main__':
 
     Z = Z.dropna(axis=1)
 
-    trained_model = train_model(args.cpu_chips, Z, args.silent)
-
-    if not args.silent:
+    if args.silent:
+        # sadly some libs have future warnings we need to suppress for
+        # silent mode to work in bash scripts
+        import warnings
+        warnings.simplefilter(action='ignore', category=FutureWarning)
+    else:
         print('Sending following dataframe to model:\n', Z)
         print('vHost ratio is set to ', args.vhost_ratio)
         print('Infering all predictions to dictionary')
+
+    trained_model = train_model(args.cpu_chips, Z, args.silent)
+
 
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
@@ -139,7 +146,6 @@ if __name__ == '__main__':
                 (time.time_ns() - current_time) / 1_000_000_000
             )
             current_time = time.time_ns()
-
     else:
         for line in sys.stdin:
             print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
