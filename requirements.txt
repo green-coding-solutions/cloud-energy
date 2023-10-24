@@ -1,4 +1,4 @@
-numpy==1.26.0
+numpy==1.26.1
 optuna==3.3.0
 pandas==2.1.1
 scipy==1.11.3
