@@ -7,6 +7,12 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 
+import auto_detect
+
+def print_custom(*args, silent=False):
+    if not silent:
+        print(*args)
+
 def train_model(cpu_chips, Z, silent=False):
 
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
@@ -14,16 +20,19 @@ def train_model(cpu_chips, Z, silent=False):
     X = df.copy()
     X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
 
-    if not silent:
-        print('Model will be restricted to the following amount of chips:', cpu_chips)
+    if cpu_chips:
+        print_custom('Training data will be restricted to the following amount of chips:', cpu_chips, silent=silent)
 
-    X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
+        X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
+
+    if X.empty:
+        raise RuntimeError(f"The training data does not contain any servers with a chips amount ({cpu_chips}). Please select a different amount.")
+
     y = X.power
 
     X = X[Z.columns] # only select the supplied columns from the command line
 
-    if not silent:
-        print('Model will be trained on:', X.columns)
+    print_custom('Model will be trained on the following variables:', X.columns.values, silent=silent)
 
 #    params = {
 #      'max_depth': 10,
@@ -80,7 +89,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips', default=1)
+    parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips')
     parser.add_argument('--cpu-freq', type=int, help='CPU frequency')
     parser.add_argument('--cpu-threads', type=int, help='Number of CPU threads')
     parser.add_argument('--cpu-cores', type=int, help='Number of CPU cores')
@@ -91,8 +100,8 @@ if __name__ == '__main__':
     parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel or amd)')
     parser.add_argument('--vhost-ratio',
         type=float,
-        help='Virtualization ratio of the system. Input numbers between (0,1].',
-        default=1.0
+        help='Virtualization ratio of the system. Input numbers between (0,1].'
+
     )
     parser.add_argument('--silent',
         action='store_true',
@@ -106,6 +115,28 @@ if __name__ == '__main__':
     )
 
     args = parser.parse_args()
+
+    silent = args.silent
+
+
+    # did the user supply any of the auto detectable arguments?
+    if not any([args.cpu_freq, args.cpu_threads, args.cpu_cores, args.ram, args.cpu_chips]):
+        print_custom('No CPU or RAM arguments where supplied, running auto detect on the sytem', silent=silent)
+
+        data = auto_detect.get_cpu_info(silent)
+
+        print_custom('The following data was auto detected:', data, silent=silent)
+
+        args.cpu_freq = data['freq']
+        args.cpu_threads = data['threads']
+        args.cpu_cores = data['cores']
+        args.ram = data['mem']
+        args.cpu_chips = data['chips']
+
+    # set default. We do this here and not in argparse, so we can check if anything was supplied at all
+    if not args.vhost_ratio:
+        args.vhost_ratio = 1.0
+
 
     Z = pd.DataFrame.from_dict({
         'HW_CPUFreq' : [args.cpu_freq],
@@ -128,13 +159,12 @@ if __name__ == '__main__':
         # silent mode to work in bash scripts
         import warnings
         warnings.simplefilter(action='ignore', category=FutureWarning)
-    else:
-        print('Sending following dataframe to model:\n', Z)
-        print('vHost ratio is set to ', args.vhost_ratio)
-        print('Infering all predictions to dictionary')
 
-    trained_model = train_model(args.cpu_chips, Z, args.silent)
+    print_custom('vHost ratio is set to ', args.vhost_ratio, silent=silent)
 
+    trained_model = train_model(args.cpu_chips, Z, silent)
+
+    print_custom('Infering all predictions to dictionary', silent=silent)
 
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
