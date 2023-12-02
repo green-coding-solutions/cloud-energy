@@ -44,13 +44,6 @@ def get_cpu_info(silent=False):
             else:
                 print_custom('Could not derive Cores. Setting to None', silent=silent)
 
-        match = re.search(r'(max )?MHz:\s*(\d+)', cpuinfo)
-        if match:
-            data['freq'] = int(match.group(2))
-            print_custom('Found Frequency:', data['freq'], silent=silent)
-        else:
-            print_custom('Could not find Frequency. Setting to None', silent=silent)
-
         # we currently do not match for architecture, as this info is provided nowhere
 
         # we also currently do not matc for make, as this info can result in ARM which is currently not supported and
@@ -59,6 +52,21 @@ def get_cpu_info(silent=False):
     except Exception as err:
         print_custom('Exception', err, silent=silent)
         print_custom('Could not check for CPU info. Setting all values to None.', silent=silent)
+
+
+
+    try:
+        cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
+        match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
+        if match:
+            data['freq'] = round(max(map(float, match)))
+            print_custom('Found Frequency:', data['freq'], silent=silent)
+        else:
+            print_custom('Could not find Frequency. Setting to None', silent=silent)
+    #pylint: disable=broad-except
+    except Exception as err:
+        print_custom('Exception', err, silent=silent)
+        print_custom('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.', silent=silent)
 
 
     try:
