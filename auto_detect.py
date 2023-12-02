@@ -41,6 +41,14 @@ def get_cpu_info(logger):
             else:
                 logger.info('Could not derive Cores. Setting to None')
 
+        match = re.search(r'Model name:.*@\s*([\d.]+)\s*GHz', cpuinfo)
+        if match:
+            data['freq'] = int(float(match.group(1))*1000)
+            logger.info('Found Frequency: %s', data['freq'])
+        else:
+            logger.info('Could not find Frequency. Setting to None')
+
+
         # we currently do not match for architecture, as this info is provided nowhere
 
         # we also currently do not matc for make, as this info can result in ARM which is currently not supported and
@@ -51,19 +59,24 @@ def get_cpu_info(logger):
         logger.info('Could not check for CPU info. Setting all values to None.')
 
 
+    """ This code is problematic, as the CPU freq is changing rapidly sometimes and making the resulting XGBoost
+    values fluctuate a lot.
+    """
 
-    try:
-        cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
-        match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
-        if match:
-            data['freq'] = round(max(map(float, match)))
-            logger.info('Found assumend Frequency: %d', data['freq'])
-        else:
-            logger.info('Could not find Frequency. Setting to None')
-    #pylint: disable=broad-except
-    except Exception as err:
-        logger.info('Exception: %s', err)
-        logger.info('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.')
+
+    if not data['freq']:
+        try:
+            cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
+            match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
+            if match:
+                data['freq'] = round(max(map(float, match)))
+                logger.info('Found assumend Frequency: %d', data['freq'])
+            else:
+                logger.info('Could not find Frequency. Setting to None')
+        #pylint: disable=broad-except
+        except Exception as err:
+            logger.info('Exception: %s', err)
+            logger.info('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.')
 
 
     try:
