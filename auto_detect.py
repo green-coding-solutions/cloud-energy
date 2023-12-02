@@ -2,12 +2,9 @@
 
 import subprocess
 import re
+import logging
 
-def print_custom(*args, silent=False):
-    if not silent:
-        print(*args)
-
-def get_cpu_info(silent=False):
+def get_cpu_info(logger):
 
     data = {
         'freq' : None,
@@ -24,25 +21,25 @@ def get_cpu_info(silent=False):
         match = re.search(r'On-line CPU\(s\) list:\s*(0-)?(\d+)', cpuinfo)
         if match:
             data['threads'] = int(match.group(2))+1 # +1 because 0 indexed
-            print_custom('Found Threads:', data['threads'], silent=silent)
+            logger.info('Found Threads: %d', data['threads'])
         else:
-            print_custom('Could not find Threads. Setting to None', silent=silent)
+            logger.info('Could not find Threads. Setting to None')
 
         match = re.search(r'Socket\(s\):\s*(\d+)', cpuinfo)
         if match:
             data['chips'] = int(match.group(1))
-            print_custom('Found Sockets:', data['chips'], silent=silent)
+            logger.info('Found Sockets: %d', data['chips'])
         else:
-            print_custom('Could not find Chips/Sockets. Setting to None', silent=silent)
+            logger.info('Could not find Chips/Sockets. Setting to None')
 
         if data['threads']:
             match = re.search(r'Thread\(s\) per core:\s*(\d+)', cpuinfo)
             if match:
                 threads_per_core = int(match.group(1))
                 data['cores'] = (data['threads'] // threads_per_core) // data['chips']
-                print_custom('Derived cores: ', data['cores'], silent=silent)
+                logger.info('Derived cores: %d ', data['cores'])
             else:
-                print_custom('Could not derive Cores. Setting to None', silent=silent)
+                logger.info('Could not derive Cores. Setting to None')
 
         # we currently do not match for architecture, as this info is provided nowhere
 
@@ -50,8 +47,8 @@ def get_cpu_info(silent=False):
         # would rather lead to confusion
     #pylint: disable=broad-except
     except Exception as err:
-        print_custom('Exception', err, silent=silent)
-        print_custom('Could not check for CPU info. Setting all values to None.', silent=silent)
+        logger.info('Exception: %s', err)
+        logger.info('Could not check for CPU info. Setting all values to None.')
 
 
 
@@ -60,13 +57,13 @@ def get_cpu_info(silent=False):
         match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
         if match:
             data['freq'] = round(max(map(float, match)))
-            print_custom('Found Frequency:', data['freq'], silent=silent)
+            logger.info('Found assumend Frequency: %d', data['freq'])
         else:
-            print_custom('Could not find Frequency. Setting to None', silent=silent)
+            logger.info('Could not find Frequency. Setting to None')
     #pylint: disable=broad-except
     except Exception as err:
-        print_custom('Exception', err, silent=silent)
-        print_custom('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.', silent=silent)
+        logger.info('Exception: %s', err)
+        logger.info('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.')
 
 
     try:
@@ -74,15 +71,19 @@ def get_cpu_info(silent=False):
         match = re.search(r'MemTotal:\s*(\d+) kB', meminfo)
         if match:
             data['mem'] = round(int(match.group(1)) / 1024 / 1024)
-            print_custom('Found Memory:', data['mem'], silent=silent)
+            logger.info('Found Memory: %d', data['mem'])
         else:
-            print_custom('Could not find Memory. Setting to None', silent=silent)
+            logger.info('Could not find Memory. Setting to None')
     #pylint: disable=broad-except
     except Exception as err:
-        print_custom('Exception', err, silent=silent)
-        print_custom('/proc/meminfo not accesible on system. Could not check for Memory info. Setting all values to None.', silent=silent)
+        logger.info('Exception: %s', err)
+        logger.info('/proc/meminfo not accesible on system. Could not check for Memory info. Setting all values to None.')
 
     return data
 
 if __name__ == "__main__":
-    get_cpu_info()
+    logger = logging.getLogger(__name__)
+    logger.addHandler(logging.StreamHandler())
+    logger.setLevel(logging.INFO)
+
+    get_cpu_info(logger)

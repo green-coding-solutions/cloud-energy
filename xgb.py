@@ -3,17 +3,19 @@
 import sys
 import os
 import time
+import logging
+
 import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 
 import auto_detect
 
-def print_custom(*args, silent=False):
-    if not silent:
-        print(*args)
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.INFO)
 
-def train_model(cpu_chips, Z, silent=False):
+def train_model(cpu_chips, Z):
 
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
@@ -21,7 +23,7 @@ def train_model(cpu_chips, Z, silent=False):
     X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
 
     if cpu_chips:
-        print_custom('Training data will be restricted to the following amount of chips:', cpu_chips, silent=silent)
+        logger.info('Training data will be restricted to the following amount of chips: %d', cpu_chips)
 
         X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
 
@@ -32,7 +34,7 @@ def train_model(cpu_chips, Z, silent=False):
 
     X = X[Z.columns] # only select the supplied columns from the command line
 
-    print_custom('Model will be trained on the following variables:', X.columns.values, silent=silent)
+    logger.info('Model will be trained on the following variables: %s', X.columns.values)
 
 #    params = {
 #      'max_depth': 10,
@@ -98,6 +100,8 @@ if __name__ == '__main__':
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
     parser.add_argument('--architecture', type=str, help='The architecture of the CPU. lowercase. ex.: haswell')
     parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel or amd)')
+    parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
+
     parser.add_argument('--vhost-ratio',
         type=float,
         help='Virtualization ratio of the system. Input numbers between (0,1].'
@@ -116,16 +120,24 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    silent = args.silent
+    if args.silent:
+        # sadly some libs have future warnings we need to suppress for
+        # silent mode to work in bash scripts
+        import warnings
+        warnings.simplefilter(action='ignore', category=FutureWarning)
+        logger.setLevel(logging.WARNING)
 
+    args_dict = args.__dict__.copy()
+    del args_dict['silent']
+    del args_dict['auto']
 
     # did the user supply any of the auto detectable arguments?
-    if not any([args.cpu_freq, args.cpu_threads, args.cpu_cores, args.ram, args.cpu_chips]):
-        print_custom('No CPU or RAM arguments where supplied, running auto detect on the sytem', silent=silent)
+    if len(args_dict) == 0 or args.auto:
+        logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem')
 
-        data = auto_detect.get_cpu_info(silent)
+        data = auto_detect.get_cpu_info(logger)
 
-        print_custom('The following data was auto detected:', data, silent=silent)
+        logger.info('The following data was auto detected: %s', data)
 
         args.cpu_freq = data['freq']
         args.cpu_threads = data['threads']
@@ -154,17 +166,12 @@ if __name__ == '__main__':
 
     Z = Z.dropna(axis=1)
 
-    if args.silent:
-        # sadly some libs have future warnings we need to suppress for
-        # silent mode to work in bash scripts
-        import warnings
-        warnings.simplefilter(action='ignore', category=FutureWarning)
 
-    print_custom('vHost ratio is set to ', args.vhost_ratio, silent=silent)
+    logger.info('vHost ratio is set to %s', args.vhost_ratio)
 
-    trained_model = train_model(args.cpu_chips, Z, silent)
+    trained_model = train_model(args.cpu_chips, Z)
 
-    print_custom('Infering all predictions to dictionary', silent=silent)
+    logger.info('Infering all predictions to dictionary')
 
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
