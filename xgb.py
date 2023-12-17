@@ -34,7 +34,7 @@ def train_model(cpu_chips, Z):
 
     X = X[Z.columns] # only select the supplied columns from the command line
 
-    logger.info('Model will be trained on the following variables: %s', X.columns.values)
+    logger.info('Model will be trained on the following columns and restrictions: \n%s', Z)
 
 #    params = {
 #      'max_depth': 10,
@@ -130,20 +130,24 @@ if __name__ == '__main__':
     args_dict = args.__dict__.copy()
     del args_dict['silent']
     del args_dict['auto']
+    del args_dict['energy']
 
     # did the user supply any of the auto detectable arguments?
-    if len(args_dict) == 0 or args.auto:
-        logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem')
+    if not any(args_dict.values()) or args.auto:
+        logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem.')
 
         data = auto_detect.get_cpu_info(logger)
 
         logger.info('The following data was auto detected: %s', data)
 
-        args.cpu_freq = data['freq']
-        args.cpu_threads = data['threads']
-        args.cpu_cores = data['cores']
-        args.ram = data['mem']
-        args.cpu_chips = data['chips']
+        # only overwrite not already supplied values
+        args.cpu_freq = args.cpu_freq or data['freq']
+        args.cpu_threads = args.cpu_threads or data['threads']
+        args.cpu_cores = args.cpu_cores or data['cores']
+        args.tdp = args.tdp or data['tdp']
+        args.ram = args.ram or data['mem']
+        args.cpu_make = args.cpu_make or data['make']
+        args.cpu_chips = args.cpu_chips or data['chips']
 
     # set default. We do this here and not in argparse, so we can check if anything was supplied at all
     if not args.vhost_ratio:
