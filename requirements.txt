@@ -1,6 +1,6 @@
 numpy==1.26.3
 optuna==3.5.0
 pandas==2.2.0
-scipy==1.11.4
+scipy==1.12.0
 scikit-learn==1.4.0
 xgboost==2.0.3
