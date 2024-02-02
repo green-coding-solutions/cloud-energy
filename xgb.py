@@ -147,7 +147,7 @@ if __name__ == '__main__':
         import psutil
         def cpu_utalisation():
             while True:
-                yield str(psutil.cpu_percent(args.interval))
+                yield str(psutil.cpu_percent(args.interval) * 100)
 
         input_source = cpu_utalisation()
 
