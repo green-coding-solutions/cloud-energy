@@ -105,6 +105,9 @@ if __name__ == '__main__':
         This is achieved by multiplying the interval between inputs with the estimated wattage'
     )
 
+    parser.add_argument('--auto', action='store_true', help='Will get the CPU utilization through psutil.')
+    parser.add_argument('--interval', type=float, help='Interval in seconds if auto is used.', default=1.0)
+
     args = parser.parse_args()
 
     Z = pd.DataFrame.from_dict({
@@ -139,13 +142,23 @@ if __name__ == '__main__':
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
 
+    input_source = sys.stdin
+    if args.auto:
+        import psutil
+        def cpu_utalisation():
+            while True:
+                yield str(psutil.cpu_percent(args.interval))
+
+        input_source = cpu_utalisation()
+
+
     if args.energy:
         current_time = time.time_ns()
-        for line in sys.stdin:
+        for line in input_source:
             print(interpolated_predictions[float(line.strip())] * args.vhost_ratio * \
                 (time.time_ns() - current_time) / 1_000_000_000
             )
             current_time = time.time_ns()
     else:
-        for line in sys.stdin:
+        for line in input_source:
             print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
