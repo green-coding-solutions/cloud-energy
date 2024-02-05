@@ -147,7 +147,7 @@ if __name__ == '__main__':
         import psutil
         def cpu_utalisation():
             while True:
-                yield str(psutil.cpu_percent(args.interval) * 100)
+                yield str(psutil.cpu_percent(args.interval) * 100 / psutil.cpu_count())
 
         input_source = cpu_utalisation()
 
@@ -156,9 +156,8 @@ if __name__ == '__main__':
         current_time = time.time_ns()
         for line in input_source:
             print(interpolated_predictions[float(line.strip())] * args.vhost_ratio * \
-                (time.time_ns() - current_time) / 1_000_000_000
-            )
+                (time.time_ns() - current_time) / 1_000_000_000, flush=True)
             current_time = time.time_ns()
     else:
         for line in input_source:
-            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
+            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio, flush=True)
