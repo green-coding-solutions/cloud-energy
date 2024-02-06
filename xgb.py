@@ -145,19 +145,23 @@ if __name__ == '__main__':
     input_source = sys.stdin
     if args.auto:
         import psutil
-        def cpu_utalisation():
+        def cpu_utilization():
             while True:
-                yield str(psutil.cpu_percent(args.interval) * 100 / psutil.cpu_count())
+                cpu_util = psutil.cpu_percent(args.interval)
+                yield str(cpu_util)
 
-        input_source = cpu_utalisation()
+        input_source = cpu_utilization()
 
 
-    if args.energy:
-        current_time = time.time_ns()
-        for line in input_source:
-            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio * \
+    for line in input_source:
+        utilization = float(line.strip())
+        if utilization < 0 or utilization > 100:
+            raise ValueError("Utilization can not be over 100%. If you have multiple CPU cores please divide by cpu count.")
+
+        if args.energy:
+            current_time = time.time_ns()
+            print(interpolated_predictions[utilization] * args.vhost_ratio * \
                 (time.time_ns() - current_time) / 1_000_000_000, flush=True)
             current_time = time.time_ns()
-    else:
-        for line in input_source:
-            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio, flush=True)
+        else:
+                print(interpolated_predictions[utilization] * args.vhost_ratio, flush=True)
