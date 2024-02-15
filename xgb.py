@@ -105,8 +105,8 @@ if __name__ == '__main__':
         This is achieved by multiplying the interval between inputs with the estimated wattage'
     )
 
-    parser.add_argument('--auto', action='store_true', help='Will get the CPU utilization through psutil.')
-    parser.add_argument('--interval', type=float, help='Interval in seconds if auto is used.', default=1.0)
+    parser.add_argument('--autoinput', action='store_true', help='Will get the CPU utilization through psutil.')
+    parser.add_argument('--interval', type=float, help='Interval in seconds if autoinput is used.', default=1.0)
 
     args = parser.parse_args()
 
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     interpolated_predictions = interpolate_predictions(inferred_predictions)
 
     input_source = sys.stdin
-    if args.auto:
+    if args.autoinput:
         import psutil
         def cpu_utilization():
             while True:
