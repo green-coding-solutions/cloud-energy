@@ -70,7 +70,7 @@ def get_cpu_info(logger):
             data['threads'] = int(match.group(2))+1 # +1 because 0 indexed
             logger.info('Found Threads: %d', data['threads'])
         else:
-            logger.info('Could not find Threads. Setting to None')
+            logger.info('Could not find Threads. Using default None')
 
         # this will overwrite info we have from RAPL socket discovery, as we
         # deem lscpu more relieable
@@ -88,14 +88,14 @@ def get_cpu_info(logger):
                 data['cores'] = (data['threads'] // threads_per_core) // data['chips']
                 logger.info('Derived cores: %d ', data['cores'])
             else:
-                logger.info('Could not derive Cores. Setting to None')
+                logger.info('Could not derive Cores. Using default None')
 
         match = re.search(r'Model name:.*@\s*([\d.]+)\s*GHz', cpuinfo)
         if match:
             data['freq'] = int(float(match.group(1))*1000)
             logger.info('Found Frequency: %s', data['freq'])
         else:
-            logger.info('Could not find Frequency. Setting to None')
+            logger.info('Could not find Frequency. Using default None')
 
         match = re.search(r'Model name:.*Intel\(R\)', cpuinfo)
         if match:
@@ -115,7 +115,7 @@ def get_cpu_info(logger):
     #pylint: disable=broad-except
     except Exception as err:
         logger.info('Exception: %s', err)
-        logger.info('Could not check for CPU info. Setting all values to None.')
+        logger.info('Could not check for CPU info.')
 
 
     """ This code is problematic, as the CPU freq is changing rapidly sometimes and making the resulting XGBoost
@@ -131,7 +131,7 @@ def get_cpu_info(logger):
                 data['freq'] = round(max(map(float, match)))
                 logger.info('Found assumend Frequency: %d', data['freq'])
             else:
-                logger.info('Could not find Frequency. Setting to None')
+                logger.info('Could not find Frequency. Using default None')
         #pylint: disable=broad-except
         except Exception as err:
             logger.info('Exception: %s', err)
@@ -146,7 +146,7 @@ def get_cpu_info(logger):
             data['mem'] = math.ceil(int(match.group(1)) / 1024 / 1024)
             logger.info('Found Memory: %d GB', data['mem'])
         else:
-            logger.info('Could not find Memory. Setting to None')
+            logger.info('Could not find Memory. Using default None')
     #pylint: disable=broad-except
     except Exception as err:
         logger.info('Exception: %s', err)
