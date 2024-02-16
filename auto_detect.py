@@ -123,19 +123,19 @@ def get_cpu_info(logger):
     """
 
 
-    if not data['freq']:
-        try:
-            cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
-            match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
-            if match:
-                data['freq'] = round(max(map(float, match)))
-                logger.info('Found assumend Frequency: %d', data['freq'])
-            else:
-                logger.info('Could not find Frequency. Using default None')
-        #pylint: disable=broad-except
-        except Exception as err:
-            logger.info('Exception: %s', err)
-            logger.info('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.')
+    # if not data['freq']:
+    #     try:
+    #         cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
+    #         match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
+    #         if match:
+    #             data['freq'] = round(max(map(float, match)))
+    #             logger.info('Found assumend Frequency: %d', data['freq'])
+    #         else:
+    #             logger.info('Could not find Frequency. Using default None')
+    #     #pylint: disable=broad-except
+    #     except Exception as err:
+    #         logger.info('Exception: %s', err)
+    #         logger.info('/proc/cpuinfo not accesible on system. Could not check for Base Frequency info. Setting value to None.')
 
 
 
