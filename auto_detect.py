@@ -150,7 +150,7 @@ def get_cpu_info(logger):
     #pylint: disable=broad-except
     except Exception as err:
         logger.info('Exception: %s', err)
-        logger.info('/proc/meminfo not accesible on system. Could not check for Memory info. Setting all values to None.')
+        logger.info('/proc/meminfo not accesible on system. Could not check for Memory info. Defaulting to None.')
 
     return data
 
