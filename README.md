@@ -82,7 +82,7 @@ You need some small script that streams the CPU utilization as pure float number
 line by line.
 
 The solution we are using is a modified version of our [CPU Utilization reporter
-from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metrics-tool/tree/dev/metric_providers/cpu/utilization/procfs/system).
+from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metrics-tool/tree/main/metric_providers/cpu/utilization/procfs/system).
 
 This one is tailored to read from the procfs. You might need something different in your case ...
 

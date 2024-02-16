@@ -4,7 +4,7 @@ import sys
 import os
 import time
 import logging
-
+import platform
 import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
@@ -118,6 +118,9 @@ if __name__ == '__main__':
         This is achieved by multiplying the interval between inputs with the estimated wattage'
     )
 
+    parser.add_argument('--autoinput', action='store_true', help='Will get the CPU utilization through psutil.')
+    parser.add_argument('--interval', type=float, help='Interval in seconds if autoinput is used.', default=1.0)
+
     args = parser.parse_args()
 
     if args.silent:
@@ -153,6 +156,15 @@ if __name__ == '__main__':
     if not args.vhost_ratio:
         args.vhost_ratio = 1.0
 
+    if platform.system() == 'Darwin' and args.autoinput and args.interval < 0.5:
+        print('''
+                Under MacOS the internal values are updated every 0.5 seconds by the kernel if you use the host_statistics call.
+                There is another way to get the cpu utilization by using the host_processor_info call.
+                Psutils uses host_statistics so intervals under 0.5 are not sensible. We have opened a discussion here:
+                https://github.com/giampaolo/psutil/issues/2368
+                If you want a higher resolution you can use the cpu_utilization_mac.c file in the demo-reporter folder.
+              ''')
+        sys.exit(1)
 
     Z = pd.DataFrame.from_dict({
         'HW_CPUFreq' : [args.cpu_freq],
@@ -180,13 +192,26 @@ if __name__ == '__main__':
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
 
-    if args.energy:
-        current_time = time.time_ns()
-        for line in sys.stdin:
-            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio * \
-                (time.time_ns() - current_time) / 1_000_000_000
-            )
+    input_source = sys.stdin
+    if args.autoinput:
+        import psutil
+        def cpu_utilization():
+            while True:
+                cpu_util = psutil.cpu_percent(args.interval)
+                yield str(cpu_util)
+
+        input_source = cpu_utilization()
+
+
+    for line in input_source:
+        utilization = float(line.strip())
+        if utilization < 0 or utilization > 100:
+            raise ValueError("Utilization can not be over 100%. If you have multiple CPU cores please divide by cpu count.")
+
+        if args.energy:
             current_time = time.time_ns()
-    else:
-        for line in sys.stdin:
-            print(interpolated_predictions[float(line.strip())] * args.vhost_ratio)
+            print(interpolated_predictions[utilization] * args.vhost_ratio * \
+                (time.time_ns() - current_time) / 1_000_000_000, flush=True)
+            current_time = time.time_ns()
+        else:
+                print(interpolated_predictions[utilization] * args.vhost_ratio, flush=True)
