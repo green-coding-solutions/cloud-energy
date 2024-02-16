@@ -81,11 +81,11 @@ def get_cpu_info(logger):
         else:
             logger.info('Could not find Chips/Sockets via lscpu')
 
-        if data['threads'] and data['chips']:
-            match = re.search(r'Thread\(s\) per core:\s*(\d+)', cpuinfo)
+        if data['chips']:
+            match = re.search(r'Core\(s\) per socket:\s*(\d+)', cpuinfo)
             if match:
-                threads_per_core = int(match.group(1))
-                data['cores'] = (data['threads'] // threads_per_core) // data['chips']
+                cores_per_socket = int(match.group(1))
+                data['cores'] = cores_per_socket * data['chips']
                 logger.info('Derived cores: %d ', data['cores'])
             else:
                 logger.info('Could not derive Cores. Using default None')
