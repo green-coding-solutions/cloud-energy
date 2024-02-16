@@ -3,28 +3,38 @@
 import sys
 import os
 import time
+import logging
 import platform
 import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 
-def train_model(cpu_chips, Z, silent=False):
+import auto_detect
+
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.INFO)
+
+def train_model(cpu_chips, Z):
 
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
 
     X = df.copy()
     X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
 
-    if not silent:
-        print('Model will be restricted to the following amount of chips:', cpu_chips)
+    if cpu_chips:
+        logger.info('Training data will be restricted to the following amount of chips: %d', cpu_chips)
 
-    X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
+        X = X[X.CPUChips == cpu_chips] # Fit a model for every amount of CPUChips
+
+    if X.empty:
+        raise RuntimeError(f"The training data does not contain any servers with a chips amount ({cpu_chips}). Please select a different amount.")
+
     y = X.power
 
     X = X[Z.columns] # only select the supplied columns from the command line
 
-    if not silent:
-        print('Model will be trained on:', X.columns)
+    logger.info('Model will be trained on the following columns and restrictions: \n%s', Z)
 
 #    params = {
 #      'max_depth': 10,
@@ -81,7 +91,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips', default=1)
+    parser.add_argument('--cpu-chips', type=int, help='Number of CPU chips')
     parser.add_argument('--cpu-freq', type=int, help='CPU frequency')
     parser.add_argument('--cpu-threads', type=int, help='Number of CPU threads')
     parser.add_argument('--cpu-cores', type=int, help='Number of CPU cores')
@@ -90,10 +100,12 @@ if __name__ == '__main__':
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
     parser.add_argument('--architecture', type=str, help='The architecture of the CPU. lowercase. ex.: haswell')
     parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel or amd)')
+    parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
+
     parser.add_argument('--vhost-ratio',
         type=float,
-        help='Virtualization ratio of the system. Input numbers between (0,1].',
-        default=1.0
+        help='Virtualization ratio of the system. Input numbers between (0,1].'
+
     )
     parser.add_argument('--silent',
         action='store_true',
@@ -111,6 +123,39 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    if args.silent:
+        # sadly some libs have future warnings we need to suppress for
+        # silent mode to work in bash scripts
+        import warnings
+        warnings.simplefilter(action='ignore', category=FutureWarning)
+        logger.setLevel(logging.WARNING)
+
+    args_dict = args.__dict__.copy()
+    del args_dict['silent']
+    del args_dict['auto']
+    del args_dict['energy']
+
+    # did the user supply any of the auto detectable arguments?
+    if not any(args_dict.values()) or args.auto:
+        logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem.')
+
+        data = auto_detect.get_cpu_info(logger)
+
+        logger.info('The following data was auto detected: %s', data)
+
+        # only overwrite not already supplied values
+        args.cpu_freq = args.cpu_freq or data['freq']
+        args.cpu_threads = args.cpu_threads or data['threads']
+        args.cpu_cores = args.cpu_cores or data['cores']
+        args.tdp = args.tdp or data['tdp']
+        args.ram = args.ram or data['mem']
+        args.cpu_make = args.cpu_make or data['make']
+        args.cpu_chips = args.cpu_chips or data['chips']
+
+    # set default. We do this here and not in argparse, so we can check if anything was supplied at all
+    if not args.vhost_ratio:
+        args.vhost_ratio = 1.0
+
     if platform.system() == 'Darwin' and args.autoinput and args.interval < 0.5:
         print('''
                 Under MacOS the internal values are updated every 0.5 seconds by the kernel if you use the host_statistics call.
@@ -120,7 +165,6 @@ if __name__ == '__main__':
                 If you want a higher resolution you can use the cpu_utilization_mac.c file in the demo-reporter folder.
               ''')
         sys.exit(1)
-
 
     Z = pd.DataFrame.from_dict({
         'HW_CPUFreq' : [args.cpu_freq],
@@ -138,18 +182,12 @@ if __name__ == '__main__':
 
     Z = Z.dropna(axis=1)
 
-    if args.silent:
-        # sadly some libs have future warnings we need to suppress for
-        # silent mode to work in bash scripts
-        import warnings
-        warnings.simplefilter(action='ignore', category=FutureWarning)
-    else:
-        print('Sending following dataframe to model:\n', Z)
-        print('vHost ratio is set to ', args.vhost_ratio)
-        print('Infering all predictions to dictionary')
 
-    trained_model = train_model(args.cpu_chips, Z, args.silent)
+    logger.info('vHost ratio is set to %s', args.vhost_ratio)
 
+    trained_model = train_model(args.cpu_chips, Z)
+
+    logger.info('Infering all predictions to dictionary')
 
     inferred_predictions = infer_predictions(trained_model, Z)
     interpolated_predictions = interpolate_predictions(inferred_predictions)
