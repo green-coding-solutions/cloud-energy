@@ -3,6 +3,7 @@
 import sys
 import os
 import time
+import platform
 import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
@@ -109,6 +110,17 @@ if __name__ == '__main__':
     parser.add_argument('--interval', type=float, help='Interval in seconds if autoinput is used.', default=1.0)
 
     args = parser.parse_args()
+
+    if platform.system() == 'Darwin' and args.autoinput and args.interval < 0.5:
+        print('''
+                Under MacOS the internal values are updated every 0.5 seconds by the kernel if you use the host_statistics call.
+                There is another way to get the cpu utilization by using the host_processor_info call.
+                Psutils uses host_statistics so intervals under 0.5 are not sensible. We have opened a discussion here:
+                https://github.com/giampaolo/psutil/issues/2368
+                If you want a higher resolution you can use the cpu_utilization_mac.c file in the demo-reporter folder.
+              ''')
+        sys.exit(1)
+
 
     Z = pd.DataFrame.from_dict({
         'HW_CPUFreq' : [args.cpu_freq],
