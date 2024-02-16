@@ -86,9 +86,9 @@ def get_cpu_info(logger):
             if match:
                 cores_per_socket = int(match.group(1))
                 data['cores'] = cores_per_socket * data['chips']
-                logger.info('Derived cores: %d ', data['cores'])
+                logger.info('Found cores: %d ', data['cores'])
             else:
-                logger.info('Could not derive Cores. Using default None')
+                logger.info('Could not find Cores. Using default None')
 
         match = re.search(r'Model name:.*@\s*([\d.]+)\s*GHz', cpuinfo)
         if match:
