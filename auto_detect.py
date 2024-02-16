@@ -65,6 +65,7 @@ def get_cpu_info(logger):
 
     try:
         cpuinfo = subprocess.check_output('lscpu', encoding='UTF-8')
+
         match = re.search(r'On-line CPU\(s\) list:\s*(0-)?(\d+)', cpuinfo)
         if match:
             data['threads'] = int(match.group(2))+1 # +1 because 0 indexed
@@ -95,7 +96,12 @@ def get_cpu_info(logger):
             data['freq'] = int(float(match.group(1))*1000)
             logger.info('Found Frequency: %s', data['freq'])
         else:
-            logger.info('Could not find Frequency. Using default None')
+            match = re.search(r'CPU max MHz:\s+([\d.]+)', cpuinfo)
+            if match:
+                data['freq'] = int(float(match.group(1)))
+                logger.info('Found Frequency: %s', data['freq'])
+            else:
+                logger.info('Could not find Frequency. Using default None')
 
         match = re.search(r'Model name:.*Intel\(R\)', cpuinfo)
         if match:
@@ -157,6 +163,5 @@ def get_cpu_info(logger):
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
     logger.addHandler(logging.StreamHandler())
-    logger.setLevel(logging.INFO)
-
+    logger.setLevel(logging.DEBUG)
     print(get_cpu_info(logger))
