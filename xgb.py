@@ -9,8 +9,6 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 
-import auto_detect
-
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
@@ -139,6 +137,8 @@ if __name__ == '__main__':
     if not any(args_dict.values()) or args.auto:
         logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem.')
 
+        import auto_detect
+
         data = auto_detect.get_cpu_info(logger)
 
         logger.info('The following data was auto detected: %s', data)
@@ -214,4 +214,4 @@ if __name__ == '__main__':
                 (time.time_ns() - current_time) / 1_000_000_000, flush=True)
             current_time = time.time_ns()
         else:
-                print(interpolated_predictions[utilization] * args.vhost_ratio, flush=True)
+            print(interpolated_predictions[utilization] * args.vhost_ratio, flush=True)
