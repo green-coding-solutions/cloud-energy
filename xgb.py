@@ -7,6 +7,7 @@ import logging
 import platform
 import pandas as pd
 import numpy as np
+import warnings
 from xgboost import XGBRegressor
 
 logger = logging.getLogger(__name__)
@@ -83,6 +84,12 @@ def interpolate_predictions(predictions):
 
     return predictions
 
+def set_silent():
+    # sadly some libs have future warnings we need to suppress for
+    # silent mode to work in bash scripts
+    warnings.simplefilter(action='ignore', category=FutureWarning)
+    logger.setLevel(logging.WARNING)
+
 if __name__ == '__main__':
 
     import argparse
@@ -122,11 +129,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.silent:
-        # sadly some libs have future warnings we need to suppress for
-        # silent mode to work in bash scripts
-        import warnings
-        warnings.simplefilter(action='ignore', category=FutureWarning)
-        logger.setLevel(logging.WARNING)
+        set_silent()
 
     args_dict = args.__dict__.copy()
     del args_dict['silent']
