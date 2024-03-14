@@ -6,8 +6,9 @@ import logging
 import math
 import platform
 
+
 class CPUInfo:
-    def __init__(self, chips: int = None, cores: int = None, threads: int = None, freq: int = None, tdp: int = None, mem: int = None, make: str = None,):
+    def __init__(self, chips: int = None, cores: int = None, threads: int = None, freq: int = None, tdp: int = None, mem: int = None, make: str = None, architecture: str = None, release_year: str = None):
         # Chip count
         self.chips = chips
         # Core count
@@ -20,11 +21,16 @@ class CPUInfo:
         self.tdp = tdp
         # Memory in GB
         self.mem = mem
-        # make 
+        # make
         self.make = make
+        # architecture
+        self.architecture = architecture
+        # release year
+        self.release_year = release_year
 
     def __str__(self) -> str:
         return f'CPUInfo(chips={self.chips}, cores={self.cores}, threads={self.threads}, freq={self.freq}, tdp={self.tdp}, mem={self.mem}, make={self.make})'
+
 
 def get_cpu_info_linux(logger):
     data = CPUInfo()
@@ -178,6 +184,7 @@ def get_cpu_make():
     else:
         return 'unknown'
 
+
 def get_cpu_info(logger):
     if platform.system() == 'Linux':
         return get_cpu_info_linux(logger)
@@ -185,11 +192,11 @@ def get_cpu_info(logger):
         import psutil
 
         logger.info('Gathering CPU info')
-        chips = 1 # TODO: find a way to get this info
+        chips = 1  # TODO: find a way to get this info
         freq = int(psutil.cpu_freq().max)
         threads = psutil.cpu_count(logical=True)
         cores = psutil.cpu_count(logical=False)
-        tdp = 0 # TODO: find a way to get this info
+        tdp = 0  # TODO: find a way to get this info
         mem = math.ceil(psutil.virtual_memory().total / 1024 / 1024 / 1024)
         make = get_cpu_make()
 
@@ -213,6 +220,7 @@ def get_cpu_info(logger):
             tdp=tdp,
             mem=mem
         )
+
 
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
