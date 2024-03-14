@@ -23,6 +23,8 @@ class CPUInfo:
         # make 
         self.make = make
 
+    def __str__(self) -> str:
+        return f'CPUInfo(chips={self.chips}, cores={self.cores}, threads={self.threads}, freq={self.freq}, tdp={self.tdp}, mem={self.mem}, make={self.make})'
 
 def get_cpu_info_linux(logger):
     data = CPUInfo()
@@ -182,14 +184,12 @@ def get_cpu_info(logger):
     else:
         import psutil
 
-        # fetch CPU info using cpuinfo package
         logger.info('Gathering CPU info')
-        
         chips = 1 # TODO: find a way to get this info
         freq = int(psutil.cpu_freq().max)
         threads = psutil.cpu_count(logical=True)
         cores = psutil.cpu_count(logical=False)
-        tdp = 0  # TODO: find a way to get this info
+        tdp = 0 # TODO: find a way to get this info
         mem = math.ceil(psutil.virtual_memory().total / 1024 / 1024 / 1024)
         make = get_cpu_make()
 
@@ -213,7 +213,6 @@ def get_cpu_info(logger):
             tdp=tdp,
             mem=mem
         )
-
 
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
