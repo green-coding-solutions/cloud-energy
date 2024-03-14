@@ -2,7 +2,7 @@
 import argparse
 from enum import Enum
 
-from src.auto_detect import CPUInfo
+from auto_detect import CPUInfo
 
 class Model():
   def __init__(self, cpu_info: CPUInfo, args: argparse.Namespace):

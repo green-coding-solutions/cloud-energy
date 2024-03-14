@@ -8,8 +8,8 @@ import pandas as pd
 import numpy as np
 from xgboost import XGBRegressor
 
-from src.auto_detect import CPUInfo
-from src.models.models import Model
+from auto_detect import CPUInfo
+from models.models import Model
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
@@ -69,8 +69,8 @@ class XGBModel(Model):
         Z = pd.get_dummies(Z, columns=['CPUMake', 'Architecture'])
 
         Z = Z.dropna(axis=1)
-            
-        df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
+        data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../data/spec_data_cleaned.csv')
+        df = pd.read_csv(data_path)
 
         X = df.copy()
         X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
@@ -110,10 +110,4 @@ class XGBModel(Model):
 
     def predict(self, cpu_utilization: float, vhost_ratio: float) -> float:
         predicted_value = self.interpolated_predictions[cpu_utilization] * vhost_ratio
-        if self.energy:
-            # TODO: odd calculation.
-            current_time = time.time_ns()
-            print(predicted_value * \
-                (time.time_ns() - current_time) / 1_000_000_000, flush=True)
-        else:
-            print(predicted_value, flush=True)
+        return predicted_value

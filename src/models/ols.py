@@ -1,12 +1,11 @@
 #pylint: disable=invalid-name
 
 from argparse import Namespace
-import sys
-from src.auto_detect import CPUInfo
-from src.models.models import Model
 import statsmodels.formula.api as smf
 import pandas as pd
-import logging
+
+from auto_detect import CPUInfo
+from models.models import Model
 
 class OLSModel(Model):
     def __init__(self, cpu_info: CPUInfo, args: Namespace):
@@ -43,6 +42,7 @@ class OLSModel(Model):
         my_data = my_data.dropna(axis=1)
         self.my_data = my_data
 
+        # TODO: use logger
         if not args.silent:
             print('Sending following dataframe to model', my_data)
             print('vHost ratio is set to ', args.vhost_ratio)
