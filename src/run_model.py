@@ -22,6 +22,8 @@ def set_silent():
     logger.setLevel(logging.WARNING)
 
 # -- CPU Info detector
+
+
 def get_cpu(args: argparse.Namespace):
     # default values (None)
     defaults = CPUInfo()
@@ -43,7 +45,7 @@ def get_cpu(args: argparse.Namespace):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    
+
     # which model to run
     parser.add_argument('--model', type=Models, choices=list(Models))
 

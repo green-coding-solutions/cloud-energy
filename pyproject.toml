@@ -18,6 +18,9 @@ scikit-learn = "1.4.1.post1"
 statsmodels = "^0.14.1"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
