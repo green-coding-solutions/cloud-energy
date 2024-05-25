@@ -82,7 +82,7 @@ You need some small script that streams the CPU utilization as pure float number
 line by line.
 
 The solution we are using is a modified version of our [CPU Utilization reporter
-from the Green Metrics Tool](https://github.com/green-coding-berlin/green-metrics-tool/tree/main/metric_providers/cpu/utilization/procfs/system).
+from the Green Metrics Tool](https://github.com/green-coding-solutions/green-metrics-tool/tree/main/metric_providers/cpu/utilization/procfs/system).
 
 This one is tailored to read from the procfs. You might need something different in your case ...
 
@@ -388,7 +388,7 @@ they are about the same.
 - The model was trained on the SPECpower dataset which almost exclusively includes compute focussed machines. This means it will not be accurate for memory-heavy machines like database servers or ML machines that tend to use GPUs/TPUs or even ASICS
 - The main input variable for the model is CPU utilization. This metric is only reliable if the system frequencies do not change much. See our in depth article about [usefulness of CPU Utilization as a metric](https://www.green-coding.berlin/case-studies/cpu-utilization-usefulness/)
 - SPECPower machines tend to be rather tuned and do not necessarily represent the reality of current datacenter configurations. So you are likely to get a too small value than a too high value. This was also detailed in the analysis earlier in the README, where we talk about the turned off features.
-- If you are in a shared resource system like a Virtual Machine the model will assume a linear fraction of the load. This is debateable and might need improvement. See the discussion here: https://github.com/green-coding-berlin/spec-power-model/issues/4
+- If you are in a shared resource system like a Virtual Machine the model will assume a linear fraction of the load. This is debateable and might need improvement. See the discussion here: https://github.com/green-coding-solutions/spec-power-model/issues/4
 
 
 # TODO
