@@ -6,9 +6,14 @@ RUN apt-get update && apt-get install -y wget
 # Set the working directory
 WORKDIR /app
 
-RUN wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz
-
-RUN tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+ARG TARGETARCH
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        wget https://go.dev/dl/go1.21.4.linux-arm64.tar.gz; \
+        tar -C /usr/local -xzf go1.21.4.linux-arm64.tar.gz; \
+    else \
+        wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz; \
+        tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz; \
+    fi
 
 RUN /usr/local/go/bin/go install github.com/guptarohit/asciigraph/cmd/asciigraph@latest
 
