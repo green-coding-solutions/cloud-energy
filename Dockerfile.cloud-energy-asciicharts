@@ -13,7 +13,7 @@ RUN tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
 RUN /usr/local/go/bin/go install github.com/guptarohit/asciigraph/cmd/asciigraph@latest
 
 # we need to use debian image as many dependencies do not have compiled binaries in alpine and no GCC is installed
-FROM cloud-energy
+FROM greencoding/cloud-energy:latest
 
 WORKDIR /home/worker
 
