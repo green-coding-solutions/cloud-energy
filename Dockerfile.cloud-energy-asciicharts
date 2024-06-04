@@ -1,0 +1,26 @@
+# Stage 1: Install go dependency
+FROM python:3.12.3-slim-bullseye as builder
+
+RUN apt-get update && apt-get install -y wget
+
+# Set the working directory
+WORKDIR /app
+
+RUN wget https://go.dev/dl/go1.21.4.linux-amd64.tar.gz
+
+RUN tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+
+RUN /usr/local/go/bin/go install github.com/guptarohit/asciigraph/cmd/asciigraph@latest
+
+# we need to use debian image as many dependencies do not have compiled binaries in alpine and no GCC is installed
+FROM cloud-energy
+
+WORKDIR /home/worker
+
+COPY --from=builder /usr/local/go /usr/local/go
+
+USER worker
+
+COPY --from=builder --chown=worker:worker /root/go /home/worker/go
+
+CMD ["python"]
