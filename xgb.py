@@ -125,6 +125,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--autoinput', action='store_true', help='Will get the CPU utilization through psutil.')
     parser.add_argument('--interval', type=float, help='Interval in seconds if autoinput is used.', default=1.0)
+    parser.add_argument('--dump', action='store_true', help='Dump all predicitions to STDOUT.')
+    parser.add_argument('--dump-hashmap', action='store_true', help='Dump all predicitions to STDOUT as bash hashmap.')
 
     args = parser.parse_args()
 
@@ -204,6 +206,20 @@ if __name__ == '__main__':
                 yield str(cpu_util)
 
         input_source = cpu_utilization()
+
+
+    if args.dump:
+        for key, val in interpolated_predictions.items():
+            print(key, ':', val*args.vhost_ratio, flush=True)
+        sys.exit(0)
+
+    if args.dump_hashmap:
+        print('#!/usr/bin/env bash')
+        print('set -eu')
+        print('declare -A cloud_energy_hashmap')
+        for key, val in interpolated_predictions.items():
+            print(f'cloud_energy_hashmap[{key:.2f}]={val*args.vhost_ratio}', flush=True)
+        sys.exit(0)
 
 
     for line in input_source:
