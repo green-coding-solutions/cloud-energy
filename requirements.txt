@@ -2,6 +2,6 @@ numpy==1.26.4
 optuna==3.6.1
 pandas==2.2.2
 xgboost==2.0.3
-psutil==5.9.8
+psutil==6.0.0
 pyarrow==16.1.0
 scikit-learn==1.5.0
