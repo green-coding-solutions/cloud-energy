@@ -221,14 +221,13 @@ if __name__ == '__main__':
             print(f'cloud_energy_hashmap[{key:.2f}]={val*args.vhost_ratio}', flush=True)
         sys.exit(0)
 
-
+    current_time = time.time_ns()
     for line in input_source:
         utilization = float(line.strip())
         if utilization < 0 or utilization > 100:
             raise ValueError("Utilization can not be over 100%. If you have multiple CPU cores please divide by cpu count.")
 
         if args.energy:
-            current_time = time.time_ns()
             print(interpolated_predictions[utilization] * args.vhost_ratio * \
                 (time.time_ns() - current_time) / 1_000_000_000, flush=True)
             current_time = time.time_ns()
