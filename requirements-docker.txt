@@ -1,5 +1,5 @@
 numpy==2.2.4
 pandas==2.3.1
 xgboost==2.1.4
-pyarrow==20.0.0
+pyarrow==21.0.0
 scikit-learn==1.6.1
