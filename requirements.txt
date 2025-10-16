@@ -1,4 +1,4 @@
-numpy==2.3.3
+numpy==2.3.4
 pandas==2.3.3
 # Use xgboost-cpu on Linux or Windows x86_64
 xgboost-cpu==2.1.4; sys_platform == "linux" and platform_machine == "x86_64"
