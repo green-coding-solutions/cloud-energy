@@ -324,7 +324,7 @@ This is the comparison chart where we compare the standard BIOS setup against th
 
 # Installation
 
-Tested on python-3.10 but should work on older versions.
+Needs at least python 3.11
 
 ```
 python3 -m venv venv
