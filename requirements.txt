@@ -1,12 +1,13 @@
 numpy==2.3.4
 pandas==2.3.3
-# Use xgboost-cpu on Linux or Windows x86_64
-xgboost-cpu==3.0.5; sys_platform == "linux" and platform_machine == "x86_64"
-xgboost-cpu==2.1.4; sys_platform == "win32" and platform_machine == "x86_64"
-
-# Use xgboost on all other platforms (e.g., macOS Intel or ARM, or non-x86_64)
-xgboost==3.0.5; sys_platform == "darwin"
-xgboost==2.1.4; platform_machine != "x86_64"
 psutil==7.1.0
 pyarrow==21.0.0
 scikit-learn==1.7.2
+
+# Use xgboost-cpu on Linux or Windows x86_64
+xgboost-cpu==3.0.5; sys_platform == "linux" and platform_machine == "x86_64"
+xgboost-cpu==3.0.5; sys_platform == "win32" and platform_machine == "x86_64"
+
+# Use xgboost on all other platforms (e.g., macOS Intel or ARM, or non-x86_64)
+xgboost==3.0.5; sys_platform == "darwin"
+xgboost==3.0.5; platform_machine != "x86_64"
