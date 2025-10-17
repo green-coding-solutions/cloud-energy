@@ -1,5 +1,5 @@
 numpy==2.3.4
 pandas==2.3.3
-xgboost==2.1.4
+xgboost==3.0.5
 pyarrow==21.0.0
 scikit-learn==1.7.2
