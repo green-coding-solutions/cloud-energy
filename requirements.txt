@@ -5,7 +5,7 @@ pyarrow==21.0.0
 scikit-learn==1.7.2
 
 # Use xgboost-cpu on Linux or Windows x86_64
-xgboost-cpu==3.0.5; sys_platform == "linux" and platform_machine == "x86_64"
+xgboost-cpu==3.1.0; sys_platform == "linux" and platform_machine == "x86_64"
 xgboost-cpu==3.0.5; sys_platform == "win32" and platform_machine == "x86_64"
 
 # Use xgboost on all other platforms (e.g., macOS Intel or ARM, or non-x86_64)
