@@ -1,6 +1,6 @@
 numpy==2.3.4
 pandas==2.3.3
-psutil==7.1.0
+psutil==7.1.1
 pyarrow==21.0.0
 scikit-learn==1.7.2
 
