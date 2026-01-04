@@ -1,5 +1,80 @@
-# Overview
+Cloud Energy is a locally trainable and runnable ML Model (based on XGBoost) to estimate
+power consumption [W] from CPU Utilization.
 
+The model works everywhere where Python runs but can ingest live data best on *NIX Systems. 
+
+# Table of Contents
+
+- [Installation](#installation)
+  + [Rebuild Training Data](#re-build-training-data)
+- [Use](#use)
+  + [Demo Reporter](#demo-reporter)
+- [Overview](#overview)
+- [Background](#background)
+- [Discovery of the parameters](#discovery-of-the-parameters)
+- [Model Details / EDA](#model-details-eda)
+- [Interpolation for output](#interpolation-for-output)
+- [Results](#results)
+- [Assumptions & Limitations](#assumptions-limitations)
+- [TODO](#todo)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+
+Needs at least python 3.11
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+### Re-build training data
+If you want to rebuild the training data (`spec_data*.csv`) then you have to include 
+the git submodule with the raw data.
+
+```bash
+git submodule update --init
+```
+
+## Use
+You must call the python file `ols.py` or `xgb.py`. 
+This file is designed to accept streaming inputs.
+
+A typical call with a streaming binary that reports CPU Utilization could look like
+so: 
+```
+$ ./static-binary | python3 ols.py --tdp 240 
+191.939294374113
+169.99632303510703
+191.939294374113
+191.939294374113
+191.939294374113
+191.939294374113
+194.37740205685841
+191.939294374113
+169.99632303510703
+191.939294374113
+....
+```
+
+Since all possible outputs are infered directly into a dict the model is highly
+performant to use in inline reporting scenarios.
+
+### Demo Reporter
+
+If you want to use the demo reporter to read the CPU utilization there is a C reporter
+in the `demo-reporter` directory.
+
+Compile it with `gcc cpu-utilization.c`
+
+Then run it with `./a.out`
+
+Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
+
+
+## Overview
 This repository containes the needed data to train a Linear Model (OLS) / XGBoost for the [SPECPower
 data set](https://www.spec.org/power_ssj2008/).
 
@@ -52,7 +127,7 @@ the model supports. The model will then be retrained on the new configuration on
 
 Typically the model gets more accurate the more parameters you can supply. Please see the *Assumptions & Limitations* part at the end to get an idea how accurate the model will be in different circumstances.
 
-# Background
+## Background
 
 Typically in the cloud, especially when virtualized, it is not posssible to 
 access any energy metrics either from the [ILO](https://en.wikipedia.org/wiki/HP_Integrated_Lights-Out) / [IDRAC](https://en.wikipedia.org/wiki/Dell_DRAC) 
@@ -74,7 +149,7 @@ it provides no interface out of the box to inline monitor the emissions.
 Therefore we created a model out of the SPECPower dataset that also can be used
 in real-time.
 
-# Discovery of the parameters
+## Discovery of the parameters
 
 At least utilization is needed as an input parameter.
 
@@ -86,7 +161,7 @@ from the Green Metrics Tool](https://github.com/green-coding-solutions/green-met
 
 This one is tailored to read from the procfs. You might need something different in your case ...
 
-## Hyperthreading
+### Hyperthreading
 
 HT can be easily checked if the core-id is similar to the processor id.
 
@@ -95,7 +170,7 @@ If Last core ID is > processor_id+2  then HT is enabled
 
 Alternatively looking at `lscpu` might reveal some infos.
 
-## SVM / VT-X / VT-D / AMD-V ...
+### SVM / VT-X / VT-D / AMD-V ...
 The presence of virtualization can be checked by looking at:
 
 `/dev/kvm`
@@ -120,7 +195,7 @@ Virtualization features:
   Virtualization type:   full
 ```  
 
-## Hardware prefetchers
+### Hardware prefetchers
 
 There are actually many to disable:
 The above mentioned processors support 4 types of h/w prefetchers for prefetching data. There are 2 prefetchers associated with L1-data cache (also known as DCU DCU prefetcher, DCU IP prefetcher) and 2 prefetchers associated with L2 cache (L2 hardware prefetcher, L2 adjacent cache line prefetcher).
@@ -138,7 +213,7 @@ https://stackoverflow.com/questions/19435788/unable-to-disable-hardware-prefetch
 https://stackoverflow.com/questions/784041/how-do-i-programmatically-disable-hardware-prefetching
 
 
-## Other variables
+### Other variables
 Other variables to be discovered like CPU Make etc. can be found in these locations typically:
 
 - `/proc/stat`
@@ -155,7 +230,7 @@ info is usually given in the machine selector of your cloud provider.
 
 If you cannot find out specific parameters the best thing is: Write an email to your cloud provider and ask :)
 
-# Model Details / EDA
+## Model Details / EDA
 
 - Model uses SPECPower raw data
     + Current copy is stored in `./data/raw`
@@ -202,7 +277,7 @@ and created some feature columns dervied from them. Here is a quick summary:
     + Most systems however have these disabled.
     + We do not know the typical state in the cloud here.
 
-## Unclear data in SUT_BIOS / SUT_Notes
+### Unclear data in SUT_BIOS / SUT_Notes
 
 Some info we thought might be related to energy, but we could not make sense of them.
 If you can, please share and create and create a Pull Request:
@@ -248,7 +323,7 @@ If you can, please share and create and create a Pull Request:
     + is also very curious ... unclear what the cloud setting is
 
 
-# Interpolation for output
+## Interpolation for output
 
 Like all tree based models our XGBoost model can only predict what it has seen so 
 far.
@@ -276,7 +351,7 @@ when the `xgb.py` script is starting and thus all possible infered values for
 utilization (0.00 - 100.00) are stored in a dict.
 This makes the model extremely performant at the cost of a minimal memory cost.
 
-# Results
+## Results
 
 We have first compared the model against a machine from SPECPower that we 
 did not include in the model training: [Hewlett Packard Enterprise Synergy 480 Gen10 Plus Compute Module](https://www.spec.org/power_ssj2008/results/res2022q1/power_ssj2008-20211207-01142.html)
@@ -313,7 +388,7 @@ This is the comparison chart for the SPEC data vs our modelling:
 This is the comparison chart where we compare the standard BIOS setup against the *tuning* settings from SPECPower:
 ![fujitsu_TX1330_measured.png](/img/fujitsu_TX1330_measured.png)
 
-## Summary
+### Summary
 - We can see that the SDIA model in its current form cannot account for the idle state of the machine and thus always underestimates here
 - The SDIA model underestimates 1-chip machines and greatly over-estimates 2-chip machines
     + Taken into account that for 2-chip machines we only have SPECPower data at the moment and no real world data
@@ -322,58 +397,7 @@ This is the comparison chart where we compare the standard BIOS setup against th
     + However it tends to under-estimate
 - We see suprisingly no efficiency gain from applying the SPECPower BIOS settings but rather a smoothing of the curve. The reason to that is currently unknown.
 
-# Installation
 
-Needs at least python 3.11
-
-```
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
-```
-
-## Re-build training data
-If you want to rebuild the training data (`spec_data*.csv`) then you have to include 
-the git submodule with the raw data.
-
-```bash
-git submodule update --init
-```
-
-# Use
-You must call the python file `ols.py` or `xgb.py`. 
-This file is designed to accept streaming inputs.
-
-A typical call with a streaming binary that reports CPU Utilization could look like
-so: 
-```
-$ ./static-binary | python3 ols.py --tdp 240 
-191.939294374113
-169.99632303510703
-191.939294374113
-191.939294374113
-191.939294374113
-191.939294374113
-194.37740205685841
-191.939294374113
-169.99632303510703
-191.939294374113
-....
-```
-
-Since all possible outputs are infered directly into a dict the model is highly
-performant to use in inline reporting scenarios.
-
-# Demo reporter
-
-If you want to use the demo reporter to read the CPU utilization there is a C reporter
-in the `demo-reporter` directory.
-
-Compile it with `gcc cpu-utilization.c`
-
-Then run it with `./a.out`
-
-Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
 
 
 ## Comparison with Interact DC variable selection
@@ -384,14 +408,14 @@ selection against the one from Interact DC.
 Without Hyperparameter Tuning when comparing the available variables in the cloud
 they are about the same.
 
-# Assumptions & Limitations
+## Assumptions & Limitations
 - The model was trained on the SPECpower dataset which almost exclusively includes compute focussed machines. This means it will not be accurate for memory-heavy machines like database servers or ML machines that tend to use GPUs/TPUs or even ASICS
 - The main input variable for the model is CPU utilization. This metric is only reliable if the system frequencies do not change much. See our in depth article about [usefulness of CPU Utilization as a metric](https://www.green-coding.berlin/case-studies/cpu-utilization-usefulness/)
 - SPECPower machines tend to be rather tuned and do not necessarily represent the reality of current datacenter configurations. So you are likely to get a too small value than a too high value. This was also detailed in the analysis earlier in the README, where we talk about the turned off features.
 - If you are in a shared resource system like a Virtual Machine the model will assume a linear fraction of the load. This is debateable and might need improvement. See the discussion here: https://github.com/green-coding-solutions/spec-power-model/issues/4
 
 
-# TODO
+## TODO
 
 - vhost operating point
 - ~~validation of EC2 machines and the data from Teads.~~
@@ -410,3 +434,7 @@ from the paper to tune the model afterwards.
 
 A big thank you to [Rich Kenny](https://twitter.com/bigkatrich) from Interact DC to providing some insights to
 parameters and possible pitfalls during our model development.
+
+## License 
+
+The model is MIT Licensed. See License file for details.
