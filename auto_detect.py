@@ -64,7 +64,7 @@ def get_cpu_info(logger):
 
 
     try:
-        cpuinfo = subprocess.check_output('lscpu', encoding='UTF-8')
+        cpuinfo = subprocess.check_output('lscpu', encoding='UTF-8', errors='replace')
         match = re.search(r'On-line CPU\(s\) list:\s*(0-)?(\d+)', cpuinfo)
         if match:
             data['threads'] = int(match.group(2))+1 # +1 because 0 indexed
@@ -125,7 +125,7 @@ def get_cpu_info(logger):
 
     # if not data['freq']:
     #     try:
-    #         cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
+    #         cpuinfo_proc = subprocess.check_output(['cat', '/proc/cpuinfo'], encoding='UTF-8', errors='replace', stderr=subprocess.DEVNULL)
     #         match = re.findall(r'cpu MHz\s*:\s*([\d.]+)', cpuinfo_proc)
     #         if match:
     #             data['freq'] = round(max(map(float, match)))
@@ -140,7 +140,7 @@ def get_cpu_info(logger):
 
 
     try:
-        meminfo = subprocess.check_output(['cat', '/proc/meminfo'], encoding='UTF-8', stderr=subprocess.DEVNULL)
+        meminfo = subprocess.check_output(['cat', '/proc/meminfo'], encoding='UTF-8', errors='replace', stderr=subprocess.DEVNULL)
         match = re.search(r'MemTotal:\s*(\d+) kB', meminfo)
         if match:
             data['mem'] = math.ceil(int(match.group(1)) / 1024 / 1024)
