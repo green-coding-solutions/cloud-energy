@@ -1,5 +1,5 @@
 numpy==2.4.1
-pandas==2.3.3
+pandas==3.0.0
 psutil==7.2.1
 pyarrow==23.0.0
 scikit-learn==1.8.0
