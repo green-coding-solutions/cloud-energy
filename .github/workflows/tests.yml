@@ -26,9 +26,9 @@ jobs:
       - name: Run validation default script
         run: |
           cd tests
-          bash validation-default.sh
+          bash validate-default.sh
 
       - name: Run validation params script
         run: |
           cd tests
-          bash validation-params.sh
+          bash validate-params.sh
