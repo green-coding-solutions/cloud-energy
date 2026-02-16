@@ -6,6 +6,8 @@ exit_code=$?
 output_file="tmp/output.txt"
 expected_file="tmp/expected_start.txt"
 
+mkdir -p tmp
+
 # Save output to a file
 echo "$output" > "$output_file"
 echo "Output saved to $output_file"

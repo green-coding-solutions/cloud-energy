@@ -2,4 +2,4 @@ venv
 .DS_Store
 __pycache__
 sftp-config.json
-tests/tmp/*
+tests/tmp
