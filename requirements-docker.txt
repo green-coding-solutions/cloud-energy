@@ -1,4 +1,4 @@
-numpy==2.5.0
+numpy==2.5.1
 pandas==3.0.4
 xgboost==3.3.0
 pyarrow==24.0.0
