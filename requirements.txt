@@ -5,9 +5,9 @@ pyarrow==25.0.0
 scikit-learn==1.9.0
 
 # Use xgboost-cpu on Linux or Windows x86_64
-xgboost-cpu==3.3.0; sys_platform == "linux" and platform_machine == "x86_64"
-xgboost-cpu==3.3.0; sys_platform == "win32" and platform_machine == "x86_64"
+xgboost-cpu==3.3.0; platform_machine == "x86_64" and (sys_platform == "linux" or sys_platform == "win32")
 
 # Use xgboost on all other platforms (e.g., macOS Intel or ARM, or non-x86_64)
-xgboost==3.3.0; sys_platform == "darwin"
-xgboost==3.3.0; platform_machine != "x86_64"
+# PEP 508 markers have no unary "not", so this is the De Morgan negation of the marker above
+# and must be kept exactly complementary to it.
+xgboost==3.3.0; platform_machine != "x86_64" or (sys_platform != "linux" and sys_platform != "win32")
