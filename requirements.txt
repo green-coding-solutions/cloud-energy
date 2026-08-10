@@ -10,4 +10,4 @@ xgboost-cpu==3.4.0; platform_machine == "x86_64" and (sys_platform == "linux" or
 # Use xgboost on all other platforms (e.g., macOS Intel or ARM, or non-x86_64)
 # PEP 508 markers have no unary "not", so this is the De Morgan negation of the marker above
 # and must be kept exactly complementary to it.
-xgboost==3.3.0; platform_machine != "x86_64" or (sys_platform != "linux" and sys_platform != "win32")
+xgboost==3.4.0; platform_machine != "x86_64" or (sys_platform != "linux" and sys_platform != "win32")
