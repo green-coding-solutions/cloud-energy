@@ -309,47 +309,6 @@ def make_l3_cache(df_original):
     return df
 
 
-# This function is not used anymore
-# Problem being that only 50% of the architecture was matched! Rest was still NA
-def make_architecture_old(df_original):
-    df = df_original.copy()
-
-    ## Import David Mytton's arch data into a dataframe
-    files = glob.glob("./../data/cpu_arch/*.csv")
-    pat='(intel|amd)-([^/]*).csv$'
-    arch = pd.DataFrame(columns=['architecture', 'value'])
-    for f in files:
-        header = re.search(pat,f).group(2)
-        f
-        csv = pd.read_csv(f, sep="|",header=None, names=[header])
-        csv = csv.melt(id_vars=None, value_vars=[header], var_name="architecture")
-        arch = arch.append(csv, ignore_index=True)
-
-    arch
-
-    df['Architecture'] = None
-    clean_names = df.CPUName.str.replace(r"xeon|opteron|core", "", regex=True)
-
-    assert arch.value.nunique() == arch.shape[0], "Duplicate entries where in architecture lookup file"
-
-
-    arch.value = arch.value.str.lower().str.replace(r"\s*", "", regex=True) # normalize
-
-    for i, clean_name in clean_names.iteritems():
-        found_architecture = arch[arch.value == clean_name].architecture
-        assert len(found_architecture) < 2
-        if not found_architecture.empty:
-            df.loc[i,'Architecture'] = found_architecture.iloc[0]
-
-
-    # opteron is known
-    df.loc[df['CPUName'].str.contains('opteron'), 'Architecture'] = 'opteron'
-
-
-    assert df[df['Architecture'].isna()].CPUName.unique().shape[0] == 59, "More than 59 unique unknown architectures found!"
-
-    return df
-
 # This function was based on the Intel HTML files. But it has still over 50% missing ...
 def make_tdp_old(df_original):
     df = df_original.copy()
@@ -434,6 +393,8 @@ def make_tdp_old(df_original):
 
 def make_tdp_and_architecture(df_original):
     df = df_original.copy()
+
+    df['Architecture'] = None
 
     cpus = pd.DataFrame(columns=["ModelNumber", "TDP", "Architecture"])
 
@@ -541,12 +502,10 @@ def make_tdp_and_architecture(df_original):
         assert len(found) < 2, f"Found multiple architectures: {cpus[cpus.ModelNumber == clean_name]}"
 
         df.loc[i,'TDP'] = found.iloc[0].TDP # Insert TDP in any case
+        df.loc[i,'Architecture'] = found.iloc[0].Architecture
 
-        if df.loc[i,'Architecture'] is not None: # Check before overwriting architecture
-            if df.loc[i,'Architecture'] in ['epyc-gen3', 'epyc-gen1', 'epyc-gen2']: continue # allow these, since they provide more info
-            assert df.loc[i,'Architecture'] == found.iloc[0].Architecture, f"Previous architecture was {df.loc[i,'Architecture']}. New found is: {found.iloc[0].Architecture}"
-        else:
-            df.loc[i,'Architecture'] = found.iloc[0].Architecture
+    # opteron is known
+    df.loc[df['CPUName'].str.contains('opteron'), 'Architecture'] = 'opteron'
 
 
     return df
@@ -860,8 +819,6 @@ def main():
     df = make_l2_cache(df)
 
     df = make_l3_cache(df)
-
-    df = make_architecture_old(df)
 
     df = make_tdp_and_architecture(df)
 
