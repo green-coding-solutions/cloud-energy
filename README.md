@@ -31,12 +31,15 @@ pip3 install -r requirements.txt
 ```
 
 ### Re-build training data
-If you want to rebuild the training data (`spec_data*.csv`) then you have to include 
-the git submodule with the raw data.
+The raw data and the code that builds the training data live in the
+[spec-power-data](https://github.com/green-coding-solutions/spec-power-data) repository. It is also included here as a git submodule.
 
 ```bash
 git submodule update --init
 ```
+
+If you want to rebuild the training data please follow the README in that repository and then copy the
+resulting `spec_data_cleaned.csv` to `./data/spec_data_cleaned.csv`. This is the only file the model needs.
 
 ## Use
 You must call the python file `ols.py` or `xgb.py`. 
@@ -233,14 +236,15 @@ If you cannot find out specific parameters the best thing is: Write an email to 
 ## Model Details / EDA
 
 - Model uses SPECPower raw data
-    + Current copy is stored in `./data/raw`
-    + We only process the html data. It contains the same info as the text
-    + Look into `./scripts/create_data_csv.py`
-    + Unprocessed version is then in `./data/spec_data.csv`
+    + Current copy is stored in `./data/raw` (git submodule)
+    + We only process the html data in `./data/raw/spec-power/html`. It contains the same info as the text
+    + Look into `scripts/create_data_csv.py` in the spec-power-data repository
+    + Unprocessed version is then in `data/spec_data.csv` in the same repository
+    + The current training data holds 619 machines. The raw data has since been updated to 924 machines, which are not part of the training data yet
 - CPU microarchitecture and TDP data is coming from
-    + David Mytton [Cloud carbon coefficients](https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients) (only AMD Epyc info)
     + Wikipedia (very! thorough source)
-- Data is cleaned. Look into `./scripts/data_cleaning.py`
+    + The current training data also uses the AMD Epyc generations (`epyc-gen1` to `epyc-gen3`) from David Mytton [Cloud carbon coefficients](https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients). These lists were removed from the submodule, so a rebuild only yields the label `epyc`
+- Data is cleaned. Look into `scripts/data_cleaning.py` in the spec-power-data repository
     + Cleaned and enriched version is then in `./data/spec_data_cleaned.csv`
 
 The EDA is currently only on Kaggle, where you can see how we selected the subset of the 
