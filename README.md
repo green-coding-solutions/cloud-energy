@@ -236,16 +236,10 @@ If you cannot find out specific parameters the best thing is: Write an email to 
 ## Model Details / EDA
 
 - Model uses SPECPower raw data
-    + Current copy is stored in `./data/raw` (git submodule)
-    + We only process the html data in `./data/raw/spec-power/html`. It contains the same info as the text
-    + Look into `scripts/create_data_csv.py` in the spec-power-data repository
-    + Unprocessed version is then in `data/spec_data.csv` in the same repository
-    + The current training data holds 619 machines. The raw data has since been updated to 924 machines, which are not part of the training data yet
-- CPU microarchitecture and TDP data is coming from
-    + Wikipedia (very! thorough source)
-    + The current training data also uses the AMD Epyc generations (`epyc-gen1` to `epyc-gen3`) from David Mytton [Cloud carbon coefficients](https://github.com/cloud-carbon-footprint/cloud-carbon-coefficients). These lists were removed from the submodule, so a rebuild only yields the label `epyc`
-- Data is cleaned. Look into `scripts/data_cleaning.py` in the spec-power-data repository
-    + Cleaned and enriched version is then in `./data/spec_data_cleaned.csv`
+    + Current copy is stored in `./spec-power-data` (git submodule)
+    + The current training data holds 900+ machines.
+    + See the repo for details and if needed manual data update
+    + We update data about once a year
 
 The EDA is currently only on Kaggle, where you can see how we selected the subset of the 
 available variables and their interaction in our [Kaggle notebook](https://www.kaggle.com/code/arne3000/spec-power-eda-pass-2)
@@ -439,6 +433,6 @@ from the paper to tune the model afterwards.
 A big thank you to [Rich Kenny](https://twitter.com/bigkatrich) from Interact DC to providing some insights to
 parameters and possible pitfalls during our model development.
 
-## License 
+## License
 
 The model is MIT Licensed. See License file for details.
