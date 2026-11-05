@@ -25,8 +25,8 @@ The model works everywhere where Python runs but can ingest live data best on *N
 Needs at least python 3.11
 
 ```
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
