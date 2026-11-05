@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/home/worker/.cache/pip pip install --user -r requ
 
 ENV PATH="/home/worker/.local/bin:${PATH}"
 
-COPY --chown=worker:worker data/spec_data_cleaned.csv data/spec_data_cleaned.csv
+COPY --chown=worker:worker spec-power-data/data/spec_data_cleaned.csv spec-power-data/data/spec_data_cleaned.csv
 COPY --chown=worker:worker auto_detect.py auto_detect.py
 COPY --chown=worker:worker xgb.py xgb.py
 

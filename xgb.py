@@ -16,10 +16,10 @@ logger.setLevel(logging.INFO)
 
 def train_model(cpu_chips, Z):
 
-    df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
+    df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/spec-power-data/data/spec_data_cleaned.csv")
 
     X = df.copy()
-    X = pd.get_dummies(X, columns=['CPUMake', 'Architecture'])
+    X = pd.get_dummies(X, columns=['CPUMake'])
 
     if cpu_chips:
         logger.info('Training data will be restricted to the following amount of chips: %d', cpu_chips)
@@ -103,8 +103,7 @@ if __name__ == '__main__':
     parser.add_argument('--release-year', type=int, help='Release year of the CPU')
     parser.add_argument('--tdp', type=int, help='TDP of the CPU')
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
-    parser.add_argument('--architecture', type=str, help='The architecture of the CPU. lowercase. ex.: haswell')
-    parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel or amd)')
+    parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel, amd, ampere or nvidia)')
     parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
 
     parser.add_argument('--vhost-ratio',
@@ -178,12 +177,11 @@ if __name__ == '__main__':
         'TDP': [args.tdp],
         'Hardware_Availability_Year': [args.release_year],
         'HW_MemAmountGB': [args.ram],
-        'Architecture': [args.architecture],
         'CPUMake': [args.cpu_make],
         'utilization': [0.0]
     })
 
-    Z = pd.get_dummies(Z, columns=['CPUMake', 'Architecture'])
+    Z = pd.get_dummies(Z, columns=['CPUMake'])
 
     Z = Z.dropna(axis=1)
 

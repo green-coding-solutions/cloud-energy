@@ -6,7 +6,7 @@ import pandas as pd
 
 def train_model(cpu_chips, ram, tdp, cpu_threads):
 
-    df = pd.read_csv('./data/spec_data_cleaned.csv')
+    df = pd.read_csv('./spec-power-data/data/spec_data_cleaned.csv')
 
     formula = 'power ~ utilization'
 
@@ -50,8 +50,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     model = train_model(args.cpu_chips, args.ram, args.tdp, args.cpu_threads)
-    my_data = pd.DataFrame.from_dict({
-        'utilization': 0,
+    my_data = pd.DataFrame({
+        'utilization': [0.0],
         'CPUChips': [args.cpu_chips],
         'CPUThreads': [args.cpu_threads],
         'HW_MemAmountGB': [args.ram],
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     })
 
     # Drop all arguments that were not supplied
-    my_data = my_data.dropna(axis=1)
+    my_data.dropna(axis=1, inplace=True)
 
     if not args.silent:
         print('Sending following dataframe to model', my_data)

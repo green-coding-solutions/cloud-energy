@@ -30,16 +30,21 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-### Re-build training data
-The raw data and the code that builds the training data live in the
-[spec-power-data](https://github.com/green-coding-solutions/spec-power-data) repository. It is also included here as a git submodule.
+The training data is not part of this repository. It lives in the
+[spec-power-data](https://github.com/green-coding-solutions/spec-power-data) repository, which is included as a
+git submodule in `./spec-power-data`. The model needs it, so you must fetch it:
 
 ```bash
 git submodule update --init
 ```
 
-If you want to rebuild the training data please follow the README in that repository and then copy the
-resulting `spec_data_cleaned.csv` to `./data/spec_data_cleaned.csv`. This is the only file the model needs.
+Or clone with `git clone --recurse-submodules` in the first place.
+
+The only file the model needs is `./spec-power-data/data/spec_data_cleaned.csv`.
+
+### Re-build training data
+If you want to rebuild the training data please follow the README in the `spec-power-data` repository. Commit the
+result there, then update the submodule pointer and the expected values in `tests/validate-*.sh` in this repository.
 
 ## Use
 You must call the python file `ols.py` or `xgb.py`. 
@@ -78,8 +83,8 @@ Or feed it directly to the model with: `./a.out | python3 model.py --tdp ....`
 
 
 ## Overview
-This repository containes the needed data to train a Linear Model (OLS) / XGBoost for the [SPECPower
-data set](https://www.spec.org/power_ssj2008/).
+This repository contains the code, and through the `spec-power-data` submodule the needed data, to train a
+Linear Model (OLS) / XGBoost for the [SPECPower data set](https://www.spec.org/power_ssj2008/).
 
 The models are built with dynamic variables designed to work 
 in different cloud environments where some information may not be available.
@@ -106,12 +111,11 @@ Currently the model supports following variables:
 - CPU Frequency `[integer [1,)]`
     + The base frequency of the processor in MHz.
     + This value is only used in the XGBoost variant of the model
-- Architecture `[str]`
-    * For example: "haswell"
 - CPU Make `[str]`
-    * either "intel" or "amd"
+    * One of "intel", "amd", "ampere" or "nvidia"
 - Release year `[int]`
-    + ex. 2011
+    + ex. 2021
+    + The training data only contains hardware from 2018 on
 - RAM `[integer (0,]]`
     * in Gigabytes
 - TDP `[integer (0,]]`
@@ -236,8 +240,11 @@ If you cannot find out specific parameters the best thing is: Write an email to 
 ## Model Details / EDA
 
 - Model uses SPECPower raw data
-    + Current copy is stored in `./spec-power-data` (git submodule)
-    + The current training data holds 900+ machines.
+    + It is stored in `./spec-power-data` (git submodule). The model trains on `./spec-power-data/data/spec_data_cleaned.csv`
+    + The current training data holds 489 machines: Of the 924 valid Single Node results in the raw data only those with hardware available from 2018 on are used
+    + 300 machines are Intel, 182 AMD and 7 ARM (6 Ampere and 1 NVIDIA)
+    + The TDP is not part of SPECPower. It comes from CPU spec sheets and a manually maintained lookup file
+    + The training data from 2022 (619 machines) is kept as a backup in `./spec-power-data/data/legacy`. It is the last version with an `Architecture` column
     + See the repo for details and if needed manual data update
     + We update data about once a year
 
@@ -351,6 +358,9 @@ This makes the model extremely performant at the cost of a minimal memory cost.
 
 ## Results
 
+These results predate the current training data and have not been re-run with it. Also neither of the two machines
+is part of the current training data.
+
 We have first compared the model against a machine from SPECPower that we 
 did not include in the model training: [Hewlett Packard Enterprise Synergy 480 Gen10 Plus Compute Module](https://www.spec.org/power_ssj2008/results/res2022q1/power_ssj2008-20211207-01142.html)
 
@@ -408,6 +418,7 @@ they are about the same.
 
 ## Assumptions & Limitations
 - The model was trained on the SPECpower dataset which almost exclusively includes compute focussed machines. This means it will not be accurate for memory-heavy machines like database servers or ML machines that tend to use GPUs/TPUs or even ASICS
+- The training data only contains hardware available from 2018 on, so the model is likely less accurate for older machines. Also only 7 of the 489 machines use ARM CPUs.
 - The main input variable for the model is CPU utilization. This metric is only reliable if the system frequencies do not change much. See our in depth article about [usefulness of CPU Utilization as a metric](https://www.green-coding.berlin/case-studies/cpu-utilization-usefulness/)
 - SPECPower machines tend to be rather tuned and do not necessarily represent the reality of current datacenter configurations. So you are likely to get a too small value than a too high value. This was also detailed in the analysis earlier in the README, where we talk about the turned off features.
 - If you are in a shared resource system like a Virtual Machine the model will assume a linear fraction of the load. This is debateable and might need improvement. See the discussion here: https://github.com/green-coding-solutions/spec-power-model/issues/4

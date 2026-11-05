@@ -36,7 +36,7 @@ def objective(trial):
     return mean_squared_error(y_valid, y_hat, squared=False)
 
 
-df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/data/spec_data_cleaned.csv")
+df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/spec-power-data/data/spec_data_cleaned.csv")
 
 X = df[df.CPUChips == 2] # Re-run script with a tuning for every amount of CPUChips
 y = X["power"]
@@ -49,7 +49,6 @@ Z = pd.DataFrame.from_dict({
     'TDP': [],
     'Hardware_Availability_Year': [],
     'HW_MemAmountGB': [],
-    'Architecture': [],
     'CPUMake': [],
     'utilization': []
 })
@@ -57,7 +56,7 @@ Z = pd.DataFrame.from_dict({
 X = X[Z.columns]
 
 
-X = pd.get_dummies(X, columns=["CPUMake", "Architecture"])
+X = pd.get_dummies(X, columns=["CPUMake"])
 
 X_train, X_valid, y_train, y_valid = train_test_split(X, y, train_size=0.8, test_size=0.2)
 study = optuna.create_study(direction='minimize', study_name='regression')
