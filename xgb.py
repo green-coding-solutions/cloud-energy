@@ -53,7 +53,8 @@ def infer_predictions(model, Z):
 
     predictions = {}
 
-    for i in range(0,110,5):
+    # The training data only has utilization in steps of 10, so the model has no other distinct values
+    for i in range(0,110,10):
         Z['utilization'] = i
         predictions[float(i)] = model.predict(Z)[0]
     return predictions
@@ -69,18 +70,8 @@ def interpolate_helper(predictions, lower, upper, step=501):
     return predictions
 
 def interpolate_predictions(predictions):
-    predictions = interpolate_helper(predictions, 0.0, 5.0, 501)
-    predictions = interpolate_helper(predictions, 5.0, 15.0, 1001)
-    predictions = interpolate_helper(predictions, 15.0, 25.0, 1001)
-    predictions = interpolate_helper(predictions, 25.0, 35.0, 1001)
-    predictions = interpolate_helper(predictions, 35.0, 45.0, 1001)
-    predictions = interpolate_helper(predictions, 45.0, 55.0, 1001)
-    predictions = interpolate_helper(predictions, 55.0, 65.0, 1001)
-    predictions = interpolate_helper(predictions, 65.0, 75.0, 1001)
-    predictions = interpolate_helper(predictions, 75.0, 85.0, 1001)
-    predictions = interpolate_helper(predictions, 85.0, 95.0, 1001)
-    # Question: between 95 and 100 is no difference. How do we extrapolate?
-    predictions = interpolate_helper(predictions, 95.0, 100.0, 501)
+    for lower in range(0, 100, 10):
+        predictions = interpolate_helper(predictions, float(lower), float(lower + 10), 1001)
 
     return predictions
 

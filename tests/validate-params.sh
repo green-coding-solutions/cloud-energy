@@ -24,27 +24,27 @@ cat > "$expected_file" << 'EOF'
 set -eu
 declare -A cloud_energy_hashmap
 cloud_energy_hashmap[0.00]=4.6573012525177
-cloud_energy_hashmap[5.00]=4.6573012525177
-cloud_energy_hashmap[10.00]=5.926354343605041
-cloud_energy_hashmap[15.00]=7.195407434692383
-cloud_energy_hashmap[20.00]=7.574721682434082
-cloud_energy_hashmap[25.00]=7.954035930175781
-cloud_energy_hashmap[30.00]=8.588971873168944
-cloud_energy_hashmap[35.00]=9.223907816162109
-cloud_energy_hashmap[40.00]=9.672066326293946
-cloud_energy_hashmap[45.00]=10.12022483642578
-cloud_energy_hashmap[50.00]=10.304246565856934
-cloud_energy_hashmap[55.00]=10.488268295288085
-cloud_energy_hashmap[60.00]=11.158043476409912
-cloud_energy_hashmap[65.00]=11.827818657531738
-cloud_energy_hashmap[70.00]=12.944305827026367
-cloud_energy_hashmap[75.00]=14.060792996520995
-cloud_energy_hashmap[80.00]=14.917622198181151
-cloud_energy_hashmap[85.00]=15.774451399841308
-cloud_energy_hashmap[90.00]=15.677484211120605
-cloud_energy_hashmap[95.00]=15.580517022399901
+cloud_energy_hashmap[10.00]=7.195407474431991
+cloud_energy_hashmap[20.00]=7.954035930175781
+cloud_energy_hashmap[30.00]=9.223907816162109
+cloud_energy_hashmap[40.00]=10.12022483642578
+cloud_energy_hashmap[50.00]=10.488268295288085
+cloud_energy_hashmap[60.00]=11.827818657531738
+cloud_energy_hashmap[70.00]=14.060792996520995
+cloud_energy_hashmap[80.00]=15.774451399841308
+cloud_energy_hashmap[90.00]=15.580517022399901
 cloud_energy_hashmap[100.00]=16.24188457397461
-cloud_energy_hashmap[105.00]=16.241884231567383
+cloud_energy_hashmap[0.01]=4.659839358739614
+cloud_energy_hashmap[0.02]=4.662377464961528
+cloud_energy_hashmap[0.03]=4.664915571183443
+cloud_energy_hashmap[0.04]=4.667453677405358
+cloud_energy_hashmap[0.05]=4.669991783627271
+cloud_energy_hashmap[0.06]=4.672529889849185
+cloud_energy_hashmap[0.07]=4.6750679960711
+cloud_energy_hashmap[0.08]=4.677606102293015
+cloud_energy_hashmap[0.09]=4.680144208514929
+cloud_energy_hashmap[0.10]=4.682682314736843
+cloud_energy_hashmap[0.11]=4.685220420958757
 EOF
 
 # Extract the first 30 lines of the actual output for comparison

@@ -7,7 +7,7 @@ streaming, inline use (e.g. in Green Metrics Tool / Eco CI).
 
 ## Layout
 
-- `xgb.py`: the main entry point. It trains an XGBoost model on startup from the training data, using only the columns the user supplied on the CLI. It then predicts utilization 0–100 in steps of 5,
+- `xgb.py`: the main entry point. It trains an XGBoost model on startup from the training data, using only the columns the user supplied on the CLI. It then predicts utilization 0–100 in steps of 10,
   linearly interpolates down to 0.01 steps and keeps all of that in a dict. After that it reads
   utilization values line by line from stdin (or psutil with `--autoinput`) and prints watts
   (or joules with `--energy`). `--dump` / `--dump-hashmap` print the whole lookup table.

@@ -337,19 +337,8 @@ Since the original data from SPECPower only has information for every 10% of
 utilization the model will by default for instance give the same value for 6%
 as well as for 7%.
 
-To combat this behaviour we interpolate between the points where the model actually
-reports new data, which is:
-- 0-5
-- 5-15
-- 15-25
-- 25-35
-- 35-45
-- 45-55
-- 55-65
-- 65-75
-- 75-85
-- 85-95
-- 95-100
+To combat this behaviour we interpolate between the utilization steps of the training
+data: 0, 10, 20 ... 100. The output at these steps is the prediction of the model.
 
 The data is just interpolated linearly. The interpolation is done directly 
 when the `xgb.py` script is starting and thus all possible infered values for 
