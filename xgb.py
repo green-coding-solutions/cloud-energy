@@ -144,14 +144,8 @@ if __name__ == '__main__':
     if args.silent:
         set_silent()
 
-    args_dict = args.__dict__.copy()
-    del args_dict['silent']
-    del args_dict['auto']
-    del args_dict['energy']
-
-    # did the user supply any of the auto detectable arguments?
-    if not any(args_dict.values()) or args.auto:
-        logger.info('No arguments where supplied, or auto mode was forced. Running auto detect on the sytem.')
+    if args.auto:
+        logger.info('Auto mode was requested. Running auto detect on the system.')
 
         import auto_detect
 
@@ -168,7 +162,6 @@ if __name__ == '__main__':
         args.cpu_make = args.cpu_make or data['make']
         args.cpu_chips = args.cpu_chips or data['chips']
 
-    # set default. We do this here and not in argparse, so we can check if anything was supplied at all
     if not args.vhost_ratio:
         args.vhost_ratio = 1.0
 
@@ -200,6 +193,9 @@ if __name__ == '__main__':
     Z = pd.get_dummies(Z, columns=['CPUMake', 'FormFactor', 'Vendor', 'PowerProfile'])
 
     Z = Z.dropna(axis=1)
+
+    if list(Z.columns) == ['utilization'] and not args.cpu_chips:
+        logger.warning('No machine parameters were supplied. The output is the average of all machines in the training data and not an estimate for this machine. Use --auto to detect them.')
 
 
     logger.info('vHost ratio is set to %s', args.vhost_ratio)
