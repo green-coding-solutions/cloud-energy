@@ -14,6 +14,8 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
 
+MIN_POWER_WATTS = 0.01
+
 def train_model(cpu_chips, Z):
 
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/spec-power-data/data/spec_data_cleaned.csv")
@@ -56,7 +58,9 @@ def infer_predictions(model, Z):
     # The training data only has utilization in steps of 10, so the model has no other distinct values
     for i in range(0,110,10):
         Z['utilization'] = i
-        predictions[float(i)] = model.predict(Z)[0]
+        # XGBoost can predict below zero for parameters far from the training data.
+        # Clamp before interpolating, so that negative anchors do not skew the values between them.
+        predictions[float(i)] = max(model.predict(Z)[0], MIN_POWER_WATTS)
     return predictions
 
 def interpolate_helper(predictions, lower, upper, step=501):
@@ -65,7 +69,8 @@ def interpolate_helper(predictions, lower, upper, step=501):
     diff_value = predictions[upper] - predictions[lower]
 
     for i in np.linspace(0, diff, step):
-        predictions[round(lower+i, 2)] = predictions[lower]+((diff_value/diff)*i)
+        # The clamp only catches float rounding, as both anchors are already >= MIN_POWER_WATTS
+        predictions[round(lower+i, 2)] = max(predictions[lower]+((diff_value/diff)*i), MIN_POWER_WATTS)
 
     return predictions
 
