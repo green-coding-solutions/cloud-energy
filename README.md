@@ -78,6 +78,30 @@ each result. A result that does not determine the status counts as `yes`, becaus
 The flag improves the estimates only slightly, and on some configurations `--turbo no` gives a higher
 estimate than `--turbo yes`, so do not read the difference between the two as the power cost of Turbo Boost.
 
+Three more optional flags describe the server. Without them the model does not use these features. `--auto` does not
+detect them.
+
+- `--form-factor`: `1U`, `2U`, `3U`, `4U`, `5U`, `6U`, `8U`, `10U`, `Tower` or `Blade`
+- `--vendor`: `hpe`, `lenovo`, `fujitsu`, `supermicro`, `dell` or `other`
+- `--power-profile`: `power-saver`, `balanced` or `performance`
+
+`--power-profile` is a coarse mix of operating system settings and CPU caps:
+
+| Profile | Windows | Linux | Other |
+|---------|---------|-------|-------|
+| `power-saver` | Power Saver plan | `powersave` and `conservative` governors | Any CPU cap wins over the plan or governor: maximum processor state below 100%, frequency limit or boost limit. Efficiency modes in the BIOS count if the OS settings say nothing |
+| `balanced` | Balanced plan | `ondemand` and `schedutil` governors | Results without a clear OS setting are assumed to be balanced |
+| `performance` | High Performance plan | `performance` governor | Only without a CPU cap |
+
+Keep these limits in mind:
+
+- `performance` is based on a single machine in the training data. Depending on the other parameters it either changes
+  nothing or moves the estimate towards that one result, so it is not a reliable estimate.
+- The values of `--power-profile` are not a ranking. On some configurations `balanced` gives a higher estimate than
+  `power-saver` and on others a lower one, as many results are tuned far beyond their named profile.
+- `3U` and larger, as well as `Blade`, have only a few machines each.
+- In a cross-validation with machines held out, `--vendor` improved the estimates the most. `--form-factor` did not improve them.
+
 ### Demo Reporter
 
 If you want to use the demo reporter to read the CPU utilization there is a C reporter

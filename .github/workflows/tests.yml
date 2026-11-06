@@ -41,3 +41,8 @@ jobs:
         run: |
           cd tests
           bash validate-turbo.sh
+
+      - name: Run validation server flags script
+        run: |
+          cd tests
+          bash validate-server-flags.sh

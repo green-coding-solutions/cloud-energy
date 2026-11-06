@@ -21,7 +21,7 @@ def train_model(cpu_chips, Z):
     df = pd.read_csv(f"{os.path.dirname(os.path.abspath(__file__))}/spec-power-data/data/spec_data_cleaned.csv")
 
     X = df.copy()
-    X = pd.get_dummies(X, columns=['CPUMake'])
+    X = pd.get_dummies(X, columns=['CPUMake', 'FormFactor', 'Vendor', 'PowerProfile'])
 
     if cpu_chips:
         logger.info('Training data will be restricted to the following amount of chips: %d', cpu_chips)
@@ -101,6 +101,21 @@ if __name__ == '__main__':
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
     parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel, amd, ampere or nvidia)')
     parser.add_argument('--turbo', type=str, choices=['yes', 'no'], help='Whether Turbo Boost is enabled on the CPU')
+    parser.add_argument('--form-factor',
+        type=str,
+        choices=['1U', '2U', '3U', '4U', '5U', '6U', '8U', '10U', 'Tower', 'Blade'],
+        help='The form factor of the server'
+    )
+    parser.add_argument('--vendor',
+        type=str,
+        choices=['hpe', 'lenovo', 'fujitsu', 'supermicro', 'dell', 'other'],
+        help='The vendor of the server'
+    )
+    parser.add_argument('--power-profile',
+        type=str,
+        choices=['power-saver', 'balanced', 'performance'],
+        help='Coarse power setting of the system. See the README for how power plans, governors and CPU caps map to it'
+    )
     parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
 
     parser.add_argument('--vhost-ratio',
@@ -175,11 +190,14 @@ if __name__ == '__main__':
         'Hardware_Availability_Year': [args.release_year],
         'HW_MemAmountGB': [args.ram],
         'CPUMake': [args.cpu_make],
+        'FormFactor': [args.form_factor],
+        'Vendor': [args.vendor],
+        'PowerProfile': [args.power_profile],
         'Turbo': [None if args.turbo is None else args.turbo == 'yes'],
         'utilization': [0.0]
     })
 
-    Z = pd.get_dummies(Z, columns=['CPUMake'])
+    Z = pd.get_dummies(Z, columns=['CPUMake', 'FormFactor', 'Vendor', 'PowerProfile'])
 
     Z = Z.dropna(axis=1)
 
