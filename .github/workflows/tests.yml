@@ -36,3 +36,8 @@ jobs:
         run: |
           cd tests
           bash validate-params.sh
+
+      - name: Run validation turbo script
+        run: |
+          cd tests
+          bash validate-turbo.sh

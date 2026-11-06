@@ -40,7 +40,7 @@ python3 xgb.py --autoinput --interval 1 --silent
 python3 xgb.py --dump
 
 # tests (what CI runs in .github/workflows/tests.yml); they must be run from inside tests/
-cd tests && bash validate-default.sh && bash validate-params.sh
+cd tests && bash validate-default.sh && bash validate-params.sh && bash validate-turbo.sh
 
 # lint
 pylint xgb.py auto_detect.py        # config in .pylintrc (max line length 120)

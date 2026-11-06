@@ -95,6 +95,7 @@ if __name__ == '__main__':
     parser.add_argument('--tdp', type=int, help='TDP of the CPU')
     parser.add_argument('--ram', type=int, help='Amount of DRAM for the bare metal system')
     parser.add_argument('--cpu-make', type=str, help='The make of the CPU (intel, amd, ampere or nvidia)')
+    parser.add_argument('--turbo', type=str, choices=['yes', 'no'], help='Whether Turbo Boost is enabled on the CPU')
     parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
 
     parser.add_argument('--vhost-ratio',
@@ -169,6 +170,7 @@ if __name__ == '__main__':
         'Hardware_Availability_Year': [args.release_year],
         'HW_MemAmountGB': [args.ram],
         'CPUMake': [args.cpu_make],
+        'Turbo': [None if args.turbo is None else args.turbo == 'yes'],
         'utilization': [0.0]
     })
 

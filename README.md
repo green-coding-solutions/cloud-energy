@@ -70,6 +70,14 @@ $ ./static-binary | python3 xgb.py --tdp 240
 Since all possible outputs are infered directly into a dict the model is highly
 performant to use in inline reporting scenarios.
 
+Use `--turbo yes` or `--turbo no` if you know whether Turbo Boost is enabled on the CPU. Without
+the flag the model does not use Turbo Boost as a feature.
+
+The training data holds this in the `Turbo` column. It is derived from the BIOS settings and notes of
+each result. A result that does not determine the status counts as `yes`, because that is the BIOS default.
+The flag improves the estimates only slightly, and on some configurations `--turbo no` gives a higher
+estimate than `--turbo yes`, so do not read the difference between the two as the power cost of Turbo Boost.
+
 ### Demo Reporter
 
 If you want to use the demo reporter to read the CPU utilization there is a C reporter
