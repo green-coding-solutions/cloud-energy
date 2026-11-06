@@ -116,7 +116,7 @@ if __name__ == '__main__':
         choices=['power-saver', 'balanced', 'performance'],
         help='Coarse power setting of the system. See the README for how power plans, governors and CPU caps map to it'
     )
-    parser.add_argument('--auto', action='store_true', help='Force auto detect. Will overwrite supplied arguments')
+    parser.add_argument('--auto', action='store_true', help='Force auto detect. Will not overwrite supplied arguments')
 
     parser.add_argument('--vhost-ratio',
         type=float,
