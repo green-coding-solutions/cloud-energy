@@ -12,8 +12,15 @@ streaming, inline use (e.g. in Green Metrics Tool / Eco CI).
   utilization values line by line from stdin (or psutil with `--autoinput`) and prints watts
   (or joules with `--energy`). `--dump` / `--dump-hashmap` print the whole lookup table.
 - `auto_detect.py`: detects machine parameters (`--auto`) from procfs/sysfs/lscpu/dmidecode.
-- `ols.py`: older linear (statsmodels OLS) variant, good for exploring parameters. `statsmodels` is **not** in
-  the requirements.
+- `ols.py`: older linear (statsmodels OLS) variant that predicts watts from stdin like `xgb.py`. It accepts the same
+  machine-parameter flags as `xgb.py` (not `--auto`, `--energy`, `--autoinput`, `--dump*`). The formula is
+  `power ~ utilization * (params)`: every parameter also changes the slope. A purely additive formula shares one slope
+  across all machines and predicts negative idle power for small machines. `--log` fits `log(power)` instead
+  (never negative). `--dump-stats` prints the statsmodels summary (p-values, R², AIC, ...) and exits. `statsmodels` is pinned in `requirements.txt` (not in
+  `requirements-docker.txt`).
+- `ols_parameter_analysis.py`: research script that fits an OLS on all parameters (numeric ones z-scored,
+  categorical ones dummy coded, rare levels merged/dropped) with machine-clustered standard errors and reports
+  the influence of each parameter (joint Wald test, drop-one ΔR², VIF). `--interactions` adds utilization × parameter terms.
 - `interact_validation.py`, `hyperparameter_tuning.py` (optuna, from `requirements-dev.txt`) and
   `operating_point_comparison.py`: research/validation scripts, not part of the runtime.
 - `demo-reporter/`: C programs (Linux + macOS) that stream CPU utilization, plus prebuilt static binaries.
