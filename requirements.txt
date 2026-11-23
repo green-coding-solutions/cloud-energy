@@ -1,4 +1,4 @@
-numpy==2.5.4
+numpy==2.5.5
 pandas==3.1.1
 psutil==7.2.2
 pyarrow==26.0.1
