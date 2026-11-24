@@ -1,3 +1,7 @@
+Part of the Green Software Landscape
+
+[![Device Measurement](https://raw.githubusercontent.com/bundesverband-green-software/landscape/refs/heads/main/badges/device-measurement.svg)](https://landscape.bundesverband-green-software.de)
+
 Cloud Energy is a locally trainable and runnable ML Model (based on XGBoost) to estimate
 power consumption [W] from CPU Utilization.
 
